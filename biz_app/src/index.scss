@@ -1,0 +1,31 @@
+body {
+  .app {
+    padding: 0;
+    margin: 0;
+    .links {
+      text-decoration: none;
+    }
+    //NAVBAR
+    .navbar {
+      background-color: blueviolet;
+
+      ul {
+        list-style-type: none;
+        display: flex;
+        gap: 14px;
+        padding: 0.2rem;
+        margin: 0.4rem 3rem;
+
+        li {
+          a {
+            color: #fff;
+            font-size: 1.2rem;
+          }
+          .active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
