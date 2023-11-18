@@ -11,6 +11,10 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import Tools from "./pages/Tools";
+import Company from "./pages/sub-pages/Company";
+import Business from "./pages/sub-pages/Business";
+import Ngo from "./pages/sub-pages/NGO";
+import WebDev from "./pages/sub-pages/webDev";
 
 function App() {
   const router = createBrowserRouter(
@@ -19,8 +23,14 @@ function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
+
+        {/* </Route> */}
         <Route path="blog" element={<Blog />} />
         <Route path="tools" element={<Tools />} />
+        <Route path="company" element={<Company />} />
+        <Route path="business" element={<Business />} />
+        <Route path="ngo" element={<Ngo />} />
+        <Route path="webDev" element={<WebDev />} />
       </Route>
     )
   );

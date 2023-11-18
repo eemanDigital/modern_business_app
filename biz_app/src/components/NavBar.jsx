@@ -1,37 +1,17 @@
 import { NavLink } from "react-router-dom";
+import { menuItem } from "./menuItem";
+import MenuItems from "./MenuItems";
 
 function NavBar() {
   return (
-    <nav className="navbar ">
-      <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/">
-        LOGO
-      </NavLink>
+    <nav className="navbar container-fluid">
       <ul>
-        <li>
-          <NavLink className="links" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="links" to="services">
-            Services
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="links" to="about">
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="links" to="blog">
-            Blog
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="links" to="tools">
-            Tools
-          </NavLink>
-        </li>
+        <NavLink style={{ marginRight: "auto" }} className="links" to="/">
+          LOGO
+        </NavLink>
+        {menuItem.map((item, index) => {
+          return <MenuItems items={item} key={index} />;
+        })}
       </ul>
     </nav>
   );

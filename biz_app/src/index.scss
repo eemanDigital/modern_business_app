@@ -1,28 +1,41 @@
+$deepBlue: #001b79;
+$lighterBlue: #1640d6;
+$Pink: #ed5ab3;
+$LightPink: #ff90c2;
+
 body {
   .app {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     .links {
       text-decoration: none;
     }
     //NAVBAR
     .navbar {
-      background-color: blueviolet;
-
       ul {
+        width: 100%;
         list-style-type: none;
+        background-color: $deepBlue;
         display: flex;
+        justify-content: flex-end;
         gap: 14px;
-        padding: 0.2rem;
-        margin: 0.4rem 3rem;
+        padding: 0.8rem 1.6rem;
 
         li {
           a {
+            border-left: 2px solid #fff;
+            padding-left: 10px;
             color: #fff;
             font-size: 1.2rem;
+            // height: 2px;
           }
           .active {
             text-decoration: underline;
+            // border-left: 2px solid #fff;
+          }
+          .dropdown {
+            display: none;
           }
         }
       }
