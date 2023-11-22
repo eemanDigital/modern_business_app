@@ -1,13 +1,18 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
+import { FaAngleDown } from "react-icons/fa6";
+import { useState } from "react";
+// import { RxAvatar } from "react-icons/rx";
+
 // import { useState } from "react";
 function MenuItems({ items }) {
-  // const displayStyle = {
-  //   display: toggle ? "none" : "",
-  // };
+  const [display, setDisplay]= useState(false)
 
+  const hanfleDisplay = ()=> {
+    setDisplay( prev => !prev)
+  }
   return (
-    <li>
+    <li onClick={hanfleDisplay}>
       {items.submenu ? (
         <li>
           <NavLink
@@ -16,8 +21,9 @@ function MenuItems({ items }) {
           >
             {items.title}
             {/* <button type="button" aria-haspopup="menu"></button> */}
-            <Dropdown submenu={items.submenu} />
+           { display? <Dropdown submenu={items.submenu} />: ""}
           </NavLink>
+          <FaAngleDown  style={styleAngle}/>
         </li>
       ) : (
         <>
@@ -27,10 +33,18 @@ function MenuItems({ items }) {
           >
             {items.title}
           </NavLink>
+          {/* <div><NavLink>
+            < RxAvatar/>
+          </NavLink></div> */}
+          
         </>
       )}
     </li>
   );
 }
 
+const styleAngle = {
+ color:"#fff",
+ paddingLeft:".4rem"
+}
 export default MenuItems;

@@ -1,0 +1,15 @@
+$deepBlue: #001b79;
+$lighterBlue: #1640d6;
+$Pink: #ed5ab3;
+$LightPink: #ff90c2;
+
+//MEDIA BREAKPOINT
+$breakpoint-tablet: 768px;
+$smallPhone: 442px;
+
+footer {
+  background-color: $deepBlue;
+  position: static;
+  bottom: 0;
+  padding: 3rem;
+}

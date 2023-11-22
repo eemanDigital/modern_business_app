@@ -1,0 +1,171 @@
+$deepBlue: #001b79;
+$lighterBlue: #1640d6;
+$Pink: #ed5ab3;
+$LightPink: #ff90c2;
+
+//MEDIA BREAKPOINT
+$breakpoint-tablet: 768px;
+$smallPhone: 442px;
+
+//NAVBAR
+.social-container {
+  display: flex;
+  position: sticky;
+  top: 0;
+  padding: 0.4rem 0.8rem;
+  // min-height: 38px;
+  background-color: $Pink;
+  justify-content: space-between;
+  @media (max-width: $breakpoint-tablet) {
+    position: static;
+  }
+
+  @media (max-width: $smallPhone) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+  }
+  .social {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    @media (max-width: $breakpoint-tablet) {
+      align-items: center;
+    }
+
+    @media (max-width: $smallPhone) {
+      img {
+        width: 14px;
+      }
+    }
+  }
+  .phone {
+    padding: 0.4rem;
+
+    p {
+      display: inline-flex;
+      align-items: center;
+      border-right: 2px solid #fff;
+      font-size: 14px;
+      padding: 0 0.2rem;
+      margin: 0 0.5rem;
+      color: #ffff;
+
+      @media (max-width: $breakpoint-tablet) {
+        display: block;
+        font-size: 14px;
+        border: none;
+      }
+
+      @media (max-width: $smallPhone) {
+        line-height: 1;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: $deepBlue;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  .logo {
+    padding-left: 2rem;
+    @media (max-width: $breakpoint-tablet) {
+      padding-left: 1.3rem;
+      margin-right: auto;
+    }
+  }
+  .hamburger {
+    position: absolute;
+    display: none;
+    font-size: 44px;
+    color: #ffff;
+    top: 0;
+    right: 0;
+
+    @media (max-width: $breakpoint-tablet) {
+      display: block;
+    }
+  }
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    list-style-type: none;
+    position: relative;
+    padding: 1rem 2.5rem 0rem 0rem;
+    line-height: 1.2;
+
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-top: 2px inset white;
+      width: 100%;
+      margin-top: 1rem;
+      &.open {
+        display: flex; /* show the menu when 'open' class is applied */
+      }
+    }
+
+    li {
+      &:hover .dropdown {
+        display: flex; /* Show the dropdown when hovering over li */
+
+        // @media (max-width: $breakpoint-tablet) {
+        //   display: none;
+        // }
+      }
+
+      a {
+        // border-left: 1px solid #fff;
+        padding-left: 10px;
+        color: #fff;
+        font-size: 1.1rem;
+
+        &:hover,
+        &:focus {
+          color: $LightPink;
+        }
+      }
+
+      .active {
+        text-decoration: underline;
+        // border-left: 2px solid #fff;
+      }
+
+      .dropdown {
+        position: absolute;
+        display: none;
+        background-color: $deepBlue;
+        flex-direction: column;
+        padding: 0.8rem 0.8rem;
+        width: 180px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+        z-index: 1;
+
+        @media (max-width: $breakpoint-tablet) {
+          margin-top: 0;
+        }
+
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

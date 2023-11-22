@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-
-function Dropdown({ submenu, toggleDropdown }) {
+function Dropdown({ submenu }) {
   return (
     <ul className="dropdown">
       {submenu.map((menu, index) => {
