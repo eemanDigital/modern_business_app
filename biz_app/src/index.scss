@@ -1,14 +1,14 @@
-//COLORS
-$deepBlue: #001b79;
-$lighterBlue: #1640d6;
-$Pink: #ed5ab3;
-$LightPink: #ff90c2;
-
-//MEDIA BREAKPOINT
-$breakpoint-tablet: 768px;
+@import './constants/styles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,400;1,900&display=swap');
 
 * {
   box-sizing: border-box;
+  // overflow: hidden;
+  body {
+    background-color: $LightPink;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+  }
   .app {
     padding: 0;
     margin: 0;

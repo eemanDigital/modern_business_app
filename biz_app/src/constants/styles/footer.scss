@@ -1,15 +1,122 @@
-$deepBlue: #001b79;
-$lighterBlue: #1640d6;
-$Pink: #ed5ab3;
-$LightPink: #ff90c2;
-
-//MEDIA BREAKPOINT
-$breakpoint-tablet: 768px;
-$smallPhone: 442px;
-
+@import './variables';
 footer {
-  background-color: $deepBlue;
+  background-color: rgba(2, 2, 54, 0.851);
   position: static;
   bottom: 0;
-  padding: 3rem;
+  // height: 200px;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+    // align-items: center;
+    padding: 2.2rem;
+    @media (max-width: $breakpoint-tablet) {
+      // flex-direction: column;
+    }
+
+    @media (max-width: $smallPhone) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    h3 {
+      color: #c0aeae;
+      font-weight: 500;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .col-1,
+    .col-2,
+    .col-3 {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      margin: 0.7rem;
+      @media (max-width: $breakpoint-tablet) {
+        // flex-direction: row;
+
+        h3 {
+          font-size: 1rem;
+        }
+      }
+      @media (max-width: $smallPhone) {
+        margin: none;
+        width: 100%;
+      }
+      // width: 100%;
+    }
+
+    .col-1 {
+      color: #c0aeae;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      p {
+        font-size: 0.7rem;
+      }
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        @media (max-width: $breakpoint-tablet) {
+          flex-direction: column;
+        }
+        @media (max-width: $smallPhone) {
+          flex-direction: row;
+        }
+        svg {
+          color: #c0aeae;
+          &:hover {
+            color: #fff;
+          }
+        }
+        @media (max-width: $smallPhone) {
+          img {
+            width: 0.5rem;
+          }
+        }
+
+        .whatsApp {
+          font-size: 1.6rem;
+          color: #fff;
+        }
+      }
+    }
+    .col-2,
+    .col-3 {
+      a {
+        color: #c0aeae;
+        line-height: 2.5;
+        font-size: 0.8rem;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+    .logo {
+      @media (max-width: $breakpoint-tablet) {
+        h3 {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .caveat {
+    color: #c0aeae;
+    padding: 1rem;
+    // text-align: center;
+    background-color: rgb(17, 17, 81);
+
+    .copyright {
+      text-align: center;
+      font-size: 12px;
+      border-top: 1px solid white;
+      padding-top: 0.9rem;
+    }
+  }
 }

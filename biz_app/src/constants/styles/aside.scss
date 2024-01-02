@@ -1,0 +1,71 @@
+@import './variables';
+
+.aside {
+  flex: 1;
+  background-color: #1d57f828;
+  border-radius: 15px;
+
+  //   height: 434px;
+
+  .aside-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 1rem;
+
+    h3 {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    svg {
+      width: 40px;
+      height: auto;
+      color: $Pink;
+    }
+    a {
+      background-color: $Pink;
+      text-decoration: none;
+      border: 1px solid #ffff;
+      padding: 0.5rem 1rem;
+      color: #ffff;
+      text-align: center;
+      width: 200px;
+    }
+  }
+  .amount {
+    font-size: 3rem;
+  }
+
+  .why-us {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 15px;
+
+    h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    a {
+      font-weight: 700;
+    }
+    svg {
+      color: #ffff;
+      font-size: 5rem;
+    }
+
+    .accredited {
+      display: flex;
+      align-items: center;
+      height: 74px;
+      color: #ffff;
+      //   text-align: center;
+      background-color: $Pink;
+      border-radius: 4px;
+      padding: 1rem;
+    }
+  }
+}

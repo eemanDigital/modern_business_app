@@ -1,12 +1,4 @@
-$deepBlue: #001b79;
-$lighterBlue: #1640d6;
-$Pink: #ed5ab3;
-$LightPink: #ff90c2;
-
-//MEDIA BREAKPOINT
-$breakpoint-tablet: 768px;
-$smallPhone: 442px;
-
+@import './variables';
 //NAVBAR
 .social-container {
   display: flex;
@@ -30,18 +22,29 @@ $smallPhone: 442px;
     display: flex;
     gap: 16px;
     align-items: center;
+
+    svg {
+      color: #ffff;
+
+      &:hover {
+        color: #c0bdbd;
+      }
+    }
     @media (max-width: $breakpoint-tablet) {
       align-items: center;
     }
 
-    @media (max-width: $smallPhone) {
-      img {
-        width: 14px;
-      }
-    }
+    // @media (max-width: $smallPhone) {
+    //   img {
+    //     width: 14px;
+    //   }
+    // }
   }
   .phone {
     padding: 0.4rem;
+    p {
+      font-weight: bold;
+    }
 
     p {
       display: inline-flex;
@@ -131,6 +134,7 @@ $smallPhone: 442px;
 
       a {
         // border-left: 1px solid #fff;
+
         padding-left: 10px;
         color: #fff;
         font-size: 1.1rem;
@@ -152,11 +156,17 @@ $smallPhone: 442px;
         background-color: $deepBlue;
         flex-direction: column;
         padding: 0.8rem 0.8rem;
-        width: 180px;
+        // width: 180px;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
           rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
         z-index: 1;
+
+        li {
+          padding: 0.5rem;
+          border-bottom: 1px solid #fff;
+          width: 100%;
+        }
 
         @media (max-width: $breakpoint-tablet) {
           margin-top: 0;
@@ -167,5 +177,8 @@ $smallPhone: 442px;
         }
       }
     }
+  }
+  svg {
+    color: #f0f0f0;
   }
 }

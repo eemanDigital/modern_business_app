@@ -1,14 +1,7 @@
-$deepBlue: #001b79;
-$lighterBlue: #1640d6;
-$Pink: #ed5ab3;
-$LightPink: #ff90c2;
-
-//MEDIA BREAKPOINT
-$breakpoint-tablet: 768px;
-$smallPhone: 442px;
+@import './variables';
 
 .login,
-.register {
+.sign-up {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +13,7 @@ $smallPhone: 442px;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    width: 350px;
+    width: 450px;
     min-height: 350px;
     padding: 1.2rem 3rem;
     margin-top: 1.2rem;
@@ -34,6 +27,7 @@ $smallPhone: 442px;
       outline: none;
       border: none;
       border-bottom: 1px solid $deepBlue;
+      padding: 0.3rem;
       font-size: 1.1rem;
       font-weight: 100;
     }
@@ -42,6 +36,7 @@ $smallPhone: 442px;
       border: none;
       border-radius: 4px;
       padding: 0.5rem 0;
+      margin-top: 0.4rem;
       background-color: $deepBlue;
       color: #fff;
       font-size: 1.1rem;

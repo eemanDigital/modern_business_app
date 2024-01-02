@@ -2,14 +2,19 @@ import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { menuItem } from '../constants/menuItem';
 import MenuItems from './MenuItems';
-import logo from '../assets/logo.svg';
-import facebook from '../assets/facebook.svg';
-import linkedin from '../assets/linkedin.svg';
-import twitter from '../assets/twitter.svg';
-import instagram from '../assets/instagram.svg';
+// import logo from '../assets/logo.svg';
+import {
+  FaWhatsapp,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+} from 'react-icons/fa';
+import { CiMail } from 'react-icons/ci';
+
 import { RxAvatar } from 'react-icons/rx';
 import { CgMenuRightAlt } from 'react-icons/cg';
 import { IoCloseSharp } from 'react-icons/io5';
+import { FaXTwitter } from 'react-icons/fa6';
 
 function NavBar() {
   const [toggle, setToggle] = useState(false);
@@ -22,34 +27,40 @@ function NavBar() {
     <>
       <div className='social-container'>
         <div className='social'>
-          <Link>
-            <img src={facebook} alt='facebook logo' />
+          <Link to='#'>
+            <FaFacebook />
           </Link>
-          <Link>
-            <img src={twitter} alt='twitter logo' />
+          <Link to='#'>
+            <FaInstagram />
           </Link>
-          <Link>
-            <img src={instagram} alt='instagram logo' />
+          <Link to='#'>
+            <FaLinkedin />
           </Link>
-          <Link>
-            <img src={linkedin} alt='linkedin logo' />
+          <Link to='#'>
+            <FaXTwitter />
+          </Link>
+          <Link to='#'>
+            <FaWhatsapp />
+          </Link>
+          <Link to='mailto:eemandigitalconcept@gmail.com'>
+            <CiMail />
           </Link>
         </div>
         <div className='phone'>
           <p>
             <span>Consult us for FREE:</span> +234 9021649021
           </p>
-          <p>email: eemandigitalconcept@gmail.com</p>
         </div>
       </div>
       <nav className='navbar container-fluid'>
         <div className='logo'>
-          <NavLink className='links' to='/'>
-            <img
+          <NavLink className='links' style={{ color: 'white' }} to='/'>
+            {/* <img
               src={logo}
               alt='eemaan digital logo'
               style={{ width: '64px' }}
-            />
+            /> */}
+            eemaan
           </NavLink>
         </div>
         <ul className={toggle ? 'open' : ''}>
@@ -58,7 +69,8 @@ function NavBar() {
           })}
 
           {/* login link */}
-          <div style={{ fontSize: '24px', fontWeight: '500' }}>
+          <div
+            style={{ fontSize: '24px', fontWeight: '500', color: '#f0f0f0' }}>
             <Link to='login'>
               <RxAvatar />
             </Link>
