@@ -1,0 +1,75 @@
+@import './variables';
+
+.dream-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1.2rem;
+  background-color: $Pink;
+  border-radius: 20px;
+
+  .dream-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2.7rem;
+    gap: 1rem;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      padding: 1rem 0.5rem;
+    }
+
+    .dream-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 70%;
+      @media (max-width: $smallPhone) {
+        width: 100%;
+      }
+
+      h1 {
+        color: #ffff;
+        font-weight: 600;
+      }
+      p {
+        color: #ffff;
+      }
+
+      a {
+        text-decoration: none;
+        text-align: center;
+        border: 1px solid #ffff;
+        border-radius: 5px;
+        padding: 0.5rem 1.5rem;
+        margin: 0.3rem;
+        font-weight: 700;
+        color: #ffff;
+        width: 50%;
+
+        @media (max-width: $breakpoint-tablet) {
+          width: 100%;
+        }
+        @media (max-width: $smallPhone) {
+          font-weight: 500;
+        }
+
+        &:hover {
+          background-color: #ffff;
+          color: $Pink;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .dream-image {
+    img {
+      //   flex: 2;
+
+      width: 100%;
+      height: auto;
+    }
+  }
+}

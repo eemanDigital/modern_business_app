@@ -1,0 +1,52 @@
+@import './variables';
+
+.company-section {
+  margin: 1.4rem;
+  .comp-container {
+    text-align: left;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    // padding: 1.4rem 0;
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
+
+    .text-1 {
+      flex: 3;
+      //   width: 100%;
+
+      h1 {
+        font-weight: 700;
+      }
+      .how-to-start {
+        background-color: $deepBlue;
+        border-radius: 5px;
+        padding: 3rem;
+
+        h4 {
+          color: #ffff;
+          border-radius: 4px;
+          font-size: 1.7rem;
+          font-weight: 500;
+        }
+        p {
+          color: #ffff;
+        }
+        a {
+          text-decoration: none;
+          border: 1px solid #ffff;
+          padding: 0.5rem 1rem;
+          color: #ffff;
+          text-align: center;
+          width: 200px;
+          &:hover {
+            background-color: #ffff;
+            color: $Pink;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

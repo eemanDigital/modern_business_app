@@ -1,0 +1,15 @@
+@import './variables';
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+
+  .write {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
