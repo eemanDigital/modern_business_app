@@ -1,22 +1,24 @@
 import BlogContent from '../components/BlogContent';
 import { useState, useEffect } from 'react';
 // import { blogPosts } from '../constants/data';
-import axios from 'axios';
+// import axios from 'axios';
+import http from '../lib/http';
 
-const url = 'http://localhost:3300/posts';
+// const url = 'http://localhost:3300/posts';
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState(null);
 
   useEffect(() => {
-    try {
-      axios({
-        method: 'get',
-        url,
-      }).then((response) => setBlogPosts(response.data.data.posts));
-    } catch (err) {
-      console.log(err);
+    async function fetchData() {
+      try {
+        const { data } = await http.get('/posts');
+        setBlogPosts(data.data.posts);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchData();
   }, []);
 
   if (!blogPosts) return null;

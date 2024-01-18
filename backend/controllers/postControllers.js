@@ -35,9 +35,14 @@ export const getPost = async (req, res, next) => {
 
 export const updatePost = async (req, res, next) => {
   const postId = req.params.id;
-  const { title, body } = req.body;
-  const updatedPost = await Post.findByIdAndUpdate(postId, { title, body });
-  console.log(post);
+  // const { title, body } = req.body;
+  const updatedPost = await Post.findByIdAndUpdate(
+    postId,
+    // { title, body },
+    req.body,
+    { new: true }
+  );
+  console.log(updatedPost);
   res.status(200).json({
     status: 'Post successfully updated',
     data: {

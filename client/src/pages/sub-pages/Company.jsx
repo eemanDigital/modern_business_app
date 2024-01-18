@@ -6,14 +6,13 @@ import PostIncorporation from '../../components/PostIncorporation';
 import { pre_inc_service } from '../../constants/data';
 import { packages } from '../../constants/data';
 import Packages from '../../components/company/Packages';
+import Button from '../../components/Button';
 
 const Company = () => {
   // const company_packages = packages.slice(0, 2);
 
   return (
     <section className='company-section'>
-
-
       <div className='comp-container'>
         <div className='text-1'>
           <h1>Company</h1>
@@ -63,7 +62,8 @@ const Company = () => {
           );
         })}
       </div>
-      <Link> Start Now &#x2192;</Link>
+      {/* <Link> Start Now &#x2192;</Link> */}
+      <Button text='Start Now' icons='&#x2192;' />
 
       <div className='trust-container'>
         <div className='custom'>

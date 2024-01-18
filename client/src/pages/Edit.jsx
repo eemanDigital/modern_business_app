@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import http from '../lib/http';
 
-const Write = () => {
+const Edit = () => {
+  const { id: postId } = useParams();
   const navigate = useNavigate();
 
   // Local state to manage form fields
@@ -11,6 +12,20 @@ const Write = () => {
     body: '',
     author: '',
   });
+
+  // Fetch blog post data on component mount- this populate the form field- upon mounting
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { data } = await http.get(`/posts/${postId}`);
+        // Set local state with data from the database
+        setFormData(data.data.post);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
+  }, [postId]);
 
   // Handle form field changes
   const handleInputChange = (e) => {
@@ -29,21 +44,18 @@ const Write = () => {
     };
 
     try {
-      await http.post('/posts', { data: payload });
-      navigate('/blog');
+      await http.put(`/posts/${postId}`, { data: payload });
+      navigate(`/blog/${postId}`);
     } catch (error) {
       console.error('Error updating post:', error);
     }
   };
 
-  // const handlePhoto=()=> {
-
-  // }
-
   return (
     <article>
-      <h1>Write New Post</h1>
+      <h1>Edit Post</h1>
       <form action='' className='write' onSubmit={handleSubmit}>
+        {/* onSubmit={(e) => handleSubmit(e, fieldValue)}> */}
         <label htmlFor='title'>Title</label>
         <input
           type='text'
@@ -51,7 +63,6 @@ const Write = () => {
           value={formData.title}
           onChange={handleInputChange}
         />
-
         <label htmlFor='author'>Author</label>
         <input
           type='text'
@@ -68,15 +79,14 @@ const Write = () => {
           value={formData.body}
           onChange={handleInputChange}></textarea>
         <div className='upload'>
-          <label htmlFor='photo'>Upload Image</label>
-          <input type='file' accept='.png .jpg .jpeg' name='photo' id='' />{' '}
+          <label htmlFor='image'>Upload Image</label>
+          <input type='file' multiple accept='image/*' name='' id='' />{' '}
           <button>upload</button>
         </div>
-
-        <button type='submit'>Publish</button>
+        <button type='submit'>Save</button>
       </form>
     </article>
   );
 };
 
-export default Write;
+export default Edit;

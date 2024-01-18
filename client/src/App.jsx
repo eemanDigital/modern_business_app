@@ -17,6 +17,7 @@ import SignUp from './pages/SignUp';
 import Blog from './pages/Blog';
 import Tools from './pages/Tools';
 import Write from './pages/Write';
+import Edit from './pages/Edit';
 import Company from './pages/sub-pages/Company';
 import Business from './pages/sub-pages/Business';
 import Ngo from './pages/sub-pages/Ngo';
@@ -38,6 +39,7 @@ function App() {
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
         <Route path='blog/write' element={<Write />} />
+        <Route path='blog/:id/edit' element={<Edit />} />
 
         <Route path='tools' element={<Tools />} />
         <Route path='login' element={<Login />} />

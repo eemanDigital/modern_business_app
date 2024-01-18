@@ -7,6 +7,7 @@ import PostIncorporation from '../../components/PostIncorporation';
 import Packages from '../../components/company/Packages';
 import { partnerships } from '../../constants/data';
 import partner from '../../assets/partner.svg';
+import Button from '../../components/Button';
 
 const Partnership = () => {
   return (
@@ -71,6 +72,7 @@ const Partnership = () => {
           );
         })}
       </div>
+      <Button text='Start Now' icons='&#x2192;' />
 
       <PostIncorporation />
     </section>

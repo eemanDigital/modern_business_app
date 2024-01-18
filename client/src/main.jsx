@@ -18,6 +18,7 @@ import './constants/styles/ngo.scss';
 import './constants/styles/blog.scss';
 import './constants/styles/blogContent.scss';
 import './constants/styles/write.scss';
+import './constants/styles/button.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

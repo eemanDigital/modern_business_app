@@ -7,6 +7,7 @@ import { pre_inc_service } from '../../constants/data';
 import { packages } from '../../constants/data';
 import Packages from '../../components/company/Packages';
 import ngo_img from '../../assets/ngo_img.svg';
+import Button from '../../components/Button';
 
 const Ngo = () => {
   // const company_packages = packages.slice(0, 2);
@@ -42,6 +43,7 @@ const Ngo = () => {
             </p>
 
             <Link to='#'>Start Now</Link>
+            {/* <Button text='Start Now' /> */}
           </div>
         </div>
 
@@ -65,8 +67,12 @@ const Ngo = () => {
             />
           );
         })}
+
+        <div>
+          <Button text='Start Now' icons='&#x2192;' />
+        </div>
       </div>
-      <Link> Start Now &#x2192;</Link>
+      {/* <Link> Start Now </Link> */}
 
       <div className='ngo-col-section'>
         <div className='ngo-col-wrapper'>

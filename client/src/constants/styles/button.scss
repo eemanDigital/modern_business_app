@@ -1,0 +1,28 @@
+@import './variables';
+
+.general-link {
+  text-decoration: none;
+  text-align: center;
+  color: #ffff;
+  border: 1px solid $Pink;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  margin: 0.3rem;
+  font-weight: 700;
+  color: $Pink;
+
+  width: 50%;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  }
+  @media (max-width: $smallPhone) {
+    font-weight: 500;
+  }
+
+  &:hover {
+    background-color: $Pink;
+    color: #ffff;
+    font-weight: 500;
+  }
+}
