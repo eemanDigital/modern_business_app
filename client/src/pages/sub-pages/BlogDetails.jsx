@@ -42,6 +42,10 @@ const BlogDetails = () => {
         </button>
         <button onClick={() => deletePost()}>Delete</button>
       </div>
+      <img
+        src={`http://localhost:3300/images/${blogPosts.photo}`}
+        alt={blogPosts.title}
+      />
       <h1>{blogPosts.title}</h1>
       <span>{formatDate(blogPosts.date)}</span>
       <span>{blogPosts.author}</span>

@@ -11,6 +11,7 @@ const Write = () => {
     body: '',
     author: '',
   });
+  const [file, setFile] = useState();
 
   // Handle form field changes
   const handleInputChange = (e) => {
@@ -26,9 +27,11 @@ const Write = () => {
       title: formData.title,
       body: formData.body,
       author: formData.author,
+      file: file,
     };
-
+    console.log(file);
     try {
+      console.log({ data: payload });
       await http.post('/posts', { data: payload });
       navigate('/blog');
     } catch (error) {
@@ -69,10 +72,14 @@ const Write = () => {
           onChange={handleInputChange}></textarea>
         <div className='upload'>
           <label htmlFor='photo'>Upload Image</label>
-          <input type='file' accept='.png .jpg .jpeg' name='photo' id='' />{' '}
-          <button>upload</button>
+          <input
+            type='file'
+            name='file' // Use 'file' to match Multer configuration
+            id=''
+            // value={file}
+            onChange={(e) => setFile(e.target.files[0])}
+          />
         </div>
-
         <button type='submit'>Publish</button>
       </form>
     </article>

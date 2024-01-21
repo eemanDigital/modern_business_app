@@ -8,12 +8,16 @@ import http from '../lib/http';
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState(null);
+  // const [image, setImage] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const { data } = await http.get('/posts');
         setBlogPosts(data.data.posts);
+
+        // setImage(data.data.posts[0].photo);
+        // console.log(data.data.posts);
       } catch (err) {
         console.log(err);
       }
@@ -22,8 +26,8 @@ function Blog() {
   }, []);
 
   if (!blogPosts) return null;
-
-  // console.log(blogPosts);
+  // console.log(image);
+  // image.map((img) => console.log(img));
 
   return (
     <article>

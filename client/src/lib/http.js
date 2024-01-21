@@ -6,6 +6,7 @@ const domain =
 
 const http = (url, { method = 'GET', data = undefined }) => {
   return axios({
+    headers: { 'Content-Type': 'multipart/form-data' },
     url: `${domain}${url}`,
     method,
     data,

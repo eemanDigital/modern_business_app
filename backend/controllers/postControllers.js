@@ -1,7 +1,44 @@
 import { Post } from '../models/postModel.js';
+import path from 'path';
+import multer from 'multer';
+
+//image upload
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images');
+  },
+  filename: (req, file, cb) => {
+    // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(
+      null,
+      file.fieldname + '_' + Date.now() + path.extname(file.originalname)
+    );
+
+    // console.log(req.file);
+  },
+});
+// check if the file is an image
+// const multerFilter = (req, file, cb) => {
+
+// }
+const upload = multer({
+  storage: multerStorage,
+});
+
+//photo:name of the field
+export const uploadPostPhoto = upload.single('file');
 
 export const createPosts = async (req, res, next) => {
-  const post = await Post.create(req.body);
+  // console.log(req.file);
+  // console.log(req.body);
+  const { title, body, author } = req.body;
+  const { filename } = req.file;
+  const post = await Post.create({
+    title,
+    body,
+    author,
+    photo: filename,
+  });
   res.status(201).json({
     status: 'success',
     data: {
@@ -35,11 +72,12 @@ export const getPost = async (req, res, next) => {
 
 export const updatePost = async (req, res, next) => {
   const postId = req.params.id;
-  // const { title, body } = req.body;
+  const { title, body, author } = req.body;
+  const { filename } = req.file;
+
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
-    // { title, body },
-    req.body,
+    { title, body, author, photo: filename },
     { new: true }
   );
   console.log(updatedPost);

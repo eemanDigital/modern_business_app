@@ -12,6 +12,7 @@ const Edit = () => {
     body: '',
     author: '',
   });
+  const [file, setFile] = useState();
 
   // Fetch blog post data on component mount- this populate the form field- upon mounting
   useEffect(() => {
@@ -41,6 +42,7 @@ const Edit = () => {
       title: formData.title,
       body: formData.body,
       author: formData.author,
+      file: file,
     };
 
     try {
@@ -55,7 +57,6 @@ const Edit = () => {
     <article>
       <h1>Edit Post</h1>
       <form action='' className='write' onSubmit={handleSubmit}>
-        {/* onSubmit={(e) => handleSubmit(e, fieldValue)}> */}
         <label htmlFor='title'>Title</label>
         <input
           type='text'
@@ -79,9 +80,14 @@ const Edit = () => {
           value={formData.body}
           onChange={handleInputChange}></textarea>
         <div className='upload'>
-          <label htmlFor='image'>Upload Image</label>
-          <input type='file' multiple accept='image/*' name='' id='' />{' '}
-          <button>upload</button>
+          <label htmlFor='photo'>Upload Image</label>
+          <input
+            type='file'
+            name='file' // Use 'file' to match Multer configuration
+            id=''
+            // value={file}
+            onChange={(e) => setFile(e.target.files[0])}
+          />
         </div>
         <button type='submit'>Save</button>
       </form>

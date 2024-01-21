@@ -22,7 +22,7 @@ const postSchema = new mongoose.Schema({
     },
   ],
 
-  image: String,
+  photo: String,
 });
 
 // postSchema.post('save', function () {

@@ -12,6 +12,7 @@ const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
+app.use(express.static('public'));
 
 mongoose
   .connect(process.env.DATABASE_LOCAL, {
