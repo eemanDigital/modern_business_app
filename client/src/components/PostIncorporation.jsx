@@ -1,4 +1,4 @@
-import { post_inc_services } from '../constants/data';
+import { post_inc_services } from '../data/data';
 import { Link } from 'react-router-dom';
 const PostIncorporation = () => {
   return (

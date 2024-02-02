@@ -10,10 +10,13 @@
   gap: 1rem;
 
   .blog-content-text {
-    width: 264px; /* Set a maximum width */
+    width: 294px; /* Set a maximum width */
 
-    h3 {
-      font-size: 1.3rem;
+    h1 {
+      font-size: 1.5rem;
+      a {
+        // text-decoration: none;
+      }
     }
 
     .date_author {
@@ -21,8 +24,19 @@
       justify-content: space-between;
       align-items: center;
       p:first-child {
-        font-weight: 600;
+        font-weight: 400;
         color: $Pink;
+        font-size: 0.8rem;
+      }
+      p:last-child {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 400;
+        font-size: 0.8rem;
+        svg {
+          font-size: 1.2rem;
+        }
       }
     }
   }

@@ -1,27 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+import { AuthContextProvider } from './context/authContext.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
-import './constants/styles/navbar.scss';
-import './constants/styles/outlets.scss';
-// import './constants/styles/footer.scss';
-import './constants/styles/home.scss';
+import './styles/navbar.scss';
+import './styles/outlets.scss';
+// import './styles/footer.scss';
+import './styles/home.scss';
 import './index.scss';
-import './constants/styles/trust.scss';
-import './constants/styles/aside.scss';
-import './constants/styles/packages.scss';
-import './constants/styles/company.scss';
-import './constants/styles/post_inc.scss';
-import './constants/styles/partnership.scss';
-import './constants/styles/business.scss';
-import './constants/styles/ngo.scss';
-import './constants/styles/blog.scss';
-import './constants/styles/blogContent.scss';
-import './constants/styles/write.scss';
-import './constants/styles/button.scss';
+import './styles/trust.scss';
+import './styles/aside.scss';
+import './styles/packages.scss';
+import './styles/company.scss';
+import './styles/post_inc.scss';
+import './styles/partnership.scss';
+import './styles/business.scss';
+import './styles/ngo.scss';
+import './styles/blog.scss';
+import './styles/blogContent.scss';
+import './styles/blogDetails.scss';
+import './styles/write.scss';
+import './styles/button.scss';
+import './styles/footer.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </React.StrictMode>
 );

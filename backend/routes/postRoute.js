@@ -7,15 +7,17 @@ import {
   deletePost,
   uploadPostPhoto,
 } from '../controllers/postControllers.js';
+import { protect } from '../controllers/authController.js';
 
-const router = express.Router();
+const postRouter = express.Router();
 
+// postRouter.use(protect);
 //posts route
-router.route('/').post(uploadPostPhoto, createPosts).get(getPosts);
-router
+postRouter.route('/').post(protect, uploadPostPhoto, createPosts).get(getPosts);
+postRouter
   .route('/:id')
   .get(getPost)
-  .put(uploadPostPhoto, updatePost)
-  .delete(deletePost);
+  .put(protect, uploadPostPhoto, updatePost)
+  .delete(protect, deletePost);
 
-export default router;
+export default postRouter;

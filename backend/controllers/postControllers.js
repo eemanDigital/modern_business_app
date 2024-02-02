@@ -1,6 +1,8 @@
 import { Post } from '../models/postModel.js';
 import path from 'path';
 import multer from 'multer';
+import { catchAsync } from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
 
 //image upload
 const multerStorage = multer.diskStorage({
@@ -32,7 +34,9 @@ export const createPosts = async (req, res, next) => {
   // console.log(req.file);
   // console.log(req.body);
   const { title, body, author } = req.body;
-  const { filename } = req.file;
+  // const { filename } = req.file;
+  const filename = req.file ? req.file.filename : null; // Handle optional file
+
   const post = await Post.create({
     title,
     body,
@@ -40,40 +44,98 @@ export const createPosts = async (req, res, next) => {
     photo: filename,
   });
   res.status(201).json({
-    status: 'success',
+    message: 'success',
     data: {
       post,
     },
   });
 };
 
-export const getPosts = async (req, res, next) => {
+// export const getPosts = catchAsync(async (req, res, next) => {
+//   const posts = await Post.find().sort({ date: 'desc' });
+
+//   // pagination
+//   const page = parseInt(req.query.page);
+//   const limit = parseInt(req.query.limit);
+
+//   const startIndex = (page - 1) * limit;
+//   const lastIndex = page * limit;
+//   const results = {};
+
+//   //all post
+//   results.totalPosts = posts.length;
+//   //number of pages
+//   results.pageCount = Math.ceil(posts.length / limit);
+//   // console;
+
+//   // getting next page
+//   if (lastIndex < posts.length) {
+//     results.next = { page: page + 1, limit: limit };
+//   }
+
+//   if (startIndex > 0) {
+//     results.prev = {
+//       page: page - 1,
+//       limit: limit,
+//     };
+//   }
+
+//   results.result = posts.slice(startIndex, lastIndex);
+
+//   res.status(200).json({
+//     message: 'success',
+//     // length: posts.length,
+//     data: {
+//       results,
+//     },
+//   });
+// });
+
+export const getPosts = catchAsync(async (req, res, next) => {
+  // Fetch all posts from the database, sorted by date in descending order
   const posts = await Post.find().sort({ date: 'desc' });
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      posts,
-    },
-  });
-};
+  // Extract pagination parameters from query string, ensuring valid numbers
+  const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
+  const limit = parseInt(req.query.limit) || 5; // Default to 5 posts per page
 
-export const getPost = async (req, res, next) => {
+  // Calculate pagination indices for slicing the posts array
+  const startIndex = (page - 1) * limit;
+  const lastIndex = page * limit;
+
+  // Prepare a results object to hold pagination data and posts
+  const results = {
+    totalPosts: posts.length, // Total number of posts
+    pageCount: Math.ceil(posts.length / limit), // Total number of pages
+    next: lastIndex < posts.length ? { page: page + 1, limit } : null, // Link to next page (if any)
+    prev: startIndex > 0 ? { page: page - 1, limit } : null, // Link to previous page (if any)
+    result: posts.slice(startIndex, lastIndex), // Sliced posts for the current page
+  };
+
+  // Send a successful response with pagination data and posts
+  res.status(200).json({
+    message: 'success',
+    data: { results },
+  });
+});
+
+export const getPost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const post = await Post.findById(postId);
   // console.log(post);
   res.status(200).json({
-    status: 'success',
+    message: 'success',
     data: {
       post,
     },
   });
-};
+});
 
-export const updatePost = async (req, res, next) => {
+export const updatePost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const { title, body, author } = req.body;
-  const { filename } = req.file;
+  // const { filename } = req.file;
+  const filename = req.file ? req.file.filename : null; // Handle optional file
 
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
@@ -82,14 +144,14 @@ export const updatePost = async (req, res, next) => {
   );
   console.log(updatedPost);
   res.status(200).json({
-    status: 'Post successfully updated',
+    message: 'Post successfully updated',
     data: {
       updatedPost,
     },
   });
-};
+});
 
-export const deletePost = async (req, res, next) => {
+export const deletePost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const post = await Post.findByIdAndDelete(postId);
 
@@ -98,4 +160,4 @@ export const deletePost = async (req, res, next) => {
   res.status(204).json({
     status: 'Post successfully deleted',
   });
-};
+});

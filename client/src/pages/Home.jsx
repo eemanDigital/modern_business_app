@@ -1,19 +1,20 @@
 import { Link, Outlet, NavLink } from 'react-router-dom';
-import { homeView, cards, accordion } from '../constants/data.jsx';
+import { homeView, packages, accordion } from '../data/data.jsx';
 import { FaBusinessTime, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { CgWebsite } from 'react-icons/cg';
 import { MdCorporateFare } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { MdOutlineWifiCalling3 } from 'react-icons/md';
-
 import homepage from '../assets/laptop2.jpg';
 import social_net from '../assets/social-net.png';
 import img1 from '../assets/man.jpg';
 import { useState } from 'react';
+import TrustCards from '../components/TrustCards.jsx';
+import Testimonials from '../components/Testimonials.jsx';
 
 function Home() {
   const [open, setOpen] = useState(Array(accordion.length).fill(false));
-
+  const [toggle, setToggle] = useState(false);
   const handleToggleAccordion = (index) => {
     setOpen((prevOpen) => {
       const newOpenState = [...prevOpen];
@@ -21,8 +22,9 @@ function Home() {
       return newOpenState;
     });
   };
+
   return (
-    <article>
+    <>
       <div className='home'>
         <div className='wrapper'>
           <div className='container'>
@@ -45,22 +47,33 @@ function Home() {
           <img src={social_net} alt='' />
         </div>
       </div>
-      <div className='card-wrapper'>
-        {cards.map((card, index) => {
-          return (
-            <div className='cards' key={index}>
-              {card.icon}
-              <h4>{card.name}</h4>
-              <div className='home-price'>
-                <span>From &#8358;</span>
-                <span className='price'>{card.price}k</span>
-              </div>
+      <section className='cards-section'>
+        <h1>
+          We Offer <span>Incorporation Services</span>
+        </h1>
 
-              <Link> Start Now &#x2192;</Link>
-            </div>
-          );
-        })}
-      </div>
+        <div className='card-wrapper'>
+          {packages.map((item, index) => {
+            return (
+              <div className='cards' key={index}>
+                {item.icon}
+                <h4 onClick={() => setToggle(!toggle)}>{item.title}</h4>
+
+                <div className={`${toggle ? 'open' : 'home-price'}   `}>
+                  {/* <span>From &#8358;</span> */}
+                  <div className='price'>
+                    <span style={{ fontWeight: 'normal' }}>from</span> &#8358;
+                    {item.price}k
+                  </div>
+
+                  <Link> Start Now</Link>
+                  {/* <Link> Start Now &#x2192;</Link> */}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       <div className='special'>
         <div className='img'>
@@ -136,12 +149,13 @@ function Home() {
 
           <h3>Pick Your Choice</h3>
           <div className='biz_list'>
-            <Link to='#'>Company Registration</Link>
-            <Link to='#'>Business Name Registration</Link>
-            <Link to='#'>Incorporated Trustees</Link>
-            <Link to='#'>Post-incorporation</Link>
-            <Link to='#'>Website Development</Link>
-            <Link to='#'>Patent Registration</Link>
+            {packages.map((item, index) => {
+              return (
+                <Link key={index} to='#'>
+                  {item.title}
+                </Link>
+              );
+            })}
           </div>
 
           <div className='link-btn'>
@@ -159,7 +173,14 @@ function Home() {
           <img src={img1} alt='' />
         </div>
       </section>
-    </article>
+      <div className='trust-container'>
+        <TrustCards />
+      </div>
+
+      <div>
+        <Testimonials />
+      </div>
+    </>
   );
 }
 

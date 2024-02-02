@@ -1,12 +1,12 @@
 // import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
-import Aside from '../../components/company/Aside';
-import Trust from '../../components/company/Trust';
-import PostIncorporation from '../../components/PostIncorporation';
-import { pre_inc_service } from '../../constants/data';
-import { packages } from '../../constants/data';
-import Packages from '../../components/company/Packages';
-import Button from '../../components/Button';
+import Aside from '../components/company/Aside';
+import Trust from '../components/company/Trust';
+import PostIncorporation from '../components/PostIncorporation';
+import { pre_inc_service } from '../data/data';
+import { packages } from '../data/data';
+import Packages from '../components/company/Packages';
+import Button from '../components/Button';
 
 const Company = () => {
   // const company_packages = packages.slice(0, 2);

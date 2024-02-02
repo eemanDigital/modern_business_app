@@ -12,18 +12,128 @@ export const homeView = {
   // message: "From Registration Hurdles to Web Development Challenges – We're Here to Simplify Your Path to Success."
 };
 
-export const cards = [
-  { icon: <FaBusinessTime />, name: 'Company Registration', price: 70 },
-  { icon: <IoIosPerson />, name: 'Business Name Registration', price: 25 },
-  { icon: <MdCorporateFare />, name: 'NGO Registration', price: '170,000' },
-  { icon: <FaPeopleArrows />, name: 'General Partnership', price: 70 },
-  { icon: <IoIosPeople />, name: 'Limited Partnership', price: '70 - 200' },
+export const packages = [
+  {
+    icon: <FaBusinessTime />,
+    title: 'Company Limited by Shares ',
+    price: '60,000',
+    benefits: [
+      'Free pre-registration consulting',
+      'Company name search and reservation',
+      'Memorandum and Articles of Association',
+      'Share Capital of ₦1million',
+      'Status report and Tax Identification Number (TIN)',
+      'Incorporation Certificate',
+      'Free Bank Account opening support',
+      '15% discount on all follow-up services',
+    ],
+  },
+  {
+    icon: <FaBusinessTime />,
+    title: 'Company Limited by Guarantee',
+    price: '200,000',
+    benefits: [
+      'Company name search and reservation',
+      'Incorporation Certificate',
+      'Memorandum and Article of Association',
+      'Share Capital of ₦ 1million',
+      'Status report and Tax Identification Number(TIN)',
+      'Free 20 minutes pre-registration Consulting',
+      'Free Bank Account opening support',
+      '20% discount on all follow-up services',
+    ],
+  },
+
+  {
+    icon: <IoIosPerson />,
+    title: 'Business Name',
+    price: '25,000',
+    benefits: [
+      'Business Name search and reservation',
+      'Incorporation Certificate',
+      'Status report',
+      'Tax Identification Number (TIN)',
+      'Free 20 minutes pre-registration consulting',
+      'Free Business Account opening support',
+      '20% discount on all follow-up services',
+    ],
+  },
+
+  {
+    icon: <MdCorporateFare />,
+    title: 'Incorporated Trustees',
+    price: '180,000',
+    benefits: [
+      'Name search and reservation',
+      'Registration documents',
+      'Free 20 minutes pre-registration consulting',
+      'First priority for our B2B Trade events',
+      'Free Secretarial service in the first 60 days',
+      'Free Bank Account Opening Support',
+      '20% discount on all follow-up services',
+    ],
+  },
+
+  {
+    icon: <FaPeopleArrows />,
+    title: 'General Partnership',
+    price: '25,000-35,000',
+    benefits: [
+      'Company name search and reservation',
+      'Incorporation Certificate',
+      'Memorandum and Article of Association',
+      'Status report and Tax Identification Number(TIN)',
+      'Free Annual returns for the first year',
+      'Free Bank Account opening support',
+      'Free virtual office address for 60 days',
+      '20% discount on all follow-up services',
+    ],
+  },
   {
     icon: <IoPeople />,
-    name: 'Limited Liability Partnership',
-    price: 70,
+    title: 'Limited Partnership',
+    price: '80,000',
+    benefits: [
+      'Partnership name search and reservation',
+      'Registration documents',
+      'Partnership Agreement',
+      'Free 20 minutes pre-registration consulting',
+      'Free Bank Account Opening Support',
+      'Free virtual office address for 60 days',
+      '20% discount on all follow-up services',
+      'Start Now',
+    ],
   },
-  { icon: <CgWebsite />, name: 'Web Development', price: 70 },
+  {
+    icon: <IoIosPeople />,
+    title: 'Limited Liability Partnership',
+    price: '80,000',
+    benefits: [
+      'Partnership name search and reservation',
+      'Registration documents',
+      'Partnership Agreement',
+      'Free 20 minutes pre-registration consulting',
+      'Free Bank Account opening support',
+      'Free virtual office address for 60 days',
+      '20% discount on all follow-up services',
+    ],
+  },
+
+  {
+    icon: <CgWebsite />,
+    title: 'Web Development',
+    price: 'From 50,000',
+    benefits: [
+      'Domain name registration and setup',
+      'Website Development Certificate',
+      'Development of Web Application',
+      'Integration of Memorable UI/UX Design',
+      'Free 20 minutes pre-development consulting',
+      'Free Hosting Setup Support',
+      'Free SSL Certificate for enhanced security',
+      '20% discount on all follow-up services',
+    ],
+  },
 ];
 
 export const accordion = [
@@ -116,7 +226,7 @@ import { CiMoneyCheck1 } from 'react-icons/ci';
 export const trust_card_data = [
   {
     icon: <AiOutlineDeliveredProcedure />,
-    title: 'Free Delivery',
+    title: 'Free Delivery of Registration Docs',
     description:
       'We scan and upload all filed documents into your Account Dashboard. Saves postage and saves time!',
   },
@@ -216,124 +326,6 @@ export const trust_card_data = [
   },
 ];
 
-export const packages = [
-  {
-    title: 'Company Limited by Shares ',
-    price: '60,000',
-    benefits: [
-      'Free pre-registration consulting',
-      'Company name search and reservation',
-      'Memorandum and Articles of Association',
-      'Share Capital of ₦1million',
-      'Status report and Tax Identification Number (TIN)',
-      'Incorporation Certificate',
-      'Free Bank Account opening support',
-      '15% discount on all follow-up services',
-    ],
-  },
-  {
-    title: 'Company Limited by Guarantee',
-    price: '200,000',
-    benefits: [
-      'Company name search and reservation',
-      'Incorporation Certificate',
-      'Memorandum and Article of Association',
-      'Share Capital of ₦ 1million',
-      'Status report and Tax Identification Number(TIN)',
-      'Free 20 minutes pre-registration Consulting',
-      'Free Bank Account opening support',
-      '20% discount on all follow-up services',
-    ],
-  },
-
-  {
-    title: 'Incorporated Trustees',
-    price: '180,000',
-    benefits: [
-      'Name search and reservation',
-      'Registration documents',
-      'Free 20 minutes pre-registration consulting',
-      'First priority for our B2B Trade events',
-      'Free Secretarial service in the first 60 days',
-      'Free Bank Account Opening Support',
-      '20% discount on all follow-up services',
-    ],
-  },
-  {
-    title: 'Others',
-    price: 'From 150,000',
-    benefits: [
-      'Company name search and reservation',
-      'Incorporation Certificate shareholders',
-      'Memorandum and Articles of Association',
-      'Share Capital of ₦ 1million',
-      'Status report and Tax Identification Number (TIN)',
-      'Free 20 minutes pre-registration consulting',
-      'Free Bank Account opening support',
-      'Free Company Secretarial service in the first 60 days',
-      '20% discount on all follow-up services',
-    ],
-  },
-
-  {
-    title: 'Business Name',
-    price: '25,000',
-    benefits: [
-      'Business Name search and reservation',
-      'Incorporation Certificate',
-      'Status report',
-      'Tax Identification Number (TIN)',
-      'Free 20 minutes pre-registration consulting',
-      'Free Business Account opening support',
-      '20% discount on all follow-up services',
-    ],
-  },
-];
-
-export const partnerships = [
-  {
-    title: 'General Partnership',
-    price: '25,000-35,000',
-    benefits: [
-      'Company name search and reservation',
-      'Incorporation Certificate',
-      'Memorandum and Article of Association',
-      'Status report and Tax Identification Number(TIN)',
-      'Free Annual returns for the first year',
-      'Free Bank Account opening support',
-      'Free virtual office address for 60 days',
-      '20% discount on all follow-up services',
-    ],
-  },
-  {
-    title: 'Limited Partnership',
-    price: '80,000',
-    benefits: [
-      'Partnership name search and reservation',
-      'Registration documents',
-      'Partnership Agreement',
-      'Free 20 minutes pre-registration consulting',
-      'Free Bank Account Opening Support',
-      'Free virtual office address for 60 days',
-      '20% discount on all follow-up services',
-      'Start Now',
-    ],
-  },
-  {
-    title: 'Limited Liability Partnership',
-    price: '80,000',
-    benefits: [
-      'Partnership name search and reservation',
-      'Registration documents',
-      'Partnership Agreement',
-      'Free 20 minutes pre-registration consulting',
-      'Free Bank Account opening support',
-      'Free virtual office address for 60 days',
-      '20% discount on all follow-up services',
-    ],
-  },
-];
-
 export const pre_inc_service = [
   {
     title: 'Company Limited by Shares ',
@@ -396,92 +388,44 @@ export const post_inc_services = [
   },
 ];
 
-import image1 from '../assets/image1.jpeg';
-import image2 from '../assets/image2.jpg';
-import image3 from '../assets/image3.jpg';
-import image4 from '../assets/image4.jpg';
-import image5 from '../assets/image5.jpeg';
+import image1 from '../assets/people01.png';
+import image2 from '../assets/people02.png';
+import image3 from '../assets/people03.png';
 
-export const blogPosts = [
+export const testimonials = [
   {
-    id: 1,
-    img: image1,
-    title: 'Exploring the Wilderness',
-    description:
-      'Discover the beauty of untouched landscapes and the serenity of nature.',
-    date: '2023-08-15',
-    time: '10 mins',
-    author: 'John Doe',
-    comments: [
-      'Great article! I loved the photos.',
-      'Very informative, thanks for sharing!',
-      'Looking forward to more posts like this.',
-    ],
-    views: 1020,
-    likes: 350,
+    image: image1,
+    name: 'John Smith',
+    profession: 'Small Business Owner',
+    message:
+      'I recently used the business registration service, and I must say it was a breeze! The team guided me through every step, and I had my business up and running in no time. Highly recommended!',
   },
   {
-    id: 2,
-    img: image2,
-    title: 'Mastering Culinary Arts',
-    description:
-      'Unveil the secrets behind creating exquisite dishes from around the world.',
-    date: '2023-09-05',
-    time: '8 mins',
-    author: 'Jane Smith',
-    comments: [
-      "Fantastic read! Can't wait to try out the recipes.",
-      'The content was well organized and easy to follow.',
-    ],
-    views: 1520,
-    likes: 420,
+    image: image2,
+    name: 'Emily Johnson',
+    profession: 'Freelance Graphic Designer',
+    message:
+      "As a freelancer, I was hesitant about the business registration process, but the team made it so easy. From handling paperwork to legalities, they took care of everything. I'm impressed!",
   },
   {
-    id: 3,
-    img: image5,
-    title: 'Art of Mindfulness',
-    description:
-      'Embrace tranquility through mindfulness practices and mental well-being.',
-    date: '2023-07-25',
-    time: '12 mins',
-    author: 'Emily Johnson',
-    comments: [
-      "Fantastic read! Can't wait to try out the recipes.",
-      'The content was well organized and easy to follow.',
-    ],
-    views: 880,
-    likes: 290,
+    image: image3,
+    name: 'David Martinez',
+    profession: 'Startup Founder',
+    message:
+      'Registering my startup was a daunting task until I found this service. The experts provided valuable insights and personalized assistance throughout the registration process. Thank you for your exceptional service!',
   },
   {
-    id: 4,
-    img: image3,
-    title: 'Traveling Through Time',
-    description:
-      'Journey through history and explore the wonders of different eras.',
-    date: '2023-10-10',
-    time: '15 mins',
-    author: 'Michael Anderson',
-    comments: [
-      "Fantastic read! Can't wait to try out the recipes.",
-      'The content was well organized and easy to follow.',
-    ],
-    views: 2000,
-    likes: 600,
+    image: image1,
+    name: 'Sarah Thompson',
+    profession: 'Online Retailer',
+    message:
+      'I needed to register my online store quickly, and this service exceeded my expectations. The team was efficient, knowledgeable, and always available to address my concerns. A seamless experience from start to finish!',
   },
   {
-    id: 5,
-    img: image4,
-    title: 'Fitness for Everyone',
-    description:
-      'Embark on a fitness journey tailored for all ages and body types.',
-    date: '2023-11-02',
-    time: '6 mins',
-    author: 'Sophia Lee',
-    comments: [
-      "Fantastic read! Can't wait to try out the recipes.",
-      'The content was well organized and easy to follow.',
-    ],
-    views: 1200,
-    likes: 400,
+    image: image3,
+    name: 'Michael Brown',
+    profession: 'Restaurant Owner',
+    message:
+      "I couldn't be happier with the service I received. From initial consultation to final registration, everything was handled with professionalism and expertise. I highly recommend this service to any business owner looking for hassle-free registration.",
   },
 ];

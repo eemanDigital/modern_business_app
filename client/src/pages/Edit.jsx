@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import http from '../lib/http';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Edit = () => {
   const { id: postId } = useParams();
@@ -13,6 +14,8 @@ const Edit = () => {
     author: '',
   });
   const [file, setFile] = useState();
+  const { user } = useAuthContext();
+  const token = user?.token;
 
   // Fetch blog post data on component mount- this populate the form field- upon mounting
   useEffect(() => {
@@ -38,6 +41,10 @@ const Edit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+      if(!user){
+        // setError(errMsg)
+        return
+      }
     const payload = {
       title: formData.title,
       body: formData.body,
@@ -46,7 +53,11 @@ const Edit = () => {
     };
 
     try {
-      await http.put(`/posts/${postId}`, { data: payload });
+      await http.put(`/posts/${postId}`, {
+        data: payload,
+        contentType: 'multipart/form-data',
+        token
+      });
       navigate(`/blog/${postId}`);
     } catch (error) {
       console.error('Error updating post:', error);
@@ -85,7 +96,6 @@ const Edit = () => {
             type='file'
             name='file' // Use 'file' to match Multer configuration
             id=''
-            // value={file}
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>

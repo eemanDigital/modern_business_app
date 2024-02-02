@@ -33,34 +33,34 @@ export const menuItem = [
   },
   {
     title: 'About',
-    url: '/about',
+    url: '/about-us',
   },
   {
     title: 'Blog',
     url: 'blog',
   },
-  {
-    title: 'Tools',
-    url: '/tools',
-    submenu: [
-      {
-        title: 'Name Generator',
-        url: 'name_generator',
-      },
-      {
-        title: 'HashTag Gen',
-        url: 'name_generator',
-      },
-      {
-        title: 'Other tools',
-        url: 'other tools',
-      },
-    ],
-  },
-  {
-    title: 'Contact Us',
-    url: 'contact-us',
-  },
+  // {
+  //   title: 'Tools',
+  //   url: '/tools',
+  //   submenu: [
+  //     {
+  //       title: 'Name Generator',
+  //       url: 'name_generator',
+  //     },
+  //     {
+  //       title: 'HashTag Gen',
+  //       url: 'name_generator',
+  //     },
+  //     {
+  //       title: 'Other tools',
+  //       url: 'other tools',
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'Contact Us',
+  //   url: 'contact-us',
+  // },
   {
     title: 'write',
     url: 'blog/write',

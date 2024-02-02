@@ -1,13 +1,15 @@
 // import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
 // import Aside from '../../components/company/Aside';
-import Trust from '../../components/company/Trust';
-import PostIncorporation from '../../components/PostIncorporation';
-// import { pre_inc_service } from '../../constants/data';
-import Packages from '../../components/company/Packages';
-import { partnerships } from '../../constants/data';
-import partner from '../../assets/partner.svg';
-import Button from '../../components/Button';
+import Trust from '../components/company/Trust';
+import PostIncorporation from '../components/PostIncorporation';
+// import { pre_inc_service } from '../../              /data';
+import Packages from '../components/company/Packages';
+import { packages } from '../data/data';
+import partner from '../assets/partner.svg';
+import Button from '../components/Button';
+
+import '../styles/partnership.scss';
 
 const Partnership = () => {
   return (
@@ -61,7 +63,7 @@ const Partnership = () => {
       <Trust />
 
       <div className='packages'>
-        {partnerships.map((item, index) => {
+        {packages.slice(4, 7).map((item, index) => {
           return (
             <Packages
               key={index}

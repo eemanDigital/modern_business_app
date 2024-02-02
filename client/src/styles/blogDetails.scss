@@ -1,0 +1,54 @@
+@import './variables';
+
+.blog-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem;
+
+  .blog-detail-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 64%;
+    // align-items: center;
+
+    .btns {
+      display: flex;
+      gap: 0.5rem;
+      margin: 2rem 0 1rem 0;
+
+      .edit {
+        background-color: $deepBlue;
+        border: none;
+        border-radius: 5px;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+          padding: 0.8rem;
+        }
+      }
+      .delete {
+        border: none;
+        border-radius: 5px;
+        background-color: red;
+        padding: 0.8rem;
+        color: #fff;
+      }
+    }
+
+    .blog-content-author-date {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}

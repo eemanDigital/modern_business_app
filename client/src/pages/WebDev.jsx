@@ -1,12 +1,12 @@
 // import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
 // import Aside from '../../components/company/Aside';
-import Trust from '../../components/company/Trust';
-import PostIncorporation from '../../components/PostIncorporation';
-// import { pre_inc_service } from '../../constants/data';
-import Packages from '../../components/company/Packages';
-import { partnerships } from '../../constants/data';
-import partner from '../../assets/partner.svg';
+import Trust from '../components/company/Trust';
+import PostIncorporation from '../components/PostIncorporation';
+// import { pre_inc_service } from '../../              /data';
+import Packages from '../components/company/Packages';
+import { packages } from '../data/data';
+import partner from '../assets/partner.svg';
 
 const WebDev = () => {
   return (
@@ -59,8 +59,8 @@ const WebDev = () => {
 
       <Trust />
 
-      {/* <div className='packages'>
-        {WebDevs.map((item, index) => {
+      <div className='packages'>
+        {packages.slice(7, 8).map((item, index) => {
           return (
             <Packages
               key={index}
@@ -69,8 +69,8 @@ const WebDev = () => {
               benefits={item.benefits}
             />
           );
-        })} */}
-      {/* </div> */}
+        })}
+      </div>
 
       <PostIncorporation />
     </section>

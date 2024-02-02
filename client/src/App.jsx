@@ -3,6 +3,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  Navigate,
 } from 'react-router-dom';
 // import NavBar from "./components/NavBar";
 import Layout from './components/Layout';
@@ -10,22 +11,26 @@ import GetStarted from './components/GetStarted';
 import Support from './components/Support';
 import GetTools from './components/GetTools';
 import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
+// import Services from './pages/Services';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Blog from './pages/Blog';
-import Tools from './pages/Tools';
+// import Tools from './pages/Tools';
 import Write from './pages/Write';
 import Edit from './pages/Edit';
-import Company from './pages/sub-pages/Company';
-import Business from './pages/sub-pages/Business';
-import Ngo from './pages/sub-pages/Ngo';
-import Partnership from './pages/sub-pages/Partnership';
-import WebDev from './pages/sub-pages/webDev';
-import BlogDetails from './pages/sub-pages/BlogDetails';
+import Company from './pages/Company';
+import Business from './pages/Business';
+import Ngo from './pages/Ngo';
+import Partnership from './pages/Partnership';
+import WebDev from './pages/webDev';
+import BlogDetails from './pages/BlogDetails';
+import { useAuthContext } from './hooks/useAuthContext';
+import NotFound from './components/NotFound';
 
 function App() {
+  const { user } = useAuthContext();
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<Layout />}>
@@ -34,14 +39,18 @@ function App() {
           <Route path='support' element={<Support />} />
           <Route path='get-tools' element={<GetTools />} />
         </Route>
-        <Route path='about' element={<About />} />
-        <Route path='services' element={<Services />} />
+        <Route path='about-us' element={<AboutUs />} />
+        {/* <Route path='services' element={<Services />} /> */}
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
-        <Route path='blog/write' element={<Write />} />
+
+        <Route
+          path='blog/write'
+          element={user ? <Write /> : <Navigate to='/login' />}
+        />
         <Route path='blog/:id/edit' element={<Edit />} />
 
-        <Route path='tools' element={<Tools />} />
+        {/* <Route path='tools' element={<Tools />} /> */}
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='company' element={<Company />} />
@@ -49,6 +58,7 @@ function App() {
         <Route path='partnership' element={<Partnership />} />
         <Route path='ngo' element={<Ngo />} />
         <Route path='webDev' element={<WebDev />} />
+        <Route path='*' element={<NotFound />} />
       </Route>
     )
   );

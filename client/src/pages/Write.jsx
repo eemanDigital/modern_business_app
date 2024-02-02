@@ -1,6 +1,9 @@
 import { useState } from 'react';
+// import useCookies from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 import http from '../lib/http';
+// import { toast } from 'react-toastify';
 
 const Write = () => {
   const navigate = useNavigate();
@@ -12,6 +15,8 @@ const Write = () => {
     author: '',
   });
   const [file, setFile] = useState();
+  const { user } = useAuthContext();
+  const token = user?.token;
 
   // Handle form field changes
   const handleInputChange = (e) => {
@@ -23,25 +28,29 @@ const Write = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      // setError(errMsg)
+      return;
+    }
+
     const payload = {
       title: formData.title,
       body: formData.body,
       author: formData.author,
       file: file,
     };
-    console.log(file);
+
     try {
-      console.log({ data: payload });
-      await http.post('/posts', { data: payload });
+      await http.post('/posts', {
+        data: payload,
+        contentType: 'multipart/form-data',
+        token,
+      });
       navigate('/blog');
     } catch (error) {
       console.error('Error updating post:', error);
     }
   };
-
-  // const handlePhoto=()=> {
-
-  // }
 
   return (
     <article>

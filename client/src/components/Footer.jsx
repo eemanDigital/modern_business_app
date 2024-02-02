@@ -1,4 +1,3 @@
-import '../constants/styles/footer.scss';
 import { Link } from 'react-router-dom';
 import { FaXTwitter } from 'react-icons/fa6';
 import { CiMail } from 'react-icons/ci';
@@ -13,7 +12,7 @@ function Footer() {
   const date = new Date();
   const currentDate = date.getUTCFullYear();
 
-  console.log(currentDate);
+  // console.log(currentDate);
   return (
     <footer>
       <div className='wrapper'>

@@ -1,6 +1,7 @@
-import { getStartedData } from '../constants/data.jsx';
+import { getStartedData } from '../data/data.jsx';
 import GetTools from './GetTools.jsx';
-import '../constants/styles/outlets.scss';
+import '../styles/outlets.scss';
+
 function GetStarted() {
   return (
     <article className='get-started-container'>

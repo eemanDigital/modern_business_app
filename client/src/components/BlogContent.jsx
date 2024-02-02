@@ -6,23 +6,25 @@ import { Link } from 'react-router-dom';
 import formatDate from '../lib/formattedDate';
 
 const BlogContent = (props) => {
-  console.log(props);
+  // console.log(props);
   // const { id, img, title, description, author, date, likes, views } = props;
   const { _id, title, body, date, author, photo } = props;
   // console.log(photo);
   return (
     <div className='blog-wrapper'>
-      <img src={`http://localhost:3300/images/${photo}`} alt={title} />
+      {photo && (
+        <img src={`http://localhost:3300/images/${photo}`} alt={title} />
+      )}
       <div className='blog-content-text'>
         <div className='date_author'>
-          <p>author: {author}</p>
+          <p>By: {author}</p>
           <p>
-            {formatDate(date)} <CiCalendarDate />
+            <CiCalendarDate /> {formatDate(date)}
           </p>
         </div>
-        <h3>
+        <h1>
           <Link to={_id}>{title}</Link>
-        </h3>
+        </h1>
         <p>{body.substring(0, 100)}...</p>
 
         {/* <div className='blog_content_icons'>

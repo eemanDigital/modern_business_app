@@ -1,6 +1,6 @@
 // import { Link } from 'react-router-dom';
 
-// import { company_packages } from '../../constants/data';
+// import { company_packages } from '../../              /data';
 
 // const Packages = ({title, price, benefits}) => {
 //   const data = company_packages.slice(0, 2);
@@ -42,7 +42,7 @@
 
 // import { Link } from 'react-router-dom';
 
-// import { company_packages } from '../../constants/data';
+// import { company_packages } from '../../              /data';
 
 const Packages = ({ title, price, benefits }) => {
   // const data = company_packages.slice(0, 2);

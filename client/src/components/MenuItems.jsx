@@ -1,18 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import { FaAngleDown } from 'react-icons/fa6';
-import { useState } from 'react';
+// import { FaAngleDown } from 'react-icons/fa6';
+// import { FaAngleUp } from 'react-icons/fa6';
+// import { useState } from 'react';
 // import { RxAvatar } from "react-icons/rx";
 
 // import { useState } from "react";
 function MenuItems({ items }) {
-  const [display, setDisplay] = useState(false);
+  // const [display, setDisplay] = useState(false);
 
-  const handleDisplay = () => {
-    setDisplay((prev) => !prev);
-  };
+  // const handleDisplay = () => {
+  //   setDisplay((prev) => !prev);
+  // };
   return (
-    <li onClick={handleDisplay}>
+    <li>
       {items.submenu ? (
         <li>
           <NavLink
@@ -20,14 +21,15 @@ function MenuItems({ items }) {
             to={items.url}>
             {items.title}
             {/* <button type="button" aria-haspopup="menu"></button> */}
-            {display ? <Dropdown submenu={items.submenu} /> : ''}
+            {/* {display ? <Dropdown submenu={items.submenu} /> : ''} */}
+            {<Dropdown submenu={items.submenu} />}
           </NavLink>
-          <FaAngleDown style={styleAngle} />
+          {/* {display ? <FaAngleDown style={styleAngle} /> : <FaAngleUp />} */}
         </li>
       ) : (
         <>
           <NavLink
-            className={({ isActive }) => (isActive ? 'active' : 'links')}
+            // className={({ isActive }) => (isActive ? 'active' : 'links')}
             to={items.url}>
             {items.title}
           </NavLink>

@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
-import '../constants/styles/login.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+// import http from '../lib/http';
+import { useNavigate } from 'react-router-dom';
+import { useSignUp } from '../hooks/useSignUp';
+
+import '../styles/login.scss';
 
 function SignUp() {
   const [inputs, setInputs] = useState({
@@ -9,88 +13,89 @@ function SignUp() {
     password: '',
     confirmPassword: '',
   });
+  const { username, email, password, confirmPassword } = inputs;
+  const { signup, isLoading, error, setError } = useSignUp();
   // const [error, handleError] = useState('');
-
+  const navigate = useNavigate();
   function handleInputs(e) {
     const input = e.target.value;
     const nameVal = e.target.name;
 
-    setInputs({ ...inputs, [nameVal]: input });
+    setInputs(() => ({ ...inputs, [nameVal]: input }));
+    // setInputs(() => e.target.value);
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await signup(username, email, password, confirmPassword);
+  };
+  // navigate('/login');
 
-    if (
-      !inputs.username ||
-      !inputs.email ||
-      !inputs.password ||
-      !inputs.confirmPassword
-    ) {
-      alert('Please fill in all the fields');
-      return;
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     }
 
-    // Check if passwords match
-    if (inputs.password !== inputs.confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
-    setInputs({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    });
-  }
-  // console.log(inputs);
+    return clearTimeout;
+  }, [error, setError]);
 
   return (
-    <form onSubmit={handleSubmit} className='sign-up'>
-      <div className='title'>
-        <h1>SignUp</h1>
-      </div>
-      <div className='inputs'>
-        <input
-          type='text'
-          placeholder='Username'
-          id='username'
-          value={inputs.username}
-          name='username'
-          onChange={handleInputs}
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          id='email'
-          value={inputs.email}
-          name='email'
-          onChange={handleInputs}
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          id='password'
-          value={inputs.password}
-          name='password'
-          onChange={handleInputs}
-        />
-        <input
-          type='password'
-          placeholder='Confirm password'
-          id='confirmPassword'
-          value={inputs.confirmPassword}
-          name='confirmPassword'
-          onChange={handleInputs}
-        />
-        <button>Submit</button>
-        <div className='no-account'>
-          <p>
-            <span>Already have an account?</span> <Link to='/login'>Login</Link>{' '}
-          </p>
+    <>
+      <form onSubmit={handleSubmit} className='sign-up'>
+        {error && (
+          <div className='error'>
+            <span>{error}</span>
+          </div>
+        )}
+        <div className='title'>
+          <h1>SignUp</h1>
         </div>
-      </div>
-    </form>
+        <div className='inputs'>
+          <input
+            type='text'
+            placeholder='Username'
+            // id='username'
+            value={username}
+            name='username'
+            onChange={handleInputs}
+          />
+          <input
+            type='email'
+            placeholder='Email'
+            // id='email'
+            value={email}
+            name='email'
+            onChange={handleInputs}
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            // id='password'
+            value={password}
+            name='password'
+            onChange={handleInputs}
+          />
+          <input
+            type='password'
+            placeholder='Confirm password'
+            // id='confirmPassword'
+            value={confirmPassword}
+            name='confirmPassword'
+            onChange={handleInputs}
+          />
+          <button disabled={isLoading}>Submit</button>
+          <div className='no-account'>
+            <p>
+              <span>Already have an account?</span>{' '}
+              <Link to='/login'>Login</Link>{' '}
+            </p>
+          </div>
+          {error && <h3>{error}</h3>}
+        </div>
+      </form>
+    </>
   );
 }
 
