@@ -1,0 +1,114 @@
+@import './variables';
+
+//CUSTOM
+.custom {
+  display: flex;
+  margin: 5rem 1rem;
+  @media (max-width: $breakpoint-tablet) {
+    margin: 5rem 0;
+  }
+
+  .custom-text {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    position: relative;
+    background: radial-gradient(
+      circle at center,
+      #e81083,
+      #e81083 10%,
+      transparent 10%,
+      transparent 20%,
+      #e81083 20%,
+      #e81083 30%,
+      transparent 30%,
+      transparent 40%,
+      #e81083 40%,
+      #e81083 50%,
+      transparent 50%,
+      transparent 60%,
+      #e81083 60%,
+      #e81083 70%,
+      transparent 70%,
+      transparent 80%,
+      #e81083 80%,
+      #e81083 90%,
+      transparent 90%
+    );
+    background-size: 2em 2em;
+    background-color: #d00094;
+    opacity: 1;
+    padding: 2rem;
+    // z-index: -999;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding: 2rem;
+    }
+
+    @media (max-width: $smallPhone) {
+      padding: 2rem 0.4rem;
+    }
+
+    h1 {
+      position: absolute;
+      color: #e8e8e8;
+
+      font-weight: 500;
+      background-color: $deep-deep-blue;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin: 0;
+      top: -40px;
+      left: 0;
+    }
+    h4 {
+      padding-top: 2rem;
+      text-align: left;
+      color: #e8e8e8;
+
+      @media (max-width: $smallPhone) {
+        margin-top: 1rem;
+        padding: 1rem 0.5rem;
+        text-align: left;
+        font-weight: 600;
+      }
+    }
+
+    ul {
+      list-style: circle;
+      display: inline-block;
+      li {
+        font-weight: 500;
+        color: #e8e8e8;
+      }
+    }
+
+    .custom-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      @media (max-width: $smallPhone) {
+        flex-direction: column;
+      }
+
+      a {
+        background-color: $deep-deep-blue;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        color: #e8e8e8;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          background-color: rgb(8, 27, 88);
+        }
+
+        @media (max-width: $breakpoint-tablet) {
+          // padding: 0.5rem 0.8rem;
+          border-radius: 5px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

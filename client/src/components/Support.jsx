@@ -1,11 +1,9 @@
 import { trust_card_data } from '../data/data.jsx';
-import GetTools from './GetTools.jsx';
-import '../styles/outlets.scss';
 
 function Support() {
   return (
-    <article className='get-started-container'>
-      <div className='contents'>
+    <>
+      <div className='support'>
         <h3> Support Before and After Registration</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -22,8 +20,8 @@ function Support() {
         </ul>
       </div>
 
-      <GetTools />
-    </article>
+      {/* <GetTools /> */}
+    </>
   );
 }
 

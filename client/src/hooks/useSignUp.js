@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export const useSignUp = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   const signup = async (username, email, password, confirmPassword) => {
     setIsLoading(true);
@@ -17,7 +19,7 @@ export const useSignUp = () => {
     });
     const json = await response.json();
 
-    console.log(json);
+    // console.log(json);
     // console.log(response.data);
 
     if (!response.ok) {
@@ -40,6 +42,7 @@ export const useSignUp = () => {
       dispatch({ type: 'LOGIN', payload: json });
       // console.log({ payload: json });
       setIsLoading(false);
+      navigate('/login');
     }
   };
 

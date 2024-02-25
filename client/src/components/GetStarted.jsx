@@ -1,10 +1,11 @@
 import { getStartedData } from '../data/data.jsx';
-import GetTools from './GetTools.jsx';
-import '../styles/outlets.scss';
+// import GetStartedSupport from './GetStartedSupport.jsx';
+// import GetTools from './GetTools.jsx';
+// import '../styles/outlets.scss';
 
 function GetStarted() {
   return (
-    <article className='get-started-container'>
+    <div className='get-started'>
       {getStartedData.map((el, index) => {
         return (
           <div className='contents' key={index}>
@@ -19,8 +20,8 @@ function GetStarted() {
         );
       })}
 
-      <GetTools />
-    </article>
+      {/* <GetTools /> */}
+    </div>
   );
 }
 

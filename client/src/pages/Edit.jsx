@@ -2,6 +2,24 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import http from '../lib/http';
 import { useAuthContext } from '../hooks/useAuthContext';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const formats = [
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'color',
+  'clean',
+];
 
 const Edit = () => {
   const { id: postId } = useParams();
@@ -16,6 +34,10 @@ const Edit = () => {
   const [file, setFile] = useState();
   const { user } = useAuthContext();
   const token = user?.token;
+  const role = user?.data?.user?.role;
+
+  // checks admin role for writing
+  const isAdmin = role === 'admin';
 
   // Fetch blog post data on component mount- this populate the form field- upon mounting
   useEffect(() => {
@@ -41,10 +63,13 @@ const Edit = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      if(!user){
-        // setError(errMsg)
-        return
-      }
+    if (!isAdmin) {
+      return;
+    }
+    if (!user) {
+      // setError(errMsg)
+      return;
+    }
     const payload = {
       title: formData.title,
       body: formData.body,
@@ -56,7 +81,7 @@ const Edit = () => {
       await http.put(`/posts/${postId}`, {
         data: payload,
         contentType: 'multipart/form-data',
-        token
+        token,
       });
       navigate(`/blog/${postId}`);
     } catch (error) {
@@ -64,9 +89,19 @@ const Edit = () => {
     }
   };
 
+  const handleInputChangeForBody = (value) => {
+    setFormData((prevData) => ({ ...prevData, body: value }));
+  };
+
   return (
     <article>
       <h1>Edit Post</h1>
+
+      {!isAdmin && (
+        <div className='write-error'>
+          <strong>You do not have the privilege to edit or delete</strong>
+        </div>
+      )}
       <form action='' className='write' onSubmit={handleSubmit}>
         <label htmlFor='title'>Title</label>
         <input
@@ -82,14 +117,15 @@ const Edit = () => {
           value={formData.author}
           onChange={handleInputChange}
         />
-        <label htmlFor='body'>Body</label>
-        <textarea
-          id=''
-          cols='70'
-          rows='10'
-          name='body'
-          value={formData.body}
-          onChange={handleInputChange}></textarea>
+        <div className='editorContainer'>
+          <ReactQuill
+            className='editor'
+            theme='snow'
+            formats={formats}
+            value={formData.body}
+            onChange={handleInputChangeForBody}
+          />
+        </div>
         <div className='upload'>
           <label htmlFor='photo'>Upload Image</label>
           <input
@@ -99,6 +135,7 @@ const Edit = () => {
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
+
         <button type='submit'>Save</button>
       </form>
     </article>

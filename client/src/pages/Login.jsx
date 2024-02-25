@@ -27,7 +27,6 @@ function Login() {
     setInputs(() => ({ ...inputs, [nameVal]: input }));
   }
 
-  //handle success or error message
   // const handleError = (err) => {
   //   toast.error(err, {
   //     position: 'bottom-left',
@@ -43,9 +42,7 @@ function Login() {
   // handles submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!inputs.email || !inputs.password) {
-    //   return;
-    // }
+
     await login(email, password);
 
     // navigate('/blog');
@@ -99,7 +96,7 @@ function Login() {
               Forgot your password?<Link>click</Link>
             </span>
           </div>
-          {error && <h3>{error}</h3>}
+          {/* {error && <h3>{error}</h3>} */}
         </div>
       </form>
       {/* <ToastContainer /> */}

@@ -8,6 +8,7 @@ import AppError from './utils/appError.js';
 import mongoose from 'mongoose';
 import postRouter from './routes/postRoute.js';
 import userRouter from './routes/userRoute.js';
+import aiRouter from './routes/aiRoute.js';
 import cookieParser from 'cookie-parser';
 
 process.on('uncaughtException', (err) => {
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 // Mounting routes
 app.use('/users', userRouter);
 app.use('/posts', postRouter);
+app.use('/generate', aiRouter);
 //handle non-existent page
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

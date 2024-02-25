@@ -1,0 +1,38 @@
+@import './variables';
+
+.accordion {
+  margin-top: 3rem;
+  .accordion-btn {
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    margin-bottom: 2px;
+    background-color: $Pink;
+    // width: 350px;
+    width: 80%;
+    color: $LightPink;
+    padding: 0.8rem;
+    // transition: max-height 0.5s ease-in-out;
+
+    @media (max-width: $smallPhone) {
+      height: 44px;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+
+    .add-color {
+      background-color: #ffff;
+    }
+
+    span {
+      margin-right: 1rem;
+    }
+  }
+  .arrow {
+    display: block;
+  }
+}
+.accordion-content {
+  display: flex;
+  flex-direction: column;
+}

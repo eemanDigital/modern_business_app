@@ -5,11 +5,33 @@ article {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
-
+  margin: 6rem 2rem;
+  position: relative;
+  .write-error {
+    border: 1px solid red;
+    border-radius: 4px;
+    background: white;
+    padding: 0.6rem 1.5rem;
+    color: red;
+    position: fixed;
+    top: 23%;
+    z-index: 99999999999999;
+  }
   .write {
     display: flex;
     flex-direction: column;
+    width: 60%;
     gap: 2rem;
+  }
+}
+
+.editorContainer {
+  height: 300px;
+  overflow: scroll;
+
+  .editor {
+    height: 100%;
+    border: none;
+    border: 1px solid lightgray;
   }
 }

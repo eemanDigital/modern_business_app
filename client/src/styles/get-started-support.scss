@@ -1,0 +1,23 @@
+@import './variables';
+
+.support-get-started {
+  display: flex;
+  flex-direction: column;
+  .support-get-started-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem;
+
+    button {
+      all: unset;
+      background-color: $deepBlue;
+      padding: 1rem 2rem;
+      color: #ffff;
+      font-weight: 500;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+    }
+  }
+}

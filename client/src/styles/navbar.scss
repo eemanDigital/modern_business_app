@@ -1,120 +1,198 @@
 @import './variables';
-//NAVBAR
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: $deepBlue;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
-  .logo {
-    padding-left: 2rem;
-    @media (max-width: $breakpoint-tablet) {
-      padding-left: 1.3rem;
-      margin-right: auto;
-    }
-  }
-  .hamburger {
-    position: absolute;
-    display: none;
-    font-size: 44px;
-    color: #ffff;
+header {
+  position: relative;
+
+  .navbar {
+    // padding: 15px 0;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    position: fixed;
     top: 0;
-    right: 0;
-
-    @media (max-width: $breakpoint-tablet) {
-      display: block;
-    }
-  }
-  @media (max-width: $breakpoint-tablet) {
-    flex-direction: column;
+    width: 100%;
+    z-index: 1000; /* Adjust z-index as needed */
+    background-color: $deep-deep-blue;
+    /* Add any other styling you need */
   }
 
-  ul {
+  .navbar-logo {
+    color: #ede8e8;
+    justify-self: start;
+    margin-left: 20px;
+    // padding: 0 15px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    padding: 0 0.5rem 3rem 0.5rem;
+    /* top | right | bottom | left */
+  }
+
+  // .bi-cloud-moon-fill {
+  //   margin-left: 0.5rem;
+  //   margin-right: 1rem;
+  //   font-size: 1.6rem;
+  // }
+
+  .nav-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 14px;
-    list-style-type: none;
-    position: relative;
-    padding: 1rem 2.5rem 0rem 0rem;
-    line-height: 1.2;
+    // display: grid;
+    // grid-template-columns: repeat(6, auto);
+    gap: 1rem;
+    list-style: none;
+    // text-align: center;
+    // width: 80vw;
+    // justify-content: center;
+    margin-right: 2rem;
+  }
 
-    @media (max-width: $breakpoint-tablet) {
-      display: none;
+  .nav-item {
+    display: flex;
+    align-items: center;
+    height: 80px;
+  }
+
+  .nav-links {
+    color: #ffff;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem 2rem 0.5rem;
+    /* top | right | bottom | left */
+  }
+
+  .nav-links:hover {
+    color: #1888ff;
+    transition: all 0.2s ease-out;
+  }
+
+  .bi-list {
+    color: #000;
+  }
+
+  .nav-links-mobile {
+    display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  @media screen and (max-width: 960px) {
+    .NavbarItems {
+      position: relative;
+    }
+
+    .nav-menu {
+      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-top: 2px inset white;
       width: 100%;
-      margin-top: 1rem;
-      &.open {
-        display: flex; /* show the menu when 'open' class is applied */
+      height: fit-content;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+      background: #fff;
+      box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+      transition: 0.3s;
+      border-radius: 4px;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      /* border: 1px solid #6c757d; */
+      margin: 5px 10px 10px 10px;
+    }
+
+    .nav-menu.active {
+      background: $deep-deep-blue;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+    .nav-item {
+      height: 38px;
+    }
+
+    .nav-links {
+      text-align: center;
+      padding: 2rem;
+      margin: 0;
+      font-weight: 400;
+      /* top | right | bottom | left */
+      width: 100%;
+      @media (max-width: $smallPhone) {
+        font-size: 0.9rem;
       }
     }
 
-    li {
-      &:hover .dropdown {
-        display: flex; /* Show the dropdown when hovering over li */
+    .nav-links:hover {
+      color: #2184b6;
+      border-radius: 0;
+    }
+    .navbar-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(25%, 20%);
+      margin-left: 2px;
+    }
+    .bi-cloud-moon-fill {
+      margin-left: 0;
+      font-size: 2rem;
+    }
 
-        // @media (max-width: $breakpoint-tablet) {
-        //   display: none;
-        // }
-      }
+    .menu-icon {
+      display: block;
+      position: absolute;
+      color: #fff;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 40%);
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
 
-      a {
-        padding-left: 10px;
-        color: #fff;
-        font-size: 1.1rem;
-        text-decoration: none;
+    .bi-x {
+      color: #000;
+      font-size: 2rem;
+    }
 
-        &:hover,
-        &:focus {
-          color: $LightPink;
-        }
-      }
+    .nav-links-mobile {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      margin: 2rem auto;
+      border-radius: 4px;
+      width: 80%;
+      background: #1888ff;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.5rem;
+    }
 
-      .active {
-        text-decoration: none;
-        background: #c0bdbd65;
-        padding: 0.4rem;
-      }
-
-      .dropdown {
-        position: absolute;
-        display: none;
-        background-color: $deepBlue;
-        flex-direction: column;
-        padding: 0.8rem 0.8rem;
-        // width: 180px;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-
-        z-index: 9999;
-        top: 100%;
-
-        // &:hover {
-        //   display: flex;
-        // }
-
-        li {
-          padding: 0.5rem;
-          border-bottom: 1px solid #fff;
-          width: 100%;
-        }
-
-        @media (max-width: $breakpoint-tablet) {
-          margin-top: 0;
-        }
-
-        a {
-          font-size: 14px;
-        }
-      }
+    .nav-links-mobile:hover {
+      background: #fff;
+      color: #1888ff;
+      transition: 250ms;
     }
   }
-  svg {
-    color: #f0f0f0;
+
+  .logout-btn {
+    border: none;
+    background: #ffff;
+    color: $deep-deep-blue;
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+
+    &:hover {
+      background: #2184b6;
+      color: #ffffff;
+    }
   }
 }

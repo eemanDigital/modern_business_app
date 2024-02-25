@@ -1,74 +1,118 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { menuItem } from '../data/menuItem';
-import MenuItems from './MenuItems';
-import { useLogout } from '../hooks/useLogout';
+import { BiMenuAltRight } from 'react-icons/bi';
+import { AiOutlineClose } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useState } from 'react';
+// import { Button } from './Button';
+import { Link } from 'react-router-dom';
+import Dropdown from './Dropdown';
+import { useLogout } from '../hooks/useLogout';
 
-import SocialMedia from './SocialMedia';
-import { RxAvatar } from 'react-icons/rx';
-import { CgMenuRightAlt } from 'react-icons/cg';
-import { IoCloseSharp } from 'react-icons/io5';
+import '../styles/navbar.scss';
 
-function NavBar() {
-  const [toggle, setToggle] = useState(false);
-  const { logout } = useLogout();
+function Navbar() {
+  const [click, setClick] = useState(false); // State to manage mobile menu
+  const [dropdown, setDropdown] = useState(false); // State to manage dropdown
   const { user } = useAuthContext();
-  const username = user?.data?.user?.username;
+  const role = user?.data?.user?.role;
 
-  function handleToggle() {
-    setToggle((prev) => !prev);
-    console.log(toggle);
-  }
+  // checks admin role for writing
+  const isAdmin = role === 'admin';
+  const { logout } = useLogout();
+
+  // Toggle mobile menu
+  const handleClick = () => setClick(!click);
+
+  // Close mobile menu
+  const closeMobileMenu = () => setClick(false);
+
+  // Toggle dropdown on hover (for desktop) and click (for mobile)
+  const handleDropdown = () => {
+    if (window.innerWidth < 1960) {
+      setDropdown(!dropdown); // Toggle dropdown for mobile view
+    }
+  };
   return (
-    <>
-      <SocialMedia />
-      <nav className='navbar container-fluid'>
-        <div className='logo'>
-          <Link className='links' style={{ color: 'white' }} to='/'>
-            {/* <img
-              src={logo}
-              alt='eemaan digital logo'
-              style={{ width: '64px' }}
-            /> */}
-            eemaan
-          </Link>
+    <header>
+      <nav className='navbar'>
+        {/* <div className='logo'> */}
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          {/* <i className='bi bi-cloud-moon-fill'></i> */}
+          eeman
+        </Link>
+        {/* </div> */}
+        <div className='menu-icon' onClick={handleClick}>
+          {/* <i className={click ? 'bi bi-x' : 'bi bi-list'} /> */}
+          {click ? <AiOutlineClose /> : <BiMenuAltRight />}
         </div>
-        <ul className={toggle ? 'open' : ''}>
-          {menuItem.map((item, index) => {
-            return <MenuItems items={item} key={index} />;
-          })}
 
-          {/* login link */}
-          {!user && (
-            <div
-              style={{ fontSize: '24px', fontWeight: '500', color: '#f0f0f0' }}>
-              {!user && (
-                <Link to='login'>
-                  <RxAvatar />
-                </Link>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              Home
+            </Link>
+          </li>
+
+          <li
+            className='nav-item'
+            onMouseEnter={handleDropdown}
+            onMouseLeave={handleDropdown}>
+            <Link to='#' className='nav-links' onClick={closeMobileMenu}>
+              Services
+            </Link>
+            {dropdown && <Dropdown />}
+          </li>
+
+          <li className='nav-item'>
+            <Link
+              to='/about-us'
+              className='nav-links'
+              onClick={closeMobileMenu}>
+              About
+            </Link>
+          </li>
+
+          <li className='nav-item'>
+            <Link to='/Blog' className='nav-links' onClick={closeMobileMenu}>
+              Blog
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/contact-us'
+              className='nav-links'
+              onClick={closeMobileMenu}>
+              Contact Us
+            </Link>
+          </li>
+          {isAdmin && (
+            <li className='nav-item'>
+              <Link
+                to='blog/write'
+                className='nav-links'
+                onClick={closeMobileMenu}>
+                write
+              </Link>
+            </li>
+          )}
+
+          <li className='nav-item'>
+            <Link className='nav-links'>
+              {user && (
+                <button className='logout-btn' onClick={() => logout()}>
+                  Logout
+                </button>
               )}
-            </div>
-          )}
-          {user && (
-            <div className='logout'>
-              <span>{username}</span>
-              <button onClick={() => logout()}>Log out </button>
-            </div>
-          )}
+            </Link>
+            {!user && (
+              <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
+                login
+              </Link>
+            )}
+          </li>
         </ul>
-
-        {/* Hamburger toggling */}
-        <div onClick={handleToggle}>
-          {toggle ? (
-            <IoCloseSharp className='hamburger' />
-          ) : (
-            <CgMenuRightAlt className='hamburger' />
-          )}
-        </div>
       </nav>
-    </>
+    </header>
   );
 }
 
-export default NavBar;
+export default Navbar;

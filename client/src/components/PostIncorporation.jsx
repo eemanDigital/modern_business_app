@@ -26,7 +26,7 @@ const PostIncorporation = () => {
         </tbody>
       </table>
 
-      <Link> Start Now &#x2192;</Link>
+      <Link to='https://wa.me/message/KTFL2G2JM3JTP1'> Start Now &#x2192;</Link>
     </section>
   );
 };

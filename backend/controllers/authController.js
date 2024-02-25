@@ -29,8 +29,6 @@ export const signup = catchAsync(async (req, res, next) => {
 
 //Handles user login
 export const login = catchAsync(async (req, res, next) => {
-  // console.log(req.headers);
-
   const { email, password } = req.body;
   // Input validation
   if (!email || !password) {
@@ -55,7 +53,7 @@ export const protect = catchAsync(async (req, res, next) => {
   }
   // get token from the headers
   const token = authorization.split(' ')[1];
-  console.log(token);
+  // console.log(token);
 
   // verify token
   const { _id } = jwt.verify(token, process.env.JWT_SECRET_KEY);

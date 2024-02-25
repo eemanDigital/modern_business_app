@@ -4,8 +4,6 @@ import App from './App.jsx';
 import { AuthContextProvider } from './context/authContext.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles/navbar.scss';
-import './styles/outlets.scss';
-// import './styles/footer.scss';
 import './styles/home.scss';
 import './index.scss';
 import './styles/trust.scss';

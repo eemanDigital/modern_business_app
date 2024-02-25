@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // import http from '../lib/http';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useSignUp } from '../hooks/useSignUp';
+// import { useAuthContext } from '../hooks/useAuthContext';
 
 import '../styles/login.scss';
 
@@ -15,8 +16,16 @@ function SignUp() {
   });
   const { username, email, password, confirmPassword } = inputs;
   const { signup, isLoading, error, setError } = useSignUp();
-  // const [error, handleError] = useState('');
-  const navigate = useNavigate();
+  // // const [error, handleError] = useState('');
+  // const navigate = useNavigate();
+  // const { user } = useAuthContext();
+  // const status = user?.status;
+  // console.log(status);
+  // const isSuccess = status === 'success';
+  // console.log(isSuccess);
+
+  // console.log('STATUS', status);
+
   function handleInputs(e) {
     const input = e.target.value;
     const nameVal = e.target.name;
@@ -28,8 +37,13 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(username, email, password, confirmPassword);
+
+    // if (status === true) {
+    //   navigate('/login');
+    // } else {
+    //   return;
+    // }
   };
-  // navigate('/login');
 
   useEffect(() => {
     if (error) {
@@ -92,7 +106,7 @@ function SignUp() {
               <Link to='/login'>Login</Link>{' '}
             </p>
           </div>
-          {error && <h3>{error}</h3>}
+          {/* {error && <h3>{error}</h3>} */}
         </div>
       </form>
     </>

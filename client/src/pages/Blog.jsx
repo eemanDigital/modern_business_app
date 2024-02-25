@@ -53,6 +53,7 @@ function Blog() {
         `/posts?page=${currentPage.current}&limit=${limit}`
       );
       setBlogPosts(data?.data?.results?.result);
+      console.log(data);
       setPageCount(data?.data?.results?.pageCount);
       setLoading(false);
     } catch (err) {

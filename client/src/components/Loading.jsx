@@ -1,7 +1,9 @@
+import '../styles/loading.scss';
+
 const Loading = () => {
   return (
-    <div>
-      <h1>Loading.....</h1>
+    <div className='loading'>
+      <h3>Loading...</h3>
     </div>
   );
 };

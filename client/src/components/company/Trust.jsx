@@ -1,25 +1,29 @@
-// import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import TrustCards from '../TrustCards';
-// import Packages from './Packages';
-// import PostIncorporation from '../PostIncorporation';
-// import biz_img from './../../assets/biz.jpg';
+import { trust_card_data } from '../../data/data';
 
-const Trust = ({ title, price, benefits }) => {
+const Trust = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className='trust-container'>
-      <TrustCards />
-
-      <div>
-        <div className='t-col'>
-          <h3>Choose Your Package</h3>
-          <p>
-            Choose the option that is right for your need and budget. No
-            additional fees or hidden charge.
-          </p>
-        </div>
+      <h1> Why we are different</h1>
+      <div className='trust-cards'>
+        {trust_card_data.map((item, index) => (
+          <TrustCards
+            key={index}
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+            isOpen={isOpen}
+            toggleOpen={toggleOpen}
+          />
+        ))}
       </div>
-
-      {/* <Packages title={title} price={price} benefits={benefits} /> */}
     </div>
   );
 };

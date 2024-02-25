@@ -30,11 +30,9 @@ const upload = multer({
 //photo:name of the field
 export const uploadPostPhoto = upload.single('file');
 
-export const createPosts = async (req, res, next) => {
-  // console.log(req.file);
-  // console.log(req.body);
+export const createPosts = catchAsync(async (req, res, next) => {
   const { title, body, author } = req.body;
-  // const { filename } = req.file;
+
   const filename = req.file ? req.file.filename : null; // Handle optional file
 
   const post = await Post.create({
@@ -43,13 +41,14 @@ export const createPosts = async (req, res, next) => {
     author,
     photo: filename,
   });
+
   res.status(201).json({
     message: 'success',
     data: {
       post,
     },
   });
-};
+});
 
 // export const getPosts = catchAsync(async (req, res, next) => {
 //   const posts = await Post.find().sort({ date: 'desc' });

@@ -7,73 +7,152 @@ import PostIncorporation from '../components/PostIncorporation';
 import Packages from '../components/company/Packages';
 import { packages } from '../data/data';
 import partner from '../assets/partner.svg';
+import WebDevSection from '../components/WebDevSection';
+import Aside from '../components/company/Aside';
+
+import '../styles/webdev.scss';
 
 const WebDev = () => {
   return (
-    <section className='company-section'>
-      <div className='comp-container'>
-        <div className='text-1'>
-          <h1>Web Development Services </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit in
-            libero officia ipsa maiores voluptates consequuntur unde qui
-            assumenda, suscipit fugiat quasi modi animi ex hic rem eius
-            voluptatibus facilis, illum ullam sint aliquid esse! Dolore
-            quibusdam ut sit non necessitatibus dolores tempora officiis eaque
-            officia doloribus modi quis natus unde error blanditiis, neque quas
-            quidem amet ducimus quia explicabo veritatis quasi nesciunt est?
-            Odit, accusantium optio? Sapiente ad cum quia optio pariatur saepe
-            repellendus velit suscipit molestias illo, excepturi deserunt! Ab
-            ullam minima voluptatem, cum amet nesciunt assumenda fugiat labore
-            dolorem, dolor expedita architecto sapiente id delectus unde
-            accusantium atque dicta. Dolorum iure quia porro minus consectetur
-            ducimus ut assumenda, voluptatum eum error? Cumque mollitia sed
-            fugiat animi atque tenetur ea distinctio magni iusto saepe
-            blanditiis id, architecto laborum, fugit odio dolor doloribus nisi
-            veritatis ab. Vero incidunt officiis ea labore rem! Ad ex cum enim
-            harum quidem omnis culpa, fugiat expedita tempore, deserunt, sint
-            atque dicta. Necessitatibus eveniet omnis quam dolores asperiores
-            repellendus quia cumque nemo, id laudantium amet temporibus ducimus
-            molestiae earum atque. Doloremque porro reiciendis veniam ipsam
-            mollitia iusto culpa quibusdam cumque dolorem aut aliquam, nisi
-            animi incidunt fugit harum nulla eos atque consequatur. Odio,
-            mollitia.
-            <Link to='#'>Learn more about company</Link>
-          </p>
-          <div className='how-to-start'>
-            <h4>How to get started</h4>
+    <>
+      <section className='company-section webdev'>
+        <WebDevSection />
+
+        <div className='comp-container'>
+          <div className='text-1'>
+            <h1>Unleash Your Online Potential</h1>
 
             <p>
-              You can start right now. We can form your Corporation of any type
+              In today&apos;s digital age, having a strong online presence is
+              crucial for businesses of all sizes. Whether you're a seasoned
+              entrepreneur or just starting out, a well-designed website can be
+              your most valuable marketing tool. At [Your Company Name], we
+              specialize in crafting unique and effective websites that cater to
+              your specific needs and goals.
             </p>
+            <h2>
+              Unveiling a World of Opportunities: Our Diverse Web Development
+              Services
+            </h2>
+            <p>
+              We understand that every business is unique, and no two websites
+              should be the same. That's why we offer a diverse range of web
+              development services to ensure your online platform perfectly
+              reflects your brand and resonates with your target audience. Here
+              are some of the types of websites we can build:
+            </p>
+            <h3>For Businesses:</h3>
+            <ul>
+              <li>
+                Professional Portfolios and Landing Pages: Showcase your
+                expertise and convert visitors into clients with engaging
+                portfolios and targeted landing pages.
+              </li>
+              <li>
+                E-commerce Stores: Sell your products directly to customers with
+                user-friendly online stores optimized for seamless transactions
+                and secure payments.
+              </li>
+              <li>
+                Business Websites: Establish a strong online presence and
+                attract leads with informative and visually appealing business
+                websites tailored to your industry.
+              </li>
+              <li>
+                Member-Only Platforms: Build exclusive communities and manage
+                valuable content with secure member-only platforms.
+              </li>
+            </ul>
+            <h3>For Individuals:</h3>
+            <ul>
+              <li>
+                Personal Branding Websites: Showcase your talent and stand out
+                from the crowd with personalized websites highlighting your
+                skills and accomplishments.
+              </li>
+              <li>
+                Blogs and Portfolios: Share your passions and build your online
+                presence with captivating blogs and engaging portfolios.
+              </li>
+              <li>
+                Event Websites: Create buzz and manage registrations for your
+                events with dedicated event websites offering all essential
+                information and forms.
+              </li>
+            </ul>
+            <h2>Beyond Design: Our Comprehensive Approach</h2>
+            <p>
+              We go beyond simply building beautiful websites. We offer a
+              comprehensive approach that includes:
+            </p>
+            <ul>
+              <li>
+                SEO Optimization: Ensure your website ranks high in search
+                results and attracts organic traffic.
+              </li>
+              <li>
+                Mobile-Responsiveness: Guarantee a seamless user experience
+                across all devices.
+              </li>
+              <li>
+                Content Management Systems (CMS): Empower you to easily update
+                and manage your website content.
+              </li>
+              <li>
+                Ongoing Maintenance and Support: Enjoy worry-free website
+                management with our reliable support services.
+              </li>
+            </ul>
+            <h2>Unlocking Your Vision: Partner with Us Today</h2>
+            <p>
+              At [Your Company Name], we're passionate about helping you achieve
+              your digital goals. We collaborate closely with each client to
+              understand their vision, target audience, and unique requirements.
+              By leveraging our expertise and a wide range of web development
+              services, we build websites that not only look stunning but also
+              deliver tangible results.
+            </p>
+            <p>
+              Contact us today for a free consultation and let's turn your
+              online vision into reality!
+            </p>
+            <div className='how-to-start'>
+              <h4>How to get started</h4>
 
-            <Link to='#'>Start Now</Link>
+              <p>
+                You can start right now. We can form your Corporation of any
+                type
+              </p>
+
+              <Link to='#'>Start Now</Link>
+            </div>
+            {/* <Aside /> */}
+          </div>
+          <div>
+            <div className='WebDev background'>
+              <img src={partner} alt='WebDev-image' />
+            </div>
           </div>
         </div>
-        <div>
-          <div className='WebDev background'>
-            <img src={partner} alt='WebDev-image' />
-          </div>
+
+        <Trust />
+
+        <div className='packages'>
+          {packages.slice(7, 8).map((item, index) => {
+            return (
+              <Packages
+                key={index}
+                title={item.title}
+                price={item.price}
+                benefits={item.benefits}
+              />
+            );
+          })}
         </div>
-      </div>
 
-      <Trust />
-
-      <div className='packages'>
-        {packages.slice(7, 8).map((item, index) => {
-          return (
-            <Packages
-              key={index}
-              title={item.title}
-              price={item.price}
-              benefits={item.benefits}
-            />
-          );
-        })}
-      </div>
-
-      <PostIncorporation />
-    </section>
+        <PostIncorporation />
+      </section>
+    </>
   );
 };
 

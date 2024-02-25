@@ -9,37 +9,27 @@ const BlogContent = (props) => {
   // console.log(props);
   // const { id, img, title, description, author, date, likes, views } = props;
   const { _id, title, body, date, author, photo } = props;
-  // console.log(photo);
+
+  console.log(body);
   return (
     <div className='blog-wrapper'>
-      {photo && (
-        <img src={`http://localhost:3300/images/${photo}`} alt={title} />
-      )}
-      <div className='blog-content-text'>
+      <div className='blog-content'>
+        {photo && (
+          <img src={`http://localhost:3300/images/${photo}`} alt={title} />
+        )}
         <div className='date_author'>
           <p>By: {author}</p>
           <p>
             <CiCalendarDate /> {formatDate(date)}
           </p>
         </div>
-        <h1>
-          <Link to={_id}>{title}</Link>
-        </h1>
-        <p>{body.substring(0, 100)}...</p>
-
-        {/* <div className='blog_content_icons'>
-          <span>
-            <RxEyeOpen /> {views} |
-          </span>
-          <span>
-            <SlLike /> {likes} |
-          </span>
-
-          <span>
-            <FaRegCommentAlt />
-          </span>
-        </div> */}
-
+        <div className='title-desc'>
+          <h1>
+            <Link to={_id}>{title}</Link>
+          </h1>
+          {/* <p>{body.substring(0, 100)}...</p> */}
+          <p dangerouslySetInnerHTML={{ __html: body.substring(0, 100) }} />
+        </div>
         <Link to={`/blog/${_id}`}>Read More</Link>
       </div>
     </div>

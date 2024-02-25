@@ -10,20 +10,24 @@ body {
   // min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: scroll; /* Allow vertical scrolling */
+  // overflow-y: scroll; /* Allow vertical scrolling */
 }
 
 body {
   background-color: $LightPink;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
+  display: grid;
+  background-repeat: repeat;
+  overflow-x: hidden;
 }
 
-.app {
-  padding: 0;
-  margin: 0;
-
-  .links {
-    text-decoration: none;
-  }
-}
+// body {
+//   background-color: white;
+//   margin: auto;
+//   padding: 0px;
+//   overflow-x: hidden;
+//   background-repeat: repeat;
+//   font-family: 'Inter', sans-serif;
+//   display: grid;
+// }

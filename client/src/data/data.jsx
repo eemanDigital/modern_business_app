@@ -215,57 +215,57 @@ export const supportData = [
   },
 ];
 
-import { BiSupport } from 'react-icons/bi';
-import { HiOutlineBellAlert } from 'react-icons/hi2';
-import { TfiBriefcase } from 'react-icons/tfi';
-import { TbFreeRights } from 'react-icons/tb';
-import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
-import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
-import { CiMoneyCheck1 } from 'react-icons/ci';
+// import { BiSupport } from 'react-icons/bi';
+// import { HiOutlineBellAlert } from 'react-icons/hi2';
+// import { TfiBriefcase } from 'react-icons/tfi';
+// import { TbFreeRights } from 'react-icons/tb';
+// import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
+// import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
+// import { CiMoneyCheck1 } from 'react-icons/ci';
 
 export const trust_card_data = [
   {
-    icon: <AiOutlineDeliveredProcedure />,
+    // icon: <AiOutlineDeliveredProcedure />,
     title: 'Free Delivery of Registration Docs',
     description:
       'We scan and upload all filed documents into your Account Dashboard. Saves postage and saves time!',
   },
 
   {
-    icon: <CiMoneyCheck1 />,
+    // icon: <CiMoneyCheck1 />,
     title: 'Easy Payment Options',
     description:
       'Our easy payment plan allows you to make payment either in full and by installment. Your convenience is what matters us',
   },
 
   {
-    icon: <TbFreeRights />,
+    // icon: <TbFreeRights />,
     title: 'Free Consultation',
     description:
       'Our exclusive free consultation is personalized to help and guides you step-by-step through the setup of your company.',
   },
   {
-    icon: <HiOutlineBellAlert />,
+    // icon: <HiOutlineBellAlert />,
     title: 'Lifetime Company Alerts',
     description:
       "Relax and never miss an important filing date! We'll remind you of important filings like Annual Reports and other deadlines.",
   },
 
   {
-    icon: <TfiBriefcase />,
+    // icon: <TfiBriefcase />,
     title: 'Online Order Briefing',
     description:
       'Real-time access to your order status 24/7. View your orders for an unlimited amount of companies in one place.',
   },
 
   {
-    icon: <LiaChalkboardTeacherSolid />,
+    // icon: <LiaChalkboardTeacherSolid />,
     title: 'Consultation and Guidance',
     description:
       "Offer initial consultations to understand the business's needs and goals. Provide guidance on the legal structure, business registration process, and website requirements.",
   },
   {
-    icon: <BiSupport />,
+    // icon: <BiSupport />,
     title: 'Compliance and Regulatory Support',
     description:
       'Assist with understanding and complying with relevant laws, regulations, and industry standards. Guide them in obtaining necessary licenses, permits, and certifications.',

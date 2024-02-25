@@ -1,0 +1,12 @@
+@import './variables';
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  h3 {
+    font-family: monospace;
+    letter-spacing: 2px;
+  }
+}

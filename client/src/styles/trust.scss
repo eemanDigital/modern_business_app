@@ -1,26 +1,61 @@
 @import './variables';
 
 .trust-container {
+  margin-top: 2.5rem;
+  // min-height: 100vh;
   h1 {
+    font-weight: 700;
     margin-top: 3rem;
-
     text-align: center;
+    letter-spacing: 1px;
   }
   .trust-cards {
     display: flex;
     justify-content: center;
-    gap: 1.8rem;
-    // align-items: center;
     flex-wrap: wrap;
 
     .trust_card_col {
       width: 30%;
-      background-color: #1d57f828;
-      border-radius: 10px;
-      padding: 1rem 2rem;
+      padding: 1rem 1.2rem;
+      min-height: 40px;
 
-      &:hover {
-        background-color: #1d57f847;
+      h3 {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.4rem 0.6rem;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        border-radius: 12px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+
+        &:hover {
+          background-color: #1d57f828;
+        }
+
+        svg {
+          color: $Pink;
+          font-size: 1.3rem;
+        }
+      }
+
+      .card-description {
+        max-height: 0;
+        border-radius: 10px;
+        background-color: #1d57f828;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+
+        p {
+          padding: 1.4rem;
+          // height: 40hv;
+        }
+      }
+
+      .card-description.open {
+        max-height: 124px; /* Adjust the max-height value as per your content */
       }
 
       @media (max-width: $breakpoint-tablet) {
@@ -32,14 +67,10 @@
         padding: 0.5rem 1rem;
       }
 
-      h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-      }
-      svg {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
+      // svg {
+      //   font-size: 2rem;
+      //   margin-bottom: 0.5rem;
+      // }
     }
   }
 
@@ -52,83 +83,6 @@
     h3 {
       font-size: 2.9rem;
       font-weight: 400;
-    }
-  }
-
-  //CUSTOM
-  .custom {
-    display: flex;
-    margin: 5rem 1rem;
-    @media (max-width: $breakpoint-tablet) {
-      margin: 5rem 0.8rem;
-    }
-
-    .custom-text {
-      display: flex;
-      flex-direction: column;
-      flex: 2;
-      position: relative;
-      background-color: #e5e5f7;
-      opacity: 1;
-      background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
-        radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-      padding: 2rem;
-      z-index: -999;
-
-      @media (max-width: $breakpoint-tablet) {
-        padding: 1rem;
-      }
-
-      h1 {
-        position: absolute;
-        color: #ffff;
-        font-weight: 500;
-        background-color: $Pink;
-        border-radius: 10px;
-        padding: 1rem 1.5rem;
-        margin: 0;
-        top: -40px;
-        left: 0;
-      }
-      h4 {
-        padding-top: 2rem;
-        text-align: left;
-
-        @media (max-width: $smallPhone) {
-          margin-top: 2rem;
-        }
-      }
-
-      ul {
-        list-style: circle;
-        display: inline-block;
-        li {
-          font-weight: 600;
-        }
-      }
-
-      .custom-links {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-
-        a {
-          background-color: $Pink;
-          text-decoration: none;
-          padding: 0.5rem 1rem;
-          color: #ffff;
-          text-align: center;
-
-          @media (max-width: $breakpoint-tablet) {
-            // padding: 0.5rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            // min-width: 55%;
-          }
-        }
-      }
     }
   }
 }

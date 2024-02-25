@@ -7,6 +7,8 @@ import { pre_inc_service } from '../data/data';
 import { packages } from '../data/data';
 import Packages from '../components/company/Packages';
 import Button from '../components/Button';
+import OtherCompanyType from '../components/OtherCompanyType';
+import Accordion from '../components/Accordion';
 
 const Company = () => {
   // const company_packages = packages.slice(0, 2);
@@ -17,17 +19,58 @@ const Company = () => {
         <div className='text-1'>
           <h1>Company</h1>
           <p>
-            A Company is a separate legal entity that can shield the owners from
-            personal liability and company debts. As a separate entity, it can
-            buy real estate, enter into contracts, sue and be sued completely
-            separately from its owners. Also, money can be raised easier via the
-            sale of stock; its ownership can be transferred via the transfer of
-            stock; the duration of the corporation is perpetual (the business
-            can continue regardless of ownership); and the tax advantages can be
-            considerable (i.e. you are able to deduct many business expenses,
-            healthcare programs, etc. that other legal entities cannot). Income
-            is reported completely separate via a tax return for the
-            corporation.
+            A company limited by shares is a type of business structure where
+            the liability of its owners, known as shareholders, is limited to
+            the amount of money they invested in the company through purchasing
+            shares. This means their personal assets (like their house or car)
+            are protected if the company encounters financial difficulties or
+            declares bankruptcy.
+            <p>
+              <strong>
+                Here are some key features of a company limited by shares:
+              </strong>{' '}
+            </p>
+            <p>
+              <strong>Limited Liability: </strong>This is the biggest advantage
+              for owners. They only risk losing the money they invested in the
+              company, not their personal wealth.
+            </p>
+            <p>
+              <strong>Separate Legal Entity:</strong> The company is treated as
+              a separate legal entity from its owners, meaning it can enter
+              contracts, own property, and incur debts in its own name.
+            </p>
+            <p>
+              <strong>Share Capital:</strong>
+              The company raises capital by issuing shares. Each share
+              represents a portion of ownership in the company. Shareholders
+              have voting rights based on the number of shares they own.
+            </p>
+            <p>
+              <strong>Management: </strong>The company is managed by directors,
+              who are appointed by the shareholders. They are responsible for
+              making decisions about the day-to-day operations of the business.
+            </p>
+            <h4> Types of Companies Limited by Shares:</h4>
+            <p>
+              <strong> Private Limited Company:</strong>
+              Shares are not offered to the public and there are restrictions on
+              transferring ownership. This is the most common type of company
+              limited by shares in many countries.
+            </p>
+            <p>
+              <strong>Public Limited Company:</strong> Shares can be listed on a
+              stock exchange and traded by the public. These companies typically
+              have larger numbers of shareholders.
+            </p>
+            <p>
+              <strong>Registration:</strong> Companies limited by shares need to
+              be registered with a government agency, like the Corporate Affairs
+              Commission (CAC) in Nigeria.
+            </p>
+            Overall, a company limited by shares offers a balance between
+            personal liability protection and access to capital, making it a
+            popular choice for many businesses.
             <Link to='#'>Learn more about company</Link>
           </p>
           <div className='how-to-start'>
@@ -37,7 +80,7 @@ const Company = () => {
               You can start right now. We can form your Corporation of any type
             </p>
 
-            <Link to='#'>Start Now</Link>
+            <Link to='/contact-us'>Start Now</Link>
           </div>
         </div>
 
@@ -49,8 +92,10 @@ const Company = () => {
           return null; // Render nothing for other prices
         })}
       </div>
+      <Accordion />
+
       <Trust />
-      <div className='packages'>
+      <div className='packages company-package'>
         {packages.slice(0, 2).map((item, index) => {
           return (
             <Packages
@@ -63,33 +108,10 @@ const Company = () => {
         })}
       </div>
       {/* <Link> Start Now &#x2192;</Link> */}
-      <Button text='Start Now' icons='&#x2192;' />
+      {/* <Button text='Start Now' icons='&#x2192;' /> */}
 
       <div className='trust-container'>
-        <div className='custom'>
-          <div className='custom-text'>
-            <h1>
-              Other Types of Company<span className=' arrow-right'></span>
-            </h1>
-            <h4>
-              We can also help you with the registration of specialised
-              companies such as:
-            </h4>
-            <ul>
-              <li> Over One Million share capital</li>
-              <li>Travel Agency</li>
-              <li>Corporate investment adviser</li>
-              <li>Agricultural seeds, productions, processing and marketing</li>
-              <li>Shipping company/agent</li>
-              <li>Bureau de change</li>
-            </ul>
-            <div className='custom-links'>
-              {' '}
-              <Link to='#'>Click here for full list</Link>
-              <Link to='#'>Make Your Offer</Link>
-            </div>
-          </div>
-        </div>
+        <OtherCompanyType />
       </div>
       <div></div>
 

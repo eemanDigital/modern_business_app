@@ -1,7 +1,7 @@
 import { PiCertificateThin } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 
-const Aside = ({ price, title }) => {
+const Aside = ({ price, title, img }) => {
   return (
     <div className='aside'>
       <div className='aside-container'>
@@ -11,7 +11,7 @@ const Aside = ({ price, title }) => {
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
-            strokeWidth={1.5}
+            strokeWidth={1.2}
             stroke='currentColor'
             className='w-6 h-6'>
             <path
@@ -25,7 +25,10 @@ const Aside = ({ price, title }) => {
           From &#8358; <span className='amount'>{price}</span>
         </strong>
 
-        <Link> Start Now &#x2192;</Link>
+        <Link to='https://wa.me/message/KTFL2G2JM3JTP1'>
+          {' '}
+          Start Now &#x2192;
+        </Link>
       </div>
       <div className='why-us'>
         <h3>Why You Should Engage Us</h3>
@@ -37,6 +40,11 @@ const Aside = ({ price, title }) => {
 
           <PiCertificateThin />
         </div>
+        <img
+          src={img}
+          alt=''
+          style={{ marginTop: '2.5rem', maxWidth: '250px', height: '100%' }}
+        />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export const menuItem = [
   },
   {
     title: 'Services',
-    url: '/services',
+    url: '/#services',
     submenu: [
       {
         title: 'Company Registration',

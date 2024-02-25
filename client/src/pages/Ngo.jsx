@@ -13,27 +13,56 @@ const Ngo = () => {
   // const company_packages = packages.slice(0, 2);
 
   return (
-    <section className='company-section'>
+    <section className='company-section ngo'>
       <div className='comp-container'>
         <div className='text-1'>
           <h1>Incorporated Trustees</h1>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Aspernatur, optio quod debitis ratione vel explicabo corporis
-            mollitia dolores necessitatibus iusto eius facere expedita velit
-            autem fugit. Laboriosam amet iste ipsa tempore quidem porro, ad in
-            praesentium sapiente eius voluptatum voluptatibus recusandae aliquid
-            officia facilis. Illum deleniti, facere temporibus illo possimus
-            consectetur? Harum quaerat accusamus laudantium pariatur at, modi
-            eos porro totam aliquam consequatur numquam distinctio unde nulla
-            hic quisquam ratione impedit delectus asperiores reprehenderit a,
-            quae sint expedita. Cumque vel rem quod vero ducimus officiis
-            provident nam, blanditiis repellat, distinctio voluptate temporibus
-            sunt laudantium nulla reprehenderit corporis eum harum sit quos
-            beatae fugit praesentium explicabo! Nemo optio, quisquam facilis,
-            obcaecati aperiam quaerat fuga iste facere libero in odio veniam
-            magnam.
-            <Link to='#'>Learn more about company</Link>
+            <p>
+              In Nigeria, a non-governmental organization (NGO) can be
+              registered as an incorporated trustee under part F of the
+              Companies and Allied Matters Act (CAMA) 2020. Registering a
+              non-profit organization as an incorporated trustee grants it legal
+              personality. This means that the organization can sue and be sued
+              independently, and its members are not personally liable for the
+              organization's obligations or legal actions.
+            </p>
+
+            <p>
+              This type of organization focuses on social or public benefit
+              rather than generating profit. Here's a breakdown:
+            </p>
+
+            <ul>
+              <li>
+                <strong>Key Characteristics:</strong>
+                <ul>
+                  <li>
+                    <strong>Non-Profit:</strong> Does not aim to make profits
+                    but reinvest resources back into its goals.
+                  </li>
+                  <li>
+                    <strong>Legal Entity:</strong> Holds a separate legal
+                    identity from its members, offering liability protection.
+                  </li>
+                  <li>
+                    <strong>Tax-Exempt:</strong> May be entitled to tax
+                    exemptions depending on its activities and registration with
+                    relevant authorities.
+                  </li>
+                  <li>
+                    <strong>Membership-Based:</strong> Usually managed by a
+                    board of trustees elected by its members.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Common Forms:</strong> Churches, mosques, NGOs, social
+                clubs, alumni associations, community groups. etc.
+              </li>
+            </ul>
+
+            {/* <Link to='#'>Learn more about company</Link> */}
           </p>
           <div className='how-to-start'>
             <h4>How to get started</h4>
@@ -67,10 +96,9 @@ const Ngo = () => {
             />
           );
         })}
-
-        <div>
-          <Button text='Start Now' icons='&#x2192;' />
-        </div>
+      </div>
+      <div>
+        <Button text='Start Now' icons='&#x2192;' />
       </div>
       {/* <Link> Start Now </Link> */}
 

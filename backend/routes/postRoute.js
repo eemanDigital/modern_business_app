@@ -11,9 +11,13 @@ import { protect } from '../controllers/authController.js';
 
 const postRouter = express.Router();
 
-// postRouter.use(protect);
+// postRouter.use(restrictTo('admin', 'user'));
 //posts route
-postRouter.route('/').post(protect, uploadPostPhoto, createPosts).get(getPosts);
+postRouter
+  .route('/')
+  .post(protect, uploadPostPhoto, createPosts)
+  // .get(restrictTo('admin'), getPosts);
+  .get(getPosts);
 postRouter
   .route('/:id')
   .get(getPost)

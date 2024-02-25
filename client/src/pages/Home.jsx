@@ -1,186 +1,143 @@
-import { Link, Outlet, NavLink } from 'react-router-dom';
-import { homeView, packages, accordion } from '../data/data.jsx';
-import { FaBusinessTime, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+// import { useScroll } from '../hooks/useScroll.jsx';
+
+import { homeView, packages } from '../data/data.jsx';
+import { FaBusinessTime } from 'react-icons/fa';
 import { CgWebsite } from 'react-icons/cg';
 import { MdCorporateFare } from 'react-icons/md';
-import { FaWhatsapp } from 'react-icons/fa';
-import { MdOutlineWifiCalling3 } from 'react-icons/md';
 import homepage from '../assets/laptop2.jpg';
 import social_net from '../assets/social-net.png';
-import img1 from '../assets/man.jpg';
-import { useState } from 'react';
-import TrustCards from '../components/TrustCards.jsx';
-import Testimonials from '../components/Testimonials.jsx';
+import Button from '../components/Button.jsx';
+import Trust from '../components/company/Trust.jsx';
+import { motion } from 'framer-motion';
+import { useScrolls } from '../hooks/useScrolls.jsx';
+// import { useScroll } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+// import { useEffect } from 'react';
+
+import '../styles/get-started-support.scss';
+import WebDevSection from '../components/WebDevSection.jsx';
 
 function Home() {
-  const [open, setOpen] = useState(Array(accordion.length).fill(false));
   const [toggle, setToggle] = useState(false);
-  const handleToggleAccordion = (index) => {
-    setOpen((prevOpen) => {
-      const newOpenState = [...prevOpen];
-      newOpenState[index] = !newOpenState[index];
-      return newOpenState;
-    });
-  };
+  const { control, ref, scrollVariant } = useScrolls();
 
+  // const { scrollYProgress } = useScroll();
+
+  const variant = {
+    visible: { scale: 1 },
+    hidden: { scale: 0 },
+  };
+  // useEffect(() => {
+  //   if (inView) {
+  //     control.start('visible');
+  //   } else {
+  //     control.start('hidden');
+  //   }
+  // }, [control, inView]);
   return (
-    <>
+    <motion.section>
       <div className='home'>
         <div className='wrapper'>
-          <div className='container'>
-            <div className='texts'>
-              <h1>{homeView.title}</h1>
-              <p>{homeView.message}</p>
-              <button>
-                <Link to='#'>Contact Us</Link>
-              </button>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            s
+            transition={{ duration: 1 }}
+            className='texts'>
+            <h1>{homeView.title}</h1>
+            <p>{homeView.message}</p>
+            <Button
+              path='/contact-us'
+              text='Contact Us'
+              className='home-button'
+            />
+          </motion.div>
 
-            <div className='icons'>
-              <FaBusinessTime />
-              <CgWebsite />
-              <MdCorporateFare />
-            </div>
+          <div className='icons'>
+            <FaBusinessTime />
+            <CgWebsite />
+            <MdCorporateFare />
           </div>
         </div>
-        <div className='social-img'>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.3 }}
+          className='social-img'>
           <img src={social_net} alt='' />
-        </div>
+        </motion.div>
       </div>
-      <section className='cards-section'>
+      {/* </div> */}
+      <motion.div
+        ref={ref}
+        variants={scrollVariant}
+        initial='hidden'
+        animate={control}
+        className='cards-section'>
         <h1>
           We Offer <span>Incorporation Services</span>
         </h1>
 
-        <div className='card-wrapper'>
+        <div id='services' className='card-wrapper'>
           {packages.map((item, index) => {
             return (
               <div className='cards' key={index}>
                 {item.icon}
                 <h4 onClick={() => setToggle(!toggle)}>{item.title}</h4>
-
-                <div className={`${toggle ? 'open' : 'home-price'}   `}>
-                  {/* <span>From &#8358;</span> */}
+                <div className={`${toggle ? 'open' : 'home-price'}`}>
                   <div className='price'>
                     <span style={{ fontWeight: 'normal' }}>from</span> &#8358;
                     {item.price}k
                   </div>
-
-                  <Link> Start Now</Link>
+                  <Link to='/contact-us'> Start Now</Link>
                   {/* <Link> Start Now &#x2192;</Link> */}
                 </div>
               </div>
             );
           })}
         </div>
-      </section>
+      </motion.div>
 
-      <div className='special'>
+      <motion.div
+        variant={variant}
+        whileInView={{ scale: 1, transition: { duration: 0.5 } }}
+        initial={{ scale: 0 }}
+        // initial='hidden'
+        // whileInView='visible'
+        className='special'>
         <div className='img'>
           <img src={homepage} alt='' />
         </div>
         <div className='contents'>
           <h3>
-            Why <span>Choose Us</span>{' '}
+            Why <span>Register Your Business with Us</span>{' '}
           </h3>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus
-            reiciendis animi veritatis ipsam quidem natus incidunt, maiores
-            possimus corrupti neque illum nam aliquid provident soluta rerum?
-            Dignissimos aspernatur quibusdam laboriosam sed numquam ipsam, aut
-            quis blanditiis modi culpa distinctio quasi fuga voluptatibus ab
-            excepturi, harum facere ullam! Vero, officia aspernatur?
+            Registering your business with us opens doors to endless
+            possibilities. Gain credibility, legal protection, and access to
+            funding. We streamline the registration process, ensuring compliance
+            and peace of mind. Our experts navigate complexities, saving you
+            time and resources. Whether you're a budding entrepreneur or a
+            seasoned NGO, our tailored solutions cater to your unique needs.
+            Stand out in the market with our professional website building
+            services included. Join us in shaping your vision into reality.
+            Register your business today and embark on a journey of success with
+            confidence.
           </p>
-          <div className='accordion'>
-            <h3>Learn the requirements</h3>
-            {accordion.map((el, index) => {
-              return (
-                <div key={index}>
-                  <button
-                    onClick={() => handleToggleAccordion(index)}
-                    className='accordion-btn'>
-                    <span className='arrow'>
-                      {open[index] ? <FaChevronDown /> : <FaChevronUp />}
-                    </span>
-                    {/* <span className='arrow'>{}</span> */}
-                    {el.title}
-                  </button>
-
-                  <div className={open[index] ? 'accordion-content' : ''}>
-                    {open[index] &&
-                      el.requirements.map((requirement) => (
-                        <p key={requirement}>{requirement}</p>
-                      ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
-      </div>
-      <section className='get-started-support'>
-        <h1>Have More Questions, We Have Got You Covered</h1>
-        <div className='container'>
-          <div className='links'>
-            <NavLink
-              className={({ isActive }) => `${isActive ? 'active' : ''} link`}>
-              {' '}
-              Get Started{' '}
-            </NavLink>
-            <NavLink className='link' to='support'>
-              {' '}
-              Support
-            </NavLink>
-            <div className='link disappear' style={{ backgroundColor: 'grey' }}>
-              Get Tools{' '}
-            </div>
-          </div>
-          <Outlet />
-        </div>
-      </section>
+      </motion.div>
 
-      <section className='trust-section'>
-        <div className='text'>
-          <h3>Offer Business Formation and Filing Services to Your Clients</h3>
-          <p>
-            Build trust and confidence for your clients by offering business
-            filings, annual registration, compliance, and more.
-          </p>
-
-          <h3>Pick Your Choice</h3>
-          <div className='biz_list'>
-            {packages.map((item, index) => {
-              return (
-                <Link key={index} to='#'>
-                  {item.title}
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className='link-btn'>
-            <Link to='#'>
-              <MdOutlineWifiCalling3 />
-              Give a call
-            </Link>
-            <Link to=''>
-              <FaWhatsapp />
-              Chat with an Expert
-            </Link>
-          </div>
-        </div>
-        <div className='img'>
-          <img src={img1} alt='' />
-        </div>
-      </section>
+      <WebDevSection />
       <div className='trust-container'>
-        <TrustCards />
+        <Trust />
       </div>
 
-      <div>
-        <Testimonials />
-      </div>
-    </>
+      {/* <h2>What Are People Saying About Us ?</h2> */}
+      {/* <Testimonials /> */}
+    </motion.section>
   );
 }
 

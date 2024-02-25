@@ -1,7 +1,7 @@
 @import './variables';
 
 .company-section {
-  margin: 1.4rem;
+  margin: 6rem 1.4rem;
   .comp-container {
     text-align: left;
     display: flex;
@@ -47,6 +47,12 @@
           }
         }
       }
+    }
+  }
+
+  .company-package {
+    @media (max-width: $smallPhone) {
+      flex-direction: column;
     }
   }
 }
