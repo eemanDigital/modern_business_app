@@ -1,14 +1,10 @@
-// import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
-import Aside from '../components/company/Aside';
-import Trust from '../components/company/Trust';
+import Aside from '../components/Aside';
 import PostIncorporation from '../components/PostIncorporation';
 import { pre_inc_service } from '../data/data';
 import { packages } from '../data/data';
-import Packages from '../components/company/Packages';
-import Button from '../components/Button';
+import Packages from '../components/Packages';
 import OtherCompanyType from '../components/OtherCompanyType';
-import Accordion from '../components/Accordion';
 
 const Company = () => {
   // const company_packages = packages.slice(0, 2);
@@ -92,9 +88,7 @@ const Company = () => {
           return null; // Render nothing for other prices
         })}
       </div>
-      <Accordion />
 
-      <Trust />
       <div className='packages company-package'>
         {packages.slice(0, 2).map((item, index) => {
           return (
@@ -107,8 +101,7 @@ const Company = () => {
           );
         })}
       </div>
-      {/* <Link> Start Now &#x2192;</Link> */}
-      {/* <Button text='Start Now' icons='&#x2192;' /> */}
+      {/* <Trust /> */}
 
       <div className='trust-container'>
         <OtherCompanyType />

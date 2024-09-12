@@ -1,29 +1,24 @@
-@import './variables';
+@import 'variables';
 
 .blog-container {
   height: 100%;
 
   .blog {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('../assets/homepage3.jpg');
+    @include flex-center;
+    background: url('../assets/hero2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     margin-top: 4.5rem;
+    margin-bottom: 4rem;
     width: 100%;
     height: 444px;
 
     .blog-hero-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: $deepBlue;
+      background-color: $primary-color;
+      text-align: center;
       max-width: 80%;
-      // max-height: 200px;
       padding: 2rem;
       color: #fff;
 
@@ -31,7 +26,7 @@
         font-size: 4rem;
         font-weight: 700;
 
-        @media (max-width: $breakpoint-tablet) {
+        @media (max-width: $breakpoint-md) {
           font-size: 2rem;
           // font-weight: 00;
         }
@@ -46,15 +41,12 @@
   .blog-content-wrapper {
     display: flex;
     justify-content: center;
-    // align-items: baseline;
     gap: 1rem;
     flex-wrap: wrap;
     margin: 1.4rem 0;
     padding: 0 1rem;
     width: 100%;
-    // height: 400px;
-
-    @media (max-width: $smallPhone) {
+    @media (max-width: $breakpoint-sm) {
       padding: 0;
       margin: 0;
     }

@@ -1,21 +1,23 @@
-@import './variables';
+@import 'variables';
 .drop-d-menu {
   position: absolute;
-  top: 80px;
+  top: 30px;
   list-style: none;
   text-align: start;
+  width: 280px;
+  background: #ffffff;
   margin: 0;
   padding: 10px 0;
-  background: $deep-deep-blue;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-radius: 4px;
+  z-index: 1000;
 
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-md) {
     left: 62%;
   }
 
-  @media (max-width: $smallPhone) {
+  @media (max-width: $breakpoint-sm) {
     left: 15%;
   }
 }
@@ -41,20 +43,19 @@
   height: 100%;
   width: 100%;
   text-decoration: none;
-  color: #ffffff;
+  color: $highlight-color;
   padding: 16px;
 
   &:hover {
     color: #5cabff;
   }
-
-  @media (max-width: $smallPhone) {
-    padding: 10px;
-  }
 }
 
-// @media screen and (max-width: 960px) {
-//   .bi-arrow-down {
-//     display: none;
-//   }
-// }
+@media (max-width: $breakpoint-sm) {
+  .drop-d-menu {
+    top: 50%;
+    width: 300px;
+    padding: 10px;
+    right: 0;
+  }
+}

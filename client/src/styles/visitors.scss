@@ -1,0 +1,88 @@
+@import 'variables';
+
+.visitors {
+  @include section-padding;
+  background-color: $background-color;
+
+  &__title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: $spacing-xl;
+    color: $primary-color;
+    // font-family: $font-family-secondary;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+
+  &__item {
+    text-align: center;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__icon {
+    font-size: 3rem;
+    color: $highlight-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__label {
+    font-size: 1rem;
+    color: $text-color-light;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+// Media Queries
+@media (max-width: $breakpoint-lg) {
+  .hero {
+    &__content {
+      max-width: 80%;
+    }
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+
+    &__image {
+      margin-right: 0;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .visitors {
+    &__title {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .visitors {
+    &__title {
+      font-size: 2rem;
+    }
+  }
+}

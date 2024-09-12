@@ -1,39 +1,51 @@
-// import { RxEyeOpen } from 'react-icons/rx';
-// import { SlLike } from 'react-icons/sl';
-// import { FaRegCommentAlt } from 'react-icons/fa';
 import { CiCalendarDate } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
-import formatDate from '../lib/formattedDate';
+import PropTypes from 'prop-types';
+import PostImageUpload from '../pages/PostImageUpload';
 
-const BlogContent = (props) => {
-  // console.log(props);
-  // const { id, img, title, description, author, date, likes, views } = props;
-  const { _id, title, body, date, author, photo } = props;
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
 
-  console.log(body);
+const BlogContent = ({ _id, title, body, date, author, photo }) => {
   return (
-    <div className='blog-wrapper'>
-      <div className='blog-content'>
-        {photo && (
+    <div className='blog-card'>
+      <PostImageUpload postId={_id} />
+      {photo && (
+        <div className='blog-card__image'>
           <img src={`http://localhost:3300/images/${photo}`} alt={title} />
-        )}
-        <div className='date_author'>
-          <p>By: {author}</p>
-          <p>
+        </div>
+      )}
+      <div className='blog-card__content'>
+        <div className='blog-card__meta'>
+          <span className='blog-card__author'>{author}</span>
+          <span className='blog-card__date'>
             <CiCalendarDate /> {formatDate(date)}
-          </p>
+          </span>
         </div>
-        <div className='title-desc'>
-          <h1>
-            <Link to={_id}>{title}</Link>
-          </h1>
-          {/* <p>{body.substring(0, 100)}...</p> */}
-          <p dangerouslySetInnerHTML={{ __html: body.substring(0, 100) }} />
-        </div>
-        <Link to={`/blog/${_id}`}>Read More</Link>
+        <h2 className='blog-card__title'>
+          <Link to={`/blog/${_id}`}>{title}</Link>
+        </h2>
+        <p
+          className='blog-card__excerpt'
+          dangerouslySetInnerHTML={{ __html: `${body.substring(0, 150)}...` }}
+        />
+        <Link to={`/blog/${_id}`} className='blog-card__link'>
+          Read More
+        </Link>
       </div>
     </div>
   );
+};
+
+BlogContent.propTypes = {
+  _id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  photo: PropTypes.string,
 };
 
 export default BlogContent;

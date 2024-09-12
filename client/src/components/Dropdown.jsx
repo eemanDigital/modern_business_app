@@ -19,13 +19,11 @@ const submenu = [
     url: 'ngo',
     cName: 'drop-d-link',
   },
-
   {
     title: 'Partnership',
     url: 'partnership',
     cName: 'drop-d-link',
   },
-
   {
     title: 'Web Development',
     url: 'webdev',

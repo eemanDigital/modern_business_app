@@ -30,8 +30,9 @@ const Edit = () => {
     title: '',
     body: '',
     author: '',
+    photo: '',
   });
-  const [file, setFile] = useState();
+
   const { user } = useAuthContext();
   const token = user?.token;
   const role = user?.data?.user?.role;
@@ -74,7 +75,6 @@ const Edit = () => {
       title: formData.title,
       body: formData.body,
       author: formData.author,
-      file: file,
     };
 
     try {
@@ -126,7 +126,7 @@ const Edit = () => {
             onChange={handleInputChangeForBody}
           />
         </div>
-        <div className='upload'>
+        {/* <div className='upload'>
           <label htmlFor='photo'>Upload Image</label>
           <input
             type='file'
@@ -134,7 +134,7 @@ const Edit = () => {
             id=''
             onChange={(e) => setFile(e.target.files[0])}
           />
-        </div>
+        </div> */}
 
         <button type='submit'>Save</button>
       </form>

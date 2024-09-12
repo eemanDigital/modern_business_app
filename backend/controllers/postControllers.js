@@ -134,11 +134,12 @@ export const updatePost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const { title, body, author } = req.body;
   // const { filename } = req.file;
-  const filename = req.file ? req.file.filename : null; // Handle optional file
+  // const filename = req.file ? req.file.filename : null; // Handle optional file
 
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
-    { title, body, author, photo: filename },
+    // { title, body, author, photo: filename },
+    { title, body, author },
     { new: true }
   );
   console.log(updatedPost);
@@ -158,5 +159,24 @@ export const deletePost = catchAsync(async (req, res, next) => {
 
   res.status(204).json({
     status: 'Post successfully deleted',
+  });
+});
+
+export const updatePostImg = catchAsync(async (req, res, next) => {
+  const postId = req.params.id;
+
+  const filename = req.file ? req.file.filename : null;
+
+  const updatedPost = await Post.findByIdAndUpdate(
+    postId,
+    { photo: filename },
+    { new: true }
+  );
+  console.log(photo, 'PHOTO');
+  res.status(200).json({
+    message: 'Post successfully updated',
+    data: {
+      updatedPost,
+    },
   });
 });

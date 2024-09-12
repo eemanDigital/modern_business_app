@@ -1,0 +1,77 @@
+@import 'variables';
+
+.feature {
+  @include section-padding;
+  @include flex-center-row;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-md;
+
+  &__image {
+    flex: 1 1 400px;
+    margin-right: $spacing-xl;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  &__content {
+    flex: 1 1 500px;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: $spacing-md;
+    color: $primary-color;
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    color: $text-color-light;
+  }
+}
+
+// Media Queries
+@media (max-width: $breakpoint-lg) {
+  .hero {
+    &__content {
+      max-width: 80%;
+    }
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+
+    &__image {
+      margin-right: 0;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .feature {
+    &__title {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+}
+
+.feature {
+  &__title {
+    font-size: 2rem;
+  }
+}

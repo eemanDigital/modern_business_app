@@ -1,5 +1,6 @@
 import { PiCertificateThin } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Aside = ({ price, title, img }) => {
   return (
@@ -31,10 +32,10 @@ const Aside = ({ price, title, img }) => {
         </Link>
       </div>
       <div className='why-us'>
-        <h3>Why You Should Engage Us</h3>
-        <Link to='#'>Why we are better</Link>
+        {/* <h3>Why You Should Engage Us</h3> */}
+        {/* <Link to='#'>Why we are better</Link>
         <Link>Clients&apos; Testimonials</Link>
-        <Link to='#'>Others</Link>
+        <Link to='#'>Others</Link> */}
         <div className='accredited'>
           <strong>CAC Accredited</strong>
 
@@ -51,3 +52,16 @@ const Aside = ({ price, title, img }) => {
 };
 
 export default Aside;
+
+Aside.propTypes = {
+  price: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  img: PropTypes.oneOfType([
+    PropTypes.string, // URL for an image
+    PropTypes.shape({
+      // Object with src and alt properties
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }),
+  ]).isRequired,
+};

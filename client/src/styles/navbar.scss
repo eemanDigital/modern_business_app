@@ -1,10 +1,9 @@
-@import './variables';
+@import 'variables';
 
 header {
   position: relative;
 
   .navbar {
-    // padding: 15px 0;
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -13,77 +12,74 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Adjust z-index as needed */
-    background-color: $deep-deep-blue;
-    /* Add any other styling you need */
+    z-index: 1000;
+    background-color: $highlight-color;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .navbar-logo {
     color: #ede8e8;
-    justify-self: start;
-    margin-left: 20px;
-    // padding: 0 15px;
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
-    padding: 0 0.5rem 3rem 0.5rem;
-    /* top | right | bottom | left */
   }
 
-  // .bi-cloud-moon-fill {
-  //   margin-left: 0.5rem;
-  //   margin-right: 1rem;
-  //   font-size: 1.6rem;
-  // }
+  .menu-icon {
+    display: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 
   .nav-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    // display: grid;
-    // grid-template-columns: repeat(6, auto);
-    gap: 1rem;
     list-style: none;
-    // text-align: center;
-    // width: 80vw;
-    // justify-content: center;
-    margin-right: 2rem;
+    gap: 1rem;
   }
 
   .nav-item {
     display: flex;
     align-items: center;
-    height: 80px;
+    position: relative;
+
+    &:hover .dropdown-menu {
+      display: block;
+    }
   }
 
   .nav-links {
-    color: #ffff;
+    color: #fff;
     font-weight: 500;
     text-decoration: none;
-    padding: 0.5rem 0.5rem 2rem 0.5rem;
-    /* top | right | bottom | left */
+    padding: 0.5rem 1rem;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: #1888ff;
+    }
   }
 
-  .nav-links:hover {
-    color: #1888ff;
-    transition: all 0.2s ease-out;
-  }
+  .logout-btn {
+    border: none;
+    background: #fff;
+    color: $deep-deep-blue;
+    border-radius: 4px;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+    cursor: pointer;
 
-  .bi-list {
-    color: #000;
-  }
-
-  .nav-links-mobile {
-    display: none;
-  }
-
-  .menu-icon {
-    display: none;
+    &:hover {
+      background: #2184b6;
+      color: #ffffff;
+    }
   }
 
   @media screen and (max-width: 960px) {
-    .NavbarItems {
-      position: relative;
+    .menu-icon {
+      display: block;
     }
 
     .nav-menu {
@@ -94,105 +90,39 @@ header {
       position: absolute;
       top: 80px;
       left: -100%;
-      opacity: 1;
+      opacity: 0;
       transition: all 0.5s ease;
       background: #fff;
       box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-      transition: 0.3s;
       border-radius: 4px;
       padding: 10px 0;
       z-index: 99;
-      opacity: 0;
-      /* border: 1px solid #6c757d; */
-      margin: 5px 10px 10px 10px;
     }
 
     .nav-menu.active {
-      background: $deep-deep-blue;
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
-      z-index: 1;
     }
+
     .nav-item {
       height: 38px;
     }
 
     .nav-links {
       text-align: center;
-      padding: 2rem;
-      margin: 0;
-      font-weight: 400;
-      /* top | right | bottom | left */
+      padding: 1rem;
       width: 100%;
-      @media (max-width: $smallPhone) {
-        font-size: 0.9rem;
+      color: $deep-deep-blue;
+
+      &:hover {
+        color: #2184b6;
       }
     }
 
-    .nav-links:hover {
-      color: #2184b6;
-      border-radius: 0;
-    }
-    .navbar-logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(25%, 20%);
-      margin-left: 2px;
-    }
-    .bi-cloud-moon-fill {
-      margin-left: 0;
-      font-size: 2rem;
-    }
-
-    .menu-icon {
-      display: block;
-      position: absolute;
-      color: #fff;
-      top: 0;
-      right: 0;
-      transform: translate(-100%, 40%);
-      font-size: 2.2rem;
-      cursor: pointer;
-    }
-
-    .bi-x {
-      color: #000;
-      font-size: 2rem;
-    }
-
-    .nav-links-mobile {
-      display: block;
+    .logout-btn {
+      width: 100%;
       text-align: center;
-      padding: 10px;
-      margin: 2rem auto;
-      border-radius: 4px;
-      width: 80%;
-      background: #1888ff;
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.5rem;
-    }
-
-    .nav-links-mobile:hover {
-      background: #fff;
-      color: #1888ff;
-      transition: 250ms;
-    }
-  }
-
-  .logout-btn {
-    border: none;
-    background: #ffff;
-    color: $deep-deep-blue;
-    border-radius: 4px;
-    font-weight: 500;
-    padding: 0.3rem 0.9rem;
-
-    &:hover {
-      background: #2184b6;
-      color: #ffffff;
     }
   }
 }

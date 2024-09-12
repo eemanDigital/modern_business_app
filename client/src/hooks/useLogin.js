@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -18,7 +20,7 @@ export const useLogin = () => {
     });
     const json = await response.json();
 
-    console.log(json);
+    // console.log(json);
     // console.log(response.data);
 
     if (!response.ok) {
@@ -27,6 +29,8 @@ export const useLogin = () => {
       // console.log(json);
     }
     if (response.ok) {
+      toast.success('Login Successful'); //toast success
+
       // save user to local storage
       localStorage.setItem('user', JSON.stringify(json));
       // console.log(json);

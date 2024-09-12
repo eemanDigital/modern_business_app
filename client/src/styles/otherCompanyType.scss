@@ -1,112 +1,102 @@
-@import './variables';
+// _variables.scss
+$primary-color: #0a2463;
+$secondary-color: #3e92cc;
+$accent-color: #d8315b;
+$background-color: #fffaff;
+$text-color: #1e1b18;
 
-//CUSTOM
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 480px;
+
+// OtherCompanyType.scss
+@import 'variables';
+
 .custom {
-  display: flex;
-  margin: 5rem 1rem;
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: $background-color;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
   @media (max-width: $breakpoint-tablet) {
-    margin: 5rem 0;
+    margin: 3rem auto;
+    padding: 1.5rem;
   }
 
   .custom-text {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
     position: relative;
-    background: radial-gradient(
-      circle at center,
-      #e81083,
-      #e81083 10%,
-      transparent 10%,
-      transparent 20%,
-      #e81083 20%,
-      #e81083 30%,
-      transparent 30%,
-      transparent 40%,
-      #e81083 40%,
-      #e81083 50%,
-      transparent 50%,
-      transparent 60%,
-      #e81083 60%,
-      #e81083 70%,
-      transparent 70%,
-      transparent 80%,
-      #e81083 80%,
-      #e81083 90%,
-      transparent 90%
-    );
-    background-size: 2em 2em;
-    background-color: #d00094;
-    opacity: 1;
-    padding: 2rem;
-    // z-index: -999;
-
-    @media (max-width: $breakpoint-tablet) {
-      padding: 2rem;
-    }
-
-    @media (max-width: $smallPhone) {
-      padding: 2rem 0.4rem;
-    }
 
     h1 {
-      position: absolute;
-      color: #e8e8e8;
+      color: $primary-color;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid $accent-color;
 
-      font-weight: 500;
-      background-color: $deep-deep-blue;
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      margin: 0;
-      top: -40px;
-      left: 0;
-    }
-    h4 {
-      padding-top: 2rem;
-      text-align: left;
-      color: #e8e8e8;
-
-      @media (max-width: $smallPhone) {
-        margin-top: 1rem;
-        padding: 1rem 0.5rem;
-        text-align: left;
-        font-weight: 600;
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 2rem;
       }
     }
 
+    h4 {
+      color: $text-color;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
     ul {
-      list-style: circle;
-      display: inline-block;
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 2rem;
+
       li {
-        font-weight: 500;
-        color: #e8e8e8;
+        color: $text-color;
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+
+        &:before {
+          content: '•';
+          color: $accent-color;
+          font-size: 1.5em;
+          position: absolute;
+          left: 0;
+          top: 0.3rem;
+        }
       }
     }
 
     .custom-links {
       display: flex;
-      justify-content: space-between;
       gap: 1rem;
-      @media (max-width: $smallPhone) {
+
+      @media (max-width: $breakpoint-mobile) {
         flex-direction: column;
       }
 
       a {
-        background-color: $deep-deep-blue;
+        flex: 1;
+        background-color: $secondary-color;
+        color: $background-color;
         text-decoration: none;
-        padding: 0.5rem 1rem;
-        color: #e8e8e8;
-        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 600;
         text-align: center;
-        cursor: pointer;
+        transition: background-color 0.3s ease;
+
         &:hover {
-          background-color: rgb(8, 27, 88);
+          background-color: darken($secondary-color, 10%);
         }
 
-        @media (max-width: $breakpoint-tablet) {
-          // padding: 0.5rem 0.8rem;
-          border-radius: 5px;
-          font-size: 0.9rem;
+        &:last-child {
+          background-color: $accent-color;
+
+          &:hover {
+            background-color: darken($accent-color, 10%);
+          }
         }
       }
     }

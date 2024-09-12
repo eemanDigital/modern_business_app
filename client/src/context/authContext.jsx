@@ -20,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
 
   //ensure we the token is retained when page is refreshed/reloaded
   useEffect(() => {
-    // chnages the JSON string to object
+    // changes the JSON string to object
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       dispatch({ type: 'LOGIN', payload: user });

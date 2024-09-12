@@ -1,0 +1,142 @@
+@import 'variables';
+
+.services {
+  @include section-padding;
+  background-color: $background-color;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+
+    margin-bottom: $spacing-xl;
+    color: $primary-color;
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+
+    @media (max-width: $breakpoint-sm) {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem;
+      scroll-snap-type: x mandatory; // Smooth scroll snapping for cards
+    }
+  }
+
+  &__card {
+    background-color: $card-background;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 284px; // Ensures cards are scrollable on small screens
+    height: 416px;
+    scroll-snap-align: center; // Align cards in the center when scrolling
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: scale(1.02);
+    }
+  }
+
+  &__card-header {
+    background-color: $accent-color;
+    height: 20px;
+    color: $white;
+    padding: $spacing-lg;
+    text-align: center;
+    border-bottom: 3px solid $highlight-color;
+
+    h4 {
+      font-size: 1rem;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__card-body {
+    padding: 0 $spacing-lg;
+    text-align: center;
+
+    p {
+      font-size: 1rem;
+      color: #000;
+      margin-bottom: $spacing-md;
+      line-height: 1.6;
+    }
+  }
+
+  &__icon {
+    font-size: 3.5rem;
+    color: $accent-color;
+    margin-bottom: $spacing-sm;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+
+  &__price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: $spacing-md 0;
+    color: $secondary-color;
+
+    span {
+      font-size: 1.2rem;
+      color: $text-color-light;
+    }
+  }
+
+  &__cta {
+    @include button-styles($highlight-color, $white);
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-top: $spacing-md;
+    padding: 0.75rem;
+    border-radius: $border-radius;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: lighten($highlight-color, 5%);
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: $breakpoint-md) {
+  .services {
+    &__title {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .services {
+    &__title {
+      font-size: 2rem;
+    }
+  }
+}

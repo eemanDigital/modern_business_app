@@ -2,10 +2,7 @@ import { PiCertificateThin } from 'react-icons/pi';
 import ourStory from '../assets/about-story.svg';
 import { motion } from 'framer-motion';
 import { useScrolls } from '../hooks/useScrolls';
-// import Button from '../components/Button';
-// import TrustCards from '../components/TrustCards';
-import Trust from '../components/company/Trust';
-// import { trust_card_data } from './../data/data';
+import Trust from '../components/Trust';
 import '../styles/aboutUs.scss';
 
 function AboutUs() {

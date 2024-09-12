@@ -1,22 +1,83 @@
 // $deepBlue: #1e2761;
+// $primary-color: #40c652;
+$disabled-color: #e6e6e6;
 $deepBlue: #408ec6;
 $deep-deep-blue: #1f577e;
 $Pink: #da2677;
 $LightPink: #f0f0f0;
-// $deepBlue: #1e2761;
-// $lighterBlue: #408ec6;
-// $Pink: #7a2048;
-// $LightPink: #f0f0f0;
+// $primary-color: #3498db;
+$card-bg: #ffffff;
+$text-primary: #333333;
+$text-secondary: #666666;
+$text-muted: #999999;
+$border-radius: 8px;
 
 //MEDIA BREAKPOINT
 $breakpoint-tablet: 768px;
 $smallPhone: 442px;
 
-// White Smoke (#F0F0F0) and Brilliant Red (#E7473C)
-// Hex Codes: Blue (#408EC6), Maroon (#7A2048), Indigo (#1E2761)
-//   primary: "#038C7F",
-//         secondary: "#F2C641",
-//         tertiary: {
-//           dark: "#F27405",
-//           light: "#F2C641",
-//         },
+// Variables
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$accent-color: #3498db;
+$highlight-color: #e74c3c;
+$background-color: #f8f9fa;
+$card-background: #ffffff;
+$text-color: #2c3e50;
+$text-color-light: #7f8c8d;
+$white: #ffffff;
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+$spacing-xl: 4rem;
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+$border-radius: 8px;
+$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin button-styles($background: $accent-color, $color: $white) {
+  background-color: $background;
+  color: $color;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $border-radius;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background-color: darken($background, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@mixin section-padding {
+  padding: $spacing-xl 0;
+}
+
+@mixin flex-center-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}

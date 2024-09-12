@@ -8,7 +8,7 @@
     gap: 1rem;
     justify-content: space-between;
     // padding: 1.4rem 0;
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-md) {
       flex-direction: column;
     }
 
@@ -20,7 +20,7 @@
         font-weight: 700;
       }
       .how-to-start {
-        background-color: $deepBlue;
+        background-color: $primary-color;
         border-radius: 5px;
         padding: 3rem;
 
@@ -42,7 +42,7 @@
           width: 200px;
           &:hover {
             background-color: #ffff;
-            color: $Pink;
+            color: $highlight-color;
             font-weight: 500;
           }
         }
@@ -51,7 +51,7 @@
   }
 
   .company-package {
-    @media (max-width: $smallPhone) {
+    @media (max-width: $breakpoint-sm) {
       flex-direction: column;
     }
   }

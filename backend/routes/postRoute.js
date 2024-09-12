@@ -6,6 +6,7 @@ import {
   updatePost,
   deletePost,
   uploadPostPhoto,
+  updatePostImg,
 } from '../controllers/postControllers.js';
 import { protect } from '../controllers/authController.js';
 
@@ -21,7 +22,8 @@ postRouter
 postRouter
   .route('/:id')
   .get(getPost)
-  .put(protect, uploadPostPhoto, updatePost)
+  .put(protect, updatePost)
+  .put(protect, uploadPostPhoto, updatePostImg)
   .delete(protect, deletePost);
 
 export default postRouter;

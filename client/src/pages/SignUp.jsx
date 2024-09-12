@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import http from '../lib/http';
-// import { useNavigate } from 'react-router-dom';
 import { useSignUp } from '../hooks/useSignUp';
-// import { useAuthContext } from '../hooks/useAuthContext';
+import { toast } from 'react-toastify';
 
 import '../styles/login.scss';
 
@@ -16,37 +14,39 @@ function SignUp() {
   });
   const { username, email, password, confirmPassword } = inputs;
   const { signup, isLoading, error, setError } = useSignUp();
-  // // const [error, handleError] = useState('');
-  // const navigate = useNavigate();
-  // const { user } = useAuthContext();
-  // const status = user?.status;
-  // console.log(status);
-  // const isSuccess = status === 'success';
-  // console.log(isSuccess);
-
-  // console.log('STATUS', status);
 
   function handleInputs(e) {
     const input = e.target.value;
     const nameVal = e.target.name;
 
     setInputs(() => ({ ...inputs, [nameVal]: input }));
-    // setInputs(() => e.target.value);
   }
+
+  // Validate inputs
+  const validateInputs = () => {
+    if (!username || !email || !password || !confirmPassword) {
+      toast.error('Please fill in all fields');
+      return false;
+    }
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return false;
+    }
+    // Add more validation as needed
+    return true;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(username, email, password, confirmPassword);
 
-    // if (status === true) {
-    //   navigate('/login');
-    // } else {
-    //   return;
-    // }
+    if (!validateInputs()) return;
+
+    await signup(username, email, password, confirmPassword);
   };
 
   useEffect(() => {
     if (error) {
+      toast.error(error);
       setTimeout(() => {
         setError(false);
       }, 2000);
@@ -58,11 +58,6 @@ function SignUp() {
   return (
     <>
       <form onSubmit={handleSubmit} className='sign-up'>
-        {error && (
-          <div className='error'>
-            <span>{error}</span>
-          </div>
-        )}
         <div className='title'>
           <h1>SignUp</h1>
         </div>
@@ -70,7 +65,6 @@ function SignUp() {
           <input
             type='text'
             placeholder='Username'
-            // id='username'
             value={username}
             name='username'
             onChange={handleInputs}
@@ -78,7 +72,6 @@ function SignUp() {
           <input
             type='email'
             placeholder='Email'
-            // id='email'
             value={email}
             name='email'
             onChange={handleInputs}
@@ -86,7 +79,6 @@ function SignUp() {
           <input
             type='password'
             placeholder='Password'
-            // id='password'
             value={password}
             name='password'
             onChange={handleInputs}
@@ -94,19 +86,19 @@ function SignUp() {
           <input
             type='password'
             placeholder='Confirm password'
-            // id='confirmPassword'
             value={confirmPassword}
             name='confirmPassword'
             onChange={handleInputs}
           />
-          <button disabled={isLoading}>Submit</button>
+          <button disabled={isLoading}>
+            {isLoading ? ' Submitting...' : ' Submit'}
+          </button>
           <div className='no-account'>
             <p>
               <span>Already have an account?</span>{' '}
               <Link to='/login'>Login</Link>{' '}
             </p>
           </div>
-          {/* {error && <h3>{error}</h3>} */}
         </div>
       </form>
     </>

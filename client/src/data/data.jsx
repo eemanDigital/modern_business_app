@@ -5,12 +5,42 @@ import { FaPeopleArrows } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 import { IoPeople } from 'react-icons/io5';
 import { IoIosPerson } from 'react-icons/io';
+import heroImage1 from '../assets/hero1.jpg';
+import heroImage2 from '../assets/hero2.jpg';
+import heroImage3 from '../assets/hero3.jpg';
+import heroImage4 from '../assets/hero4.jpg';
 
 export const homeView = {
   title: 'Start Your Journey to Success',
   message: 'Register and Develop Your Business Online Today',
   // message: "From Registration Hurdles to Web Development Challenges – We're Here to Simplify Your Path to Success."
 };
+
+export const heroContent = [
+  {
+    title: 'Incorporate Your Business with Ease',
+    subtitle:
+      'Professional registration services to jumpstart your entrepreneurial journey',
+    image: heroImage1,
+  },
+  {
+    title: 'Expand Your Business Globally',
+    subtitle:
+      'Expert guidance for international business expansion and compliance',
+    image: heroImage2,
+  },
+  {
+    title: 'Streamline Your Operations',
+    subtitle:
+      'Comprehensive solutions for efficient business management and growth',
+    image: heroImage3,
+  },
+  {
+    title: 'Make your business have a legal face',
+    subtitle: 'Making your business legit and legitimate is what we represent',
+    image: heroImage4,
+  },
+];
 
 export const packages = [
   {

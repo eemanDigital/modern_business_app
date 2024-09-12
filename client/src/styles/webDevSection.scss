@@ -5,96 +5,85 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 0 2rem;
-  // background-color: $Pink;
-  background: radial-gradient(
-    circle at center,
-    #e81083,
-    #e81083 10%,
-    transparent 10%,
-    transparent 20%,
-    #e81083 20%,
-    #e81083 30%,
-    transparent 30%,
-    transparent 40%,
-    #e81083 40%,
-    #e81083 50%,
-    transparent 50%,
-    transparent 60%,
-    #e81083 60%,
-    #e81083 70%,
-    transparent 70%,
-    transparent 80%,
-    #e81083 80%,
-    #e81083 90%,
-    transparent 90%
-  );
-  background-size: 2em 2em;
-  background-color: #d00094;
-  opacity: 1;
-  margin: 5rem auto;
-  // height: 884px;
+  padding: 4rem 2rem;
+  background: $highlight-color; // Use gradient or a more subtle background pattern if preferred
+  background-size: cover;
+  background-color: $highlight-color;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin: 4rem auto;
+  max-width: 1200px;
 
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-md) {
     flex-direction: column;
+    padding: 2rem 1rem;
   }
+
   .text {
     flex: 1;
-    color: #ffff;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
-    padding: 3rem 2rem;
+    justify-content: center;
+    padding: 2rem;
     text-align: left;
 
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-md) {
       text-align: justify;
-      width: 100%;
-      padding: 1.3rem 1rem;
-    }
-
-    @media (max-width: $smallPhone) {
-      padding: 1.5rem 0;
+      padding: 1.5rem 1rem;
     }
 
     h1 {
-      text-align: left;
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 2.5rem;
       text-transform: uppercase;
-      background: -webkit-linear-gradient(#eee, #9fa4a9);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      color: #ffffff;
+      background: linear-gradient(to right, #ffffff, #d1d8e0);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      // text-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      //   rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
       @media (max-width: $smallPhone) {
-        font-weight: 600;
         font-size: 2rem;
       }
     }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #f0f0f0;
+    }
+
     .link-btn {
       display: flex;
       gap: 1rem;
-      justify-content: flex-start;
-      margin-top: 2rem;
+      flex-wrap: wrap;
+
       @media (max-width: $smallPhone) {
         flex-direction: column;
+        gap: 0.5rem;
       }
+
       a {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.3rem;
+        gap: 0.5rem;
         text-decoration: none;
-        border: 1px solid #ffff;
-        border-radius: 5px;
-        padding: 0.5rem 1.5rem;
-        font-weight: 700;
-        min-width: 40%;
+        border: 1px solid #ffffff;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        min-width: 45%;
         text-align: center;
-        color: #ffff;
+        color: #ffffff;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
         @media (max-width: $smallPhone) {
           font-weight: 500;
+          width: 100%;
         }
 
         svg {
@@ -102,27 +91,28 @@
         }
 
         &:hover {
-          background-color: #ffff;
-          color: $Pink;
-          font-weight: 500;
+          background-color: #ffffff;
+          color: $highlight-color;
         }
       }
     }
   }
 
   .img {
-    // display: flex;
-    // align-items: center;
     flex: 1;
     padding: 1rem;
-    max-width: 450px;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+
     img {
       width: 100%;
       height: auto;
-      // border-radius: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-      @media (max-width: $breakpoint-tablet) {
-        min-width: 50%;
+      @media (max-width: $breakpoint-md) {
+        max-width: 100%;
       }
     }
   }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const useSignUp = () => {
   const [error, setError] = useState(null);
@@ -42,7 +43,8 @@ export const useSignUp = () => {
       dispatch({ type: 'LOGIN', payload: json });
       // console.log({ payload: json });
       setIsLoading(false);
-      navigate('/login');
+      toast.success('SignUp successful');
+      navigate('/');
     }
   };
 

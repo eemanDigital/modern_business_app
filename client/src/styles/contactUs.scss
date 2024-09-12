@@ -1,0 +1,152 @@
+@import 'variables';
+
+.contact {
+  overflow: hidden;
+
+  margin-top: 6rem;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 3rem 2rem;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 2rem 1rem;
+  }
+}
+
+.contactFormContainer {
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: $breakpoint-md) {
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+}
+
+.contactFormTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: $primary-color;
+  position: relative;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.5rem;
+  }
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: $primary-color;
+    transition: color 0.3s ease;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 0 0.75rem 0.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-blue-color);
+      box-shadow: 0 0 0 3px rgba(53, 122, 189, 0.1);
+      background-color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  textarea {
+    height: 120px;
+    resize: vertical;
+  }
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  background-color: $primary-color;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background-color: #2c669e;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+input:invalid,
+textarea:invalid {
+  animation: shake 0.4s ease-in-out;
+}

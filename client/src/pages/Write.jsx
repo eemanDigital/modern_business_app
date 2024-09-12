@@ -1,29 +1,13 @@
-import { useEffect, useState } from 'react';
-// import useCookies from 'react-cookie';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import http from '../lib/http';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-// import { toast } from 'react-toastify';
+import { formats } from '../lib/quillFormat';
 
 const Write = () => {
   const navigate = useNavigate();
-  const formats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'color',
-    'clean',
-  ];
 
   // Local state to manage form fields
   const [formData, setFormData] = useState({
@@ -31,20 +15,18 @@ const Write = () => {
     body: '',
     author: '',
   });
-  // const [showError, setShowError] = useState(' ');
   const [file, setFile] = useState();
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const { user } = useAuthContext();
-  // console.log(user);
   const token = user?.token;
   const role = user?.data?.user?.role;
 
   // checks admin role for writing
   const isAdmin = role === 'admin';
-  // console.log(role);
 
   // Handle form field changes
   const handleInputChange = (e) => {
-    // const { name, value } = e.target;
     const name = e.target.name;
     const value = e.target.value;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -52,6 +34,15 @@ const Write = () => {
 
   const handleInputChangeForBody = (value) => {
     setFormData((prevData) => ({ ...prevData, body: value }));
+  };
+
+  // Validate form data
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.title) newErrors.title = 'Title is required';
+    if (!formData.body) newErrors.body = 'Body is required';
+    if (!formData.author) newErrors.author = 'Author is required';
+    return newErrors;
   };
 
   // Handle form submission
@@ -63,9 +54,16 @@ const Write = () => {
     }
 
     if (!user) {
-      // setError(errMsg)
       return;
     }
+
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setLoading(true);
 
     const payload = {
       title: formData.title,
@@ -73,7 +71,7 @@ const Write = () => {
       author: formData.author,
       file: file,
     };
-    console.log(payload);
+
     try {
       await http.post('/posts', {
         data: payload,
@@ -83,6 +81,8 @@ const Write = () => {
       navigate('/blog');
     } catch (error) {
       console.error('Error updating post:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -102,6 +102,7 @@ const Write = () => {
           value={formData.title}
           onChange={handleInputChange}
         />
+        {errors.title && <p className='error'>{errors.title}</p>}
 
         <label htmlFor='author'>Author</label>
         <input
@@ -110,39 +111,30 @@ const Write = () => {
           value={formData.author}
           onChange={handleInputChange}
         />
+        {errors.author && <p className='error'>{errors.author}</p>}
 
         <div className='editorContainer'>
-          {/* <div dangerouslySetInnerHTML={{ __html: formData.body }} /> */}
-          {/* <label htmlFor='body'>Body</label> */}
           <ReactQuill
             className='editor'
             theme='snow'
             formats={formats}
             value={formData.body}
-            dangerouslySetInnerHTML={{ __html: formData.body }}
             onChange={handleInputChangeForBody}
           />
         </div>
+        {errors.body && <p className='error'>{errors.body}</p>}
 
-        {/* <label htmlFor='body'>Body</label>
-        <textarea
-          id=''
-          cols='70'
-          rows='10'
-          name='body'
-          value={formData.body}
-          onChange={handleInputChange}></textarea> */}
         <div className='upload'>
           <label htmlFor='photo'>Upload Image</label>
           <input
             type='file'
-            name='file' // Use 'file' to match Multer configuration
-            id=''
-            // value={file}
+            name='file'
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
-        <button type='submit'>Publish</button>
+        <button type='submit' disabled={loading}>
+          {loading ? 'Publishing...' : 'Publish'}
+        </button>
       </form>
     </article>
   );

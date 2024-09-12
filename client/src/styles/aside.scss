@@ -2,8 +2,9 @@
 
 .aside {
   flex: 1;
-  background-color: #1d57f828;
+  background-color: $primary-color;
   border-radius: 15px;
+  max-height: 500px;
 
   //   height: 434px;
 
@@ -22,10 +23,10 @@
     svg {
       width: 40px;
       height: auto;
-      color: $Pink;
+      color: $highlight-color;
     }
     a {
-      background-color: $Pink;
+      background-color: $highlight-color;
       text-decoration: none;
       border: 1px solid #ffff;
       padding: 0.5rem 1rem;
@@ -33,7 +34,7 @@
       // text-align: center;
       width: 200px;
 
-      @media (max-width: $smallPhone) {
+      @media (max-width: $breakpoint-sm) {
         text-align: center;
         width: 150px;
         padding: 0.5rem;
@@ -42,7 +43,7 @@
   }
   .amount {
     font-size: 3rem;
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-md) {
       font-size: 2rem;
     }
   }
@@ -72,7 +73,7 @@
       height: 74px;
       color: #ffff;
       //   text-align: center;
-      background-color: $Pink;
+      background-color: $highlight-color;
       border-radius: 4px;
       padding: 1rem;
     }

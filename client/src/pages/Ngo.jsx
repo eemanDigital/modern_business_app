@@ -1,11 +1,11 @@
 // import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
-import Aside from '../components/company/Aside';
-import Trust from '../components/company/Trust';
+import Aside from '../components/Aside';
+import Trust from '../components/Trust';
 import PostIncorporation from '../components/PostIncorporation';
 import { pre_inc_service } from '../data/data';
 import { packages } from '../data/data';
-import Packages from '../components/company/Packages';
+import Packages from '../components/Packages';
 import ngo_img from '../assets/ngo_img.svg';
 import Button from '../components/Button';
 
@@ -25,12 +25,12 @@ const Ngo = () => {
               non-profit organization as an incorporated trustee grants it legal
               personality. This means that the organization can sue and be sued
               independently, and its members are not personally liable for the
-              organization's obligations or legal actions.
+              organization&apos;s obligations or legal actions.
             </p>
 
             <p>
               This type of organization focuses on social or public benefit
-              rather than generating profit. Here's a breakdown:
+              rather than generating profit. Here&apos;s a breakdown:
             </p>
 
             <ul>

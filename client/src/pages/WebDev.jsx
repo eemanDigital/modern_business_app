@@ -1,14 +1,9 @@
-// import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
-// import Aside from '../../components/company/Aside';
-import Trust from '../components/company/Trust';
+import Trust from '../components/Trust';
 import PostIncorporation from '../components/PostIncorporation';
-// import { pre_inc_service } from '../../              /data';
-import Packages from '../components/company/Packages';
+import Packages from '../components/Packages';
 import { packages } from '../data/data';
 import partner from '../assets/partner.svg';
-import WebDevSection from '../components/WebDevSection';
-import Aside from '../components/company/Aside';
 
 import '../styles/webdev.scss';
 
@@ -16,19 +11,17 @@ const WebDev = () => {
   return (
     <>
       <section className='company-section webdev'>
-        <WebDevSection />
-
         <div className='comp-container'>
           <div className='text-1'>
             <h1>Unleash Your Online Potential</h1>
 
             <p>
               In today&apos;s digital age, having a strong online presence is
-              crucial for businesses of all sizes. Whether you're a seasoned
-              entrepreneur or just starting out, a well-designed website can be
-              your most valuable marketing tool. At [Your Company Name], we
-              specialize in crafting unique and effective websites that cater to
-              your specific needs and goals.
+              crucial for businesses of all sizes. Whether you&apos;re a
+              seasoned entrepreneur or just starting out, a well-designed
+              website can be your most valuable marketing tool. At [Your Company
+              Name], we specialize in crafting unique and effective websites
+              that cater to your specific needs and goals.
             </p>
             <h2>
               Unveiling a World of Opportunities: Our Diverse Web Development
@@ -36,8 +29,8 @@ const WebDev = () => {
             </h2>
             <p>
               We understand that every business is unique, and no two websites
-              should be the same. That's why we offer a diverse range of web
-              development services to ensure your online platform perfectly
+              should be the same. That&apos;s why we offer a diverse range of
+              web development services to ensure your online platform perfectly
               reflects your brand and resonates with your target audience. Here
               are some of the types of websites we can build:
             </p>
@@ -105,15 +98,15 @@ const WebDev = () => {
             </ul>
             <h2>Unlocking Your Vision: Partner with Us Today</h2>
             <p>
-              At [Your Company Name], we're passionate about helping you achieve
-              your digital goals. We collaborate closely with each client to
-              understand their vision, target audience, and unique requirements.
-              By leveraging our expertise and a wide range of web development
-              services, we build websites that not only look stunning but also
-              deliver tangible results.
+              At [Your Company Name], we&apos;re passionate about helping you
+              achieve your digital goals. We collaborate closely with each
+              client to understand their vision, target audience, and unique
+              requirements. By leveraging our expertise and a wide range of web
+              development services, we build websites that not only look
+              stunning but also deliver tangible results.
             </p>
             <p>
-              Contact us today for a free consultation and let's turn your
+              Contact us today for a free consultation and let&apos;s turn your
               online vision into reality!
             </p>
             <div className='how-to-start'>

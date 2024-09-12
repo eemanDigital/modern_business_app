@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import TrustCards from '../TrustCards';
-import { trust_card_data } from '../../data/data';
+import TrustCards from './TrustCards';
+import { trust_card_data } from '../data/data';
 
 const Trust = () => {
   const [isOpen, setIsOpen] = useState(false);

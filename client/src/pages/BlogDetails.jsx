@@ -90,15 +90,14 @@ const BlogDetails = () => {
             )}
           </div>
         )}
+
+        
         <h1>{blogPosts.title}</h1>
         <div className='blog-content-author-date'>
           <span>{formatDate(blogPosts.date)}</span>
           <span>By: {blogPosts.author}</span>
         </div>
-        {/* <p>{blogPosts.body.split('/n').join(``)}</p> */}
         <p dangerouslySetInnerHTML={{ __html: blogPosts.body }}></p>
-        {/* <p dangerouslySetInnerHTML={{ __html: body.substring(0, 100) }} /> */}
-
         <Link to='/blog' style={{ textDecoration: 'none' }}>
           &#8592; Go back
         </Link>

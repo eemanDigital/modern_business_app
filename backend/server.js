@@ -26,10 +26,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.DATABASE_LOCAL, {})
   .then(() => console.log('Connected'))
   .catch((err) => console.error(err));
 app.use(

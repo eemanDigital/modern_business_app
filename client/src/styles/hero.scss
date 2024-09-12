@@ -1,0 +1,130 @@
+@import 'variables';
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  &__slide {
+    position: absolute;
+    margin-top: $spacing-md;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  &__content {
+    text-align: center;
+    color: $white;
+    padding: $spacing-lg;
+    background-color: rgba($primary-color, 0.7);
+    border-radius: $border-radius;
+    max-width: 600px;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: $spacing-md;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__cta {
+    @include button-styles($highlight-color, $white);
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+
+  &__nav {
+    position: absolute;
+    bottom: $spacing-lg;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba($white, 0.5);
+    cursor: pointer;
+    transition: $transition;
+
+    &.active {
+      background-color: $white;
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: $breakpoint-lg) {
+  .hero {
+    &__content {
+      max-width: 80%;
+    }
+  }
+
+  .feature {
+    flex-direction: column;
+    text-align: center;
+
+    &__image {
+      margin-right: 0;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .hero {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .hero {
+    &__content {
+      padding: $spacing-md;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+}

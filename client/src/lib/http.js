@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // When building the client into a static file, we do not need to include the server path as it is returned by it
 const domain =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3300';
+  import.meta.env.VITE_NODE_ENV === 'production' ? '' : 'http://localhost:3300';
 
 // HTTP function to make requests with customizable options
 const http = (

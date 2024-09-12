@@ -1,10 +1,8 @@
-// import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
-// import Aside from '../../components/company/Aside';
-import Trust from '../components/company/Trust';
+import Trust from '../components/Trust';
 import PostIncorporation from '../components/PostIncorporation';
-import Aside from '../components/company/Aside';
-import Packages from '../components/company/Packages';
+import Aside from '../components/Aside';
+import Packages from '../components/Packages';
 import { packages } from '../data/data';
 import partner from '../assets/partner.svg';
 import Button from '../components/Button';
@@ -96,8 +94,8 @@ const Partnership = () => {
             </li>
             <li>
               <strong>Taxation:</strong> Partnerships are not separate tax
-              entities; each partner reports their share of the partnership's
-              income or loss on their individual tax returns.
+              entities; each partner reports their share of the
+              partnership&apos;s income or loss on their individual tax returns.
             </li>
           </ul>
 
