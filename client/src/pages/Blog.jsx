@@ -33,6 +33,7 @@ function Blog() {
       const { data } = await http.get(
         `/posts?page=${currentPage.current}&limit=${limit}`
       );
+
       setBlogPosts(data?.data?.results?.result);
       setPageCount(data?.data?.results?.pageCount);
       setLoading(false);
@@ -40,6 +41,8 @@ function Blog() {
       console.log(err);
     }
   }
+
+  console.log(blogPosts);
 
   return (
     <div className='blog-container'>

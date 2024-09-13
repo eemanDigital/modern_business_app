@@ -1,0 +1,14 @@
+@import 'variables';
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xl;
+  color: $primary-color;
+
+  span {
+    color: $accent-color;
+  }
+}

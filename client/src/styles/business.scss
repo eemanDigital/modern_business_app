@@ -6,7 +6,7 @@
   align-items: center;
   margin: 2rem 0;
   padding: 1.2rem;
-  background-color: $Pink;
+  background-color: $highlight-color;
   border-radius: 20px;
 
   .dream-wrapper {
@@ -15,7 +15,7 @@
     padding: 1rem 2.7rem;
     gap: 1rem;
 
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-md) {
       flex-direction: column;
       padding: 1rem 0.5rem;
     }

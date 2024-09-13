@@ -26,8 +26,9 @@ const http = (
 
   // Check if the request is a POST or PUT and the content type is 'multipart/form-data'
   if (
-    (method === 'POST' || method === 'PUT') &&
-    contentType === 'multipart/form-data'
+    (method === 'POST' || method === 'PUT' || method === 'PATCH') &&
+    contentType === 'multipart/form-data' &&
+    !(data instanceof FormData)
   ) {
     // If so, create a FormData object and append JSON data to it
     const formData = new FormData();
@@ -36,12 +37,7 @@ const http = (
     });
 
     // Make the request with the FormData
-    return axios({
-      headers,
-      url: `${domain}${url}`,
-      method,
-      data: formData,
-    });
+    data = formData; // Use the prepared FormData object
   }
 
   // For other cases (GET, POST/PUT with 'application/json'), make the request with the provided data
@@ -56,12 +52,14 @@ const http = (
 // Main functions to handle different types of endpoints
 const get = (url, opts = {}) => http(url, { ...opts });
 const post = (url, opts = {}) => http(url, { method: 'POST', ...opts });
+const patch = (url, opts = {}) => http(url, { method: 'PATCH', ...opts });
 const put = (url, opts = {}) => http(url, { method: 'PUT', ...opts });
 const del = (url, opts = {}) => http(url, { method: 'DELETE', ...opts });
 
 const methods = {
   get,
   post,
+  patch,
   put,
   delete: del,
 };

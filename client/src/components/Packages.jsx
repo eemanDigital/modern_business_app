@@ -1,39 +1,47 @@
 import PropTypes from 'prop-types';
+import '../styles/packages.scss';
 
 const Packages = ({ title, price, benefits }) => {
-  // const data = company_packages.slice(0, 2);
   return (
-    <div className='package-container'>
-      <table className='p-card'>
-        <thead>
-          <tr>
-            <th>
-              {title} <span className='price'>&#8358;{price}</span>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody className='package-body'>
-          {benefits.map((benefit, index) => {
-            return (
-              <>
-                <tr key={index}>
-                  <td>
-                    <span>&#x2713;</span> {benefit}
-                  </td>
-                </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className='generic_price_table'>
+      <div className='generic_content'>
+        <div className='generic_head_price'>
+          <div className='generic_head_content'>
+            <div className='head_bg'></div>
+            <div className='head'>
+              <span>{title}</span>
+            </div>
+          </div>
+          <div className='generic_price_tag'>
+            <span className='price'>
+              <span className='sign'>₦</span>
+              <span className='currency'>{price}</span>
+            </span>
+          </div>
+        </div>
+        <div className='generic_feature_list'>
+          <ul>
+            {benefits.map((benefit, index) => (
+              <li key={index}>
+                <span className='fa fa-check'></span> {benefit}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className='generic_price_btn'>
+          <a href='#' className='btn'>
+            Get Started
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
-export default Packages;
 
 Packages.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   benefits: PropTypes.array.isRequired,
 };
+
+export default Packages;

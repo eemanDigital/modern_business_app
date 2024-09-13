@@ -1,18 +1,38 @@
 @import 'variables';
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-// $primary-color: #2ecc71;
-$secondary-color: #3498db;
-$text-color: #414141;
-$bg-color: #f6f6f6;
-$white: #ffffff;
-
-.generic_price_table {
+#generic_price_table {
   font-family: 'Raleway', sans-serif;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: $background-color;
+  padding: 50px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+
+  .col-md-4 {
+    width: 33.333%;
+    padding: 15px;
+    @media (max-width: $breakpoint-md) {
+      width: 100%;
+      padding: 4rem;
+    }
+    @media (max-width: $breakpoint-sm) {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
 
   .generic_content {
     background-color: $white;
@@ -21,14 +41,15 @@ $white: #ffffff;
     text-align: center;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
 
+    &.active,
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
       .head_bg {
-        border-color: $primary-color transparent transparent $primary-color;
+        border-color: $highlight-color transparent transparent $highlight-color;
       }
 
       .generic_head_price .generic_head_content .head span,
@@ -43,9 +64,6 @@ $white: #ffffff;
     background-color: $white;
 
     .generic_head_content {
-      position: relative;
-      overflow: hidden;
-
       .head_bg {
         border-style: solid;
         border-width: 90px 1411px 23px 399px;
@@ -58,17 +76,17 @@ $white: #ffffff;
       }
 
       .head {
-        padding: 40px 0 20px;
+        padding-top: 40px;
         position: relative;
         z-index: 2;
 
         span {
           font-family: 'Raleway', sans-serif;
-          font-size: 20px;
+          font-size: 1.2rem;
           font-weight: 400;
           letter-spacing: 2px;
           margin: 0;
-          padding: 0 0.5rem;
+          padding: 0;
           text-transform: uppercase;
           color: $white;
           transition: all 0.3s ease-in-out;
@@ -81,13 +99,14 @@ $white: #ffffff;
 
       .price {
         display: block;
+        padding-top: 2rem;
+        z-index: 1;
 
         .sign,
-        .currency,
-        .month {
+        .currency {
           display: inline-block;
           font-family: 'Lato', sans-serif;
-          color: $text-color;
+          color: $accent-color;
         }
 
         .sign {
@@ -97,7 +116,7 @@ $white: #ffffff;
         }
 
         .currency {
-          font-size: 40px;
+          font-size: 2rem;
           font-weight: 300;
           letter-spacing: -2px;
           line-height: 60px;
@@ -109,13 +128,14 @@ $white: #ffffff;
   .generic_feature_list {
     ul {
       list-style: none;
-      padding: 0;
+      padding: 0 0.8rem;
+      text-align: center;
       margin: 0;
 
       li {
         font-family: 'Lato', sans-serif;
         font-size: 15px;
-        padding: 15px 5px;
+        padding: 15px 0;
         transition: all 0.3s ease-in-out;
         color: $text-color;
 
@@ -123,16 +143,15 @@ $white: #ffffff;
           background-color: #f8f8f8;
         }
 
-        .fa-check {
-          color: $primary-color;
-          margin-right: 10px;
+        span {
+          font-weight: 600;
         }
       }
     }
   }
 
   .generic_price_btn {
-    margin: 20px 0;
+    margin: 20px 0 32px;
 
     a {
       border-radius: 50px;
@@ -145,10 +164,10 @@ $white: #ffffff;
       text-decoration: none;
       text-transform: uppercase;
       transition: all 0.3s ease-in-out;
-      border: 1px solid $primary-color;
+      border: 1px solid $highlight-color;
 
       &:hover {
-        background-color: $primary-color;
+        background-color: $highlight-color;
         color: $white;
       }
     }

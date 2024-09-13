@@ -2,12 +2,13 @@
 
 .services {
   @include section-padding;
-  background-color: $background-color;
+  // background-color: $background-color;
 
   &__title {
     text-align: center;
     font-size: 2.5rem;
-
+    font-weight: 800;
+    margin-top: $spacing-xl;
     margin-bottom: $spacing-xl;
     color: $primary-color;
 
@@ -26,54 +27,34 @@
 
     @media (max-width: $breakpoint-sm) {
       display: flex;
-      flex-wrap: nowrap;
+      flex-direction: column;
       overflow-x: auto;
       gap: 1rem;
       padding: 1rem;
-      scroll-snap-type: x mandatory; // Smooth scroll snapping for cards
     }
   }
 
   &__card {
-    background-color: $card-background;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-width: 284px; // Ensures cards are scrollable on small screens
-    height: 416px;
-    scroll-snap-align: center; // Align cards in the center when scrolling
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active {
-      transform: scale(1.02);
-    }
+    text-align: left;
   }
 
   &__card-header {
-    background-color: $accent-color;
-    height: 20px;
-    color: $white;
-    padding: $spacing-lg;
-    text-align: center;
-    border-bottom: 3px solid $highlight-color;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $primary-color;
+    text-align: left;
 
     h4 {
       font-size: 1rem;
       margin: 0;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      letter-spacing: 5px;
+      text-transform: capitalize;
     }
   }
 
   &__card-body {
     padding: 0 $spacing-lg;
-    text-align: center;
+    text-align: left;
 
     p {
       font-size: 1rem;
@@ -84,14 +65,17 @@
   }
 
   &__icon {
-    font-size: 3.5rem;
-    color: $accent-color;
-    margin-bottom: $spacing-sm;
+    background-color: #ed733666;
+    display: inline-block;
+    border-radius: 50%;
+    padding: 0.5rem;
+    font-size: 1.6rem;
+    color: $highlight-color;
     transition: color 0.3s ease;
-
-    &:hover {
-      color: $highlight-color;
-    }
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 2rem;
   }
 
   &__price {

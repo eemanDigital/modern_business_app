@@ -1,6 +1,6 @@
-@import './variables';
+@import 'variables';
 footer {
-  background-color: rgba(2, 2, 54, 0.851);
+  background-color: $primary-color;
   position: static;
   bottom: 0;
   margin-top: 4rem;
@@ -11,17 +11,18 @@ footer {
     justify-content: space-around;
     // align-items: center;
     padding: 2.2rem;
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: $breakpoint-md) {
       // flex-direction: column;
     }
 
-    @media (max-width: $smallPhone) {
+    @media (max-width: $breakpoint-sm) {
       flex-direction: column;
       width: 100%;
     }
 
     h3 {
       color: #c0aeae;
+      font-size: 1.2rem;
       font-weight: 500;
     }
 
@@ -36,14 +37,14 @@ footer {
       flex: 1;
       flex-direction: column;
       margin: 0.7rem;
-      @media (max-width: $breakpoint-tablet) {
+      @media (max-width: $breakpoint-md) {
         // flex-direction: row;
 
         h3 {
           font-size: 1rem;
         }
       }
-      @media (max-width: $smallPhone) {
+      @media (max-width: $breakpoint-sm) {
         margin: none;
         width: 100%;
       }
@@ -51,7 +52,7 @@ footer {
     }
 
     .col-1 {
-      color: #c0aeae;
+      color: #e8ebee;
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
@@ -63,10 +64,10 @@ footer {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        @media (max-width: $breakpoint-tablet) {
+        @media (max-width: $breakpoint-md) {
           flex-direction: column;
         }
-        @media (max-width: $smallPhone) {
+        @media (max-width: $breakpoint-sm) {
           flex-direction: row;
         }
         svg {
@@ -75,7 +76,7 @@ footer {
             color: #fff;
           }
         }
-        @media (max-width: $smallPhone) {
+        @media (max-width: $breakpoint-sm) {
           img {
             width: 0.5rem;
           }
@@ -99,7 +100,7 @@ footer {
       }
     }
     .logo {
-      @media (max-width: $breakpoint-tablet) {
+      @media (max-width: $breakpoint-md) {
         h3 {
           font-size: 0.8rem;
         }
@@ -111,7 +112,7 @@ footer {
     color: #c0aeae;
     padding: 1rem;
     // text-align: center;
-    background-color: rgb(17, 17, 81);
+    background-color: $secondary-color;
 
     .copyright {
       text-align: center;

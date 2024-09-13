@@ -1,9 +1,10 @@
 import { post_inc_services } from '../data/data';
 import { Link } from 'react-router-dom';
+import Title from './Title';
 const PostIncorporation = () => {
   return (
     <section className='post-inc-container'>
-      <h1>Post Incorporation Services</h1>
+      <Title text='Post' span='Incorporation Services' />
       <p>
         If you have a company or business name already registered/incorporated
         and you want to make Any change, our teams of accredited CAC experts are
@@ -26,7 +27,7 @@ const PostIncorporation = () => {
         </tbody>
       </table>
 
-      <Link to='https://wa.me/message/KTFL2G2JM3JTP1'> Start Now &#x2192;</Link>
+      <Link to='/contact-us'> Start Now &#x2192;</Link>
     </section>
   );
 };

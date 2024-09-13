@@ -28,7 +28,7 @@ const upload = multer({
 });
 
 //photo:name of the field
-export const uploadPostPhoto = upload.single('file');
+export const uploadPostPhoto = upload.single('photo');
 
 export const createPosts = catchAsync(async (req, res, next) => {
   const { title, body, author } = req.body;
@@ -165,14 +165,20 @@ export const deletePost = catchAsync(async (req, res, next) => {
 export const updatePostImg = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
 
+  // Check if file is present and get the filename
   const filename = req.file ? req.file.filename : null;
 
+  // Find and update the post with the new photo filename
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
     { photo: filename },
-    { new: true }
+    { new: true, runValidators: true } // Optional: Add runValidators to enforce schema validations on update
   );
-  console.log(photo, 'PHOTO');
+
+  // Log the filename for debugging
+  console.log(filename, 'PHOTO'); // Corrected variable name
+
+  // Return a success response with the updated post data
   res.status(200).json({
     message: 'Post successfully updated',
     data: {

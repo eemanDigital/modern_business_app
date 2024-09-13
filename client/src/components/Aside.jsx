@@ -41,11 +41,11 @@ const Aside = ({ price, title, img }) => {
 
           <PiCertificateThin />
         </div>
-        <img
+        {/* <img
           src={img}
           alt=''
           style={{ marginTop: '2.5rem', maxWidth: '250px', height: '100%' }}
-        />
+        /> */}
       </div>
     </div>
   );

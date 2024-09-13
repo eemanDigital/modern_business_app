@@ -2,6 +2,7 @@
 
 .blog-card {
   background-color: $card-bg;
+  width: 1000px;
   border-radius: $border-radius;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -15,30 +16,42 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: $breakpoint-md) {
     flex-direction: row;
   }
 
   &__image {
-    flex: 0 0 40%;
+    flex: 0 0 100%;
     overflow: hidden;
 
     img {
       width: 100%;
-      max-width: 340px;
-      height: 340px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: contain;
+
+      @media (min-width: 768px) {
+        max-height: 300px; // Adjust the height for larger screens
+        object-fit: cover;
+      }
       transition: transform 0.3s ease-in-out;
 
       &:hover {
         transform: scale(1.05);
       }
     }
+
+    @media (min-width: $breakpoint-md) {
+      flex: 0 0 40%;
+    }
   }
 
   &__content {
     flex: 1;
     padding: 1.5rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 2rem;
+    }
   }
 
   &__meta {
@@ -48,6 +61,10 @@
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     color: $text-muted;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1rem;
+    }
   }
 
   &__author {
@@ -73,12 +90,20 @@
         color: $primary-color;
       }
     }
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
   }
 
   &__excerpt {
     color: $text-secondary;
     margin-bottom: 1rem;
     line-height: 1.6;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.1rem;
+    }
   }
 
   &__link {

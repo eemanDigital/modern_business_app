@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import formatDate from '../lib/formattedDate';
 import http from '../lib/http';
 import { useAuthContext } from '../hooks/useAuthContext';
+import placeholderImg from '../assets/placeholderImg.jpg';
 
 const BlogDetails = () => {
   const params = useParams();
@@ -49,10 +50,16 @@ const BlogDetails = () => {
   return (
     <div className='blog-detail'>
       <div className='blog-detail-content'>
-        {blogPosts && (
+        {blogPosts ? (
           <img
             className='blog-detail-img'
             src={`http://localhost:3300/images/${blogPosts.photo}`}
+            alt={blogPosts.title}
+          />
+        ) : (
+          <img
+            className='blog-detail-img'
+            src={placeholderImg}
             alt={blogPosts.title}
           />
         )}
@@ -62,6 +69,9 @@ const BlogDetails = () => {
             {user && (
               <div className='edit-delete-btn'>
                 <div className='btns'>
+                  <button className='edit'>
+                    <Link to={`/blog/${params.id}/upload`}>Upload Image</Link>
+                  </button>
                   <button className='edit'>
                     <Link to={`/blog/${params.id}/edit`}>Edit</Link>
                   </button>
@@ -91,7 +101,6 @@ const BlogDetails = () => {
           </div>
         )}
 
-        
         <h1>{blogPosts.title}</h1>
         <div className='blog-content-author-date'>
           <span>{formatDate(blogPosts.date)}</span>

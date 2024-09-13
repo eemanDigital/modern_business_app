@@ -137,9 +137,6 @@ const Partnership = () => {
           );
         })}
       </div>
-      <div style={{ marginBottom: '2rem' }} className='partnership-btn'>
-        <Button text='Start Now' icons='&#x2192;' />
-      </div>
 
       <PostIncorporation />
     </section>

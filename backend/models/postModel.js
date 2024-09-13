@@ -25,10 +25,4 @@ const postSchema = new mongoose.Schema({
   photo: String,
 });
 
-// postSchema.post('save', function () {
-//   this.date.toLocaleString('en-us', { month: 'long', year: 'numeric' });
-
-//   // next();
-// });
-
 export const Post = mongoose.model('Post', postSchema);

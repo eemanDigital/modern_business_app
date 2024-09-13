@@ -97,10 +97,6 @@ const Ngo = () => {
           );
         })}
       </div>
-      <div>
-        <Button text='Start Now' icons='&#x2192;' />
-      </div>
-      {/* <Link> Start Now </Link> */}
 
       <div className='ngo-col-section'>
         <div className='ngo-col-wrapper'>

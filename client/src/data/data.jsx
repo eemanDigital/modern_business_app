@@ -1,10 +1,11 @@
-import { FaBusinessTime } from 'react-icons/fa';
-import { CgWebsite } from 'react-icons/cg';
+import { TbWorldWww } from 'react-icons/tb';
+import { IoIosBusiness } from 'react-icons/io';
 import { MdCorporateFare } from 'react-icons/md';
 import { FaPeopleArrows } from 'react-icons/fa';
 import { IoIosPeople } from 'react-icons/io';
 import { IoPeople } from 'react-icons/io5';
-import { IoIosPerson } from 'react-icons/io';
+import { LiaBusinessTimeSolid } from 'react-icons/lia';
+import { IoBusinessOutline } from 'react-icons/io5';
 import heroImage1 from '../assets/hero1.jpg';
 import heroImage2 from '../assets/hero2.jpg';
 import heroImage3 from '../assets/hero3.jpg';
@@ -44,9 +45,11 @@ export const heroContent = [
 
 export const packages = [
   {
-    icon: <FaBusinessTime />,
-    title: 'Company Limited by Shares ',
+    icon: <IoBusinessOutline />,
+    title: 'Company Limited by Shares',
     price: '60,000',
+    description:
+      'Ideal for businesses looking to protect owners from personal liability while allowing shareholders to hold shares in the company.',
     benefits: [
       'Free pre-registration consulting',
       'Company name search and reservation',
@@ -59,25 +62,28 @@ export const packages = [
     ],
   },
   {
-    icon: <FaBusinessTime />,
+    icon: <LiaBusinessTimeSolid />,
     title: 'Company Limited by Guarantee',
     price: '200,000',
+    description:
+      'Suitable for non-profit organizations, charities, or any entity looking to reinvest profits into its activities instead of distributing dividends.',
     benefits: [
       'Company name search and reservation',
       'Incorporation Certificate',
       'Memorandum and Article of Association',
-      'Share Capital of ₦ 1million',
-      'Status report and Tax Identification Number(TIN)',
+      'Share Capital of ₦1million',
+      'Status report and Tax Identification Number (TIN)',
       'Free 20 minutes pre-registration Consulting',
       'Free Bank Account opening support',
       '20% discount on all follow-up services',
     ],
   },
-
   {
-    icon: <IoIosPerson />,
+    icon: <IoIosBusiness />,
     title: 'Business Name',
     price: '25,000',
+    description:
+      'Perfect for sole proprietorships or small businesses looking for a quick and affordable way to register their business name.',
     benefits: [
       'Business Name search and reservation',
       'Incorporation Certificate',
@@ -88,11 +94,12 @@ export const packages = [
       '20% discount on all follow-up services',
     ],
   },
-
   {
     icon: <MdCorporateFare />,
     title: 'Incorporated Trustees',
     price: '180,000',
+    description:
+      'Designed for religious, educational, or social groups who wish to operate as a corporate entity with trustees.',
     benefits: [
       'Name search and reservation',
       'Registration documents',
@@ -103,16 +110,17 @@ export const packages = [
       '20% discount on all follow-up services',
     ],
   },
-
   {
     icon: <FaPeopleArrows />,
     title: 'General Partnership',
     price: '25,000-35,000',
+    description:
+      'Best for partners who want to share profits, losses, and management responsibilities without the need for a separate legal entity.',
     benefits: [
       'Company name search and reservation',
       'Incorporation Certificate',
       'Memorandum and Article of Association',
-      'Status report and Tax Identification Number(TIN)',
+      'Status report and Tax Identification Number (TIN)',
       'Free Annual returns for the first year',
       'Free Bank Account opening support',
       'Free virtual office address for 60 days',
@@ -123,6 +131,8 @@ export const packages = [
     icon: <IoPeople />,
     title: 'Limited Partnership',
     price: '80,000',
+    description:
+      'Ideal for partnerships with both general and limited partners, offering limited liability for certain partners.',
     benefits: [
       'Partnership name search and reservation',
       'Registration documents',
@@ -131,13 +141,14 @@ export const packages = [
       'Free Bank Account Opening Support',
       'Free virtual office address for 60 days',
       '20% discount on all follow-up services',
-      'Start Now',
     ],
   },
   {
     icon: <IoIosPeople />,
     title: 'Limited Liability Partnership',
     price: '80,000',
+    description:
+      'Combines the flexibility of a partnership with the benefits of limited liability, suitable for professional firms.',
     benefits: [
       'Partnership name search and reservation',
       'Registration documents',
@@ -148,11 +159,12 @@ export const packages = [
       '20% discount on all follow-up services',
     ],
   },
-
   {
-    icon: <CgWebsite />,
+    icon: <TbWorldWww />,
     title: 'Web Development',
     price: 'From 50,000',
+    description:
+      'Professional web development services tailored to help businesses establish a strong online presence with custom websites.',
     benefits: [
       'Domain name registration and setup',
       'Website Development Certificate',

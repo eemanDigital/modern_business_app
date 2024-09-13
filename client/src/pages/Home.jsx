@@ -5,6 +5,7 @@ import Hero from '../components/Hero.jsx';
 import Services from '../components/Services.jsx';
 import Feature from '../components/Feature.jsx';
 import Visitors from '../components/Visitors.jsx';
+import PricingPlan from '../components/PricingPlans.jsx';
 
 function Home() {
   return (
@@ -12,6 +13,8 @@ function Home() {
       <Hero />
       <Services packages={packages} />
       <Feature />
+      <PricingPlan packages={packages} />
+
       <Visitors />
       <WebDevSection />
       <div className='trust'>

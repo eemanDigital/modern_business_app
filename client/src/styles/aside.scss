@@ -1,10 +1,16 @@
 @import './variables';
 
 .aside {
-  flex: 1;
+  // flex: 2;
   background-color: $primary-color;
   border-radius: 15px;
   max-height: 500px;
+  margin-top: 3rem;
+  width: 400px;
+
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+  }
 
   //   height: 434px;
 

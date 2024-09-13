@@ -29,6 +29,7 @@ import WebDev from './pages/webDev';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
 import ContactForm from './components/ContactUs';
+import PostImageUpload from './pages/PostImageUpload';
 
 function App() {
   const router = createBrowserRouter(
@@ -42,6 +43,7 @@ function App() {
 
         <Route path='blog/write' element={<Write />} />
         <Route path='blog/:id/edit' element={<Edit />} />
+        <Route path='blog/:id/upload' element={<PostImageUpload />} />
 
         <Route path='contact-us' element={<ContactForm />} />
         <Route path='login' element={<Login />} />

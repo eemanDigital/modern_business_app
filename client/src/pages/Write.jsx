@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../hooks/useAuthContext';
-import http from '../lib/http';
+import { useDataFetch } from '../hooks/useDataFetch';
+
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
 import { formats } from '../lib/quillFormat';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Write = () => {
   const navigate = useNavigate();
@@ -15,11 +16,11 @@ const Write = () => {
     body: '',
     author: '',
   });
-  const [file, setFile] = useState();
-  const [loading, setLoading] = useState(false);
+
+  // const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { user } = useAuthContext();
-  const token = user?.token;
+  const { dataFetcher, loading } = useDataFetch();
   const role = user?.data?.user?.role;
 
   // checks admin role for writing
@@ -63,26 +64,24 @@ const Write = () => {
       return;
     }
 
-    setLoading(true);
+    // setLoading(true);
 
     const payload = {
       title: formData.title,
       body: formData.body,
       author: formData.author,
-      file: file,
     };
 
     try {
-      await http.post('/posts', {
-        data: payload,
-        contentType: 'multipart/form-data',
-        token,
-      });
+      const data = await dataFetcher('posts', 'post', payload);
+
+      console.log(data, 'data');
+
       navigate('/blog');
     } catch (error) {
       console.error('Error updating post:', error);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -124,14 +123,6 @@ const Write = () => {
         </div>
         {errors.body && <p className='error'>{errors.body}</p>}
 
-        <div className='upload'>
-          <label htmlFor='photo'>Upload Image</label>
-          <input
-            type='file'
-            name='file'
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-        </div>
         <button type='submit' disabled={loading}>
           {loading ? 'Publishing...' : 'Publish'}
         </button>

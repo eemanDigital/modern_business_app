@@ -1,11 +1,12 @@
 import { FaUsers, FaBuilding, FaGlobe } from 'react-icons/fa';
 import '../styles/visitors.scss';
+import Title from './Title';
 
 const Visitors = () => {
   return (
     <>
       <div className='visitors'>
-        <h2 className='visitors__title'>Our Growing Community</h2>
+        <Title text='Our' span='Growing Community' />
         <div className='visitors__grid'>
           <div className='visitors__item'>
             <FaUsers className='visitors__icon' />

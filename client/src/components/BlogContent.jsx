@@ -1,7 +1,7 @@
 import { CiCalendarDate } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PostImageUpload from '../pages/PostImageUpload';
+import placeholderImg from '../assets/placeholderImg.jpg';
 
 const formatDate = (dateString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -11,10 +11,13 @@ const formatDate = (dateString) => {
 const BlogContent = ({ _id, title, body, date, author, photo }) => {
   return (
     <div className='blog-card'>
-      <PostImageUpload postId={_id} />
-      {photo && (
+      {photo ? (
         <div className='blog-card__image'>
           <img src={`http://localhost:3300/images/${photo}`} alt={title} />
+        </div>
+      ) : (
+        <div className='blog-card__image'>
+          <img src={placeholderImg} />
         </div>
       )}
       <div className='blog-card__content'>

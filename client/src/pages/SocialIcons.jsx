@@ -24,7 +24,7 @@ const SocialIcons = () => {
         <Link to='#'>
           <FaXTwitter />
         </Link>
-        <Link to='#'>
+        <Link to='https://wa.me/message/KTFL2G2JM3JTP1'>
           <FaWhatsapp />
         </Link>
       </div>

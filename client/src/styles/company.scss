@@ -1,11 +1,13 @@
 @import './variables';
 
 .company-section {
+  //this control aside and text for other components
   margin: 6rem 1.4rem;
   .comp-container {
     text-align: left;
     display: flex;
-    gap: 1rem;
+    align-items: start;
+    gap: 4rem;
     justify-content: space-between;
     // padding: 1.4rem 0;
     @media (max-width: $breakpoint-md) {
@@ -14,6 +16,7 @@
 
     .text-1 {
       flex: 3;
+      text-align: justify;
       //   width: 100%;
 
       h1 {
@@ -53,6 +56,7 @@
   .company-package {
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
+      width: 100%;
     }
   }
 }
