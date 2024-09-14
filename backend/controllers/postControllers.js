@@ -50,46 +50,6 @@ export const createPosts = catchAsync(async (req, res, next) => {
   });
 });
 
-// export const getPosts = catchAsync(async (req, res, next) => {
-//   const posts = await Post.find().sort({ date: 'desc' });
-
-//   // pagination
-//   const page = parseInt(req.query.page);
-//   const limit = parseInt(req.query.limit);
-
-//   const startIndex = (page - 1) * limit;
-//   const lastIndex = page * limit;
-//   const results = {};
-
-//   //all post
-//   results.totalPosts = posts.length;
-//   //number of pages
-//   results.pageCount = Math.ceil(posts.length / limit);
-//   // console;
-
-//   // getting next page
-//   if (lastIndex < posts.length) {
-//     results.next = { page: page + 1, limit: limit };
-//   }
-
-//   if (startIndex > 0) {
-//     results.prev = {
-//       page: page - 1,
-//       limit: limit,
-//     };
-//   }
-
-//   results.result = posts.slice(startIndex, lastIndex);
-
-//   res.status(200).json({
-//     message: 'success',
-//     // length: posts.length,
-//     data: {
-//       results,
-//     },
-//   });
-// });
-
 export const getPosts = catchAsync(async (req, res, next) => {
   // Fetch all posts from the database, sorted by date in descending order
   const posts = await Post.find().sort({ date: 'desc' });

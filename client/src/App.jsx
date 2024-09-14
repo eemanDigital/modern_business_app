@@ -30,6 +30,9 @@ import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
 import ContactForm from './components/ContactUs';
 import PostImageUpload from './pages/PostImageUpload';
+import AdminBoard from './pages/AdminBoard';
+import UpdateUser from './pages/UpdateUser';
+import ProtectRoute from './components/ProtectRoute';
 
 function App() {
   const router = createBrowserRouter(
@@ -41,13 +44,23 @@ function App() {
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
 
-        <Route path='blog/write' element={<Write />} />
+        <Route path='admin-board' element={<AdminBoard />} />
+
+        <Route path='blog/create' element={<Write />} />
         <Route path='blog/:id/edit' element={<Edit />} />
         <Route path='blog/:id/upload' element={<PostImageUpload />} />
-
+        <Route
+          path='admin-board'
+          element={
+            <ProtectRoute>
+              <AdminBoard />
+            </ProtectRoute>
+          }
+        />
         <Route path='contact-us' element={<ContactForm />} />
         <Route path='login' element={<Login />} />
-        <Route path='signup' element={<SignUp />} />
+        <Route path='addUser' element={<SignUp />} />
+        <Route path='users/:id/edit' element={<UpdateUser />} />
         <Route path='company' element={<Company />} />
         <Route path='business' element={<Business />} />
         <Route path='partnership' element={<Partnership />} />

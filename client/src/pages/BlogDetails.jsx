@@ -37,20 +37,10 @@ const BlogDetails = () => {
 
   if (!blogPosts) return null;
 
-  const deletePost = async () => {
-    if (!isAdmin) return;
-
-    if (!user) {
-      return;
-    }
-    await http.delete(`/posts/${params.id}`, { token });
-    navigate('/blog');
-  };
-
   return (
     <div className='blog-detail'>
       <div className='blog-detail-content'>
-        {blogPosts ? (
+        {blogPosts.photo ? (
           <img
             className='blog-detail-img'
             src={`http://localhost:3300/images/${blogPosts.photo}`}
@@ -62,43 +52,6 @@ const BlogDetails = () => {
             src={placeholderImg}
             alt={blogPosts.title}
           />
-        )}
-        {/* show this only to admin */}
-        {isAdmin && (
-          <div className='edit-delete'>
-            {user && (
-              <div className='edit-delete-btn'>
-                <div className='btns'>
-                  <button className='edit'>
-                    <Link to={`/blog/${params.id}/upload`}>Upload Image</Link>
-                  </button>
-                  <button className='edit'>
-                    <Link to={`/blog/${params.id}/edit`}>Edit</Link>
-                  </button>
-                  <button
-                    className='delete'
-                    onClick={() => setDeleteAlert(!deleteAlert)}>
-                    Delete
-                  </button>
-                </div>
-                {deleteAlert ? (
-                  <div>
-                    <p>
-                      Are you sure you want to delete this post? if yes, click
-                      on <strong>Yes</strong> to proceed or <strong>No</strong>{' '}
-                      to cancel
-                    </p>
-                    <button onClick={() => deletePost()}>YES</button>
-                    <button onClick={() => setDeleteAlert(!deleteAlert)}>
-                      NO
-                    </button>
-                  </div>
-                ) : (
-                  ''
-                )}
-              </div>
-            )}
-          </div>
         )}
 
         <h1>{blogPosts.title}</h1>

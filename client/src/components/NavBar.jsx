@@ -84,10 +84,10 @@ function Navbar() {
           {isAdmin && (
             <li className='nav-item'>
               <Link
-                to='blog/write'
+                to='admin-board'
                 className='nav-links'
                 onClick={closeMobileMenu}>
-                Write
+                Dashboard
               </Link>
             </li>
           )}

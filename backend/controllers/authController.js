@@ -9,24 +9,41 @@ import AppError from '../utils/appError.js';
 // import validator from 'validator';
 
 export const signup = catchAsync(async (req, res, next) => {
-  const { username, email, password, confirmPassword } = req.body;
-  //where invalid email is provided or passwords are the same
-  if (!email || !username)
-    return next(new AppError('All fields must be fielded', 400));
+  const { firstName, lastName, role, email, password, confirmPassword } =
+    req.body;
 
-  //check if user already exist using email
+  // Check if all required fields are provided
+  if (!email || !firstName || !lastName || !password || !confirmPassword)
+    return next(new AppError('All fields must be filled', 400));
+
+  // Check if user already exists using email
   const existingUser = await User.findOne({ email });
-  if (existingUser) return next(new AppError('User already exist', 401));
+  if (existingUser) return next(new AppError('User already exists', 401));
 
-  //create newUser
+  // Create new user
   const newUser = await User.create({
-    username,
+    firstName,
+    lastName,
     email,
+    role,
     password,
     confirmPassword,
   });
-  // create token
-  createSendToken(newUser, 201, res);
+
+  // Convert newUser to a plain JavaScript object
+  const userObject = newUser.toObject();
+
+  // Remove password and confirmPassword fields
+  delete userObject.password;
+  delete userObject.confirmPassword;
+
+  // Send response
+  res.status(201).json({
+    status: 'success',
+    data: {
+      user: userObject,
+    },
+  });
 });
 
 //Handles user login
@@ -50,8 +67,6 @@ export const login = catchAsync(async (req, res, next) => {
 
 // protect access handler
 export const protect = catchAsync(async (req, res, next) => {
-  console.log(req.cookies);
-
   // 1) Getting token and check if it's there
   let token;
   if (
@@ -68,8 +83,6 @@ export const protect = catchAsync(async (req, res, next) => {
       new AppError('You are not logged in! Please log in to get access.', 401)
     );
   }
-
-  console.log(req.cookies);
 
   // 2) Verification of token
   const verified = await promisify(jwt.verify)(
@@ -100,4 +113,18 @@ export const logout = (req, res) => {
     status: 'success',
     message: 'You have been logged out successfully',
   });
+};
+
+// Restrict access to certain routes
+export const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    console.log('USER', req.user);
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permission to perform this action', 403)
+      );
+    }
+
+    next();
+  };
 };

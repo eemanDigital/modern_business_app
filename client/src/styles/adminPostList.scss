@@ -1,0 +1,191 @@
+@import 'variables';
+
+.admin-post-list-container {
+  padding: 1rem;
+  max-width: 100%;
+  overflow-x: auto;
+
+  .blog-post-header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $accent-color;
+  }
+
+  .create-post-btn {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    background-color: $accent-color;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    &:hover {
+      background-color: #1e88e5;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .admin-post-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    thead {
+      background-color: #f4f4f4;
+
+      th {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          padding: 0.75rem;
+          border-bottom: 1px solid #ddd;
+
+          &:first-child {
+            font-weight: 500;
+            color: $primary-color;
+
+            a {
+              text-decoration: none;
+            }
+          }
+          &:first-child:hover {
+            color: $primary-color;
+            font-weight: 600;
+            cursor: pointer;
+          }
+
+          .edit-btn,
+          .delete-btn,
+          .upload-btn {
+            padding: 0.5rem 1rem;
+            margin-right: 0.7rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            a {
+              text-decoration: none;
+              color: white;
+            }
+
+            &.edit-btn {
+              background-color: #4caf50;
+              color: white;
+
+              &:hover {
+                background-color: #45a049;
+              }
+            }
+
+            &.delete-btn {
+              background-color: #f44336;
+              color: white;
+
+              &:hover {
+                background-color: #e53935;
+              }
+
+              &:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+              }
+            }
+
+            &.upload-btn {
+              background-color: $accent-color;
+              color: white;
+
+              &:hover {
+                background-color: #1e88e5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  list-style-type: none;
+
+  li {
+    margin: 0 0.25rem;
+    a {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      background-color: $accent-color;
+      color: white;
+      border-radius: 0.25rem;
+      cursor: pointer;
+
+      &.active {
+        background-color: #1976d2;
+      }
+
+      &:hover {
+        background-color: #1e88e5;
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .admin-post-list-table {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        display: block;
+        margin-bottom: 1rem;
+
+        td {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem;
+          border: none;
+          border-bottom: 1px solid #ddd;
+
+          &:before {
+            content: attr(data-label);
+            font-weight: bold;
+          }
+
+          .edit-btn,
+          .delete-btn,
+          .upload-btn {
+            margin-top: 0.5rem;
+
+            width: 48%;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,16 +4,19 @@ import { useSignUp } from '../hooks/useSignUp';
 import { toast } from 'react-toastify';
 
 import '../styles/login.scss';
+import { useDataFetch } from '../hooks/useDataFetch';
 
 function SignUp() {
   const [inputs, setInputs] = useState({
-    username: '',
     email: '',
+    firstName: '',
+    lastName: '',
     password: '',
     confirmPassword: '',
   });
-  const { username, email, password, confirmPassword } = inputs;
-  const { signup, isLoading, error, setError } = useSignUp();
+  const { email, firstName, lastName, password, confirmPassword } = inputs;
+  // const { signup, isLoading, error, setError } = useSignUp();
+  const { loading, error, dataFetcher } = useDataFetch();
 
   function handleInputs(e) {
     const input = e.target.value;
@@ -24,7 +27,7 @@ function SignUp() {
 
   // Validate inputs
   const validateInputs = () => {
-    if (!username || !email || !password || !confirmPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       toast.error('Please fill in all fields');
       return false;
     }
@@ -41,19 +44,14 @@ function SignUp() {
 
     if (!validateInputs()) return;
 
-    await signup(username, email, password, confirmPassword);
-  };
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
+    // add user
+    await dataFetcher('users/signup', 'post', inputs);
+    if (!error) {
+      // redirect to login page
+      toast.success('User created successfully. Please login');
+      // window.location.href = '/';
     }
-
-    return clearTimeout;
-  }, [error, setError]);
+  };
 
   return (
     <>
@@ -64,9 +62,16 @@ function SignUp() {
         <div className='inputs'>
           <input
             type='text'
-            placeholder='Username'
-            value={username}
-            name='username'
+            placeholder='firstName'
+            value={firstName}
+            name='firstName'
+            onChange={handleInputs}
+          />
+          <input
+            type='text'
+            placeholder='lastName'
+            value={lastName}
+            name='lastName'
             onChange={handleInputs}
           />
           <input
@@ -90,8 +95,8 @@ function SignUp() {
             name='confirmPassword'
             onChange={handleInputs}
           />
-          <button disabled={isLoading}>
-            {isLoading ? ' Submitting...' : ' Submit'}
+          <button disabled={loading}>
+            {loading ? ' Submitting...' : ' Submit'}
           </button>
           <div className='no-account'>
             <p>

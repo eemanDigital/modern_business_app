@@ -1,0 +1,133 @@
+@import 'variables';
+
+.users-container {
+  padding: 1rem;
+  max-width: 100%;
+  overflow-x: auto;
+
+  .user-list-header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $accent-color;
+  }
+
+  .add-user-btn {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    background-color: $accent-color;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
+    thead {
+      background-color: #f4f4f4;
+
+      th {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        td {
+          padding: 0.75rem;
+          border-bottom: 1px solid #ddd;
+
+          .edit-btn,
+          .delete-btn {
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.edit-btn {
+              background-color: #4caf50;
+              color: white;
+
+              a {
+                text-decoration: none;
+                color: white;
+              }
+
+              &:hover {
+                background-color: #45a049;
+              }
+            }
+
+            &.delete-btn {
+              background-color: #f44336;
+              color: white;
+
+              &:hover {
+                background-color: #e53935;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .users-table {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr {
+        display: block;
+        margin-bottom: 1rem;
+
+        td {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem;
+          border: none;
+          border-bottom: 1px solid #ddd;
+
+          &:before {
+            content: attr(data-label);
+            font-weight: bold;
+          }
+
+          .edit-btn,
+          .delete-btn {
+            margin-top: 0.5rem;
+            width: 48%;
+          }
+        }
+      }
+    }
+  }
+}

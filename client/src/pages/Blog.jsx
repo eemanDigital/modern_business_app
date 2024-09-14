@@ -3,9 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Loading from '../components/Loading';
 import ReactPaginate from 'react-paginate';
 import http from '../lib/http';
-// import { useAuthContext } from '../hooks/useAuthContext';
-
-// const url = 'http://localhost:3300/posts';
+// import '../styles/blog.scss';
 
 function Blog() {
   const [blogPosts, setBlogPosts] = useState(null);
@@ -42,8 +40,6 @@ function Blog() {
     }
   }
 
-  console.log(blogPosts);
-
   return (
     <div className='blog-container'>
       <div className='blog'>
@@ -57,7 +53,6 @@ function Blog() {
         <Loading />
       ) : (
         <div className='blog-content-wrapper'>
-          {' '}
           {blogPosts?.map((post) => {
             return (
               <div key={post.id}>

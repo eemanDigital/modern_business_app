@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 
 import { formats } from '../lib/quillFormat';
 import { useAuthContext } from '../hooks/useAuthContext';
+import Title from '../components/Title';
 
 const Write = () => {
   const navigate = useNavigate();
@@ -87,7 +88,8 @@ const Write = () => {
 
   return (
     <article>
-      <h1>Write New Post</h1>
+      <Title text='Write New Post' />
+
       {!isAdmin && (
         <div className='write-error'>
           <strong>You do not have the privilege to write here</strong>

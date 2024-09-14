@@ -2,6 +2,7 @@ import { CiCalendarDate } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import placeholderImg from '../assets/placeholderImg.jpg';
+import { shortenText } from '../lib/textShortener';
 
 const formatDate = (dateString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -17,7 +18,7 @@ const BlogContent = ({ _id, title, body, date, author, photo }) => {
         </div>
       ) : (
         <div className='blog-card__image'>
-          <img src={placeholderImg} />
+          <img src={placeholderImg} className='placeholderImg' />
         </div>
       )}
       <div className='blog-card__content'>
@@ -28,7 +29,7 @@ const BlogContent = ({ _id, title, body, date, author, photo }) => {
           </span>
         </div>
         <h2 className='blog-card__title'>
-          <Link to={`/blog/${_id}`}>{title}</Link>
+          <Link to={`/blog/${_id}`}>{shortenText(title, 50)}</Link>
         </h2>
         <p
           className='blog-card__excerpt'

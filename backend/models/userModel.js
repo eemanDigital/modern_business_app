@@ -3,9 +3,13 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 
 const userSchema = mongoose.Schema({
-  username: {
+  firstName: {
     type: String,
-    required: [true, 'You must provide a username'],
+    required: [true, 'You must provide a first name'],
+  },
+  lastName: {
+    type: String,
+    required: [true, 'You must provide a second name'],
   },
 
   email: {

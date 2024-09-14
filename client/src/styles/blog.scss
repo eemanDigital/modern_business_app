@@ -43,12 +43,12 @@
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin: 1.4rem 0;
-    padding: 0 1rem;
-    width: 100%;
+    margin: 4rem;
+
+    // width: 100%;
     @media (max-width: $breakpoint-sm) {
       padding: 0;
-      margin: 0;
+      margin: 1rem 1.5rem;
     }
   }
 }
