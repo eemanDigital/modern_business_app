@@ -1,36 +1,22 @@
 import { PiCertificateThin } from 'react-icons/pi';
 import ourStory from '../assets/about-story.svg';
-import { motion } from 'framer-motion';
-import { useScrolls } from '../hooks/useScrolls';
 import Trust from '../components/Trust';
 import '../styles/aboutUs.scss';
 
 function AboutUs() {
-  const { ref, control, scrollVariant } = useScrolls();
-
   return (
     <section className='about-us-container'>
       <div className='about-us-img-container'>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          s
-          transition={{ duration: 1 }}
-          className='about-bold-text'>
+        <div className='about-bold-text'>
           <h1>Digital Solutions for Your Business</h1>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          s
-          transition={{ duration: 1 }}
-          className='about-small-text'>
+        </div>
+        <div className='about-small-text'>
           <p>
             our focus has been on understanding the unique needs and aspirations
             of our clients and translating them into tangible, transformative
             solutions
           </p>
-        </motion.div>
+        </div>
       </div>
       <div className='about-us-certified-div'>
         <span>
@@ -43,12 +29,7 @@ function AboutUs() {
         </span>
       </div>
 
-      <motion.div
-        ref={ref}
-        variants={scrollVariant}
-        initial='hidden'
-        animate={control}
-        className='our-story-container'>
+      <div className='our-story-container'>
         <div className='our-story-text'>
           <h1>Our Story</h1>
           <p>
@@ -103,7 +84,7 @@ function AboutUs() {
           {/* <Button text='Click' /> */}
         </div>
         <img src={ourStory} alt='' />
-      </motion.div>
+      </div>
 
       {/* <div className='trust-cards'>
         {trust_card_data.map((item, index) => {

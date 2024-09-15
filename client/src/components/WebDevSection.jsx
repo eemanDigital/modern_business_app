@@ -1,5 +1,4 @@
 import { FaWhatsapp } from 'react-icons/fa';
-import { motion, useScroll } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MdOutlineWifiCalling3 } from 'react-icons/md';
 import webDevImg from '../assets/web-development.png';
@@ -7,15 +6,8 @@ import webDevImg from '../assets/web-development.png';
 import '../styles/WebDevSection.scss';
 
 const WebDevSection = () => {
-  const { ref, control, scrollVariant } = useScroll();
-
   return (
-    <motion.section
-      ref={ref}
-      variants={scrollVariant}
-      initial='hidden'
-      animate={control}
-      className='web-dev-section'>
+    <section className='web-dev-section'>
       <div className='text'>
         <h1>
           Apart from Registering your Businesses, we also build your dream
@@ -41,7 +33,7 @@ const WebDevSection = () => {
       <div className='img'>
         <img src={webDevImg} alt='' />
       </div>
-    </motion.section>
+    </section>
   );
 };
 
