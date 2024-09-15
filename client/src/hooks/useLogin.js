@@ -3,6 +3,8 @@ import { useAuthContext } from './useAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+const baseUrl = import.meta.env.VITE_BASE_URL; // Base URL for API requests
+
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -13,7 +15,7 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch('http://localhost:3300/users/login', {
+    const response = await fetch(`${baseUrl}users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
