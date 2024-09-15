@@ -18,7 +18,7 @@ import Company from './pages/Company';
 import Business from './pages/Business';
 import Ngo from './pages/Ngo';
 import Partnership from './pages/Partnership';
-import WebDev from './pages/webDev';
+import WebDev from './pages/WebDev';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
 import ContactForm from './components/ContactUs';
