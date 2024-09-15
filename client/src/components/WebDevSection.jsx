@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineWifiCalling3 } from 'react-icons/md';
 import webDevImg from '../assets/web-development.png';
 
-import '../styles/WebDevSection.scss';
+import '../styles/webDevSection.scss';
 
 const WebDevSection = () => {
   return (
