@@ -1,0 +1,29 @@
+.protect-route-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Full viewport height for vertical centering
+  padding: 1rem;
+  background-color: #f9f9f9;
+
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.25rem; // Slightly smaller font size for tablets
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1rem; // Even smaller font size for mobile devices
+    }
+  }
+}

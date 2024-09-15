@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 import '../styles/adminPostList.scss';
-import Title from '../components/Title';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
 

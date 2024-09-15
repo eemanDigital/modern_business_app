@@ -38,10 +38,12 @@ const Edit = () => {
   const role = user?.data?.user?.role;
   const isAdmin = role === 'admin';
 
+  const baseUrl = import.meta.env.VITE_BASE_URL; // Base URL for API requests
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3300/posts/${id}`);
+        const response = await axios.get(`${baseUrl}posts/${id}`);
         const postData = response?.data?.data?.post;
 
         console.log(postData);

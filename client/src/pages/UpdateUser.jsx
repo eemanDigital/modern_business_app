@@ -6,6 +6,8 @@ import { useDataFetch } from '../hooks/useDataFetch';
 import '../styles/updateUser.scss';
 import { toast } from 'react-toastify';
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const UpdateUser = () => {
   const { id } = useParams(); // Extract user ID from URL
 
@@ -23,7 +25,7 @@ const UpdateUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3300/users/${id}`, {
+        const response = await axios.get(`${baseUrl}users/${id}`, {
           withCredentials: true,
         });
 

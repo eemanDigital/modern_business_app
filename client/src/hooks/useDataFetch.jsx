@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_BASE_URL || 'http://localhost:3300';
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 export const useDataFetch = () => {
   const [data, setData] = useState(null);
@@ -27,7 +27,7 @@ export const useDataFetch = () => {
     async (endpoint, method = 'GET', payload = null) => {
       setLoading(true);
       try {
-        const url = `${baseURL}/${endpoint}`;
+        const url = `${baseURL}${endpoint}`;
 
         const response = await axios({
           method,

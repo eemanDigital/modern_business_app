@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import placeholderImg from '../assets/placeholderImg.jpg';
 import { shortenText } from '../lib/textShortener';
 
+const baseUrl = import.meta.env.VITE_BASE_URL; // Base URL from Vite for backend API
+
 const formatDate = (dateString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString(undefined, options);
@@ -14,7 +16,7 @@ const BlogContent = ({ _id, title, body, date, author, photo }) => {
     <div className='blog-card'>
       {photo ? (
         <div className='blog-card__image'>
-          <img src={`http://localhost:3300/images/${photo}`} alt={title} />
+          <img src={`${baseUrl}images/${photo}`} alt={title} />
         </div>
       ) : (
         <div className='blog-card__image'>

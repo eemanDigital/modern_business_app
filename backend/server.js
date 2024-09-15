@@ -37,9 +37,20 @@ app.use(
   })
 );
 
+const DB = () => {
+  if (process.env.NODE_ENV === 'development') {
+    return process.env.DATABASE_LOCAL;
+  } else if (process.env.NODE_ENV === 'production') {
+    return process.env.DATABASE.replace(
+      '<PASSWORD>',
+      process.env.DATABASE_PASSWORD
+    );
+  }
+};
+
 // Database connection
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {})
+  .connect(DB(), {})
   .then(() => console.log('Connected to database'))
   .catch((err) => console.error(err));
 

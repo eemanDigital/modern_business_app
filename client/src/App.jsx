@@ -44,7 +44,7 @@ function App() {
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
 
-        <Route path='admin-board' element={<AdminBoard />} />
+        {/* <Route path='admin-board' element={<AdminBoard />} /> */}
 
         <Route path='blog/create' element={<Write />} />
         <Route path='blog/:id/edit' element={<Edit />} />

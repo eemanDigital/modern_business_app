@@ -2,15 +2,17 @@ import BlogContent from '../components/BlogContent';
 import { useState, useEffect, useRef } from 'react';
 import Loading from '../components/Loading';
 import ReactPaginate from 'react-paginate';
-import http from '../lib/http';
-// import '../styles/blog.scss';
+import { useDataFetch } from '../hooks/useDataFetch';
 
 function Blog() {
-  const [blogPosts, setBlogPosts] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [blogPosts, setBlogPosts] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [limit, setLimit] = useState(4);
   const [pageCount, setPageCount] = useState(1);
   const currentPage = useRef();
+  const { data, loading, error, dataFetcher } = useDataFetch();
+
+  const posts = data?.data?.results?.result;
 
   useEffect(() => {
     currentPage.current = 1;
@@ -26,18 +28,23 @@ function Blog() {
     // setItemOffset(newOffset);
   };
 
+  // Fetch paginated posts
   async function getPaginatedPosts() {
     try {
-      const { data } = await http.get(
-        `/posts?page=${currentPage.current}&limit=${limit}`
+      const { data } = await dataFetcher(
+        `posts?page=${currentPage.current}&limit=${limit}`
       );
 
-      setBlogPosts(data?.data?.results?.result);
       setPageCount(data?.data?.results?.pageCount);
-      setLoading(false);
+      // setLoading(false);
     } catch (err) {
       console.log(err);
     }
+  }
+
+  // error toast message
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
@@ -53,7 +60,7 @@ function Blog() {
         <Loading />
       ) : (
         <div className='blog-content-wrapper'>
-          {blogPosts?.map((post) => {
+          {posts?.map((post) => {
             return (
               <div key={post.id}>
                 <BlogContent {...post} />

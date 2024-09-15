@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon server.js",
-    "start:prod": "NODE_ENV=production nodemon server.js"
+    "start:prod": "cross-env NODE_ENV=production nodemon server.js"
   },
   "author": "eeman_digital",
   "license": "ISC",
@@ -25,5 +25,8 @@
     "react-cookie": "^7.0.1",
     "toast": "^0.5.4",
     "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

@@ -14,6 +14,8 @@ function Navbar() {
   const { user } = useAuthContext();
   const role = user?.data?.user?.role;
 
+  console.log(role, 'ROLE');
+
   // checks admin role for writing
   const isAdmin = role === 'admin';
   const { logout } = useLogout();
