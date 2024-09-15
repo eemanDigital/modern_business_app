@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start:dev": "nodemon server.js",
+    "start": "server.js",
     "start:prod": "cross-env NODE_ENV=production nodemon server.js"
   },
   "author": "eeman_digital",
