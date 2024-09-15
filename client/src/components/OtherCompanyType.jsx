@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/OtherCompanyType.scss';
+import '../styles/otherCompanyType.scss';
 
 const OtherCompanyType = () => {
   return (
