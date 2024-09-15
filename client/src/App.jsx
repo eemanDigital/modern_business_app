@@ -3,17 +3,10 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  // Navigate,
 } from 'react-router-dom';
-// import NavBar from "./components/NavBar";
 import Layout from './components/Layout';
-// import GetStarted from './components/GetStarted';
-// import Support from './components/Support';
-// import GetTools from './components/GetTools';
-
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
-// import Services from './pages/Services';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Blog from './pages/Blog';
@@ -40,12 +33,8 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Home />}></Route>
         <Route path='about-us' element={<AboutUs />} />
-
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
-
-        {/* <Route path='admin-board' element={<AdminBoard />} /> */}
-
         <Route path='blog/create' element={<Write />} />
         <Route path='blog/:id/edit' element={<Edit />} />
         <Route path='blog/:id/upload' element={<PostImageUpload />} />
