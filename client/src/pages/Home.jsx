@@ -17,9 +17,8 @@ function Home() {
 
       <Visitors />
       <WebDevSection />
-      <div className='trust'>
-        <Trust />
-      </div>
+
+      <Trust />
     </section>
   );
 }

@@ -1,88 +1,92 @@
-@import './variables';
+@import 'variables';
 
 .trust-container {
-  margin-top: 2.5rem;
-  // min-height: 100vh;
-  h1 {
-    font-weight: 700;
-    margin-top: 3rem;
-    text-align: center;
-    letter-spacing: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.trust-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  span {
+    color: $highlight-color;
   }
-  .trust-cards {
+}
+
+.trust-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1rem;
+}
+
+.trust-card {
+  width: 100%;
+  padding: 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    width: 50%;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: 33.333%;
+  }
+
+  &__header {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-    .trust_card_col {
-      width: 30%;
-      padding: 1rem 1.2rem;
-      min-height: 40px;
-
-      h3 {
-        display: flex;
-        justify-content: space-between;
-        font-size: 0.9rem;
-        font-weight: 600;
-        padding: 0.4rem 0.6rem;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-          rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-        border-radius: 12px;
-        cursor: pointer;
-        letter-spacing: 0.5px;
-
-        &:hover {
-          background-color: #1d57f828;
-        }
-
-        svg {
-          color: $highlight-color;
-          font-size: 1.3rem;
-        }
-      }
-
-      .card-description {
-        max-height: 0;
-        border-radius: 10px;
-        background-color: #1d57f828;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-
-        p {
-          padding: 1.4rem;
-          // height: 40hv;
-        }
-      }
-
-      .card-description.open {
-        max-height: 124px; /* Adjust the max-height value as per your content */
-      }
-
-      @media (max-width: $breakpoint-tablet) {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      @media (max-width: $smallPhone) {
-        padding: 0.5rem 1rem;
-      }
-
-      // svg {
-      //   font-size: 2rem;
-      //   margin-bottom: 0.5rem;
-      // }
+    &:hover {
+      background-color: #f0f4ff;
     }
   }
 
-  .t-col {
-    margin-top: 4rem;
+  &__title {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    h3 {
-      font-size: 2.9rem;
-      font-weight: 400;
+  }
+
+  &__icon {
+    color: $highlight-color;
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  &__arrow {
+    color: $highlight-color;
+    font-size: 1.25rem;
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: #f0f4ff;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    &.open {
+      max-height: 200px;
+      padding: 1rem;
+    }
+
+    p {
+      margin: 0;
+      color: $primary-color;
     }
   }
 }

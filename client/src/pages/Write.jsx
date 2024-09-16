@@ -8,6 +8,8 @@ import { formats } from '../lib/quillFormat';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Title from '../components/Title';
 
+import '../styles/write.scss';
+
 const Write = () => {
   const navigate = useNavigate();
 
@@ -115,6 +117,8 @@ const Write = () => {
         {errors.author && <p className='error'>{errors.author}</p>}
 
         <div className='editorContainer'>
+          <label htmlFor='body'>Body</label>
+
           <ReactQuill
             className='editor'
             theme='snow'

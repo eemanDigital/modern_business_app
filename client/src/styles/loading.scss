@@ -1,9 +1,10 @@
-@import './variables';
+@import 'variables';
 
 .loading {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50vh;
   padding: 2rem;
   h3 {
     font-family: monospace;

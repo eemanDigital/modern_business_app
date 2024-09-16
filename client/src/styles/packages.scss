@@ -3,16 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-// $primary-color: #2ecc71;
-$secondary-color: #3498db;
-$text-color: #414141;
-$bg-color: #f6f6f6;
-$white: #ffffff;
-
 .generic_price_table {
   font-family: 'Raleway', sans-serif;
   padding: 20px;
+  width: 100%;
+  max-width: 540px;
   border-radius: 10px;
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+  }
 
   .generic_content {
     background-color: $white;

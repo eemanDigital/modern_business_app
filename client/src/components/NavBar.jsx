@@ -14,8 +14,6 @@ function Navbar() {
   const { user } = useAuthContext();
   const role = user?.data?.user?.role;
 
-  console.log(role, 'ROLE');
-
   // checks admin role for writing
   const isAdmin = role === 'admin';
   const { logout } = useLogout();
@@ -55,7 +53,7 @@ function Navbar() {
             onMouseEnter={() => setDropdown(true)}
             onMouseLeave={() => setDropdown(false)}
             onClick={handleDropdown}>
-            <Link to='#' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='#' className='nav-links'>
               Services
             </Link>
             {dropdown && <Dropdown />}

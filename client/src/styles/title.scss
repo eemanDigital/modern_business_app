@@ -8,6 +8,12 @@
   margin-bottom: $spacing-xl;
   color: $primary-color;
 
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.5rem;
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
   span {
     color: $accent-color;
   }

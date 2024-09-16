@@ -2,7 +2,7 @@
 
 .company-section {
   //this control aside and text for other components
-  margin: 6rem 1.4rem;
+  margin: 2rem 0;
   .comp-container {
     text-align: left;
     display: flex;
@@ -12,6 +12,7 @@
     // padding: 1.4rem 0;
     @media (max-width: $breakpoint-md) {
       flex-direction: column;
+      margin: 0rem 1rem;
     }
 
     .text-1 {

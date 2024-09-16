@@ -1,11 +1,11 @@
-@import './variables';
+@import 'variables';
 
 article {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
+  margin: 5rem auto;
   position: relative;
   width: 100%;
 
@@ -94,15 +94,17 @@ article {
     .editor {
       height: 100%;
       border: 1px solid lightgray;
+      margin-top: 2rem;
       border-radius: 4px;
     }
   }
 }
 
 // Responsive Adjustments
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-md) {
   article {
-    margin: 3rem 1rem;
+    // margin: 0;
+    padding: 0 2rem;
 
     .write {
       width: 90%;
@@ -110,7 +112,7 @@ article {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $breakpoint-sm) {
   article {
     .write {
       width: 100%;

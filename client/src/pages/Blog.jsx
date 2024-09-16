@@ -4,6 +4,8 @@ import Loading from '../components/Loading';
 import ReactPaginate from 'react-paginate';
 import { useDataFetch } from '../hooks/useDataFetch';
 
+import '../styles/blog.scss';
+
 function Blog() {
   // const [blogPosts, setBlogPosts] = useState(null);
   // const [loading, setLoading] = useState(true);

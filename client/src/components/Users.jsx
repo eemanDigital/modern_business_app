@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../styles/users.scss';
-import Title from './Title';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
