@@ -45,10 +45,8 @@ function Navbar() {
           {click ? <AiOutlineClose /> : <BiMenuAltRight />}
         </div>
 
-        <ul
-          className={click ? 'nav-menu active' : 'nav-menu'}
-          data-aos='fade-left'>
-          <li className='nav-item'>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item' data-aos='fade-left'>
             <Link to='/' className='nav-links' onClick={closeMobileMenu}>
               Home
             </Link>
@@ -65,7 +63,7 @@ function Navbar() {
             {dropdown && <Dropdown />}
           </li>
 
-          <li className='nav-item'>
+          <li className='nav-item' data-aos='fade-left'>
             <Link
               to='/about-us'
               className='nav-links'
@@ -74,7 +72,7 @@ function Navbar() {
             </Link>
           </li>
 
-          <li className='nav-item'>
+          <li className='nav-item' data-aos='fade-left'>
             <Link to='/blog' className='nav-links' onClick={closeMobileMenu}>
               Blog
             </Link>
@@ -98,7 +96,7 @@ function Navbar() {
             </li>
           )}
 
-          <li className='nav-item'>
+          <li className='nav-item' data-aos='fade-left'>
             {user ? (
               <button className='logout-btn' onClick={() => logout()}>
                 Logout

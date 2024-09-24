@@ -12,7 +12,7 @@ const Services = ({ packages }) => {
           {packages.map((item, index) => (
             <div className='services__card' key={index}>
               <div className='services__card-body'>
-                <div className='services__icon' data-aos='fade-up'>
+                <div className='services__icon' data-aos='fade-in'>
                   {item.icon}
                 </div>
 
@@ -20,7 +20,7 @@ const Services = ({ packages }) => {
                   {item.title}
                 </h4>
 
-                <p className='desc' data-aos='fade-left'>
+                <p className='desc' data-aos='fade-right'>
                   {item.description}
                 </p>
                 {/* <div className='services__price'>
