@@ -1,12 +1,10 @@
 // import Description from '../../components/company/Description';
 import { Link } from 'react-router-dom';
 import Aside from '../components/Aside';
-import Trust from '../components/Trust';
 import PostIncorporation from '../components/PostIncorporation';
 import { pre_inc_service } from '../data/data';
 import Packages from '../components/Packages';
 import { packages } from '../data/data';
-import dream_img from '../assets/dream.svg';
 
 const Business = () => {
   return (

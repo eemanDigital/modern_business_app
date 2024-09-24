@@ -9,8 +9,10 @@ function AboutUs() {
     <section className='about-us'>
       <div className='hero'>
         <div className='hero__content'>
-          <h1 className='hero__title'>Digital Solutions for Your Business</h1>
-          <p className='hero__text'>
+          <h1 className='hero__title' data-aos='zoom-out'>
+            Digital Solutions for Your Business
+          </h1>
+          <p className='hero__text' data-aos='zoom-out'>
             Empowering your digital transformation with innovative, tailored
             solutions.
           </p>
@@ -18,7 +20,7 @@ function AboutUs() {
       </div>
 
       <div className='container'>
-        <div className='certified'>
+        <div className='certified' data-aos='zoom-out'>
           <PiCertificateThin className='certified__icon' />
           <div className='certified__content'>
             <span className='certified__text'>Certified Excellence</span>
@@ -34,14 +36,14 @@ function AboutUs() {
             {/* <h2 className='section-title'>Our Story</h2> */}
             <Title text='Our' span='Story' />
             <p className='story__text'>
-              <p>
+              <p data-aos='fade-in'>
                 At Eeman Digital and IT Solutions our journey into the realm of
                 web development and business registration services was inspired
                 by a profound passion for technology and a relentless drive to
                 empower businesses to succeed in the digital era.
               </p>
 
-              <p>
+              <p data-aos='fade-in'>
                 Born out of a vision to revolutionize the way businesses
                 establish their online presence and streamline their operations,
                 Eeman Digital and IT Solutions was founded on the principles of
@@ -50,7 +52,7 @@ function AboutUs() {
                 meaningful impact on businesses of all sizes, across industries.
               </p>
 
-              <p>
+              <p data-aos='fade-in'>
                 From the inception of Eeman Digital and IT Solutions, our focus
                 has been on understanding the unique needs and aspirations of
                 our clients and translating them into tangible, transformative
@@ -58,7 +60,7 @@ function AboutUs() {
                 and continuous learning to drive sustainable growth and success
                 for our clients.
               </p>
-              <p>
+              <p data-aos='fade-in'>
                 At Eeman Digital and IT Solutions, we are committed to staying
                 at the forefront of technological advancements, embracing
                 emerging trends, and adapting to evolving market dynamics. Our
@@ -68,7 +70,7 @@ function AboutUs() {
                 clients.
               </p>
 
-              <p>
+              <p data-aos='fade-in'>
                 As we continue to expand our horizons and embark on new
                 endeavors, our unwavering dedication to client satisfaction,
                 ethical business practices, and social responsibility remains
@@ -76,7 +78,7 @@ function AboutUs() {
                 that our clients place in us, and we remain committed to
                 exceeding their expectations, every step of the way.
               </p>
-              <p>
+              <p data-aos='fade-in'>
                 With a relentless pursuit of excellence and a steadfast
                 commitment to our core values, we are poised to chart new
                 heights of success, forge lasting partnerships, and leave a
@@ -90,18 +92,25 @@ function AboutUs() {
               Learn More
             </a> */}
           </div>
-          <img src={ourStory} alt='Our Story' className='story__image' />
+          <img
+            src={ourStory}
+            alt='Our Story'
+            className='story__image'
+            data-aos='zoom-in'
+          />
         </div>
 
         <div className='mission-vision'>
           <div className='mission-vision__item'>
-            <h3 className='mission-vision__title'>Our Mission</h3>
-            <p className='mission-vision__text'>
+            <h3 className='mission-vision__title' data-aos='fade-in'>
+              Our Mission
+            </h3>
+            <p className='mission-vision__text' data-aos='fade-in'>
               To empower businesses worldwide with innovative web solutions that
               catalyze growth and drive digital transformation.
             </p>
           </div>
-          <div className='mission-vision__item'>
+          <div className='mission-vision__item' data-aos='fade-in'>
             <h3 className='mission-vision__title'>Our Vision</h3>
             <p className='mission-vision__text'>
               To be the trusted ally for businesses seeking to thrive in the
@@ -109,7 +118,7 @@ function AboutUs() {
               client-centric approach.
             </p>
           </div>
-          <div className='mission-vision__item'>
+          <div className='mission-vision__item' data-aos='fade-in'>
             <h3 className='mission-vision__title'>Our Values</h3>
             <ul className='mission-vision__list'>
               <li>Unwavering Quality</li>
