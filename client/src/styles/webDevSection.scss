@@ -1,18 +1,30 @@
 @import './variables';
 
 .web-dev-section {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 4rem 2rem;
-  background: $highlight-color; // Use gradient or a more subtle background pattern if preferred
+  background: url('../assets/laptop2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-color: $highlight-color;
-  border-radius: 12px;
+  width: 100%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  margin: 4rem auto;
-  max-width: 1200px;
+  margin: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(231, 76, 60, 0.7);
+    z-index: 1;
+  }
 
   @media (max-width: $breakpoint-md) {
     flex-direction: column;
@@ -20,6 +32,8 @@
   }
 
   .text {
+    position: relative; /* Ensure the text is above the overlay */
+    z-index: 2; /* Ensure the text is above the overlay */
     flex: 1;
     color: #ffffff;
     display: flex;
@@ -36,13 +50,11 @@
     h1 {
       font-weight: 700;
       font-size: 2.5rem;
+      text-align: center;
       text-transform: uppercase;
       margin-bottom: 1rem;
       line-height: 1.2;
       color: #ffffff;
-      background: linear-gradient(to right, #ffffff, #d1d8e0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
 
       @media (max-width: $smallPhone) {
         font-size: 2rem;
@@ -58,8 +70,8 @@
 
     .link-btn {
       display: flex;
+      justify-content: center;
       gap: 1rem;
-      flex-wrap: wrap;
 
       @media (max-width: $smallPhone) {
         flex-direction: column;
@@ -94,25 +106,6 @@
           background-color: #ffffff;
           color: $highlight-color;
         }
-      }
-    }
-  }
-
-  .img {
-    flex: 1;
-    padding: 1rem;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-      @media (max-width: $breakpoint-md) {
-        max-width: 100%;
       }
     }
   }

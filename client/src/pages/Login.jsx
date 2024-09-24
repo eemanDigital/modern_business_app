@@ -40,7 +40,7 @@ function Login() {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error || "Couldn't login");
       setTimeout(() => {
         setError(false);
       }, 2000);

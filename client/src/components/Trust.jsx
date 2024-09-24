@@ -8,7 +8,7 @@ const TrustCard = ({ icon, title, description }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='trust-card'>
+    <div className='trust-card' data-aos='zoom-in'>
       <div className='trust-card__header' onClick={() => setIsOpen(!isOpen)}>
         <div className='trust-card__title'>
           <span className='trust-card__icon'>{icon}</span>

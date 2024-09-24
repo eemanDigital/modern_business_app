@@ -13,53 +13,53 @@ const Company = () => {
     <section className='company-section'>
       <div className='comp-container'>
         <div className='text-1'>
-          <h1>Company</h1>
-          <p>
+          <h1 data-aos='fade-left'> Company</h1>
+          <p data-aos='zoom-out'>
             A company limited by shares is a type of business structure where
             the liability of its owners, known as shareholders, is limited to
             the amount of money they invested in the company through purchasing
             shares. This means their personal assets (like their house or car)
             are protected if the company encounters financial difficulties or
             declares bankruptcy.
-            <p>
+            <p data-aos='zoom-out'>
               <strong>
                 Here are some key features of a company limited by shares:
               </strong>{' '}
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Limited Liability: </strong>This is the biggest advantage
               for owners. They only risk losing the money they invested in the
               company, not their personal wealth.
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Separate Legal Entity:</strong> The company is treated as
               a separate legal entity from its owners, meaning it can enter
               contracts, own property, and incur debts in its own name.
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Share Capital:</strong>
               The company raises capital by issuing shares. Each share
               represents a portion of ownership in the company. Shareholders
               have voting rights based on the number of shares they own.
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Management: </strong>The company is managed by directors,
               who are appointed by the shareholders. They are responsible for
               making decisions about the day-to-day operations of the business.
             </p>
             <h4> Types of Companies Limited by Shares:</h4>
-            <p>
+            <p data-aos='zoom-out'>
               <strong> Private Limited Company:</strong>
               Shares are not offered to the public and there are restrictions on
               transferring ownership. This is the most common type of company
               limited by shares in many countries.
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Public Limited Company:</strong> Shares can be listed on a
               stock exchange and traded by the public. These companies typically
               have larger numbers of shareholders.
             </p>
-            <p>
+            <p data-aos='zoom-out'>
               <strong>Registration:</strong> Companies limited by shares need to
               be registered with a government agency, like the Corporate Affairs
               Commission (CAC) in Nigeria.
@@ -69,10 +69,10 @@ const Company = () => {
             popular choice for many businesses.
             <Link to='#'>Learn more about company</Link>
           </p>
-          <div className='how-to-start'>
+          <div className='how-to-start' data-aos='zoom-out'>
             <h4>How to get started</h4>
 
-            <p>
+            <p data-aos='zoom-out'>
               You can start right now. We can form your Corporation of any type
             </p>
 

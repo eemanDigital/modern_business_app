@@ -2,9 +2,9 @@ import { PiCertificateThin } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Aside = ({ price, title, img }) => {
+const Aside = ({ price, title }) => {
   return (
-    <div className='aside'>
+    <div className='aside' data-aos='fade-up'>
       <div className='aside-container'>
         <h3>{title}</h3>
         <span>
@@ -22,7 +22,7 @@ const Aside = ({ price, title, img }) => {
             />
           </svg>
         </span>
-        <strong>
+        <strong data-aos='fade-left'>
           From &#8358; <span className='amount'>{price}</span>
         </strong>
 
@@ -32,20 +32,11 @@ const Aside = ({ price, title, img }) => {
         </Link>
       </div>
       <div className='why-us'>
-        {/* <h3>Why You Should Engage Us</h3> */}
-        {/* <Link to='#'>Why we are better</Link>
-        <Link>Clients&apos; Testimonials</Link>
-        <Link to='#'>Others</Link> */}
         <div className='accredited'>
           <strong>CAC Accredited</strong>
 
-          <PiCertificateThin />
+          <PiCertificateThin data-aos='fade-right' />
         </div>
-        {/* <img
-          src={img}
-          alt=''
-          style={{ marginTop: '2.5rem', maxWidth: '250px', height: '100%' }}
-        /> */}
       </div>
     </div>
   );

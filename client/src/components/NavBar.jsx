@@ -34,14 +34,20 @@ function Navbar() {
   return (
     <header>
       <nav className='navbar'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          eeman
+        <Link
+          to='/'
+          className='navbar-logo'
+          onClick={closeMobileMenu}
+          data-aos='zoom-in'>
+          eemanTech
         </Link>
         <div className='menu-icon' onClick={handleClick}>
           {click ? <AiOutlineClose /> : <BiMenuAltRight />}
         </div>
 
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+        <ul
+          className={click ? 'nav-menu active' : 'nav-menu'}
+          data-aos='fade-left'>
           <li className='nav-item'>
             <Link to='/' className='nav-links' onClick={closeMobileMenu}>
               Home

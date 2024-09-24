@@ -4,8 +4,8 @@ import Title from './Title';
 const PricingPlan = ({ packages }) => {
   return (
     <section id='generic_price_table'>
-      <Title text='Pricing' />
-      <div className='container'>
+      <Title text='Pricing' data-aos='fade-right' />
+      <div className='container' data-aos='fade'>
         <div className='row'>
           {packages.map((pkg, index) => (
             <div className='col-md-4' key={index}>
@@ -16,18 +16,18 @@ const PricingPlan = ({ packages }) => {
                 <div className='generic_head_price clearfix'>
                   <div className='generic_head_content clearfix'>
                     <div className='head_bg'></div>
-                    <div className='head'>
+                    <div className='head' data-aos='fade-up'>
                       <span>{pkg.title}</span>
                     </div>
                   </div>
-                  <div className='generic_price_tag clearfix'>
+                  <div className='generic_price_tag clearfix' data-aos='fade'>
                     <span className='price'>
                       <span className='sign'>₦</span>
                       <span className='currency'>{pkg.price}</span>
                     </span>
                   </div>
                 </div>
-                <div className='generic_feature_list'>
+                <div className='generic_feature_list' data-aos='fade'>
                   <ul>
                     {pkg.benefits.map((benefit, i) => (
                       <li key={i}>

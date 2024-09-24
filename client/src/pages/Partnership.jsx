@@ -22,8 +22,8 @@ const Partnership = () => {
     <section className='company-section partnership'>
       <div className='comp-container'>
         <div className='text-1'>
-          <h1>Partnership Registration</h1>
-          <p>
+          <h1 data-aos='fade-in'>Partnership Registration</h1>
+          <p data-aos='fade-in'>
             Under the Companies and Allied Matters Act (CAMA) 2020, a
             partnership is an agreement between two or more individuals to carry
             on a business in common with a view to profit. The key features of a
@@ -31,35 +31,35 @@ const Partnership = () => {
           </p>
 
           <ul>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Mutual agency:</strong> Each partner acts as an agent for
               the other partners, binding the partnership in dealings with third
               parties.
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Joint and several liability:</strong> All partners are
               personally liable for the debts and obligations of the
               partnership, regardless of their individual contribution.
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Sharing of profits and losses:</strong> Profits and losses
               are shared among the partners according to the agreed-upon terms,
               or in equal proportions if no agreement exists.
             </li>
           </ul>
 
-          <p>
+          <p data-aos='fade-in'>
             <strong>Types of Partnerships in Nigeria:</strong>
           </p>
 
           <ol>
-            <li>
+            <li data-aos='fade-in'>
               <strong>General Partnership:</strong> This is the most common type
               of partnership, with the characteristics mentioned above. There
               are no formalities required to form a general partnership, though
               having a written agreement is highly recommended.
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Limited Liability Partnership (LLP):</strong> An LLP
               offers limited liability to its partners similar to a limited
               liability company. While some partners can manage the business
@@ -67,7 +67,7 @@ const Partnership = () => {
               involvement in management (limited partners). LLPs require
               registration with the Corporate Affairs Commission (CAC).
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Limited Partnership (LP):</strong> This type has at least
               one general partner with unlimited liability and at least one
               limited partner with limited liability similar to an LLP. The
@@ -77,22 +77,22 @@ const Partnership = () => {
             </li>
           </ol>
 
-          <p>
+          <p data-aos='fade-in'>
             <strong>Additional points to note:</strong>
           </p>
 
           <ul>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Partnership Agreement:</strong> While not mandatory,
               having a written partnership agreement is vital for outlining the
               rights, responsibilities, profit-sharing, and dispute resolution
               mechanisms among partners.
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Registration:</strong> General partnerships do not require
               registration, but LLPs and LPs must register with the CAC.
             </li>
-            <li>
+            <li data-aos='fade-in'>
               <strong>Taxation:</strong> Partnerships are not separate tax
               entities; each partner reports their share of the
               partnership&apos;s income or loss on their individual tax returns.
@@ -100,20 +100,16 @@ const Partnership = () => {
           </ul>
 
           <div className='how-to-start'>
-            <h4>How to get started</h4>
+            <h4 data-aos='fade-in'>How to get started</h4>
 
-            <p>
+            <p data-aos='fade-in'>
               You can start right now. We can form your Corporation of any type
             </p>
 
             <Link to='#'>Start Now</Link>
           </div>
         </div>
-        <div>
-          {/* <div className='partnership background'>
-            <img src={partner} alt='partnership-image' />
-          </div> */}
-        </div>
+
         {PARTNERSHIP_DATA.map((item, index) => {
           if (index === 0) {
             // Render only the first price

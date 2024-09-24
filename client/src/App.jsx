@@ -26,8 +26,18 @@ import PostImageUpload from './pages/PostImageUpload';
 import AdminBoard from './pages/AdminBoard';
 import UpdateUser from './pages/UpdateUser';
 import ProtectRoute from './components/ProtectRoute';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 function App() {
+  // scroll animation handler
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+    });
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<Layout />}>

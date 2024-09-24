@@ -1,97 +1,82 @@
-import BlogContent from '../components/BlogContent';
 import { useState, useEffect, useRef } from 'react';
-import Loading from '../components/Loading';
 import ReactPaginate from 'react-paginate';
 import { useDataFetch } from '../hooks/useDataFetch';
+import Loading from '../components/Loading';
 
 import '../styles/blog.scss';
+import BlogPost from '../components/BlogPost';
 
 function Blog() {
-  // const [blogPosts, setBlogPosts] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  const [limit, setLimit] = useState(4);
+  const [limit] = useState(5); // 1 featured + 4 regular posts
   const [pageCount, setPageCount] = useState(1);
-  const currentPage = useRef();
+  const currentPage = useRef(1);
   const { data, loading, error, dataFetcher } = useDataFetch();
 
   const posts = data?.data?.results?.result;
 
   useEffect(() => {
-    currentPage.current = 1;
-    // fetchData();
     getPaginatedPosts();
-    // }
   }, []);
 
-  // Invoke when user click to request another page.
   const handlePageClick = async (event) => {
     currentPage.current = event.selected + 1;
     getPaginatedPosts();
-    // setItemOffset(newOffset);
   };
 
-  // Fetch paginated posts
   async function getPaginatedPosts() {
     try {
       const { data } = await dataFetcher(
         `posts?page=${currentPage.current}&limit=${limit}`
       );
-
       setPageCount(data?.data?.results?.pageCount);
-      // setLoading(false);
     } catch (err) {
-      console.log(err);
+      console.error('Error fetching paginated posts:', err);
     }
   }
 
-  // error toast message
+  // toast error
   if (error) {
-    return <div>{error}</div>;
+    return <div className='error-message'>Error: {error}</div>;
   }
 
   return (
     <div className='blog-container'>
-      <div className='blog'>
-        <div className='blog-hero-text'>
-          <h1>Business News</h1>
-          <p>Blog about business and startups</p>
-        </div>
-      </div>
-
       {loading ? (
         <Loading />
       ) : (
-        <div className='blog-content-wrapper'>
-          {posts?.map((post) => {
-            return (
-              <div key={post.id}>
-                <BlogContent {...post} />
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <div className='blog-content'>
+            {posts && posts.length > 0 && (
+              <>
+                <BlogPost {...posts[0]} isFeatured={true} />
+                <div className='blog-list'>
+                  {posts.slice(1).map((post) => (
+                    <BlogPost key={post._id} {...post} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+          <ReactPaginate
+            breakLabel='...'
+            nextLabel='Next >'
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            pageCount={pageCount}
+            previousLabel='< Previous'
+            renderOnZeroPageCount={null}
+            containerClassName='pagination'
+            pageClassName='pagination__item'
+            pageLinkClassName='pagination__link'
+            previousClassName='pagination__item'
+            previousLinkClassName='pagination__link'
+            nextClassName='pagination__item'
+            nextLinkClassName='pagination__link'
+            activeClassName='active'
+            disabledClassName='disabled'
+          />
+        </>
       )}
-
-      <div>
-        {' '}
-        <ReactPaginate
-          breakLabel='...'
-          nextLabel='next >'
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel='< previous'
-          renderOnZeroPageCount={null}
-          containerClassName='pagination justify-content-center'
-          pageClassName='page-item'
-          pageLinkClassName='page-link'
-          previousClassName='page-item'
-          previousLinkClassName='page-link'
-          nextClassName='page-item'
-          nextLinkClassName='page-link'
-          activeClassName='active'
-        />
-      </div>
     </div>
   );
 }

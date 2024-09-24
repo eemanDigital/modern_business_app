@@ -3,7 +3,7 @@ import '../styles/packages.scss';
 
 const Packages = ({ title, price, benefits }) => {
   return (
-    <div className='generic_price_table'>
+    <div className='generic_price_table' data-aos='fade'>
       <div className='generic_content'>
         <div className='generic_head_price'>
           <div className='generic_head_content'>

@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import Title from './Title';
 const PostIncorporation = () => {
   return (
-    <section className='post-inc-container'>
+    <section className='post-inc-container' data-aos='zoom-out'>
       <Title text='Post' span='Incorporation Services' />
-      <p>
+      <p data-aos='zoom-in'>
         If you have a company or business name already registered/incorporated
         and you want to make Any change, our teams of accredited CAC experts are
         on the standby to help you at affordable price.
       </p>
       <table className='post-inc-card'>
         <thead>
-          <tr>
+          <tr data-aos='zoom-out'>
             <th>Service Name</th>
             <th>Price</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-aos='fade'>
           {post_inc_services.map((item, index) => (
             <tr className='post-inc_card_col' key={index}>
               <td>{item.serviceName}</td>

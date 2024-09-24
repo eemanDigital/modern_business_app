@@ -20,10 +20,13 @@ header {
   }
 
   .navbar-logo {
+    font-family: monospace;
+    font-weight: 600;
+    letter-spacing: 2px;
     color: #ede8e8;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    // font-size: 2rem;
   }
 
   .menu-icon {

@@ -9,10 +9,10 @@ const Feature = () => {
           <img src={homepage} alt='Business Registration' />
         </div>
         <div className='feature__content'>
-          <h3 className='feature__title'>
+          <h3 className='feature__title' data-aos='flip-up'>
             Why <span>Register Your Business with Us</span>
           </h3>
-          <p className='feature__text'>
+          <p className='feature__text' data-aos='fade'>
             Registering your business with us opens doors to endless
             possibilities. Gain credibility, legal protection, and access to
             funding. We streamline the registration process, ensuring compliance

@@ -18,7 +18,7 @@ const Ngo = () => {
         <div className='text-1'>
           <h1>Incorporated Trustees</h1>
           <p>
-            <p>
+            <p data-aos='fade-in'>
               In Nigeria, a non-governmental organization (NGO) can be
               registered as an incorporated trustee under part F of the
               Companies and Allied Matters Act (CAMA) 2020. Registering a
@@ -28,7 +28,7 @@ const Ngo = () => {
               organization&apos;s obligations or legal actions.
             </p>
 
-            <p>
+            <p data-aos='fade-in'>
               This type of organization focuses on social or public benefit
               rather than generating profit. Here&apos;s a breakdown:
             </p>
@@ -37,26 +37,26 @@ const Ngo = () => {
               <li>
                 <strong>Key Characteristics:</strong>
                 <ul>
-                  <li>
+                  <li data-aos='fade-in'>
                     <strong>Non-Profit:</strong> Does not aim to make profits
                     but reinvest resources back into its goals.
                   </li>
-                  <li>
+                  <li data-aos='fade-in'>
                     <strong>Legal Entity:</strong> Holds a separate legal
                     identity from its members, offering liability protection.
                   </li>
-                  <li>
+                  <li data-aos='fade-in'>
                     <strong>Tax-Exempt:</strong> May be entitled to tax
                     exemptions depending on its activities and registration with
                     relevant authorities.
                   </li>
-                  <li>
+                  <li data-aos='fade-in'>
                     <strong>Membership-Based:</strong> Usually managed by a
                     board of trustees elected by its members.
                   </li>
                 </ul>
               </li>
-              <li>
+              <li data-aos='fade-in'>
                 <strong>Common Forms:</strong> Churches, mosques, NGOs, social
                 clubs, alumni associations, community groups. etc.
               </li>
@@ -64,7 +64,7 @@ const Ngo = () => {
 
             {/* <Link to='#'>Learn more about company</Link> */}
           </p>
-          <div className='how-to-start'>
+          <div className='how-to-start' data-aos='fade-in'>
             <h4>How to get started</h4>
 
             <p>

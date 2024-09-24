@@ -27,9 +27,14 @@ const Hero = () => {
               className='hero__background'
             />
             <div className='hero__content'>
-              <h1 className='hero__title'>{content.title}</h1>
-              <p className='hero__subtitle'>{content.subtitle}</p>
+              <h1 className='hero__title' data-aos='fade'>
+                {content.title}
+              </h1>
+              <p className='hero__subtitle' data-aos='fade-right'>
+                {content.subtitle}
+              </p>
               <Button
+                data-aos='fade-in'
                 path='/contact-us'
                 text='Get Started'
                 className='hero__cta'

@@ -13,8 +13,8 @@ const Business = () => {
     <section className='company-section'>
       <div className='comp-container'>
         <div className='text-1'>
-          <h1>Business Name</h1>
-          <p>
+          <h1 data-aos='zoom-in'>Business Name</h1>
+          <p data-aos='zoom-in'>
             <strong>A &quot;business name&quot; in Nigeria</strong>, as defined
             by the Corporate Affairs Commission (CAC), is the official name
             under which your business operates and conducts its activities. It
@@ -23,12 +23,12 @@ const Business = () => {
             the nature of your business.
           </p>
 
-          <p>
+          <p data-aos='zoom-in'>
             Here are some key points to remember about business names in
             Nigeria:
           </p>
 
-          <ul>
+          <ul data-aos='zoom-in'>
             <li>
               <strong>Importance:</strong>
               <ul>
@@ -56,7 +56,7 @@ const Business = () => {
             </li>
           </ul>
 
-          <div className='how-to-start'>
+          <div className='how-to-start' data-aos='zoom-in'>
             <h4>How to get started</h4>
 
             <p>
@@ -88,9 +88,10 @@ const Business = () => {
           );
         })}
       </div>
+
       <div className='dream-section'>
         <div className='dream-wrapper'>
-          <div className='dream-text'>
+          <div className='dream-text' data-aos='fade-right'>
             <h1>Register your deram business and keep it 100% complaint</h1>
             <p>Turn you ideam into your dream business</p>
 
@@ -98,7 +99,7 @@ const Business = () => {
             <Link to='#'>Free Consultation</Link>
           </div>
           <div className='dream-image'>
-            <img src={dream_img} alt='' />
+            {/* <img src={dream_img} alt='' /> */}
             {/* <p>it can be done</p> */}
           </div>
         </div>
