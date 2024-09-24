@@ -1,116 +1,107 @@
-import { BiMenuAltRight } from 'react-icons/bi';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { BiMenuAltRight, BiChevronDown } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Dropdown from './Dropdown';
 import { useLogout } from '../hooks/useLogout';
-
+import Dropdown from './Dropdown';
 import '../styles/navbar.scss';
 
-function Navbar() {
-  const [click, setClick] = useState(false); // State to manage mobile menu
-  const [dropdown, setDropdown] = useState(false); // State to manage dropdown
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user } = useAuthContext();
-  const role = user?.data?.user?.role;
-
-  // checks admin role for writing
-  const isAdmin = role === 'admin';
   const { logout } = useLogout();
 
-  // Toggle mobile menu
-  const handleClick = () => setClick(!click);
+  const isAdmin = user?.data?.user?.role === 'admin';
 
-  // Close mobile menu
-  const closeMobileMenu = () => setClick(false);
-
-  // Toggle dropdown on hover (for desktop) and click (for mobile)
-  const handleDropdown = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(!dropdown); // Toggle dropdown for mobile view
-    }
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setDropdownOpen(false);
   };
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 960) {
+        setMenuOpen(false); // Close menu when resizing to desktop view
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <header>
-      <nav className='navbar'>
-        <Link
-          to='/'
-          className='navbar-logo'
-          onClick={closeMobileMenu}
-          data-aos='zoom-in'>
-          eemanTech
-        </Link>
-        <div className='menu-icon' onClick={handleClick}>
-          {click ? <AiOutlineClose /> : <BiMenuAltRight />}
-        </div>
-
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-          <li className='nav-item' data-aos='fade-left'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-              Home
-            </Link>
-          </li>
-
-          <li
-            className='nav-item'
-            onMouseEnter={() => setDropdown(true)}
-            onMouseLeave={() => setDropdown(false)}
-            onClick={handleDropdown}>
-            <Link to='#' className='nav-links'>
-              Services
-            </Link>
-            {dropdown && <Dropdown />}
-          </li>
-
-          <li className='nav-item' data-aos='fade-left'>
-            <Link
-              to='/about-us'
-              className='nav-links'
-              onClick={closeMobileMenu}>
-              About
-            </Link>
-          </li>
-
-          <li className='nav-item' data-aos='fade-left'>
-            <Link to='/blog' className='nav-links' onClick={closeMobileMenu}>
-              Blog
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link
-              to='/contact-us'
-              className='nav-links'
-              onClick={closeMobileMenu}>
-              Contact Us
-            </Link>
-          </li>
-          {isAdmin && (
-            <li className='nav-item'>
-              <Link
-                to='admin-board'
-                className='nav-links'
-                onClick={closeMobileMenu}>
-                Dashboard
-              </Link>
-            </li>
+    <nav className='navbar'>
+      <Link to='/' className='navbar-logo' onClick={closeMenu}>
+        eemanTech
+      </Link>
+      <div className='menu-icon' onClick={toggleMenu}>
+        {menuOpen ? <AiOutlineClose /> : <BiMenuAltRight />}
+      </div>
+      <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <li className='nav-item'>
+          <Link to='/' className='nav-link' onClick={closeMenu}>
+            Home
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <div
+            className={`nav-link dropdown-toggle ${
+              dropdownOpen ? 'active' : ''
+            }`}
+            onClick={toggleDropdown}>
+            Services
+            <BiChevronDown className='dropdown-icon' />
+          </div>
+          {dropdownOpen && (
+            <Dropdown
+              className={`dropdown-menu ${dropdownOpen ? 'active' : ''}`}
+              closeMenu={closeMenu}
+            />
           )}
-
-          <li className='nav-item' data-aos='fade-left'>
-            {user ? (
-              <button className='logout-btn' onClick={() => logout()}>
-                Logout
-              </button>
-            ) : (
-              <Link to='/login' className='nav-links' onClick={closeMobileMenu}>
-                Login
-              </Link>
-            )}
+        </li>
+        <li className='nav-item'>
+          <Link to='/about-us' className='nav-link' onClick={closeMenu}>
+            About
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link to='/blog' className='nav-link' onClick={closeMenu}>
+            Blog
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link to='/contact-us' className='nav-link' onClick={closeMenu}>
+            Contact Us
+          </Link>
+        </li>
+        {isAdmin && (
+          <li className='nav-item'>
+            <Link to='/admin-board' className='nav-link' onClick={closeMenu}>
+              Dashboard
+            </Link>
           </li>
-        </ul>
-      </nav>
-    </header>
+        )}
+        <li className='nav-item'>
+          {user ? (
+            <button className='logout-btn' onClick={logout}>
+              Logout
+            </button>
+          ) : (
+            <Link to='/login' className='nav-link' onClick={closeMenu}>
+              Login
+            </Link>
+          )}
+        </li>
+      </ul>
+    </nav>
   );
-}
+};
 
 export default Navbar;
