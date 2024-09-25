@@ -21,7 +21,7 @@ export const heroContent = [
   {
     title: 'Incorporate Your Business with Ease',
     subtitle:
-      'Professional registration services to jumpstart your entrepreneurial journey',
+      'Professional registration services to jump start your entrepreneurial journey',
     image: heroImage1,
   },
   {
@@ -162,7 +162,7 @@ export const packages = [
   {
     icon: <TbWorldWww />,
     title: 'Web Development',
-    price: 'From 50,000',
+    price: 'from 50,000',
     description:
       'Professional web development services tailored to help businesses establish a strong online presence with custom websites.',
     benefits: [

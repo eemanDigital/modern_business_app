@@ -7,19 +7,19 @@ import Title from '../components/Title';
 function AboutUs() {
   return (
     <section className='about-us'>
-      <div className='hero'>
-        <div className='hero__content'>
-          <h1 className='hero__title' data-aos='zoom-out'>
+      <div className='about_hero'>
+        <div className='about_hero__content'>
+          <h1 className='about_hero__title' data-aos='zoom-out'>
             Digital Solutions for Your Business
           </h1>
-          <p className='hero__text' data-aos='zoom-out'>
+          <p className='about_hero__text' data-aos='zoom-out'>
             Empowering your digital transformation with innovative, tailored
             solutions.
           </p>
         </div>
       </div>
 
-      <div className='container'>
+      <div className='about_container'>
         <div className='certified' data-aos='zoom-out'>
           <PiCertificateThin className='certified__icon' />
           <div className='certified__content'>

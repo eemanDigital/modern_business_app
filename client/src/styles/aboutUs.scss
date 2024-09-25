@@ -5,14 +5,17 @@
   transition: $property $duration $timing;
 }
 
-.container {
+.about_container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.hero {
-  background: url('../assets/homepage-small.jpg');
+.about_hero {
+  background: url('../assets/hero1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
   color: $white;
   padding: 6rem 2rem;
   text-align: center;
@@ -20,6 +23,10 @@
   &__content {
     max-width: 800px;
     margin: 0 auto;
+    background-color: $accent-color;
+    opacity: 0.8;
+    padding: 1.2rem;
+    border-radius: 20px;
   }
 
   &__title {
@@ -190,7 +197,7 @@
 }
 
 @media (max-width: $breakpoint-md) {
-  .hero {
+  .about_hero {
     padding: 4rem 2rem;
 
     &__title {
@@ -210,7 +217,7 @@
 }
 
 @media (max-width: $breakpoint-sm) {
-  .hero__title {
+  .about_hero__title {
     font-size: 2rem;
   }
 

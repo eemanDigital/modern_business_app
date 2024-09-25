@@ -7,7 +7,7 @@
 
   &__slide {
     position: absolute;
-    margin-top: $spacing-md;
+    // margin-top: $spacing-md;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,7 +36,7 @@
   &__content {
     text-align: center;
     color: $white;
-    padding: $spacing-lg;
+    // padding: $spacing-lg;
     background-color: rgba($primary-color, 0.7);
     border-radius: $border-radius;
     max-width: 600px;
@@ -127,10 +127,6 @@
 
     &__subtitle {
       font-size: 1rem;
-    }
-
-    &__background {
-      height: 60px;
     }
   }
 }

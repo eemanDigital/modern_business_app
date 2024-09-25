@@ -80,3 +80,8 @@ $transition: all 0.3s ease;
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
+
+// transition mixin
+@mixin transition($property, $duration, $timing-function: ease, $delay: 0s) {
+  transition: $property $duration $timing-function $delay;
+}
