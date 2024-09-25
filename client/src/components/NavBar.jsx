@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+// Navbar.jsx
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiMenuAltRight, BiChevronDown } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 import Dropdown from './Dropdown';
-import '../styles/navbar.scss';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,25 +16,8 @@ const Navbar = () => {
   const isAdmin = user?.data?.user?.role === 'admin';
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => {
-    setMenuOpen(false);
-    setDropdownOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 960) {
-        setMenuOpen(false); // Close menu when resizing to desktop view
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
     <nav className='navbar'>
@@ -88,7 +71,7 @@ const Navbar = () => {
             </Link>
           </li>
         )}
-        <li className='nav-item'>
+        <li className=''>
           {user ? (
             <button className='logout-btn' onClick={logout}>
               Logout

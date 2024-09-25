@@ -146,10 +146,24 @@
         }
       }
     }
+  }
+}
+.logout-btn {
+  background: $white;
+  color: $highlight-color;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 
-    .logout-btn {
-      width: 100%;
-      text-align: center;
-    }
+  &:hover {
+    background: $primary-color;
+    color: $white;
   }
 }
