@@ -28,6 +28,7 @@ export const createPosts = catchAsync(async (req, res, next) => {
   });
 });
 
+// Get all posts API endpoint
 export const getPosts = catchAsync(async (req, res, next) => {
   // Fetch all posts from the database, sorted by date in descending order
   const posts = await Post.find().sort({ date: 'desc' });
@@ -56,6 +57,7 @@ export const getPosts = catchAsync(async (req, res, next) => {
   });
 });
 
+// Get post API endpoint
 export const getPost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const post = await Post.findById(postId);
@@ -111,7 +113,6 @@ export const deletePost = catchAsync(async (req, res, next) => {
 });
 
 // Update post image API endpoint
-
 export const updatePostImg = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
 
@@ -121,6 +122,7 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
 
   // Use Cloudinary's upload_stream method instead of upload
   const streamUpload = (req) => {
+    // Return a promise that resolves with the result of uploading the image
     return new Promise((resolve, reject) => {
       let stream = cloudinary.uploader.upload_stream(
         {
@@ -135,22 +137,27 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
         }
       );
 
+      // Pipe the file buffer to the upload stream
       streamifier.createReadStream(req.file.buffer).pipe(stream);
     });
   };
 
+  // Call the streamUpload function and await the result
   const result = await streamUpload(req);
 
+  // Update the post with the image URL
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
     { photo: result.secure_url },
     { new: true, runValidators: true }
   );
 
+  // Return an error if no post found
   if (!updatedPost) {
     return next(new Error('No post found with that ID'));
   }
 
+  // Send a successful response with the updated post
   res.status(200).json({
     status: 'success',
     message: 'Post image successfully updated',

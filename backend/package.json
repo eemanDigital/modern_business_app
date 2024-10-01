@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "cross-env nodemon server.js",
-    "start:prod": "cross-env NODE_ENV=production nodemon server.js"
+    "start:prod": "cross-env NODE_ENV=production node server.js"
   },
   "author": "eeman_digital",
   "license": "ISC",
