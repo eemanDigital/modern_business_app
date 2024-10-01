@@ -1,45 +1,23 @@
+import streamifier from 'streamifier';
 import { Post } from '../models/postModel.js';
-import path from 'path';
 import multer from 'multer';
+import cloudinary from '../utils/cloudinaryConfig.js';
 import { catchAsync } from '../utils/catchAsync.js';
-import AppError from '../utils/appError.js';
 
-//image upload
-const multerStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/images');
-  },
-  filename: (req, file, cb) => {
-    // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(
-      null,
-      file.fieldname + '_' + Date.now() + path.extname(file.originalname)
-    );
+// configure multer
+const storage = multer.memoryStorage(); // store image in memory
+export const upload = multer({ storage: storage });
 
-    // console.log(req.file);
-  },
-});
-// check if the file is an image
-// const multerFilter = (req, file, cb) => {
-
-// }
-const upload = multer({
-  storage: multerStorage,
-});
-
-//photo:name of the field
-export const uploadPostPhoto = upload.single('photo');
-
+// create post controller
 export const createPosts = catchAsync(async (req, res, next) => {
   const { title, body, author } = req.body;
 
-  const filename = req.file ? req.file.filename : null; // Handle optional file
+  // const filename = req.file ? req.file.filename : null; // Handle optional file
 
   const post = await Post.create({
     title,
     body,
     author,
-    photo: filename,
   });
 
   res.status(201).json({
@@ -90,27 +68,37 @@ export const getPost = catchAsync(async (req, res, next) => {
   });
 });
 
+// Update post API endpoint
 export const updatePost = catchAsync(async (req, res, next) => {
+  // Extract post ID and updated data from request body
   const postId = req.params.id;
   const { title, body, author } = req.body;
-  // const { filename } = req.file;
-  // const filename = req.file ? req.file.filename : null; // Handle optional file
 
-  const updatedPost = await Post.findByIdAndUpdate(
-    postId,
-    // { title, body, author, photo: filename },
-    { title, body, author },
-    { new: true }
-  );
-  console.log(updatedPost);
+  // Prepare updated post data
+  let updateData = { title, body, author };
+
+  // Update post in the database
+  const updatedPost = await Post.findByIdAndUpdate(postId, updateData, {
+    new: true,
+    runValidators: true,
+  });
+
+  // return error if no post found
+  if (!updatedPost) {
+    return next(new Error('No post found with that ID'));
+  }
+
+  // Send a successful response with the updated post
   res.status(200).json({
+    status: 'success',
     message: 'Post successfully updated',
     data: {
-      updatedPost,
+      post: updatedPost,
     },
   });
 });
 
+// delete post controller
 export const deletePost = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
   const post = await Post.findByIdAndDelete(postId);
@@ -122,27 +110,52 @@ export const deletePost = catchAsync(async (req, res, next) => {
   });
 });
 
+// Update post image API endpoint
+
 export const updatePostImg = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
 
-  // Check if file is present and get the filename
-  const filename = req.file ? req.file.filename : null;
+  if (!req.file) {
+    return next(new Error('No file uploaded'));
+  }
 
-  // Find and update the post with the new photo filename
+  // Use Cloudinary's upload_stream method instead of upload
+  const streamUpload = (req) => {
+    return new Promise((resolve, reject) => {
+      let stream = cloudinary.uploader.upload_stream(
+        {
+          folder: 'blog_post_img',
+        },
+        (error, result) => {
+          if (result) {
+            resolve(result);
+          } else {
+            reject(error);
+          }
+        }
+      );
+
+      streamifier.createReadStream(req.file.buffer).pipe(stream);
+    });
+  };
+
+  const result = await streamUpload(req);
+
   const updatedPost = await Post.findByIdAndUpdate(
     postId,
-    { photo: filename },
-    { new: true, runValidators: true } // Optional: Add runValidators to enforce schema validations on update
+    { photo: result.secure_url },
+    { new: true, runValidators: true }
   );
 
-  // Log the filename for debugging
-  console.log(filename, 'PHOTO'); // Corrected variable name
+  if (!updatedPost) {
+    return next(new Error('No post found with that ID'));
+  }
 
-  // Return a success response with the updated post data
   res.status(200).json({
-    message: 'Post successfully updated',
+    status: 'success',
+    message: 'Post image successfully updated',
     data: {
-      updatedPost,
+      post: updatedPost,
     },
   });
 });

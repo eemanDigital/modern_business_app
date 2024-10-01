@@ -13,12 +13,7 @@
   justify-content: center;
 }
 .partnership-packages {
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-md) {
     flex-direction: column;
   }
-
-  // .partnership-packages {
-  //   @media (max-width: $smallPhone) {
-  //     flex-direction: column;
-  //   }
 }

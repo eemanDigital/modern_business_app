@@ -5,10 +5,10 @@ import formatDate from '../lib/formattedDate';
 import placeholderImg from '../assets/placeholderImg.jpg';
 import { useDataFetch } from '../hooks/useDataFetch';
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
-
 const BlogDetails = () => {
+  // Get the post ID from the URL
   const params = useParams();
+  // Fetch data from the API
   const { data, loading, error, dataFetcher } = useDataFetch();
 
   //  Fetch blog post data
@@ -40,7 +40,7 @@ const BlogDetails = () => {
         {data?.data?.post?.photo ? (
           <img
             className='blog-detail-img'
-            src={`${baseUrl}images/${data?.data?.post?.photo}`}
+            src={data?.data?.post?.photo}
             alt={data?.data?.post?.title}
           />
         ) : (

@@ -36,7 +36,7 @@
       padding: 1rem 2.7rem;
       gap: 1rem;
 
-      @media (max-width: $breakpoint-tablet) {
+      @media (max-width: $breakpoint-md) {
         flex-direction: column;
         padding: 1rem 0.5rem;
       }
@@ -49,7 +49,7 @@
         border-radius: 30px;
         padding: 1rem 2rem;
         width: 70%;
-        @media (max-width: $smallPhone) {
+        @media (max-width: $breakpoint-sm) {
           width: 100%;
         }
 
@@ -74,10 +74,10 @@
 
           width: 50%;
 
-          @media (max-width: $breakpoint-tablet) {
+          @media (max-width: $breakpoint-md) {
             width: 100%;
           }
-          @media (max-width: $smallPhone) {
+          @media (max-width: $breakpoint-sm) {
             font-weight: 500;
           }
 

@@ -56,7 +56,7 @@
       line-height: 1.2;
       color: #ffffff;
 
-      @media (max-width: $smallPhone) {
+      @media (max-width: $breakpoint-sm) {
         font-size: 2rem;
       }
     }
@@ -73,7 +73,7 @@
       justify-content: center;
       gap: 1rem;
 
-      @media (max-width: $smallPhone) {
+      @media (max-width: $breakpoint-sm) {
         flex-direction: column;
         gap: 0.5rem;
       }
@@ -93,7 +93,7 @@
         color: #ffffff;
         transition: background-color 0.3s ease, color 0.3s ease;
 
-        @media (max-width: $smallPhone) {
+        @media (max-width: $breakpoint-sm) {
           font-weight: 500;
           width: 100%;
         }
