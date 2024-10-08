@@ -1,6 +1,5 @@
-// Navbar.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { BiMenuAltRight, BiChevronDown } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -12,12 +11,24 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user } = useAuthContext();
   const { logout } = useLogout();
+  const location = useLocation();
 
   const isAdmin = user?.data?.user?.role === 'admin';
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setDropdownOpen(false);
+  };
+
+  // drop down mouse effect handlers
+  const handleDropdownEnter = () => setDropdownOpen(true);
+  const handleDropdownLeave = () => setDropdownOpen(false);
+
+  //
+  useEffect(() => {
+    closeMenu();
+  }, [location]);
 
   return (
     <nav className='navbar'>
@@ -28,56 +39,71 @@ const Navbar = () => {
         {menuOpen ? <AiOutlineClose /> : <BiMenuAltRight />}
       </div>
       <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-        <li className='nav-item'>
+        <li
+          className={`nav-item ${location.pathname === '/' ? 'current' : ''}`}>
           <Link to='/' className='nav-link' onClick={closeMenu}>
             Home
           </Link>
         </li>
-        <li className='nav-item'>
-          <div
-            className={`nav-link dropdown-toggle ${
-              dropdownOpen ? 'active' : ''
-            }`}
-            onClick={toggleDropdown}>
+        <li
+          className={`nav-item dropdown ${dropdownOpen ? 'active' : ''}`}
+          onMouseEnter={handleDropdownEnter}
+          onMouseLeave={handleDropdownLeave}>
+          <div className='nav-link dropdown-toggle'>
             Services
             <BiChevronDown className='dropdown-icon' />
           </div>
-          {dropdownOpen && (
-            <Dropdown
-              className={`dropdown-menu ${dropdownOpen ? 'active' : ''}`}
-              closeMenu={closeMenu}
-            />
-          )}
+          <Dropdown
+            className={`dropdown-menu ${dropdownOpen ? 'active' : ''}`}
+            closeMenu={closeMenu}
+          />
         </li>
-        <li className='nav-item'>
+        <li
+          className={`nav-item ${
+            location.pathname === '/about-us' ? 'current' : ''
+          }`}>
           <Link to='/about-us' className='nav-link' onClick={closeMenu}>
             About
           </Link>
         </li>
-        <li className='nav-item'>
+        <li
+          className={`nav-item ${
+            location.pathname === '/blog' ? 'current' : ''
+          }`}>
           <Link to='/blog' className='nav-link' onClick={closeMenu}>
             Blog
           </Link>
         </li>
-        <li className='nav-item'>
+        <li
+          className={`nav-item ${
+            location.pathname === '/contact-us' ? 'current' : ''
+          }`}>
           <Link to='/contact-us' className='nav-link' onClick={closeMenu}>
             Contact Us
           </Link>
         </li>
         {isAdmin && (
-          <li className='nav-item'>
+          <li
+            className={`nav-item ${
+              location.pathname === '/admin-board' ? 'current' : ''
+            }`}>
             <Link to='/admin-board' className='nav-link' onClick={closeMenu}>
               Dashboard
             </Link>
           </li>
         )}
-        <li className=''>
+        <li className='nav-item'>
           {user ? (
             <button className='logout-btn' onClick={logout}>
               Logout
             </button>
           ) : (
-            <Link to='/login' className='nav-link' onClick={closeMenu}>
+            <Link
+              to='/login'
+              className={`nav-link ${
+                location.pathname === '/login' ? 'current' : ''
+              }`}
+              onClick={closeMenu}>
               Login
             </Link>
           )}

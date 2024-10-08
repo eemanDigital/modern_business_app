@@ -22,19 +22,19 @@ export const heroContent = [
     title: 'Incorporate Your Business with Ease',
     subtitle:
       'Professional registration services to jump start your entrepreneurial journey',
-    image: heroImage1,
+    // image: heroImage1,
   },
   {
     title: 'Expand Your Business Globally',
     subtitle:
       'Expert guidance for international business expansion and compliance',
-    image: heroImage2,
+    // image: heroImage2,
   },
   {
     title: 'Streamline Your Operations',
     subtitle:
       'Comprehensive solutions for efficient business management and growth',
-    image: heroImage3,
+    // image: heroImage3,
   },
   {
     title: 'Make your business have a legal face',

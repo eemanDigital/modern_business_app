@@ -4,6 +4,8 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
@@ -35,6 +37,7 @@ function App() {
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration in milliseconds
+      once: true,
     });
   }, []);
 

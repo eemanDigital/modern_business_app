@@ -7,7 +7,7 @@
   align-items: center;
   gap: 2rem;
   padding: 4rem 2rem;
-  background: url('../assets/laptop2.jpg');
+  background: url('../assets/meeting.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,7 +22,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(231, 76, 60, 0.7);
+    background: rgba($primary-color, 0.7);
     z-index: 1;
   }
 

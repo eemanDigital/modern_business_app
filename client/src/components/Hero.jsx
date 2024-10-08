@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 import { heroContent } from '../data/data';
-import Button from './Button.jsx';
+import Button from './Button';
 import '../styles/hero.scss';
 
 const Hero = () => {
@@ -9,51 +10,50 @@ const Hero = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % heroContent.length);
-    }, 7000); // Change slide every 5 seconds
+    }, 9000);
 
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const titles = document.querySelectorAll('.hero__title');
+    titles.forEach((title, index) => {
+      title.classList.toggle('active', index === currentSlide);
+    });
+  }, [currentSlide]);
+
   return (
-    <>
+    <div className='hero-container'>
       <div className='hero'>
-        {heroContent.map((content, index) => (
-          <div
-            key={index}
-            className={`hero__slide ${index === currentSlide ? 'active' : ''}`}>
-            <img
-              src={content.image}
-              alt={content.title}
-              className='hero__background'
-            />
-            <div className='hero__content'>
-              <h1 className='hero__title' data-aos='fade'>
-                {content.title}
-              </h1>
-              <p className='hero__subtitle' data-aos='fade-right'>
-                {content.subtitle}
-              </p>
-              <Button
-                data-aos='fade-in'
-                path='/contact-us'
-                text='Get Started'
-                className='hero__cta'
-              />
-            </div>
-          </div>
-        ))}
-        <div className='hero__nav'>
-          {heroContent.map((_, index) => (
+        <div className='hero__content-wrapper'>
+          {heroContent.map((content, index) => (
             <div
               key={index}
-              className={`hero__nav-dot ${
+              className={`hero__slide ${
                 index === currentSlide ? 'active' : ''
-              }`}
-              onClick={() => setCurrentSlide(index)}></div>
+              }`}>
+              <div className='hero__content'>
+                <div className='hero__welcome'>
+                  <h3>at eemanTech we</h3>
+                  <FaArrowRight />
+                </div>
+                <h1 className='hero__title'>{content.title}</h1>
+                <p className='hero__subtitle'>{content.subtitle}</p>
+              </div>
+            </div>
           ))}
         </div>
+        <div className='hero__btns'>
+          <Button path='/contact-us' text='Get Started' className='hero__cta' />
+          <Button
+            path='/contact-us'
+            text='Business Name Availability'
+            className='hero__avaBtn'
+            icon={<FaArrowRight />}
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

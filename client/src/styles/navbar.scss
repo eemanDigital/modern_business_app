@@ -1,99 +1,147 @@
 @import 'variables';
 
 .navbar {
-  background-color: $highlight-color;
+  background-color: $white;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
   padding: 0 2rem;
   font-size: 1rem;
   position: sticky;
+  box-shadow: $box-shadow;
   top: 0;
   z-index: 999;
 
   .navbar-logo {
-    color: #fff;
-    font-size: 1rem;
+    color: $dark;
+    font-size: 1.2rem;
     font-weight: bold;
     letter-spacing: 2px;
     text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $highlight-color;
+    }
   }
 
   .menu-icon {
     display: none;
-    color: #fff;
+    color: $dark;
     font-size: 2rem;
     cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $highlight-color;
+    }
   }
 
   .nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
-    text-align: center;
-    margin-right: 2rem;
+    margin: 0;
+    padding: 0;
 
     .nav-item {
+      position: relative;
       height: 80px;
-      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
 
-      &:hover {
-        border-bottom: 2px solid #fff;
+      &.current .nav-link {
+        color: $highlight-color;
       }
 
       .nav-link {
-        color: #fff;
-        display: flex;
-        align-items: center;
+        color: $dark;
+        font-weight: 600;
         text-decoration: none;
         padding: 0.5rem 1rem;
-        height: 100%;
-        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $highlight-color;
+        }
 
         &.dropdown-toggle {
-          justify-content: space-between;
-          width: 100%;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
 
-          &.active {
-            .dropdown-icon {
-              transform: rotate(180deg);
-            }
+          .dropdown-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
           }
         }
       }
 
+      &.dropdown {
+        &:hover .dropdown-icon {
+          transform: rotate(180deg);
+        }
+      }
+
       .dropdown-menu {
-        display: none;
         position: absolute;
-        top: 80px;
-        right: 30%;
-        width: 250px;
-        background-color: $highlight-color;
-        padding: 0;
-        list-style: none;
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        @include transition(opacity, 0.3s);
+        top: 100%;
+        left: 0;
+        background-color: $white;
+        min-width: 300px;
+        box-shadow: $box-shadow;
+        border-top: 4px solid $tomato;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+
+        // &::before {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   left: 20px;
+        //   border-width: 0 10px 10px 10px;
+        //   border-style: solid;
+        //   border-color: transparent transparent $tomato transparent;
+        // }
 
         &.active {
-          display: block;
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
         }
 
         .dropdown-link {
           display: block;
           text-align: left;
-          color: #fff;
+          color: $dark;
+          font-weight: 600;
           text-decoration: none;
           padding: 1rem;
           width: 100%;
 
           &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            color: $highlight-color;
           }
         }
       }
+    }
+  }
+
+  .logout-btn {
+    background: transparent;
+    color: $dark;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $highlight-color;
     }
   }
 
@@ -105,65 +153,61 @@
     .nav-menu {
       display: flex;
       flex-direction: column;
-      width: 100%;
-      height: fit-content;
+      justify-content: center;
+      align-items: flex-start;
+      width: 70%;
+      height: auto;
       position: absolute;
       top: 80px;
       left: -100%;
+      padding-left: 2rem;
       opacity: 0;
       transition: all 0.5s ease;
-      background-color: $highlight-color;
-      box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-      border-radius: 4px;
-      padding: 10px 0;
-      z-index: 99;
+      background-color: $white;
+      box-shadow: $box-shadow;
 
       &.active {
         left: 0;
         opacity: 1;
-        transition: all 0.5s ease;
       }
 
       .nav-item {
         height: auto;
-        border-bottom: none;
+        margin: 0.5rem 0;
 
         .nav-link {
-          text-align: center;
           padding: 1rem;
-          width: 100%;
+          display: block;
+          text-align: center;
+        }
 
-          &.dropdown-toggle {
+        &.dropdown {
+          .dropdown-menu {
+            position: static;
+            box-shadow: none;
+            opacity: 1;
+            border-top: none;
+            visibility: visible;
+            transform: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+
+            &.active {
+              max-height: 500px;
+            }
+          }
+
+          .nav-link.dropdown-toggle {
             justify-content: center;
           }
         }
-
-        .dropdown-menu {
-          position: static;
-          width: 100%;
-          background-color: transparent;
-          box-shadow: none;
-        }
       }
     }
-  }
-}
-.logout-btn {
-  background: $white;
-  color: $highlight-color;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  border: none;
-  padding: 0.5rem 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
 
-  &:hover {
-    background: $primary-color;
-    color: $white;
+    .logout-btn {
+      width: 100%;
+      text-align: center;
+    }
   }
 }

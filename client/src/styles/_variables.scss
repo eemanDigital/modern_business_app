@@ -1,26 +1,17 @@
-// $deepBlue: #1e2761;
-// $primary-color: #40c652;
-$disabled-color: #e6e6e6;
-$deepBlue: #408ec6;
-$deep-deep-blue: #1f577e;
-$LightPink: #f0f0f0;
-// $primary-color: #3498db;
-$card-bg: #ffffff;
-$text-primary: #333333;
-$text-secondary: #666666;
-$text-muted: #999999;
-$border-radius: 8px;
-
 // Variables
-$primary-color: #2c3e50;
+// $disabled-color: #e6e6e6;
+$disabled-color: #e6e6e6;
+$primary-color: #2e3944;
 $secondary-color: #34495e;
 $accent-color: #3498db;
-$highlight-color: #e74c3c;
+$highlight-color: #124e66;
+$tomato: #ff652f;
 $background-color: #f8f9fa;
 $card-background: #ffffff;
 $text-color: #2c3e50;
 $text-color-light: #7f8c8d;
 $white: #ffffff;
+$dark: #212a31;
 
 $spacing-xs: 0.5rem;
 $spacing-sm: 1rem;
@@ -80,4 +71,34 @@ $transition: all 0.3s ease;
 // transition mixin
 @mixin transition($property, $duration, $timing-function: ease, $delay: 0s) {
   transition: $property $duration $timing-function $delay;
+}
+
+// hexagon mixin
+@mixin hexagon($size, $color) {
+  width: $size;
+  height: $size * 0.766; // √3/2 ≈ 0.866
+  background: $color;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    border-left: $size / 2 solid transparent;
+    border-right: $size / 2 solid transparent;
+  }
+
+  &::before {
+    bottom: 100%;
+    border-bottom: ($size * 0.323) solid $color; // √3/4 ≈ 0.433
+  }
+
+  &::after {
+    top: 100%;
+    border-top: ($size * 0.323) solid $color;
+  }
 }
