@@ -1,156 +1,197 @@
 @import 'variables';
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+.packages-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
 
-.generic_price_table {
-  font-family: 'Raleway', sans-serif;
-  padding: 20px;
-  width: 100%;
-  max-width: 540px;
-  border-radius: 10px;
+.package-card {
+  background: linear-gradient(145deg, $white, #f0f0f0);
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px $white;
+  padding: 2rem;
+  width: 350px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
 
-  @media (max-width: $breakpoint-sm) {
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px $white;
+
+    .package-title::after {
+      width: 100%;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba($accent-color, 0.1) 0%,
+      rgba($accent-color, 0) 70%
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.package-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary-color;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $accent-color;
+    transition: width 0.3s ease;
+  }
+}
+
+.package-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: $accent-color;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .currency {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+}
+
+.package-features {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2rem;
+
+  li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    color: $text-color;
+    font-size: 0.9rem;
+
+    &::before {
+      content: '✓';
+      color: $accent-color;
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.package-cta {
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba($white, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+
+    &::before {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: $breakpoint-md) {
+  .package-card {
+    width: calc(70% - 1rem);
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .package-card {
     width: 100%;
   }
 
-  .generic_content {
-    background-color: $white;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-
-      .head_bg {
-        border-color: $primary-color transparent transparent $primary-color;
-      }
-
-      .generic_head_price .generic_head_content .head span,
-      .generic_price_btn a {
-        background-color: $primary-color;
-        color: $white;
-      }
-    }
+  .package-title {
+    font-size: 1.3rem;
   }
 
-  .generic_head_price {
-    background-color: $white;
-
-    .generic_head_content {
-      position: relative;
-      overflow: hidden;
-
-      .head_bg {
-        border-style: solid;
-        border-width: 90px 1411px 23px 399px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        border-color: $primary-color transparent transparent $primary-color;
-      }
-
-      .head {
-        padding: 40px 0 20px;
-        position: relative;
-        z-index: 2;
-
-        span {
-          font-family: 'Raleway', sans-serif;
-          font-size: 20px;
-          font-weight: 400;
-          letter-spacing: 2px;
-          margin: 0;
-          padding: 0 0.5rem;
-          text-transform: uppercase;
-          color: $white;
-          transition: all 0.3s ease-in-out;
-        }
-      }
-    }
-
-    .generic_price_tag {
-      padding: 0 0 20px;
-
-      .price {
-        display: block;
-
-        .sign,
-        .currency,
-        .month {
-          display: inline-block;
-          font-family: 'Lato', sans-serif;
-          color: $text-color;
-        }
-
-        .sign {
-          font-size: 28px;
-          font-weight: 400;
-          vertical-align: super;
-        }
-
-        .currency {
-          font-size: 40px;
-          font-weight: 300;
-          letter-spacing: -2px;
-          line-height: 60px;
-        }
-      }
-    }
+  .package-price {
+    font-size: 2rem;
   }
 
-  .generic_feature_list {
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        font-family: 'Lato', sans-serif;
-        font-size: 15px;
-        padding: 15px 5px;
-        transition: all 0.3s ease-in-out;
-        color: $text-color;
-
-        &:hover {
-          background-color: #f8f8f8;
-        }
-
-        .fa-check {
-          color: $primary-color;
-          margin-right: 10px;
-        }
-      }
-    }
+  .package-features li {
+    font-size: 0.8rem;
   }
 
-  .generic_price_btn {
-    margin: 20px 0;
+  .package-cta {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
 
-    a {
-      border-radius: 50px;
-      color: $text-color;
-      display: inline-block;
-      font-family: 'Lato', sans-serif;
-      font-size: 18px;
-      outline: none;
-      padding: 12px 30px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      border: 1px solid $primary-color;
+// Add a subtle animation for the features
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-      &:hover {
-        background-color: $primary-color;
-        color: $white;
-      }
+.package-features li {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
     }
   }
 }

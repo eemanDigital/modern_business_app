@@ -7,6 +7,7 @@ import Services from '../components/Services.jsx';
 import Visitors from '../components/Visitors.jsx';
 import Testimonial from '../components/Testimonials.jsx';
 import HomePageFeature from '../components/HomePageFeature.jsx';
+import ContactUs from '../components/ContactUs.jsx';
 
 function Home() {
   return (
@@ -16,7 +17,8 @@ function Home() {
       <HomePageFeature />
       <Visitors />
       <Testimonial />
-      <Trust />
+      <ContactUs />
+      {/* <Trust /> */}
     </section>
   );
 }

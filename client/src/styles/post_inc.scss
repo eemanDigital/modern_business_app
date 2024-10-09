@@ -1,73 +1,116 @@
 @import 'variables';
 
-.post-inc-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 800px;
-  margin: 0 auto;
+.post-incorporation {
+  padding: 4rem 0;
+  background-color: $background-color;
 
-  h1 {
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 20px;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 
-  table {
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: $text-color;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .services-table {
     width: 100%;
-    border: 1px solid #ccc;
     border-collapse: collapse;
-    font-weight: 500;
+    background-color: #fff;
 
     th,
     td {
-      border: 1px solid #ccc;
-      padding: 10px;
+      padding: 1rem;
       text-align: left;
-
-      @media (max-width: $breakpoint-sm) {
-        padding: 5px;
-        font-size: 0.7rem;
-      }
+      border-bottom: 1px solid $primary-color;
     }
 
     th {
-      background-color: #f4f4f4;
-      font-weight: bold;
-      border-bottom: 2px solid #ccc;
+      background-color: $primary-color;
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
     }
 
     tr:nth-child(even) {
-      background-color: #f9f9f9;
+      background-color: rgba($primary-color, 0.05);
     }
 
-    tr:hover {
-      background-color: #eaeaea;
-    }
+    @media (max-width: $breakpoint-md) {
+      font-size: 0.9rem;
 
-    td:first-child {
-      border-left: 2px solid #ccc;
-    }
-
-    td:last-child {
-      border-right: 2px solid #ccc;
+      th,
+      td {
+        padding: 0.75rem;
+      }
     }
   }
-  a {
-    background-color: $highlight-color;
-    text-decoration: none;
-    font-size: 1.3rem;
-    padding: 1rem 1.7rem;
-    color: #ffff;
-    text-align: center;
-    letter-spacing: 3px;
 
-    @media (max-width: $breakpoint-sm) {
-      letter-spacing: 0;
-      font-size: 0.8rem;
-    }
+  .cta-button {
+    display: inline-block;
+    background-color: $accent-color;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
 
     &:hover {
-      background-color: #c2381d;
+      background-color: darken($accent-color, 10%);
     }
+
+    .arrow {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .arrow {
+      transform: translateX(5px);
+    }
+  }
+}
+
+// Add these styles to your Title component's SCSS file
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2.5rem;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: $accent-color;
+    margin: 1rem auto 0;
   }
 }

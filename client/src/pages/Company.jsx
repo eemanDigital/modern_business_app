@@ -1,112 +1,148 @@
 import { Link } from 'react-router-dom';
-import Aside from '../components/Aside';
-import PostIncorporation from '../components/PostIncorporation';
-import { pre_inc_service } from '../data/data';
-import { packages } from '../data/data';
+import { GrUserExpert } from 'react-icons/gr';
+import { IoTimeOutline } from 'react-icons/io5';
+import manSky from '../assets/man_skyscrapper.jpg';
+import scrapper from '../assets/blue_scrapper.jpg';
+import GeneralHero from '../components/GeneralHero';
 import Packages from '../components/Packages';
 import OtherCompanyType from '../components/OtherCompanyType';
+import PostIncorporation from '../components/PostIncorporation';
+import { packages } from '../data/data';
+import '../styles/company.scss';
+import { FaChartLine, FaHandshakeAngle, FaUsersGear } from 'react-icons/fa6';
+import { FaFileAlt, FaShieldAlt } from 'react-icons/fa';
+import Title from '../components/Title';
+import '../styles/companyHero.scss';
 
 const Company = () => {
-  // const company_packages = packages.slice(0, 2);
+  const listContent = (
+    <>
+      <li>
+        <GrUserExpert />
+        Expert guidance
+      </li>
+      <li>
+        <IoTimeOutline />
+        Time-saving solutions
+      </li>
+      <li>
+        <FaUsersGear />
+        Tailored services
+      </li>
+    </>
+  );
+
+  const benefits = (
+    <ul className='benefits-list'>
+      <li>
+        <GrUserExpert />
+        <div>
+          <h2>Attract Investors</h2>
+          <p>
+            Raise funds by appealing to investors who prefer companies that can
+            issue stock.
+          </p>
+        </div>
+      </li>
+      <li>
+        <FaFileAlt />
+        <div>
+          <h2>Look More Official</h2>
+          <p>
+            Enhance credibility and professionalism, which attracts and retains
+            top talent.
+          </p>
+        </div>
+      </li>
+      <li>
+        <FaUsersGear />
+        <div>
+          <h2>Tailored Services</h2>
+          <p>
+            Corporations are perceived as credible, making it easier to partner
+            with other companies.
+          </p>
+        </div>
+      </li>
+      <li>
+        <FaHandshakeAngle />
+        <div>
+          <h2>Lifetime Support</h2>
+          <p>
+            Corporations offer liability protection, shielding owners from
+            business debts.
+          </p>
+        </div>
+      </li>
+      <li>
+        <FaShieldAlt />
+        <div>
+          <h2>Limited Liability</h2>
+          <p>
+            Owners' personal assets are protected from business liabilities and
+            lawsuits.
+          </p>
+        </div>
+      </li>
+      <li>
+        <FaChartLine />
+        <div>
+          <h2>Separate Legal Entity</h2>
+          <p>
+            A company is distinct from its owners, making it easier to raise
+            funds and enter contracts.
+          </p>
+        </div>
+      </li>
+    </ul>
+  );
 
   return (
     <section className='company-section'>
+      <GeneralHero
+        image={manSky}
+        title="It's never been easier to incorporate a business"
+        listContent={listContent}
+        ctaText='Give Us a Try'
+        parentClass='c-feature'
+      />
       <div className='comp-container'>
-        <div className='text-1'>
-          <h1 data-aos='fade-left'> Company</h1>
-          <p data-aos='zoom-out'>
-            A company limited by shares is a type of business structure where
-            the liability of its owners, known as shareholders, is limited to
-            the amount of money they invested in the company through purchasing
-            shares. This means their personal assets (like their house or car)
-            are protected if the company encounters financial difficulties or
-            declares bankruptcy.
-            <p data-aos='zoom-out'>
-              <strong>
-                Here are some key features of a company limited by shares:
-              </strong>{' '}
+        <div className='content'>
+          <div>
+            <h1>Why Form a Company?</h1>
+            <p>
+              A company limited by shares is a structure where the liability of
+              owners is limited to their share investment, protecting personal
+              assets.
             </p>
-            <p data-aos='zoom-out'>
-              <strong>Limited Liability: </strong>This is the biggest advantage
-              for owners. They only risk losing the money they invested in the
-              company, not their personal wealth.
+            <p>
+              <strong>Key Advantages of Forming a Company:</strong>
             </p>
-            <p data-aos='zoom-out'>
-              <strong>Separate Legal Entity:</strong> The company is treated as
-              a separate legal entity from its owners, meaning it can enter
-              contracts, own property, and incur debts in its own name.
-            </p>
-            <p data-aos='zoom-out'>
-              <strong>Share Capital:</strong>
-              The company raises capital by issuing shares. Each share
-              represents a portion of ownership in the company. Shareholders
-              have voting rights based on the number of shares they own.
-            </p>
-            <p data-aos='zoom-out'>
-              <strong>Management: </strong>The company is managed by directors,
-              who are appointed by the shareholders. They are responsible for
-              making decisions about the day-to-day operations of the business.
-            </p>
-            <h4> Types of Companies Limited by Shares:</h4>
-            <p data-aos='zoom-out'>
-              <strong> Private Limited Company:</strong>
-              Shares are not offered to the public and there are restrictions on
-              transferring ownership. This is the most common type of company
-              limited by shares in many countries.
-            </p>
-            <p data-aos='zoom-out'>
-              <strong>Public Limited Company:</strong> Shares can be listed on a
-              stock exchange and traded by the public. These companies typically
-              have larger numbers of shareholders.
-            </p>
-            <p data-aos='zoom-out'>
-              <strong>Registration:</strong> Companies limited by shares need to
-              be registered with a government agency, like the Corporate Affairs
-              Commission (CAC) in Nigeria.
-            </p>
-            Overall, a company limited by shares offers a balance between
-            personal liability protection and access to capital, making it a
-            popular choice for many businesses.
-            <Link to='#'>Learn more about company</Link>
-          </p>
-          <div className='how-to-start' data-aos='zoom-out'>
-            <h4>How to get started</h4>
-
-            <p data-aos='zoom-out'>
-              You can start right now. We can form your Corporation of any type
-            </p>
-
-            <Link to='/contact-us'>Start Now</Link>
+            {benefits}
+            <p>Ready to start? Let us help you form your corporation today!</p>
+            <Link to='/contact-us' className='start-now-link'>
+              Start Now
+            </Link>
           </div>
         </div>
-
-        {pre_inc_service.map((item, index) => {
-          if (index === 0) {
-            // Render only the first price
-            return <Aside key={index} price={item.price} title={item.title} />;
-          }
-          return null; // Render nothing for other prices
-        })}
+        <img src={scrapper} alt='Skyscraper' className='coy_img' />
       </div>
+      <Title text='Pricing' />
 
       <div className='packages company-package'>
-        {packages.slice(0, 2).map((item, index) => {
-          return (
-            <Packages
-              key={index}
-              title={item.title}
-              price={item.price}
-              benefits={item.benefits}
-            />
-          );
-        })}
+        {packages.slice(0, 2).map((item, index) => (
+          <Packages
+            key={index}
+            title={item.title}
+            price={item.price}
+            benefits={item.benefits}
+          />
+        ))}
       </div>
-      {/* <Trust /> */}
 
       <div className='trust-container'>
         <OtherCompanyType />
       </div>
-      <div></div>
 
       <PostIncorporation />
     </section>

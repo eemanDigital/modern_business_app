@@ -1,4 +1,4 @@
-@import './variables';
+@import 'variables';
 
 .accordion {
   margin-top: 3rem;
@@ -7,10 +7,10 @@
     align-items: center;
     border: none;
     margin-bottom: 2px;
-    background-color: $Pink;
+    background-color: $tomato;
     // width: 350px;
     width: 80%;
-    color: $LightPink;
+    color: $white;
     padding: 0.8rem;
     // transition: max-height 0.5s ease-in-out;
 

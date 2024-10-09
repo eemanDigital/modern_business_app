@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 
 import '../styles/contactUs.scss'; // Import the regular SCSS file
 import SocialIcons from '../pages/SocialIcons';
+import { FaEnvelope, FaHeading, FaPaperPlane, FaUser } from 'react-icons/fa6';
+import { FaCommentAlt } from 'react-icons/fa';
 
 const ContactForm = () => {
   const form = useRef();
@@ -65,43 +67,75 @@ const ContactForm = () => {
 
   return (
     <section className='contact'>
-      <SocialIcons />
-
-      <h2 className='contactFormTitle'>Contact Us</h2>
-      <div className='contactFormContainer' data-aos='fade-up'>
-        <form ref={form} onSubmit={sendEmail}>
-          <div className='formGroup'>
-            <label htmlFor='user_name'>Name</label>
-            <input type='text' name='user_name' id='user_name' required />
-            {formErrors.user_name && (
-              <span className='error visible'>{formErrors.user_name}</span>
-            )}
-          </div>
-          <div className='formGroup'>
-            <label htmlFor='user_email'>Email</label>
-            <input type='email' name='user_email' id='user_email' required />
-            {formErrors.user_email && (
-              <span className='error visible'>{formErrors.user_email}</span>
-            )}
-          </div>
-          <div className='formGroup'>
-            <label htmlFor='subject'>Subject</label>
-            <input type='text' name='subject' id='subject' required />
-            {formErrors.subject && (
-              <span className='error visible'>{formErrors.subject}</span>
-            )}
-          </div>
-          <div className='formGroup'>
-            <label htmlFor='message'>Message</label>
-            <textarea name='message' id='message' required></textarea>
-            {formErrors.message && (
-              <span className='error visible'>{formErrors.message}</span>
-            )}
-          </div>
-          <button type='submit' className='submitButton'>
-            Send
-          </button>
-        </form>
+      <div className='contact__content'>
+        <div className='contact__info'>
+          <h2>Get in Touch</h2>
+          <p>
+            We'd love to hear from you! Whether you have a question about our
+            services, want to partner with us, or just want to say hello, don't
+            hesitate to reach out.
+          </p>
+          <p>
+            Our team is always ready to assist you and provide the information
+            you need.
+          </p>
+        </div>
+        <div className='contact__form-container' data-aos='fade-up'>
+          <h2 className='contact__form-title'>Contact Us</h2>
+          <form ref={form} onSubmit={sendEmail}>
+            <div className='form__row'>
+              <div className='form__group'>
+                <label htmlFor='user_name'>
+                  <FaUser />
+                  Name
+                </label>
+                <input type='text' name='user_name' id='user_name' required />
+                {formErrors.user_name && (
+                  <span className='error visible'>{formErrors.user_name}</span>
+                )}
+              </div>
+              <div className='form__group'>
+                <label htmlFor='user_email'>
+                  <FaEnvelope />
+                  Email
+                </label>
+                <input
+                  type='email'
+                  name='user_email'
+                  id='user_email'
+                  required
+                />
+                {formErrors.user_email && (
+                  <span className='error visible'>{formErrors.user_email}</span>
+                )}
+              </div>
+            </div>
+            <div className='form__group'>
+              <label htmlFor='subject'>
+                <FaHeading />
+                Subject
+              </label>
+              <input type='text' name='subject' id='subject' required />
+              {formErrors.subject && (
+                <span className='error visible'>{formErrors.subject}</span>
+              )}
+            </div>
+            <div className='form__group'>
+              <label htmlFor='message'>
+                <FaCommentAlt />
+                Message
+              </label>
+              <textarea name='message' id='message' required></textarea>
+              {formErrors.message && (
+                <span className='error visible'>{formErrors.message}</span>
+              )}
+            </div>
+            <button type='submit' className='submit-button'>
+              <FaPaperPlane />
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );

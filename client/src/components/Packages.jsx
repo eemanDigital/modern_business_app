@@ -3,38 +3,23 @@ import '../styles/packages.scss';
 
 const Packages = ({ title, price, benefits }) => {
   return (
-    <div className='generic_price_table' data-aos='fade'>
-      <div className='generic_content'>
-        <div className='generic_head_price'>
-          <div className='generic_head_content'>
-            <div className='head_bg'></div>
-            <div className='head'>
-              <span>{title}</span>
-            </div>
+    <>
+      <div className='packages-container'>
+        <div className='package-card'>
+          <h2 className='package-title'>{title}</h2>
+          <div className='package-price'>
+            <span className='currency'>₦</span>
+            {price}
           </div>
-          <div className='generic_price_tag'>
-            <span className='price'>
-              <span className='sign'>₦</span>
-              <span className='currency'>{price}</span>
-            </span>
-          </div>
-        </div>
-        <div className='generic_feature_list'>
-          <ul>
+          <ul className='package-features'>
             {benefits.map((benefit, index) => (
-              <li key={index}>
-                <span className='fa fa-check'></span> {benefit}
-              </li>
+              <li key={index}>{benefit}</li>
             ))}
           </ul>
-        </div>
-        <div className='generic_price_btn'>
-          <a href='#' className='btn'>
-            Get Started
-          </a>
+          <button className='package-cta'>Get Started</button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

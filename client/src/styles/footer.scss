@@ -4,7 +4,6 @@ footer {
   position: static;
   bottom: 0;
   margin-top: 4rem;
-  // height: 200px;
 
   .wrapper {
     display: flex;
@@ -21,7 +20,7 @@ footer {
     }
 
     h3 {
-      color: #c0aeae;
+      color: $white;
       font-size: 1.2rem;
       font-weight: 500;
     }
@@ -52,7 +51,7 @@ footer {
     }
 
     .col-1 {
-      color: #e8ebee;
+      color: $white;
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
@@ -71,9 +70,9 @@ footer {
           flex-direction: row;
         }
         svg {
-          color: #c0aeae;
+          color: $white;
           &:hover {
-            color: #fff;
+            color: $white;
           }
         }
         @media (max-width: $breakpoint-sm) {
@@ -84,18 +83,18 @@ footer {
 
         .whatsApp {
           font-size: 1.6rem;
-          color: #fff;
+          color: $white;
         }
       }
     }
     .col-2,
     .col-3 {
       a {
-        color: #c0aeae;
+        color: $white;
         line-height: 2.5;
         font-size: 0.8rem;
         &:hover {
-          color: #fff;
+          color: $white;
         }
       }
     }
@@ -109,7 +108,7 @@ footer {
   }
 
   .caveat {
-    color: #c0aeae;
+    color: $white;
     padding: 1rem;
     // text-align: center;
     background-color: $secondary-color;

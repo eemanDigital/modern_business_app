@@ -23,7 +23,6 @@ import Partnership from './pages/Partnership';
 import WebDev from './pages/WebDev';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
-import ContactForm from './components/ContactUs';
 import PostImageUpload from './pages/PostImageUpload';
 import AdminBoard from './pages/AdminBoard';
 import UpdateUser from './pages/UpdateUser';
@@ -59,7 +58,7 @@ function App() {
             </ProtectRoute>
           }
         />
-        <Route path='contact-us' element={<ContactForm />} />
+
         <Route path='login' element={<Login />} />
         <Route path='addUser' element={<SignUp />} />
         <Route path='users/:id/edit' element={<UpdateUser />} />
