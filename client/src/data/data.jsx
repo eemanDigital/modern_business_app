@@ -526,6 +526,86 @@ export const faqs = [
   },
 ];
 
+export const webDevFAQs = [
+  {
+    question: 'What types of web development services do you offer?',
+    answer:
+      'We offer a wide range of web development services, including responsive website design, custom web application development, e-commerce solutions, content management systems (CMS) implementation, API development and integration, progressive web app (PWA) development, and website maintenance and support.',
+  },
+  {
+    question: 'How long does it typically take to develop a website?',
+    answer:
+      "The timeline for website development can vary greatly depending on the complexity of the project. A simple informational website might take 4-8 weeks, while a complex e-commerce site or custom web application could take 3-6 months or more. We'll provide a more accurate timeline after discussing your specific requirements.",
+  },
+  {
+    question: 'What is your web development process?',
+    answer:
+      'Our web development process typically includes the following stages: 1) Requirements gathering and analysis, 2) Planning and prototyping, 3) Design, 4) Development, 5) Testing and quality assurance, 6) Deployment, and 7) Maintenance and support. We keep our clients involved throughout the process to ensure the final product meets their expectations.',
+  },
+  {
+    question: 'Do you offer mobile-responsive designs?',
+    answer:
+      'Yes, all of our websites are designed to be mobile-responsive. This means they will automatically adjust to look great and function well on any device, including desktops, laptops, tablets, and smartphones.',
+  },
+  {
+    question: 'Can you help with search engine optimization (SEO)?',
+    answer:
+      'Absolutely! We implement SEO best practices in all our web development projects. This includes optimizing site structure, improving page load speeds, ensuring mobile-friendliness, and implementing proper meta tags and schemas. We can also offer more advanced SEO services if needed.',
+  },
+  {
+    question: 'What content management systems (CMS) do you work with?',
+    answer:
+      'We have experience with various CMS platforms, including WordPress, Drupal, Joomla, and Shopify. We can also develop custom CMS solutions tailored to your specific needs if required.',
+  },
+  {
+    question: 'Do you provide web hosting services?',
+    answer:
+      "While we don't provide hosting services directly, we can recommend reliable hosting providers and assist with the setup and deployment of your website. We ensure that your site is properly configured and optimized for your chosen hosting environment.",
+  },
+  {
+    question: 'How do you handle website security?',
+    answer:
+      'Security is a top priority in all our web development projects. We implement various security measures, including SSL certificates, secure coding practices, regular security updates, and protection against common vulnerabilities like SQL injection and cross-site scripting (XSS). We also offer ongoing security monitoring and maintenance services.',
+  },
+  {
+    question: 'Can you redesign or upgrade an existing website?',
+    answer:
+      'Yes, we offer website redesign and upgrade services. We can work with your existing content and functionality to give your site a fresh, modern look and improved performance. We can also add new features and capabilities to your existing website.',
+  },
+  {
+    question: 'What programming languages and technologies do you use?',
+    answer:
+      'We are proficient in a wide range of programming languages and technologies, including HTML5, CSS3, JavaScript (including frameworks like React, Angular, and Vue.js), PHP, Python, Ruby on Rails, and Node.js. We choose the best technology stack based on your project requirements and goals.',
+  },
+  {
+    question: 'Do you offer post-launch support and maintenance?',
+    answer:
+      'Yes, we provide ongoing support and maintenance services after your website is launched. This includes regular updates, security patches, performance optimization, and addressing any issues that may arise. We offer various support packages to suit different needs and budgets.',
+  },
+  {
+    question: 'How do you handle project communication and updates?',
+    answer:
+      "We believe in transparent and regular communication. We typically use project management tools like Jira or Trello to track progress and share updates. We also schedule regular check-ins via video calls or in-person meetings, depending on your preference. You'll have a dedicated project manager as your main point of contact throughout the development process.",
+  },
+  {
+    question: 'Can you integrate third-party services or APIs into my website?',
+    answer:
+      'Absolutely! We have extensive experience integrating various third-party services and APIs into websites. This includes payment gateways, CRM systems, social media platforms, marketing tools, and more. We ensure smooth integration and proper data flow between your website and these external services.',
+  },
+  {
+    question: 'How do you ensure the quality of your web development work?',
+    answer:
+      'We have a rigorous quality assurance process that includes thorough testing at each stage of development. This includes functionality testing, cross-browser compatibility testing, responsiveness testing, performance testing, and security testing. We also use code review practices and follow coding standards to ensure high-quality, maintainable code.',
+  },
+  {
+    question: 'What if I need changes after the website is launched?',
+    answer:
+      "We understand that websites often need to evolve after launch. We offer flexible support options for post-launch changes and additions. Minor updates can usually be handled quickly, while more significant changes may be treated as new mini-projects. We're always here to help your website grow and improve over time.",
+  },
+];
+
+export default webDevFAQs;
+
 import {
   FaBuilding,
   FaFileSignature,

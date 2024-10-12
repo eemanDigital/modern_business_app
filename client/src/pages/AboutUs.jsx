@@ -1,8 +1,8 @@
+import React from 'react';
 import { PiCertificateThin } from 'react-icons/pi';
-import ourStory from '../assets/about-story.svg';
-import Trust from '../components/Faq';
 import '../styles/aboutUs.scss';
 import Title from '../components/Title';
+import manImg from '../assets/man_outside.jpg';
 
 function AboutUs() {
   return (
@@ -30,10 +30,11 @@ function AboutUs() {
             </p>
           </div>
         </div>
-
+        <div className='about-us-image' data-aos='fade-up'>
+          <img src={manImg} alt='About Eeman Digital and IT Solutions' />
+        </div>
         <div className='story'>
           <div className='story__content'>
-            {/* <h2 className='section-title'>Our Story</h2> */}
             <Title text='Our' span='Story' />
             <p className='story__text'>
               <p data-aos='fade-in'>
@@ -88,29 +89,21 @@ function AboutUs() {
                 limitless.
               </p>
             </p>
-            {/* <a href='#' className='btn btn--primary'>
-              Learn More
-            </a> */}
           </div>
-          <img
-            src={ourStory}
-            alt='Our Story'
-            className='story__image'
-            data-aos='zoom-in'
-          />
         </div>
 
         <div className='mission-vision'>
-          <div className='mission-vision__item'>
-            <h3 className='mission-vision__title' data-aos='fade-in'>
-              Our Mission
-            </h3>
-            <p className='mission-vision__text' data-aos='fade-in'>
+          <div className='mission-vision__item' data-aos='fade-up'>
+            <h3 className='mission-vision__title'>Our Mission</h3>
+            <p className='mission-vision__text'>
               To empower businesses worldwide with innovative web solutions that
               catalyze growth and drive digital transformation.
             </p>
           </div>
-          <div className='mission-vision__item' data-aos='fade-in'>
+          <div
+            className='mission-vision__item'
+            data-aos='fade-up'
+            data-aos-delay='100'>
             <h3 className='mission-vision__title'>Our Vision</h3>
             <p className='mission-vision__text'>
               To be the trusted ally for businesses seeking to thrive in the
@@ -118,7 +111,10 @@ function AboutUs() {
               client-centric approach.
             </p>
           </div>
-          <div className='mission-vision__item' data-aos='fade-in'>
+          <div
+            className='mission-vision__item'
+            data-aos='fade-up'
+            data-aos-delay='200'>
             <h3 className='mission-vision__title'>Our Values</h3>
             <ul className='mission-vision__list'>
               <li>Unwavering Quality</li>
@@ -128,8 +124,6 @@ function AboutUs() {
             </ul>
           </div>
         </div>
-
-        <Trust />
       </div>
     </section>
   );

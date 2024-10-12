@@ -1,4 +1,3 @@
-import '../styles/webDevHero.scss';
 import { TbWorldWww } from 'react-icons/tb';
 
 const WebDevHero = () => {

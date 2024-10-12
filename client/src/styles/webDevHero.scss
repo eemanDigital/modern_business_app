@@ -1,99 +1,122 @@
 @import 'variables';
 
-.web-dev-hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4rem 6rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+.w-feature {
+  &__container {
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 
-  &__content {
-    flex: 1;
-    max-width: 50%;
-  }
-
-  &__title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-  }
-
-  &__subtitle {
-    font-size: 1.25rem;
-    color: #34495e;
-    margin-bottom: 2rem;
-  }
-
-  &__features {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 2rem;
-
-    li {
-      font-size: 1.1rem;
-      color: #2c3e50;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-
-      &::before {
-        content: '✓';
-        color: #27ae60;
-        font-weight: bold;
-        margin-right: 0.5rem;
-      }
+    &__business {
+      max-width: 100%;
+      height: auto;
+      min-height: 500px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: $box-shadow;
+      transition: box-shadow 0.3s ease;
     }
   }
 
-  &__cta {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background-color: #3498db;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  &__image-wrapper {
+    position: relative;
+    height: auto;
+    overflow: hidden;
 
-    &:hover {
-      background-color: #2980b9;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      background: rgba($highlight-color, 0.8);
     }
   }
 
   &__image {
-    flex: 1;
-    max-width: 50%;
-    display: flex;
-    justify-content: flex-end;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
 
-    svg {
-      color: $highlight-color;
+    &:hover {
+      transform: scale(1.05);
     }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    @media (max-width: $breakpoint-md) {
+      object-fit: cover;
+      object-position: left;
+      height: 400px;
     }
   }
-}
 
-@media (max-width: 768px) {
-  .web-dev-hero {
-    flex-direction: column;
-    padding: 3rem 2rem;
+  &__content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    color: $tomato;
+    text-align: right;
+    z-index: 1;
+    padding: 2rem;
 
-    &__content,
-    &__image {
-      max-width: 100%;
+    @media (max-width: $breakpoint-md) {
+      left: 50%;
+      top: 5%;
+      transform: translateX(-50%);
+      // height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-size: 3.4rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: $spacing-lg;
+    color: $disabled-color;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 2.5rem;
     }
 
-    &__image {
-      margin-top: 2rem;
-      justify-content: center;
+    @media (max-width: $breakpoint-sm) {
+      font-size: 2rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    span {
+      color: $accent-color;
+    }
+  }
+
+  &__cta {
+    background-color: $primary-color;
+    color: $white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: darken($tomato, 10%);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 1rem;
+      margin-right: $spacing-lg;
     }
   }
 }
