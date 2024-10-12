@@ -4,7 +4,7 @@ const submenu = [
   { title: 'Company Registration', url: 'company' },
   { title: 'Business Registration', url: 'business' },
   { title: 'NGO Registration', url: 'ngo' },
-  { title: 'Partnership', url: 'partnership' },
+  // { title: 'Partnership', url: 'partnership' },
   { title: 'Web Development', url: 'webdev' },
 ];
 

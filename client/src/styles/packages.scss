@@ -5,13 +5,12 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  padding: 2rem;
 }
 
 .package-card {
   background: linear-gradient(145deg, $white, #f0f0f0);
   border-radius: 20px;
-  box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px $white;
+  // box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px $white;
   padding: 2rem;
   width: 350px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -88,6 +87,7 @@
 
 .package-features {
   list-style-type: none;
+  font-weight: 500;
   padding: 0;
   margin-bottom: 2rem;
 
@@ -146,7 +146,7 @@
 // Responsive styles
 @media (max-width: $breakpoint-md) {
   .package-card {
-    width: calc(70% - 1rem);
+    width: calc(80% - 1rem);
   }
 }
 

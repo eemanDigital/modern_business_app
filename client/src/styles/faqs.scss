@@ -1,38 +1,14 @@
 @import 'variables';
 
-.trust-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
-}
-
-.trust-title {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 2rem;
-
-  span {
-    color: $highlight-color;
-  }
-}
-
-.trust-cards {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -1rem;
-}
-
-.trust-card {
+.faq-card {
   width: 100%;
-  padding: 1rem;
 
   @media (min-width: $breakpoint-md) {
-    width: 50%;
+    // width: 50%;
   }
 
   @media (min-width: $breakpoint-lg) {
-    width: 33.333%;
+    width: 350px;
   }
 
   &__header {

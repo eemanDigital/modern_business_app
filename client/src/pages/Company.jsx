@@ -101,7 +101,7 @@ const Company = () => {
     <section className='company-section'>
       <GeneralHero
         image={manSky}
-        title="It's never been easier to incorporate a business"
+        title="It's never been easier to incorporate a Company"
         listContent={listContent}
         ctaText='Give Us a Try'
         parentClass='c-feature'
@@ -126,18 +126,6 @@ const Company = () => {
           </div>
         </div>
         <img src={scrapper} alt='Skyscraper' className='coy_img' />
-      </div>
-      <Title text='Pricing' />
-
-      <div className='packages company-package'>
-        {packages.slice(0, 2).map((item, index) => (
-          <Packages
-            key={index}
-            title={item.title}
-            price={item.price}
-            benefits={item.benefits}
-          />
-        ))}
       </div>
 
       <div className='trust-container'>

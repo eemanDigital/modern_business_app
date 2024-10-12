@@ -74,14 +74,14 @@ const Navbar = () => {
             Blog
           </Link>
         </li>
-        {/* <li
+        <li
           className={`nav-item ${
             location.pathname === '/contact-us' ? 'current' : ''
           }`}>
-          <Link to='/contact-us' className='nav-link' onClick={closeMenu}>
-            Contact Us
+          <Link to='/pricing' className='nav-link' onClick={closeMenu}>
+            Pricing
           </Link>
-        </li> */}
+        </li>
         {isAdmin && (
           <li
             className={`nav-item ${

@@ -471,3 +471,134 @@ export const testimonials = [
       "I couldn't be happier with the service I received. From initial consultation to final registration, everything was handled with professionalism and expertise. I highly recommend this service to any business owner looking for hassle-free registration.",
   },
 ];
+
+export const faqs = [
+  {
+    question: 'What is a business name registration?',
+    answer:
+      'A business name registration is the process of registering the official name under which your business operates and conducts its activities. It provides legal recognition and protection for your business name.',
+  },
+  {
+    question: 'Why should I register my business name?',
+    answer:
+      'Registering your business name is essential for legal recognition and operation. It enhances professionalism, builds trust with customers and partners, and is often required by financial institutions for loans or investments.',
+  },
+  {
+    question: 'What documents are required for business registration?',
+    answer:
+      'The documents required for business registration typically include a completed application form, identification documents, proof of address, and any other documents specified by the registration authority.',
+  },
+  {
+    question: 'How long does the business registration process take?',
+    answer:
+      'The duration of the business registration process can vary depending on the registration authority and the completeness of your application. It typically takes between a few days to a few weeks.',
+  },
+  {
+    question: 'Can I register my business online?',
+    answer:
+      'Yes, many registration authorities offer online business registration services. You can complete the application process, submit documents, and pay fees online.',
+  },
+  {
+    question: 'What are the benefits of registering a business?',
+    answer:
+      'The benefits of registering a business include legal recognition, credibility and trust, access to funding, trademark protection, and the ability to operate legally and professionally.',
+  },
+  {
+    question: 'Do I need a lawyer to register my business?',
+    answer:
+      'While it is not mandatory to have a lawyer to register your business, consulting with a legal professional can help ensure that your application is complete and compliant with all legal requirements.',
+  },
+  {
+    question:
+      'What is the difference between a sole proprietorship and a limited liability company?',
+    answer:
+      'A sole proprietorship is a business owned and operated by one person, with no legal distinction between the owner and the business. A limited liability company (LLC) is a separate legal entity that provides limited liability protection to its owners.',
+  },
+  {
+    question: 'Can I change my business name after registration?',
+    answer:
+      'Yes, you can change your business name after registration by following the procedures set by the registration authority. This typically involves submitting a name change application and paying a fee.',
+  },
+  {
+    question: 'What is the cost of registering a business?',
+    answer:
+      'The cost of registering a business varies depending on the type of business, the registration authority, and any additional services you may require. It is advisable to check with the registration authority for specific fees and charges.',
+  },
+];
+
+import {
+  FaBuilding,
+  FaFileSignature,
+  FaTrademark,
+  FaClipboardList,
+} from 'react-icons/fa';
+// import { TbWorldWww } from 'react-icons/tb';
+
+import llcImage from '../assets/hero2.jpg';
+import bizImage from '../assets/business.jpg';
+import trademarkImage from '../assets/man_skyscrapper.jpg';
+import annualReportImage from '../assets/man_office.jpg';
+import webDevImg from '../assets/laptop_plain.jpg';
+
+export const products = [
+  {
+    icon: FaBuilding,
+    title: 'Limited Liability Company',
+    description:
+      'The simplest way of structuring your business to protect personal assets.',
+    price: 'From N50k',
+    image: llcImage,
+  },
+  {
+    icon: FaFileSignature,
+    title: 'Business Name',
+    description:
+      'Go by a different business name without creating a new company.',
+    price: 'From N25k',
+    image: bizImage,
+  },
+  {
+    icon: FaTrademark,
+    title: 'Trademark registration',
+    description:
+      "Protect your name, logo, or slogan so others can't profit from it.",
+    price: 'From N80k',
+    image: trademarkImage,
+  },
+  {
+    icon: FaClipboardList,
+    title: 'Annual Reports Filing',
+    description:
+      "Guarantee your report is filed with the state to keep your company's good standing.",
+    price: 'From N15k per year',
+    image: annualReportImage,
+  },
+  {
+    icon: TbWorldWww,
+    title: 'Web Development',
+    description:
+      'Develop and design a modern and responsive SEO friendly website to increase your business visibility ',
+    price: 'From N35k per year',
+    image: webDevImg,
+  },
+];
+
+import { FaHandshake, FaUserFriends, FaShieldAlt } from 'react-icons/fa';
+
+export const partnerships = [
+  {
+    title: 'General Partnership',
+    description: 'Shared responsibilities and liabilities among partners.',
+    icon: FaHandshake,
+  },
+  {
+    title: 'Limited Partnership',
+    description: 'Combines general partners with limited liability partners.',
+    icon: FaUserFriends,
+  },
+  {
+    title: 'Limited Liability Partnership',
+    description: 'Partners have limited personal liability for the business.',
+    icon: FaShieldAlt,
+  },
+];

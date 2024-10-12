@@ -1,5 +1,5 @@
 import { packages } from '../data/data.jsx';
-import Trust from '../components/Trust.jsx';
+import Trust from '../components/Faq.jsx';
 // import WebDevSection from '../components/WebDevSection.jsx';
 import Hero from '../components/Hero.jsx';
 import Services from '../components/Services.jsx';

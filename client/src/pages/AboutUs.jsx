@@ -1,6 +1,6 @@
 import { PiCertificateThin } from 'react-icons/pi';
 import ourStory from '../assets/about-story.svg';
-import Trust from '../components/Trust';
+import Trust from '../components/Faq';
 import '../styles/aboutUs.scss';
 import Title from '../components/Title';
 

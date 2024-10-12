@@ -1,142 +1,141 @@
-import { Link } from 'react-router-dom';
-import Trust from '../components/Trust';
-import PostIncorporation from '../components/PostIncorporation';
-import Aside from '../components/Aside';
-import Packages from '../components/Packages';
-import { packages } from '../data/data';
-import partner from '../assets/partner.svg';
-import Button from '../components/Button';
+// import { Link } from 'react-router-dom';
+// import Trust from '../components/Faq';
+// import PostIncorporation from '../components/PostIncorporation';
+// import Aside from '../components/Aside';
+// import Packages from '../components/Packages';
+// import { packages } from '../data/data';
+// import partner from '../assets/partner.svg';
 
-import '../styles/partnership.scss';
+// import '../styles/partnership.scss';
 
-const PARTNERSHIP_DATA = [
-  {
-    title: 'Partnership',
-    price: '25k',
-    img: partner,
-  },
-];
+// const PARTNERSHIP_DATA = [
+//   {
+//     title: 'Partnership',
+//     price: '25k',
+//     img: partner,
+//   },
+// ];
 
-const Partnership = () => {
-  return (
-    <section className='company-section partnership'>
-      <div className='comp-container'>
-        <div className='text-1'>
-          <h1 data-aos='fade-in'>Partnership Registration</h1>
-          <p data-aos='fade-in'>
-            Under the Companies and Allied Matters Act (CAMA) 2020, a
-            partnership is an agreement between two or more individuals to carry
-            on a business in common with a view to profit. The key features of a
-            partnership include:
-          </p>
+// const Partnership = () => {
+//   return (
+//     <section className=' partnership'>
+//       <div className='partnership__container'>
+//         <div className='partnership__content'>
+//           <h1>Partnership Registration</h1>
+//           <p>
+//             Under the Companies and Allied Matters Act (CAMA) 2020, a
+//             partnership is an agreement between two or more individuals to carry
+//             on a business in common with a view to profit. The key features of a
+//             partnership include:
+//           </p>
 
-          <ul>
-            <li data-aos='fade-in'>
-              <strong>Mutual agency:</strong> Each partner acts as an agent for
-              the other partners, binding the partnership in dealings with third
-              parties.
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Joint and several liability:</strong> All partners are
-              personally liable for the debts and obligations of the
-              partnership, regardless of their individual contribution.
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Sharing of profits and losses:</strong> Profits and losses
-              are shared among the partners according to the agreed-upon terms,
-              or in equal proportions if no agreement exists.
-            </li>
-          </ul>
+//           <ul>
+//             <li>
+//               <strong>Mutual agency:</strong> Each partner acts as an agent for
+//               the other partners, binding the partnership in dealings with third
+//               parties.
+//             </li>
+//             <li>
+//               <strong>Joint and several liability:</strong> All partners are
+//               personally liable for the debts and obligations of the
+//               partnership, regardless of their individual contribution.
+//             </li>
+//             <li>
+//               <strong>Sharing of profits and losses:</strong> Profits and losses
+//               are shared among the partners according to the agreed-upon terms,
+//               or in equal proportions if no agreement exists.
+//             </li>
+//           </ul>
 
-          <p data-aos='fade-in'>
-            <strong>Types of Partnerships in Nigeria:</strong>
-          </p>
+//           <p>
+//             <strong>Types of Partnerships in Nigeria:</strong>
+//           </p>
 
-          <ol>
-            <li data-aos='fade-in'>
-              <strong>General Partnership:</strong> This is the most common type
-              of partnership, with the characteristics mentioned above. There
-              are no formalities required to form a general partnership, though
-              having a written agreement is highly recommended.
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Limited Liability Partnership (LLP):</strong> An LLP
-              offers limited liability to its partners similar to a limited
-              liability company. While some partners can manage the business
-              (general partners), others can enjoy limited liability with no
-              involvement in management (limited partners). LLPs require
-              registration with the Corporate Affairs Commission (CAC).
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Limited Partnership (LP):</strong> This type has at least
-              one general partner with unlimited liability and at least one
-              limited partner with limited liability similar to an LLP. The
-              limited partner cannot take part in management and their liability
-              is limited to their investment in the partnership. LPs also
-              require registration with the CAC.
-            </li>
-          </ol>
+//           <ol>
+//             <li>
+//               <strong>General Partnership:</strong> This is the most common type
+//               of partnership, with the characteristics mentioned above. There
+//               are no formalities required to form a general partnership, though
+//               having a written agreement is highly recommended.
+//             </li>
+//             <li>
+//               <strong>Limited Liability Partnership (LLP):</strong> An LLP
+//               offers limited liability to its partners similar to a limited
+//               liability company. While some partners can manage the business
+//               (general partners), others can enjoy limited liability with no
+//               involvement in management (limited partners). LLPs require
+//               registration with the Corporate Affairs Commission (CAC).
+//             </li>
+//             <li>
+//               <strong>Limited Partnership (LP):</strong> This type has at least
+//               one general partner with unlimited liability and at least one
+//               limited partner with limited liability similar to an LLP. The
+//               limited partner cannot take part in management and their liability
+//               is limited to their investment in the partnership. LPs also
+//               require registration with the CAC.
+//             </li>
+//           </ol>
 
-          <p data-aos='fade-in'>
-            <strong>Additional points to note:</strong>
-          </p>
+//           <p>
+//             <strong>Additional points to note:</strong>
+//           </p>
 
-          <ul>
-            <li data-aos='fade-in'>
-              <strong>Partnership Agreement:</strong> While not mandatory,
-              having a written partnership agreement is vital for outlining the
-              rights, responsibilities, profit-sharing, and dispute resolution
-              mechanisms among partners.
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Registration:</strong> General partnerships do not require
-              registration, but LLPs and LPs must register with the CAC.
-            </li>
-            <li data-aos='fade-in'>
-              <strong>Taxation:</strong> Partnerships are not separate tax
-              entities; each partner reports their share of the
-              partnership&apos;s income or loss on their individual tax returns.
-            </li>
-          </ul>
+//           <ul>
+//             <li>
+//               <strong>Partnership Agreement:</strong> While not mandatory,
+//               having a written partnership agreement is vital for outlining the
+//               rights, responsibilities, profit-sharing, and dispute resolution
+//               mechanisms among partners.
+//             </li>
+//             <li>
+//               <strong>Registration:</strong> General partnerships do not require
+//               registration, but LLPs and LPs must register with the CAC.
+//             </li>
+//             <li>
+//               <strong>Taxation:</strong> Partnerships are not separate tax
+//               entities; each partner reports their share of the
+//               partnership&apos;s income or loss on their individual tax returns.
+//             </li>
+//           </ul>
 
-          <div className='how-to-start'>
-            <h4 data-aos='fade-in'>How to get started</h4>
+//           <div className='how-to-start'>
+//             <h4>How to get started</h4>
 
-            <p data-aos='fade-in'>
-              You can start right now. We can form your Corporation of any type
-            </p>
+//             <p>
+//               You can start right now. We can form your Corporation of any type
+//             </p>
 
-            <Link to='#'>Start Now</Link>
-          </div>
-        </div>
+//             <Link to='#'>Start Now</Link>
+//           </div>
+//         </div>
 
-        {PARTNERSHIP_DATA.map((item, index) => {
-          if (index === 0) {
-            // Render only the first price
-            return <Aside key={index} {...item} />;
-          }
-          return null; // Render nothing for other prices
-        })}
-      </div>
+//         {PARTNERSHIP_DATA.map((item, index) => {
+//           if (index === 0) {
+//             // Render only the first price
+//             return <Aside key={index} {...item} />;
+//           }
+//           return null; // Render nothing for other prices
+//         })}
+//       </div>
 
-      <Trust />
+//       <Trust />
 
-      <div className='packages partnership-packages'>
-        {packages.slice(4, 7).map((item, index) => {
-          return (
-            <Packages
-              key={index}
-              title={item.title}
-              price={item.price}
-              benefits={item.benefits}
-            />
-          );
-        })}
-      </div>
+//       <div className='packages partnership-packages'>
+//         {packages.slice(4, 7).map((item, index) => {
+//           return (
+//             <Packages
+//               key={index}
+//               title={item.title}
+//               price={item.price}
+//               benefits={item.benefits}
+//             />
+//           );
+//         })}
+//       </div>
 
-      <PostIncorporation />
-    </section>
-  );
-};
+//       <PostIncorporation />
+//     </section>
+//   );
+// };
 
-export default Partnership;
+// export default Partnership;

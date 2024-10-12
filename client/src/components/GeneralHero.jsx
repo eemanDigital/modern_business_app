@@ -8,6 +8,7 @@ const GeneralHero = ({
   ctaText,
   listContent,
   parentClass,
+  hideCta,
 }) => {
   return (
     <section className={parentClass}>
@@ -19,7 +20,9 @@ const GeneralHero = ({
           <h2 className={`${parentClass}__title`}>{title} </h2>
           <p className={`${parentClass}__text`}>{description}</p>
           <ul className={`${parentClass}__list`}>{listContent}</ul>
-          <button className={`${parentClass}__cta`}>{ctaText}</button>
+          {!hideCta && (
+            <button className={`${parentClass}__cta`}>{ctaText}</button>
+          )}
         </div>
       </div>
     </section>

@@ -1,175 +1,31 @@
 @import 'variables';
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-#generic_price_table {
-  font-family: 'Raleway', sans-serif;
-  background-color: $background-color;
-  padding: 50px 0;
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
+.p_faq-container {
+  display: flex;
+  flex-wrap: wrap; // Allow items to wrap
+  gap: 1rem; // Adds space between the cards
+  justify-content: space-between; // Even spacing between cards
+  padding: 2rem;
 
-  .row {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin: -15px;
-  }
+  .p_faq {
+    flex: 1 1 calc(33.333% - 1rem); // Flex-grow: 1, Flex-shrink: 1, Flex-basis: 33.333% minus the gap
+    min-width: 250px; // Set a minimum width to prevent excessive shrinking
+    box-sizing: border-box;
 
-  .col-md-4 {
-    width: 33.333%;
-    padding: 15px;
-    @media (max-width: $breakpoint-md) {
-      width: 100%;
-      padding: 4rem;
+    @media (max-width: $breakpoint-lg) {
+      flex: 1 1 calc(50% - 1rem); // 2 cards per row on medium screens
     }
+
     @media (max-width: $breakpoint-sm) {
-      width: 100%;
-      padding: 1rem;
-    }
-  }
-
-  .generic_content {
-    background-color: $white;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-
-    &.active,
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
-      .head_bg {
-        border-color: $highlight-color transparent transparent $highlight-color;
-      }
-
-      .generic_head_price .generic_head_content .head span,
-      .generic_price_btn a {
-        background-color: $primary-color;
-        color: $white;
-      }
-    }
-  }
-
-  .generic_head_price {
-    background-color: $white;
-
-    .generic_head_content {
-      .head_bg {
-        border-style: solid;
-        border-width: 90px 1411px 23px 399px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        border-color: $primary-color transparent transparent $primary-color;
-      }
-
-      .head {
-        padding-top: 40px;
-        position: relative;
-        z-index: 2;
-
-        span {
-          font-family: 'Raleway', sans-serif;
-          font-size: 1.2rem;
-          font-weight: 400;
-          letter-spacing: 2px;
-          margin: 0;
-          padding: 0;
-          text-transform: uppercase;
-          color: $white;
-          transition: all 0.3s ease-in-out;
-        }
-      }
-    }
-
-    .generic_price_tag {
-      padding: 0 0 20px;
-
-      .price {
-        display: block;
-        padding-top: 2rem;
-        z-index: 1;
-
-        .sign,
-        .currency {
-          display: inline-block;
-          font-family: 'Lato', sans-serif;
-          color: $accent-color;
-        }
-
-        .sign {
-          font-size: 28px;
-          font-weight: 400;
-          vertical-align: super;
-        }
-
-        .currency {
-          font-size: 2rem;
-          font-weight: 300;
-          letter-spacing: -2px;
-          line-height: 60px;
-        }
-      }
-    }
-  }
-
-  .generic_feature_list {
-    ul {
-      list-style: none;
-      padding: 0 0.8rem;
-      text-align: center;
-      margin: 0;
-
-      li {
-        font-family: 'Lato', sans-serif;
-        font-size: 15px;
-        padding: 15px 0;
-        transition: all 0.3s ease-in-out;
-        color: $text-color;
-
-        &:hover {
-          background-color: #f8f8f8;
-        }
-
-        span {
-          font-weight: 600;
-        }
-      }
-    }
-  }
-
-  .generic_price_btn {
-    margin: 20px 0 32px;
-
-    a {
-      border-radius: 50px;
-      color: $text-color;
-      display: inline-block;
-      font-family: 'Lato', sans-serif;
-      font-size: 18px;
-      outline: none;
-      padding: 12px 30px;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      border: 1px solid $highlight-color;
-
-      &:hover {
-        background-color: $highlight-color;
-        color: $white;
-      }
+      flex: 1 1 100%; // Full width (stacked) on small screens
     }
   }
 }

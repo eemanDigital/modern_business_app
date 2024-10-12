@@ -1,4 +1,4 @@
-import Trust from '../components/Trust';
+import Trust from '../components/Faq';
 import PostIncorporation from '../components/PostIncorporation';
 import Packages from '../components/Packages';
 import { packages } from '../data/data';

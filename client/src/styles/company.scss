@@ -9,6 +9,7 @@
     align-items: start;
     gap: 4rem;
     justify-content: space-between;
+    line-height: 1.7;
 
     @media (max-width: 768px) {
       flex-direction: column;

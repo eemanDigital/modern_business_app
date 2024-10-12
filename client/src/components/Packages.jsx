@@ -12,7 +12,7 @@ const Packages = ({ title, price, benefits }) => {
             {price}
           </div>
           <ul className='package-features'>
-            {benefits.map((benefit, index) => (
+            {benefits?.map((benefit, index) => (
               <li key={index}>{benefit}</li>
             ))}
           </ul>

@@ -1,0 +1,108 @@
+@import 'variables';
+
+.business-comparison {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 4rem;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  overflow-x: auto;
+
+  h2 {
+    font-size: 2rem;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+
+    th,
+    td {
+      padding: 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    thead {
+      background-color: $primary-color;
+      color: $white;
+
+      th {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: $white;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken($white, 5%);
+        }
+
+        td {
+          border-top: 1px solid $primary-color;
+          border-bottom: 1px solid $primary-color;
+
+          &:first-child {
+            border-left: 1px solid $primary-color;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+          }
+
+          &:last-child {
+            border-right: 1px solid $primary-color;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+          }
+        }
+
+        &.elaboration {
+          td {
+            background-color: $disabled-color;
+            font-style: italic;
+            font-weight: 600;
+            color: $text-color;
+            border-top: none;
+            border-bottom: none;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+
+    .aspect {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      svg {
+        font-size: 2rem;
+        color: $tomato;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .business-comparison {
+    padding: 1rem;
+
+    table {
+      font-size: 0.9rem;
+
+      th,
+      td {
+        padding: 0.75rem;
+      }
+    }
+  }
+}

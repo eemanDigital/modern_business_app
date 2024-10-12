@@ -19,7 +19,7 @@ import Edit from './pages/Edit';
 import Company from './pages/Company';
 import Business from './pages/Business';
 import Ngo from './pages/Ngo';
-import Partnership from './pages/Partnership';
+// import Partnership from './pages/Partnership';
 import WebDev from './pages/WebDev';
 import BlogDetails from './pages/BlogDetails';
 import NotFound from './components/NotFound';
@@ -30,6 +30,7 @@ import ProtectRoute from './components/ProtectRoute';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Pricing from './pages/Pricing';
 
 function App() {
   // scroll animation handler
@@ -45,6 +46,7 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Home />}></Route>
         <Route path='about-us' element={<AboutUs />} />
+        <Route path='pricing' element={<Pricing />} />
         <Route path='blog' element={<Blog />} />
         <Route path='blog/:id' element={<BlogDetails />} />
         <Route path='blog/create' element={<Write />} />
@@ -64,7 +66,7 @@ function App() {
         <Route path='users/:id/edit' element={<UpdateUser />} />
         <Route path='company' element={<Company />} />
         <Route path='business' element={<Business />} />
-        <Route path='partnership' element={<Partnership />} />
+        {/* <Route path='partnership' element={<Partnership />} /> */}
         <Route path='ngo' element={<Ngo />} />
         <Route path='webDev' element={<WebDev />} />
         <Route path='*' element={<NotFound />} />
