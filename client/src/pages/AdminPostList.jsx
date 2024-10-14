@@ -75,7 +75,7 @@ const AdminPostList = ({ posts, loading, error }) => {
                     {' '}
                     <Link to={`/blog/${post?._id}`}>{post?.title}</Link>
                   </td>
-                  <td>{post?.author}</td>
+                  <td>{`${post?.author?.firstName} ${post?.author?.lastName}`}</td>
                   <td>{new Date(post.date).toLocaleDateString()}</td>
                   <td>
                     <button className='edit-btn'>

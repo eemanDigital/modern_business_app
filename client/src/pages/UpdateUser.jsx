@@ -120,7 +120,7 @@ const UpdateUser = () => {
           value={formData.role}
           onChange={handleInputChange}
           required>
-          <option value='user'>User</option>
+          <option value='author'>Author</option>
           <option value='admin'>Admin</option>
         </select>
 

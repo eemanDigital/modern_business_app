@@ -1,114 +1,159 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BiMenuAltRight, BiChevronDown } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
-import Dropdown from './Dropdown';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const { user } = useAuthContext();
   const { logout } = useLogout();
   const location = useLocation();
+  const submenuRef = useRef(null);
 
   const isAdmin = user?.data?.user?.role === 'admin';
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => {
-    setMenuOpen(false);
-    setDropdownOpen(false);
+  const toggleSubmenu = (index) => {
+    setActiveSubmenu(activeSubmenu === index ? null : index);
   };
 
-  // drop down mouse effect handlers
-  const handleDropdownEnter = () => setDropdownOpen(true);
-  const handleDropdownLeave = () => setDropdownOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setActiveSubmenu(null);
+  };
 
-  //
   useEffect(() => {
     closeMenu();
   }, [location]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (submenuRef.current && !submenuRef.current.contains(event.target)) {
+        setActiveSubmenu(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const submenu = [
+    { title: 'Company Registration', url: '/services/company' },
+    { title: 'Business Registration', url: '/services/business' },
+    { title: 'NGO Registration', url: '/services/ngo' },
+    { title: 'Web Development', url: '/services/webdev' },
+  ];
+
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
     <nav className='navbar'>
-      <Link to='/' className='navbar-logo' onClick={closeMenu}>
-        eemanTech
-      </Link>
-      <div className='menu-icon' onClick={toggleMenu}>
-        {menuOpen ? <AiOutlineClose /> : <BiMenuAltRight />}
-      </div>
-      <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-        <li
-          className={`nav-item ${location.pathname === '/' ? 'current' : ''}`}>
-          <Link to='/' className='nav-link' onClick={closeMenu}>
-            Home
-          </Link>
-        </li>
-        <li
-          className={`nav-item dropdown ${dropdownOpen ? 'active' : ''}`}
-          onMouseEnter={handleDropdownEnter}
-          onMouseLeave={handleDropdownLeave}>
-          <div className='nav-link dropdown-toggle'>
-            Services
-            <BiChevronDown className='dropdown-icon' />
-          </div>
-          <Dropdown
-            className={`dropdown-menu ${dropdownOpen ? 'active' : ''}`}
-            closeMenu={closeMenu}
-          />
-        </li>
-        <li
-          className={`nav-item ${
-            location.pathname === '/about-us' ? 'current' : ''
-          }`}>
-          <Link to='/about-us' className='nav-link' onClick={closeMenu}>
-            About
-          </Link>
-        </li>
-        <li
-          className={`nav-item ${
-            location.pathname === '/blog' ? 'current' : ''
-          }`}>
-          <Link to='/blog' className='nav-link' onClick={closeMenu}>
-            Blog
-          </Link>
-        </li>
-        <li
-          className={`nav-item ${
-            location.pathname === '/contact-us' ? 'current' : ''
-          }`}>
-          <Link to='/pricing' className='nav-link' onClick={closeMenu}>
-            Pricing
-          </Link>
-        </li>
-        {isAdmin && (
-          <li
-            className={`nav-item ${
-              location.pathname === '/admin-board' ? 'current' : ''
-            }`}>
-            <Link to='/admin-board' className='nav-link' onClick={closeMenu}>
-              Dashboard
+      <div className='navbar-container'>
+        <Link to='/' className='navbar-logo' onClick={closeMenu}>
+          eemanTech
+        </Link>
+        <button
+          className='navbar-toggle'
+          onClick={toggleMenu}
+          aria-label='Toggle navigation menu'>
+          {menuOpen ? <AiOutlineClose /> : <BiMenuAltRight />}
+        </button>
+        <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          <li className={`navbar-item ${isActive('/') ? 'active' : ''}`}>
+            <Link to='/' className='navbar-link' onClick={closeMenu}>
+              Home
             </Link>
           </li>
-        )}
-        <li className='nav-item'>
-          {user ? (
-            <button className='logout-btn' onClick={logout}>
-              Logout
+          <li
+            className={`navbar-item has-submenu ${
+              activeSubmenu === 0 || isActive('/services') ? 'active' : ''
+            }`}
+            ref={submenuRef}>
+            <button
+              className='navbar-link'
+              onClick={() => toggleSubmenu(0)}
+              aria-expanded={activeSubmenu === 0}
+              aria-haspopup='true'>
+              Services
+              <BiChevronDown
+                className={`submenu-icon ${
+                  activeSubmenu === 0 ? 'active' : ''
+                }`}
+              />
             </button>
-          ) : (
-            <Link
-              to='/login'
-              className={`nav-link ${
-                location.pathname === '/login' ? 'current' : ''
-              }`}
-              onClick={closeMenu}>
-              Login
+            <ul
+              className={`navbar-submenu ${
+                activeSubmenu === 0 ? 'active' : ''
+              }`}>
+              {submenu.map((item, index) => (
+                <li
+                  key={index}
+                  className={`${isActive(item.url) ? 'active' : ''} dpw`}>
+                  <Link
+                    to={item.url}
+                    className='navbar-link'
+                    onClick={closeMenu}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li
+            className={`navbar-item ${isActive('/about-us') ? 'active' : ''}`}>
+            <Link to='/about-us' className='navbar-link' onClick={closeMenu}>
+              About
             </Link>
+          </li>
+          <li className={`navbar-item ${isActive('/blog') ? 'active' : ''}`}>
+            <Link to='/blog' className='navbar-link' onClick={closeMenu}>
+              Blog
+            </Link>
+          </li>
+          <li className={`navbar-item ${isActive('/pricing') ? 'active' : ''}`}>
+            <Link to='/pricing' className='navbar-link' onClick={closeMenu}>
+              Pricing
+            </Link>
+          </li>
+          {isAdmin && (
+            <li
+              className={`navbar-item ${
+                isActive('/admin-board') ? 'active' : ''
+              }`}>
+              <Link
+                to='/admin-board'
+                className='navbar-link'
+                onClick={closeMenu}>
+                Dashboard
+              </Link>
+            </li>
           )}
-        </li>
-      </ul>
+          <li className='navbar-item'>
+            {user ? (
+              <button className='navbar-link logout-btn' onClick={logout}>
+                Logout
+              </button>
+            ) : (
+              <Link
+                to='/login'
+                className={`navbar-link ${isActive('/login') ? 'active' : ''}`}
+                onClick={closeMenu}>
+                Login
+              </Link>
+            )}
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

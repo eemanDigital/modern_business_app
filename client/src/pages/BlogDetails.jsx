@@ -54,7 +54,11 @@ const BlogDetails = () => {
         <h1>{data?.data.title}</h1>
         <div className='blog-content-author-date'>
           <span>{formatDate(data?.data?.post?.date)}</span>
-          <span>By: {data?.data?.post?.author}</span>
+
+          <span className='blog-post__author'>
+            Author:{' '}
+            {`${data?.data?.post?.author?.firstName} ${data?.data?.post?.author?.lastName}`}
+          </span>
         </div>
         <p dangerouslySetInnerHTML={{ __html: data?.data?.post?.body }}></p>
         <Link to='/blog' style={{ textDecoration: 'none' }}>

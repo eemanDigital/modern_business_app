@@ -31,7 +31,9 @@ const BlogPost = ({ _id, title, body, date, author, photo, isFeatured }) => {
           <Link to={`/blog/${_id}`}>{title}</Link>
         </h2>
         <div className='blog-post__meta'>
-          <span className='blog-post__author'>{author}</span>
+          <span className='blog-post__author'>
+            Author: {`${author?.firstName} ${author?.lastName}`}
+          </span>
           <span className='blog-post__date'>
             <CiCalendarDate /> {formatDate(date)}
           </span>

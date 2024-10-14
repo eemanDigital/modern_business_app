@@ -14,6 +14,8 @@ function Blog() {
 
   const posts = data?.data?.results?.result;
 
+  console.log(posts, 'POST');
+
   useEffect(() => {
     getPaginatedPosts();
   }, []);

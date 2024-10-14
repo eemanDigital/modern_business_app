@@ -64,11 +64,11 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='addUser' element={<SignUp />} />
         <Route path='users/:id/edit' element={<UpdateUser />} />
-        <Route path='company' element={<Company />} />
-        <Route path='business' element={<Business />} />
+        <Route path='services/company' element={<Company />} />
+        <Route path='services/business' element={<Business />} />
         {/* <Route path='partnership' element={<Partnership />} /> */}
-        <Route path='ngo' element={<Ngo />} />
-        <Route path='webDev' element={<WebDev />} />
+        <Route path='services/ngo' element={<Ngo />} />
+        <Route path='services/webDev' element={<WebDev />} />
         <Route path='*' element={<NotFound />} />
       </Route>
     )

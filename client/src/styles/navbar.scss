@@ -1,213 +1,235 @@
 @import 'variables';
 
+// $primary-color: #3498db;
+
+$text-color: #333;
+$light-bg: #f8f9fa;
+$transition-speed: 0.6s;
+$navbar-height: 80px;
+$mobile-breakpoint: 1024px;
+
 .navbar {
   background-color: $white;
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  font-size: 1rem;
-  position: sticky;
   box-shadow: $box-shadow;
+  position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: $navbar-height;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
   .navbar-logo {
-    color: $dark;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    letter-spacing: 2px;
+    color: $highlight-color;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color $transition-speed;
 
-    &:hover {
-      color: $highlight-color;
+    &:hover,
+    &:focus {
+      color: darken($primary-color, 10%);
     }
   }
 
-  .menu-icon {
+  .navbar-toggle {
     display: none;
-    color: $dark;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
 
-    &:hover {
-      color: $highlight-color;
+    color: $secondary-color;
+    cursor: pointer;
+    transition: color $transition-speed;
+
+    &:hover,
+    &:focus {
+      color: $primary-color;
     }
   }
 
-  .nav-menu {
+  .navbar-menu {
     display: flex;
-    align-items: center;
-    list-style: none;
+    list-style-type: none;
     margin: 0;
     padding: 0;
 
-    .nav-item {
-      position: relative;
-      height: 80px;
-      display: flex;
-      align-items: center;
+    .dpw {
+      list-style-type: none;
+    }
+  }
 
-      &.current .nav-link {
-        color: $highlight-color;
+  .navbar-item {
+    list-style-type: none;
+    position: relative;
+    margin-left: 1rem;
+
+    &.active > .navbar-link {
+      color: $primary-color;
+    }
+
+    &.has-submenu {
+      .navbar-link {
+        padding-right: 1.5rem;
       }
 
-      .nav-link {
-        color: $dark;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        transition: color 0.3s ease;
+      .submenu-icon {
+        margin-left: 0.5rem;
+        transition: transform $transition-speed;
 
-        &:hover {
-          color: $highlight-color;
-        }
-
-        &.dropdown-toggle {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-
-          .dropdown-icon {
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-          }
-        }
-      }
-
-      &.dropdown {
-        &:hover .dropdown-icon {
+        &.active {
           transform: rotate(180deg);
         }
       }
+    }
+  }
 
-      .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: $white;
-        min-width: 300px;
-        box-shadow: $box-shadow;
-        border-top: 4px solid $tomato;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  .navbar-link {
+    color: $highlight-color;
 
-        // &::before {
-        //   content: '';
-        //   position: absolute;
-        //   top: 0;
-        //   left: 20px;
-        //   border-width: 0 10px 10px 10px;
-        //   border-style: solid;
-        //   border-color: transparent transparent $tomato transparent;
-        // }
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color $transition-speed;
 
-        &.active {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
+    &:hover,
+    &:focus {
+      color: $primary-color;
+      outline: none;
+    }
+  }
 
-        .dropdown-link {
-          display: block;
-          text-align: left;
-          color: $dark;
-          font-weight: 600;
-          text-decoration: none;
-          padding: 1rem;
-          width: 100%;
+  .navbar-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity $transition-speed, transform $transition-speed,
+      visibility 0s linear $transition-speed;
 
-          &:hover {
-            color: $highlight-color;
-          }
-        }
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition: opacity $transition-speed, transform $transition-speed,
+        visibility 0s;
+    }
+
+    .navbar-link {
+      padding: 0.75rem 1rem;
+
+      &:hover,
+      &:focus {
+        background-color: $light-bg;
       }
     }
   }
 
   .logout-btn {
-    background: transparent;
-    color: $dark;
-    font-size: 1rem;
-    font-weight: 600;
+    background: none;
     border: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: $highlight-color;
-    }
+    font-size: 1rem;
+    font-weight: 500;
   }
 
-  @media screen and (max-width: $breakpoint-lg) {
-    .menu-icon {
+  @media screen and (max-width: $mobile-breakpoint) {
+    .navbar-container {
+      padding: 0 1rem;
+    }
+
+    .navbar-toggle {
       display: block;
     }
 
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      width: 70%;
-      height: auto;
-      position: absolute;
-      top: 80px;
+    .navbar-menu {
+      position: fixed;
+      top: $navbar-height;
       left: -100%;
-      padding-left: 2rem;
-      opacity: 0;
-      transition: all 0.5s ease;
+      width: 100%;
+      height: calc(100vh - #{$navbar-height});
+      flex-direction: column;
       background-color: $white;
-      box-shadow: $box-shadow;
+      transition: left $transition-speed ease-in-out;
+      overflow-y: auto;
 
       &.active {
         left: 0;
-        opacity: 1;
       }
+    }
 
-      .nav-item {
-        height: auto;
-        margin: 0.5rem 0;
+    .navbar-item {
+      margin: 0;
+      width: 100%;
 
-        .nav-link {
-          padding: 1rem;
-          display: block;
-          text-align: center;
+      &.has-submenu {
+        .navbar-link {
+          padding-right: 3rem;
         }
 
-        &.dropdown {
-          .dropdown-menu {
-            // position: static;
-            box-shadow: none;
-            opacity: 1;
-            border-top: none;
-            visibility: visible;
-            transform: none;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-
-            &.active {
-              max-height: 500px;
-            }
-          }
-
-          .nav-link.dropdown-toggle {
-            justify-content: center;
-          }
+        .submenu-icon {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }
 
-    .logout-btn {
-      width: 100%;
-      text-align: center;
+    .navbar-link {
+      padding: 1rem;
+      border-bottom: 1px solid $light-bg;
+    }
+
+    .navbar-submenu {
+      position: static;
+      box-shadow: none;
+      background-color: $light-bg;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: max-height $transition-speed ease-in-out;
+
+      &.active {
+        max-height: 500px;
+      }
+
+      .navbar-link {
+        padding-left: 2rem;
+      }
     }
   }
+}
+
+// Focus styles for keyboard navigation
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Remove focus outline for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }

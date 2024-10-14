@@ -2,7 +2,7 @@
 
 .hero-container {
   background: url(../assets/cool-white_bg.svg) center/cover no-repeat;
-  min-height: 90vh;
+  // min-height: ;
   width: 100%;
   display: flex;
   align-items: center;
@@ -161,24 +161,27 @@
 }
 
 @media (max-width: $breakpoint-sm) {
-  .hero {
-    &__title {
-      font-size: 2rem;
-      align-items: center;
-      justify-content: center;
-    }
+  .hero-container {
+    // min-height: 70vh;
+    .hero {
+      &__title {
+        font-size: 2rem;
+        align-items: center;
+        justify-content: center;
+      }
 
-    // &__content {
-    //   text-align: center;
-    //   margin: 0;
-    // }
+      // &__content {
+      //   text-align: center;
+      //   margin: 0;
+      // }
 
-    &__subtitle {
-      font-size: 1rem;
-    }
+      &__subtitle {
+        font-size: 1rem;
+      }
 
-    &__welcome h3 {
-      font-size: 1rem;
+      &__welcome h3 {
+        font-size: 1rem;
+      }
     }
   }
 }
