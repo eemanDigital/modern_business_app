@@ -1,0 +1,8 @@
+
+HEAD Content-Type: Application/json
+
+get http//:localhost:3000/users/login
+
+{
+    "email"
+}

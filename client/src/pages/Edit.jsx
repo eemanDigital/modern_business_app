@@ -5,6 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useDataFetch } from '../hooks/useDataFetch';
+import Title from '../components/Title';
 
 const formats = [
   'header',
@@ -29,14 +30,18 @@ const Edit = () => {
 
   // Ensuring initial state values are not undefined
   const [formData, setFormData] = useState({
-    title: '', // Initialize as empty strings
+    title: '',
     body: '',
-    author: '',
+    category: '',
+    tags: '',
+    featured: false,
   });
   const [fetchError, setFetchError] = useState(null); // Error state for data fetching
+  const [errors, setErrors] = useState({});
+
   const { user } = useAuthContext();
   const role = user?.data?.user?.role;
-  const isAdmin = role === 'admin';
+  const isAdmin = role === 'admin' || role === 'author';
 
   const baseUrl = import.meta.env.VITE_BASE_URL; // Base URL for API requests
 
@@ -50,18 +55,41 @@ const Edit = () => {
         setFormData({
           title: postData.title || '', // Fallback to an empty string if data is missing
           body: postData.body || '',
-          author: postData.author || '',
+          category: postData.category || '',
+          tags: postData.tags.join(', ') || '',
+          featured: postData.featured || false,
         });
       } catch (error) {
         setFetchError('Error fetching data. Please try again later.');
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, baseUrl]);
 
+  // Handle form field changes
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const name = e.target.name;
+    const value = e.target.value;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleInputChangeForBody = (value) => {
+    setFormData((prevData) => ({ ...prevData, body: value }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    const name = e.target.name;
+    const checked = e.target.checked;
+    setFormData((prevData) => ({ ...prevData, [name]: checked }));
+  };
+
+  // Validate form data
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.title) newErrors.title = 'Title is required';
+    if (!formData.body) newErrors.body = 'Body is required';
+    if (!formData.category) newErrors.category = 'Category is required';
+    return newErrors;
   };
 
   const handleSubmit = async (e) => {
@@ -77,10 +105,18 @@ const Edit = () => {
       return;
     }
 
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     const payload = {
       title: formData.title,
       body: formData.body,
-      author: formData.author,
+      category: formData.category,
+      tags: formData.tags.split(',').map((tag) => tag.trim()),
+      featured: formData.featured,
     };
 
     try {
@@ -93,55 +129,69 @@ const Edit = () => {
     }
   };
 
-  const handleInputChangeForBody = (value) => {
-    setFormData((prevData) => ({ ...prevData, body: value }));
-  };
-
   return (
     <article>
-      <h1>Edit Post</h1>
+      <Title text='Edit Post' />
 
       {!isAdmin && (
         <div className='write-error'>
-          <strong>You do not have the privilege to edit or delete</strong>
+          <strong>You do not have the privilege to write here</strong>
         </div>
       )}
-
-      {fetchError && (
-        <div className='fetch-error'>
-          <strong>{fetchError}</strong>
-        </div>
-      )}
-
-      <form className='write' onSubmit={handleSubmit}>
+      <form action='' className='write' onSubmit={handleSubmit}>
         <label htmlFor='title'>Title</label>
         <input
           type='text'
           name='title'
-          value={formData.title || ''} // Ensuring value is always a string
+          value={formData.title}
           onChange={handleInputChange}
-          required
         />
-        <label htmlFor='author'>Author</label>
+        {errors.title && <p className='error'>{errors.title}</p>}
+
+        <label htmlFor='category'>Category</label>
+        <select
+          name='category'
+          value={formData.category}
+          onChange={handleInputChange}>
+          <option value=''>Select Category</option>
+          <option value='Technology'>Technology</option>
+          <option value='Politics'>Politics</option>
+          <option value='Business'>Business</option>
+          <option value='Sports'>Sports</option>
+          <option value='Entertainment'>Entertainment</option>
+        </select>
+        {errors.category && <p className='error'>{errors.category}</p>}
+
+        <label htmlFor='tags'>Tags (comma-separated)</label>
         <input
           type='text'
-          name='author'
-          value={formData.author || ''} // Ensuring value is always a string
+          name='tags'
+          value={formData.tags}
           onChange={handleInputChange}
-          required
         />
+
+        <label htmlFor='featured'>Featured</label>
+        <input
+          type='checkbox'
+          name='featured'
+          checked={formData.featured}
+          onChange={handleCheckboxChange}
+        />
+
         <div className='editorContainer'>
+          <label htmlFor='body'>Body</label>
           <ReactQuill
             className='editor'
             theme='snow'
             formats={formats}
-            value={formData.body || ''} // Ensuring value is always a string
+            value={formData.body}
             onChange={handleInputChangeForBody}
           />
         </div>
+        {errors.body && <p className='error'>{errors.body}</p>}
 
-        <button type='submit' disabled={loading || !isAdmin}>
-          {loading ? 'Saving...' : 'Save'}
+        <button type='submit' disabled={loading}>
+          {loading ? 'Publishing...' : 'Publish'}
         </button>
       </form>
     </article>

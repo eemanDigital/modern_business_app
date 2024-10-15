@@ -3,6 +3,8 @@ import { Post } from '../models/postModel.js';
 import multer from 'multer';
 import cloudinary from '../utils/cloudinaryConfig.js';
 import { catchAsync } from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
+import User from '../models/userModel.js';
 
 // configure multer
 const storage = multer.memoryStorage(); // store image in memory
@@ -10,14 +12,18 @@ export const upload = multer({ storage: storage });
 
 // create post controller
 export const createPosts = catchAsync(async (req, res, next) => {
-  const { title, body, author } = req.body;
+  const { title, body, featured, slug, category, tags } = req.body;
 
   // const filename = req.file ? req.file.filename : null; // Handle optional file
 
   const post = await Post.create({
     title,
     body,
-    author,
+    author: req.user.id,
+    featured,
+    slug,
+    category,
+    tags,
   });
 
   res.status(201).json({
@@ -31,7 +37,7 @@ export const createPosts = catchAsync(async (req, res, next) => {
 // Get all posts API endpoint
 export const getPosts = catchAsync(async (req, res, next) => {
   // Fetch all posts from the database, sorted by date in descending order
-  const posts = await Post.find().sort({ date: 'desc' });
+  const posts = await Post.find().sort('-date');
 
   // Extract pagination parameters from query string, ensuring valid numbers
   const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
@@ -74,20 +80,20 @@ export const getPost = catchAsync(async (req, res, next) => {
 export const updatePost = catchAsync(async (req, res, next) => {
   // Extract post ID and updated data from request body
   const postId = req.params.id;
-  const { title, body, author } = req.body;
+  // const { title, body, author } = req.body;
 
   // Prepare updated post data
-  let updateData = { title, body, author };
+  // let updateData = { title, body, author };
 
   // Update post in the database
-  const updatedPost = await Post.findByIdAndUpdate(postId, updateData, {
+  const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
     new: true,
     runValidators: true,
   });
 
   // return error if no post found
   if (!updatedPost) {
-    return next(new Error('No post found with that ID'));
+    return next(new AppError('No post found with that ID'));
   }
 
   // Send a successful response with the updated post
@@ -117,7 +123,7 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
 
   if (!req.file) {
-    return next(new Error('No file uploaded'));
+    return next(new AppError('No file uploaded'));
   }
 
   // Use Cloudinary's upload_stream method instead of upload
@@ -154,7 +160,7 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
 
   // Return an error if no post found
   if (!updatedPost) {
-    return next(new Error('No post found with that ID'));
+    return next(new AppError('No post found with that ID'));
   }
 
   // Send a successful response with the updated post
@@ -163,6 +169,52 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
     message: 'Post image successfully updated',
     data: {
       post: updatedPost,
+    },
+  });
+});
+
+//create comment handler
+export const addCommentToPost = catchAsync(async (req, res, next) => {
+  const { id: postId } = req.params;
+  const { commentBody } = req.body;
+  const userId = req.user.id;
+
+  // Validate input
+  if (!commentBody || commentBody.trim() === '') {
+    return next(new AppError('Comment body is required', 400));
+  }
+
+  // Find the post
+  const post = await Post.findById(postId);
+  if (!post) {
+    return next(new AppError('Post not found', 404));
+  }
+
+  // Find the user
+  const user = await User.findById(userId);
+  if (!user) {
+    return next(new AppError('User not found', 404));
+  }
+
+  // Create new comment
+  const newComment = {
+    commentBody: commentBody.trim(),
+    author: userId,
+    date: Date.now(),
+  };
+
+  // Add comment to post
+  post.comments.push(newComment);
+
+  // Save the updated post
+
+  await post.save({ validateBeforeSave: false });
+
+  // Send response
+  res.status(201).json({
+    status: 'success',
+    data: {
+      comment: newComment,
     },
   });
 });

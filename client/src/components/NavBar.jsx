@@ -152,6 +152,15 @@ const Navbar = () => {
               </Link>
             )}
           </li>
+
+          <li className='navbar-item'>
+            <Link
+              to='/signup'
+              className={`navbar-link ${isActive('/signup') ? 'active' : ''}`}
+              onClick={closeMenu}>
+              Sign Up
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

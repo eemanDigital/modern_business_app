@@ -1,33 +1,31 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDataFetch } from '../hooks/useDataFetch';
-
 import ReactQuill from 'react-quill';
-
 import { formats } from '../lib/quillFormat';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Title from '../components/Title';
-
 import '../styles/write.scss';
 
-const Write = () => {
+const AddPostForm = () => {
   const navigate = useNavigate();
 
   // Local state to manage form fields
   const [formData, setFormData] = useState({
     title: '',
     body: '',
-    author: '',
+    category: '',
+    tags: '',
+    featured: false,
   });
 
-  // const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const { user } = useAuthContext();
   const { dataFetcher, loading } = useDataFetch();
   const role = user?.data?.user?.role;
 
   // checks admin role for writing
-  const isAdmin = role === 'admin';
+  const isAdmin = role === 'admin' || role === 'author';
 
   // Handle form field changes
   const handleInputChange = (e) => {
@@ -40,12 +38,18 @@ const Write = () => {
     setFormData((prevData) => ({ ...prevData, body: value }));
   };
 
+  const handleCheckboxChange = (e) => {
+    const name = e.target.name;
+    const checked = e.target.checked;
+    setFormData((prevData) => ({ ...prevData, [name]: checked }));
+  };
+
   // Validate form data
   const validate = () => {
     const newErrors = {};
     if (!formData.title) newErrors.title = 'Title is required';
     if (!formData.body) newErrors.body = 'Body is required';
-    if (!formData.author) newErrors.author = 'Author is required';
+    if (!formData.category) newErrors.category = 'Category is required';
     return newErrors;
   };
 
@@ -67,24 +71,20 @@ const Write = () => {
       return;
     }
 
-    // setLoading(true);
-
     const payload = {
       title: formData.title,
       body: formData.body,
-      author: formData.author,
+      category: formData.category,
+      tags: formData.tags.split(',').map((tag) => tag.trim()),
+      featured: formData.featured,
     };
 
     try {
-      const data = await dataFetcher('posts', 'post', payload);
-
-      console.log(data, 'data');
+      await dataFetcher('posts', 'post', payload);
 
       navigate('/blog');
     } catch (error) {
-      console.error('Error updating post:', error);
-    } finally {
-      // setLoading(false);
+      console.error('Error adding post:', error);
     }
   };
 
@@ -107,18 +107,55 @@ const Write = () => {
         />
         {errors.title && <p className='error'>{errors.title}</p>}
 
-        <label htmlFor='author'>Author</label>
+        {/* <label htmlFor='author'>Author</label>
         <input
           type='text'
           name='author'
           value={formData.author}
           onChange={handleInputChange}
         />
-        {errors.author && <p className='error'>{errors.author}</p>}
+        {errors.author && <p className='error'>{errors.author}</p>} */}
+
+        <label htmlFor='category'>Category</label>
+        <select
+          name='category'
+          value={formData.category}
+          onChange={handleInputChange}>
+          <option value=''>Select Category</option>
+          <option value='Technology'>Technology</option>
+          <option value='Politics'>Politics</option>
+          <option value='Business'>Business</option>
+          <option value='Sports'>Sports</option>
+          <option value='Entertainment'>Entertainment</option>
+        </select>
+        {errors.category && <p className='error'>{errors.category}</p>}
+
+        <label htmlFor='tags'>Tags (comma-separated)</label>
+        <input
+          type='text'
+          name='tags'
+          value={formData.tags}
+          onChange={handleInputChange}
+        />
+
+        {/* <label htmlFor='photo'>Photo URL</label>
+        <input
+          type='text'
+          name='photo'
+          value={formData.photo}
+          onChange={handleInputChange}
+        /> */}
+
+        <label htmlFor='featured'>Featured</label>
+        <input
+          type='checkbox'
+          name='featured'
+          checked={formData.featured}
+          onChange={handleCheckboxChange}
+        />
 
         <div className='editorContainer'>
           <label htmlFor='body'>Body</label>
-
           <ReactQuill
             className='editor'
             theme='snow'
@@ -137,4 +174,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default AddPostForm;

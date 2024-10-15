@@ -11,17 +11,16 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Blog from './pages/Blog';
+import Posts from './pages/Posts';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Write from './pages/Write';
 import Edit from './pages/Edit';
 import Company from './pages/Company';
 import Business from './pages/Business';
 import Ngo from './pages/Ngo';
 // import Partnership from './pages/Partnership';
 import WebDev from './pages/WebDev';
-import BlogDetails from './pages/BlogDetails';
+import PostDetails from './pages/PostDetails';
 import NotFound from './components/NotFound';
 import PostImageUpload from './pages/PostImageUpload';
 import AdminBoard from './pages/AdminBoard';
@@ -31,6 +30,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Pricing from './pages/Pricing';
+import SearchResults from './pages/SearchResult';
+import AddPostForm from './pages/AddPostForm';
 
 function App() {
   // scroll animation handler
@@ -47,9 +48,9 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='about-us' element={<AboutUs />} />
         <Route path='pricing' element={<Pricing />} />
-        <Route path='blog' element={<Blog />} />
-        <Route path='blog/:id' element={<BlogDetails />} />
-        <Route path='blog/create' element={<Write />} />
+        <Route path='blog' element={<Posts />} />
+        <Route path='blog/:id' element={<PostDetails />} />
+        <Route path='blog/create' element={<AddPostForm />} />
         <Route path='blog/:id/edit' element={<Edit />} />
         <Route path='blog/:id/upload' element={<PostImageUpload />} />
         <Route
@@ -62,10 +63,12 @@ function App() {
         />
 
         <Route path='login' element={<Login />} />
-        <Route path='addUser' element={<SignUp />} />
+        <Route path='signup' element={<SignUp />} />
         <Route path='users/:id/edit' element={<UpdateUser />} />
         <Route path='services/company' element={<Company />} />
         <Route path='services/business' element={<Business />} />
+        <Route path='/search' element={<SearchResults />} />
+
         {/* <Route path='partnership' element={<Partnership />} /> */}
         <Route path='services/ngo' element={<Ngo />} />
         <Route path='services/webDev' element={<WebDev />} />

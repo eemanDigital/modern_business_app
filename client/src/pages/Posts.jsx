@@ -2,27 +2,44 @@ import { useState, useEffect, useRef } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useDataFetch } from '../hooks/useDataFetch';
 import Loading from '../components/Loading';
-
 import '../styles/blog.scss';
-import BlogPost from '../components/BlogPost';
+import PostList from '../components/PostList';
+import SearchAndFilterPosts from './SearchAndFilterPosts';
+import { useLocation } from 'react-router-dom';
 
-function Blog() {
+function Posts() {
   const [limit] = useState(5); // 1 featured + 4 regular posts
   const [pageCount, setPageCount] = useState(1);
   const currentPage = useRef(1);
   const { data, loading, error, dataFetcher } = useDataFetch();
+  const location = useLocation();
 
-  const posts = data?.data?.results?.result;
-
-  console.log(posts, 'POST');
+  const posts = data?.data?.results?.result || data?.data?.posts;
 
   useEffect(() => {
-    getPaginatedPosts();
-  }, []);
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.toString()) {
+      // If there are search params, use the search endpoint
+      dataFetcher(
+        `posts/search?${searchParams.toString()}&page=${
+          currentPage.current
+        }&limit=${limit}`
+      );
+    } else {
+      // Otherwise, use the regular posts endpoint
+      getPaginatedPosts();
+    }
+  }, [location.search]);
 
   const handlePageClick = async (event) => {
     currentPage.current = event.selected + 1;
-    getPaginatedPosts();
+    const searchParams = new URLSearchParams(location.search);
+    if (searchParams.toString()) {
+      searchParams.set('page', currentPage.current);
+      dataFetcher(`posts/search?${searchParams.toString()}&limit=${limit}`);
+    } else {
+      getPaginatedPosts();
+    }
   };
 
   async function getPaginatedPosts() {
@@ -43,6 +60,7 @@ function Blog() {
 
   return (
     <div className='blog-container'>
+      <SearchAndFilterPosts />
       {loading ? (
         <Loading />
       ) : (
@@ -50,10 +68,10 @@ function Blog() {
           <div className='blog-content'>
             {posts && posts.length > 0 && (
               <>
-                <BlogPost {...posts[0]} isFeatured={true} />
+                <PostList {...posts[0]} isFeatured={true} />
                 <div className='blog-list'>
                   {posts.slice(1).map((post) => (
-                    <BlogPost key={post._id} {...post} />
+                    <PostList key={post._id} {...post} />
                   ))}
                 </div>
               </>
@@ -83,4 +101,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default Posts;

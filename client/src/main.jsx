@@ -14,7 +14,6 @@ import './styles/business.scss';
 import './styles/ngo.scss';
 import './styles/blog.scss';
 import './styles/blogContent.scss';
-import './styles/blogDetails.scss';
 import './styles/write.scss';
 import './styles/button.scss';
 import './styles/footer.scss';

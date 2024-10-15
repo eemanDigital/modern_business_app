@@ -12,7 +12,7 @@ const formatDate = (dateString) => {
 };
 
 // BlogPost component
-const BlogPost = ({ _id, title, body, date, author, photo, isFeatured }) => {
+const PostList = ({ _id, title, body, date, author, photo, isFeatured }) => {
   // Convert HTML content to plain text
   const plainTextBody = htmlToText(body, {
     wordwrap: 130,
@@ -49,7 +49,7 @@ const BlogPost = ({ _id, title, body, date, author, photo, isFeatured }) => {
     </div>
   );
 };
-BlogPost.propTypes = {
+PostList.propTypes = {
   _id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
@@ -59,4 +59,4 @@ BlogPost.propTypes = {
   isFeatured: PropTypes.bool,
 };
 
-export default BlogPost;
+export default PostList;
