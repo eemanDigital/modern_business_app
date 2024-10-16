@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useDataFetch } from '../hooks/useDataFetch';
 import Loading from '../components/Loading';
-import '../styles/blog.scss';
+import '../styles/posts.scss';
 import PostList from '../components/PostList';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
@@ -59,20 +59,18 @@ function Posts() {
   }
 
   return (
-    <div className='blog-container'>
-      <SearchAndFilterPosts />
+    <div className='post-container'>
+      <SearchAndFilterPosts hideInput={true} />
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className='blog-content'>
+          <div className='post-content'>
             {posts && posts.length > 0 && (
               <>
-                <PostList {...posts[0]} isFeatured={true} />
-                <div className='blog-list'>
-                  {posts.slice(1).map((post) => (
-                    <PostList key={post._id} {...post} />
-                  ))}
+                {/* <PostList {...posts[0]} isFeatured={true} /> */}
+                <div className='post-list'>
+                  <PostList posts={posts} />
                 </div>
               </>
             )}

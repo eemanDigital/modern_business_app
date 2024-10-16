@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { htmlToText } from 'html-to-text';
 import placeholderImg from '../assets/placeholderImg.jpg';
+import { truncateText } from '../lib/truncateText';
 
 const RelatedPosts = ({ postId }) => {
   const { data, loading, error, dataFetcher } = useDataFetch();
-
-  // Utility function to truncate text
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '...';
-  };
 
   // fetch data
   useEffect(() => {

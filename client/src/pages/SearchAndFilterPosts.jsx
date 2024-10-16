@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/SearchAndFilterPosts.scss';
 
-const SearchAndFilterPosts = () => {
+const SearchAndFilterPosts = ({ hideInput }) => {
   const [filters, setFilters] = useState({
     searchTerm: '',
     category: '',
@@ -38,17 +38,22 @@ const SearchAndFilterPosts = () => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
+  // submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(filteredFilters, 'FLS');
     const queryString = new URLSearchParams(filteredFilters).toString();
     console.log(queryString, 'QS');
-
+    // navigate to search result page
     navigate(`/search?${queryString}`);
   };
 
   return (
-    <form className='search-filter-form' onSubmit={handleSubmit}>
+    <form
+      className={`${
+        hideInput ? 'minor-search-filter-form' : 'search-filter-form'
+      } `}
+      onSubmit={handleSubmit}>
       <div className='form-group'>
         <input
           type='text'
@@ -59,48 +64,56 @@ const SearchAndFilterPosts = () => {
           className='search-input'
         />
       </div>
-      <div className='form-group'>
-        <input
-          type='text'
-          name='category'
-          value={filters.category}
-          onChange={handleInputChange}
-          placeholder='Category'
-        />
-      </div>
-      <div className='form-group'>
-        <input
-          type='text'
-          name='tags'
-          value={filters.tags}
-          onChange={handleInputChange}
-          placeholder='Tags'
-        />
-      </div>
-      <div className='form-group date-inputs'>
-        <input
-          type='date'
-          name='startDate'
-          value={filters.startDate}
-          onChange={handleInputChange}
-        />
-        <input
-          type='date'
-          name='endDate'
-          value={filters.endDate}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div className='form-group'>
-        <select
-          name='featured'
-          value={filters.featured}
-          onChange={handleInputChange}>
-          <option value=''>All</option>
-          <option value='true'>Featured</option>
-          <option value='false'>Not Featured</option>
-        </select>
-      </div>
+      {!hideInput && (
+        <>
+          <div className='form-group'>
+            <select
+              name='category'
+              value={filters.category}
+              onChange={handleInputChange}>
+              <option value=''>Post By Category</option>
+              <option value='Business'>Business</option>
+              <option value='Technology'>Technology</option>
+              <option value='Entertainment'>Entertainment</option>
+              <option value='Sport'>Sport</option>
+              <option value='Politics'>Politics</option>
+            </select>
+          </div>
+          <div className='form-group'>
+            <input
+              type='text'
+              name='tags'
+              value={filters.tags}
+              onChange={handleInputChange}
+              placeholder='Tags'
+            />
+          </div>
+          <div className='form-group date-inputs'>
+            <input
+              type='date'
+              name='startDate'
+              value={filters.startDate}
+              onChange={handleInputChange}
+            />
+            <input
+              type='date'
+              name='endDate'
+              value={filters.endDate}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='form-group'>
+            <select
+              name='featured'
+              value={filters.featured}
+              onChange={handleInputChange}>
+              <option value=''>All</option>
+              <option value='true'>Featured</option>
+              <option value='false'>Not Featured</option>
+            </select>
+          </div>
+        </>
+      )}
       <button type='submit' className='search-button'>
         Search
       </button>

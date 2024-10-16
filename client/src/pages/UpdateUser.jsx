@@ -9,7 +9,8 @@ import { toast } from 'react-toastify';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const UpdateUser = () => {
-  const { id } = useParams(); // Extract user ID from URL
+  const { user } = useAuthContext();
+  const id = user?.data?.user?._id;
 
   const { loading, dataFetcher, error } = useDataFetch(); // Custom hook to handle API requests
   const navigate = useNavigate();
@@ -17,29 +18,31 @@ const UpdateUser = () => {
     firstName: '',
     lastName: '',
     email: '',
-    role: '',
   });
   const [fetchError, setFetchError] = useState(null);
 
   // Fetch user data for editing
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}users/${id}`, {
-          withCredentials: true,
-        });
+      if (id) {
+        try {
+          const response = await axios.get(`${baseUrl}users/${id}`, {
+            withCredentials: true,
+          });
 
-        console.log(response);
-        const userData = response?.data?.user;
+          console.log(response, 'RES');
 
-        setFormData({
-          firstName: userData.firstName || '',
-          lastName: userData.lastName || '',
-          email: userData.email || '',
-          role: userData.role || '',
-        });
-      } catch (error) {
-        setFetchError('Error fetching user data. Please try again later.');
+          const userData = response?.data?.user;
+
+          setFormData({
+            firstName: userData.firstName || '',
+            lastName: userData.lastName || '',
+            email: userData.email || '',
+            role: userData.role || '',
+          });
+        } catch (error) {
+          setFetchError('Error fetching user data. Please try again later.');
+        }
       }
     };
     fetchUserData();
@@ -59,11 +62,10 @@ const UpdateUser = () => {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      role: formData.role,
     };
 
     try {
-      await dataFetcher(`users/${id}`, 'patch', payload);
+      await dataFetcher(`users/updateUser`, 'patch', payload);
       if (!error) {
         navigate(`/admin-board`); // Redirect to user list after successful edit
         toast.success('User updated successfully');
@@ -75,13 +77,7 @@ const UpdateUser = () => {
 
   return (
     <div className='edit-user-container'>
-      <h1>Edit User</h1>
-
-      {/* {!isAdmin && (
-        <div className='error-message'>
-          <strong>You do not have the privilege to edit users</strong>
-        </div>
-      )} */}
+      <h1>Edit Your Details</h1>
 
       {fetchError && (
         <div className='error-message'>
@@ -114,15 +110,6 @@ const UpdateUser = () => {
           onChange={handleInputChange}
           required
         />
-        <label htmlFor='role'>Role</label>
-        <select
-          name='role'
-          value={formData.role}
-          onChange={handleInputChange}
-          required>
-          <option value='author'>Author</option>
-          <option value='admin'>Admin</option>
-        </select>
 
         <button type='submit' disabled={loading}>
           {loading ? 'Saving...' : 'Save'}

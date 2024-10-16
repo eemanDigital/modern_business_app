@@ -11,17 +11,23 @@ import {
   getUser,
   getUsers,
   updateUser,
+  upgradeUser,
 } from '../controllers/userController.js';
 
 const userRouter = express.Router();
 
+// Public routes
+userRouter.route('/signup').post(signup);
 userRouter.route('/login').post(login);
 userRouter.route('/logout').get(logout);
 
-// userRouter.use(protect);
-// userRouter.use(restrictTo('admin'));
-userRouter.route('/signup').post(signup);
+// Routes that require authentication
+userRouter.use(protect);
+
 userRouter.route('/').get(getUsers);
-userRouter.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
+
+userRouter.route('/:id').get(getUser).delete(restrictTo('admin'), deleteUser);
+userRouter.patch('/updateUser', updateUser);
+userRouter.patch('/:id/upgrade', restrictTo('admin'), upgradeUser);
 
 export default userRouter;

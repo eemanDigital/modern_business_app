@@ -13,7 +13,8 @@ const Navbar = () => {
   const location = useLocation();
   const submenuRef = useRef(null);
 
-  const isAdmin = user?.data?.user?.role === 'admin';
+  const isAdminAndAuthor =
+    user?.data?.user?.role === 'admin' || user?.data?.user?.role === 'author';
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleSubmenu = (index) => {
@@ -125,7 +126,7 @@ const Navbar = () => {
               Pricing
             </Link>
           </li>
-          {isAdmin && (
+          {isAdminAndAuthor && (
             <li
               className={`navbar-item ${
                 isActive('/admin-board') ? 'active' : ''
@@ -153,14 +154,29 @@ const Navbar = () => {
             )}
           </li>
 
-          <li className='navbar-item'>
-            <Link
-              to='/signup'
-              className={`navbar-link ${isActive('/signup') ? 'active' : ''}`}
-              onClick={closeMenu}>
-              Sign Up
-            </Link>
-          </li>
+          {!user && (
+            <li className='navbar-item'>
+              <Link
+                to='/signup'
+                className={`navbar-link ${isActive('/signup') ? 'active' : ''}`}
+                onClick={closeMenu}>
+                Sign Up
+              </Link>
+            </li>
+          )}
+
+          {user && (
+            <li className='navbar-item'>
+              <Link
+                to='/users/update'
+                className={`navbar-link ${
+                  isActive('/users/update') ? 'active' : ''
+                }`}
+                onClick={closeMenu}>
+                Edit Profile
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

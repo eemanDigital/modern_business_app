@@ -6,8 +6,10 @@ import '../styles/admin_board.scss';
 
 import AdminPostList from './AdminPostList';
 import Title from '../components/Title';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const AdminBoard = () => {
+  const { user } = useAuthContext();
   const { data, loading, error, dataFetcher } = useDataFetch();
   const {
     data: posts,
@@ -29,8 +31,10 @@ const AdminBoard = () => {
   return (
     <div className='board'>
       <div className='board-header'>
-        <h1>Admin Board</h1>
+        <h1>Admin Board</h1>{' '}
       </div>
+      <p>User's name: {user?.data?.user?.firstName}</p>
+      <p>User's Role: {user?.data?.user?.role}</p>
       <Users users={data} loading={loading} error={error} />
       <AdminPostList
         posts={posts?.data?.results?.result}

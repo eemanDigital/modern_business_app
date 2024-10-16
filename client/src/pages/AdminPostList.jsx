@@ -5,6 +5,8 @@ import '../styles/adminPostList.scss';
 import { Link } from 'react-router-dom';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
+import { truncateText } from '../lib/truncateText';
+import SearchAndFilterPosts from './SearchAndFilterPosts';
 
 const AdminPostList = ({ posts, loading, error }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -52,13 +54,13 @@ const AdminPostList = ({ posts, loading, error }) => {
     <div className='admin-post-list-container'>
       <h1 className='blog-post-header'>Blog Posts</h1>
       <button className='create-post-btn'>
-        {' '}
         <Link to='/blog/create'>Create Post</Link>{' '}
       </button>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {posts && (
         <>
+          <SearchAndFilterPosts />
           <table className='admin-post-list-table'>
             <thead>
               <tr>
@@ -72,8 +74,9 @@ const AdminPostList = ({ posts, loading, error }) => {
               {currentPosts.map((post) => (
                 <tr key={post?._id}>
                   <td>
-                    {' '}
-                    <Link to={`/blog/${post?._id}`}>{post?.title}</Link>
+                    <Link to={`/blog/${post?._id}`}>
+                      {truncateText(post?.title, 30)}
+                    </Link>
                   </td>
                   <td>{`${post?.author?.firstName} ${post?.author?.lastName}`}</td>
                   <td>{new Date(post.date).toLocaleDateString()}</td>

@@ -58,7 +58,7 @@ const Users = ({ loading, error, users }) => {
                 <td>{user.role}</td>
                 <td>
                   <button className='edit-btn'>
-                    <Link to={`/users/${user._id}/edit`}>Edit</Link>
+                    <Link to={`/users/${user._id}/upgrade`}>Edit</Link>
                   </button>
                   <button
                     className='delete-btn'

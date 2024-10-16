@@ -32,6 +32,7 @@ import { useEffect } from 'react';
 import Pricing from './pages/Pricing';
 import SearchResults from './pages/SearchResult';
 import AddPostForm from './pages/AddPostForm';
+import UpgradeUser from './pages/UpgradeUser';
 
 function App() {
   // scroll animation handler
@@ -49,7 +50,7 @@ function App() {
         <Route path='about-us' element={<AboutUs />} />
         <Route path='pricing' element={<Pricing />} />
         <Route path='blog' element={<Posts />} />
-        <Route path='blog/:id' element={<PostDetails />} />
+        <Route path='blog/:slug/:id' element={<PostDetails />} />
         <Route path='blog/create' element={<AddPostForm />} />
         <Route path='blog/:id/edit' element={<Edit />} />
         <Route path='blog/:id/upload' element={<PostImageUpload />} />
@@ -64,7 +65,8 @@ function App() {
 
         <Route path='login' element={<Login />} />
         <Route path='signup' element={<SignUp />} />
-        <Route path='users/:id/edit' element={<UpdateUser />} />
+        <Route path='users/:id/upgrade' element={<UpgradeUser />} />
+        <Route path='users/update' element={<UpdateUser />} />
         <Route path='services/company' element={<Company />} />
         <Route path='services/business' element={<Business />} />
         <Route path='/search' element={<SearchResults />} />

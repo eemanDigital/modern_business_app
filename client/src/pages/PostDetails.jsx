@@ -7,6 +7,7 @@ import { useDataFetch } from '../hooks/useDataFetch';
 import RelatedPosts from '../components/RelatedPosts';
 
 import '../styles/PostDetails.scss';
+import GoBackButton from '../components/GoBackButton';
 
 const PostDetails = () => {
   // Get the post ID from the URL
@@ -39,9 +40,7 @@ const PostDetails = () => {
 
   return (
     <div className='blog-detail'>
-      <Link to='/blog' style={{ textDecoration: 'none' }}>
-        &#8592; Go back
-      </Link>
+      <GoBackButton />
       <div className='blog-detail-container'>
         <div className='blog-detail-content'>
           {data?.data?.post?.photo ? (

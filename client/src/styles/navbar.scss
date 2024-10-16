@@ -68,7 +68,7 @@ $mobile-breakpoint: 1024px;
   .navbar-item {
     list-style-type: none;
     position: relative;
-    margin-left: 1rem;
+    // margin-left: 0.2rem;
 
     &.active > .navbar-link {
       color: $primary-color;

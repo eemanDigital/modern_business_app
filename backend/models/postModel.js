@@ -61,7 +61,7 @@ const postSchema = new mongoose.Schema({
 });
 
 // indexing for full text search
-// postSchema.index({ title: 'text', body: 'text', tags: 'text' });
+postSchema.index({ title: 'text', body: 'text', tags: 'text' });
 
 // hook to populate the author field
 postSchema.pre(/find/, function (next) {

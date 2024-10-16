@@ -8,21 +8,27 @@ export const useDataFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Handle successful response
   const handleResponse = useCallback((response) => {
+    // console.log(response.data, 'RES');
     setData(response.data);
+    setError(null); // Clear any previous error
     return response.data;
   }, []);
 
+  // Handle error response
   const handleError = useCallback((err) => {
     const { response } = err;
-    const errorMessage =
-      (response && response.data && response.data.message) ||
-      'An error occurred';
+    // Extract error message from the response or use a default message
+    const errorMessage = response?.data?.message || 'An error occurred';
+
+    // Set the error state with the extracted message
     setError(errorMessage);
 
     return { error: errorMessage };
   }, []);
 
+  // Fetch data from the API
   const dataFetcher = useCallback(
     async (endpoint, method = 'GET', payload = null) => {
       setLoading(true);

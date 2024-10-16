@@ -1,0 +1,26 @@
+@import 'variables';
+
+.go-back-button {
+  background-color: $highlight-color;
+  color: $white;
+  border: none;
+  margin: 0.4rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba($highlight-color, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($highlight-color, 0.8);
+  }
+
+  &:active {
+    background-color: rgba($highlight-color, 0.4);
+  }
+}

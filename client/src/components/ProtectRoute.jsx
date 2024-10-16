@@ -5,8 +5,6 @@ const ProtectRoute = ({ children }) => {
   const { user } = useAuthContext();
   const role = user?.data?.user?.role;
 
-  console.log(user, 'USER');
-
   if (!user) {
     return (
       <div className='protect-route-container'>
@@ -15,7 +13,7 @@ const ProtectRoute = ({ children }) => {
     );
   }
 
-  if (role !== 'admin') {
+  if (role !== 'admin' && role !== 'author') {
     return (
       <div className='protect-route-container'>
         <h2>This route is restricted to administrators only.</h2>
