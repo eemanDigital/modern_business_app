@@ -2,10 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useDataFetch } from '../hooks/useDataFetch';
 import Loading from '../components/Loading';
-import '../styles/posts.scss';
-import PostList from '../components/PostList';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
+import FeaturedPost from '../components/FeaturedPost';
+import PostCard from '../components/PostCard';
+
+import '../styles/posts.scss';
+import PostsByCategory from './PostByCategory';
 
 function Posts() {
   const [limit] = useState(5); // 1 featured + 4 regular posts
@@ -14,8 +17,14 @@ function Posts() {
   const { data, loading, error, dataFetcher } = useDataFetch();
   const location = useLocation();
 
+  // Extract posts from the fetched data
   const posts = data?.data?.results?.result || data?.data?.posts;
 
+  // Separate featured and regular posts
+  const featuredPost = posts?.find((post) => post.featured);
+  const regularPosts = posts?.filter((post) => !post.featured);
+
+  // Fetch posts when the component mounts or when the search parameters change
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     if (searchParams.toString()) {
@@ -31,6 +40,7 @@ function Posts() {
     }
   }, [location.search]);
 
+  // Handle page click for pagination
   const handlePageClick = async (event) => {
     currentPage.current = event.selected + 1;
     const searchParams = new URLSearchParams(location.search);
@@ -42,6 +52,7 @@ function Posts() {
     }
   };
 
+  // Fetch paginated posts
   async function getPaginatedPosts() {
     try {
       const { data } = await dataFetcher(
@@ -53,48 +64,63 @@ function Posts() {
     }
   }
 
-  // toast error
+  // Display error message if there is an error
   if (error) {
     return <div className='error-message'>Error: {error}</div>;
   }
 
   return (
     <div className='post-container'>
-      <SearchAndFilterPosts hideInput={true} />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <div className='post-content'>
-            {posts && posts.length > 0 && (
-              <>
-                {/* <PostList {...posts[0]} isFeatured={true} /> */}
-                <div className='post-list'>
-                  <PostList posts={posts} />
-                </div>
-              </>
-            )}
-          </div>
-          <ReactPaginate
-            breakLabel='...'
-            nextLabel='Next >'
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={pageCount}
-            previousLabel='< Previous'
-            renderOnZeroPageCount={null}
-            containerClassName='pagination'
-            pageClassName='pagination__item'
-            pageLinkClassName='pagination__link'
-            previousClassName='pagination__item'
-            previousLinkClassName='pagination__link'
-            nextClassName='pagination__item'
-            nextLinkClassName='pagination__link'
-            activeClassName='active'
-            disabledClassName='disabled'
-          />
-        </>
-      )}
+      <div>
+        <SearchAndFilterPosts hideInput={true} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className='post-content'>
+              {posts && posts.length > 0 && (
+                <>
+                  <div className='blog-container'>
+                    {featuredPost && <FeaturedPost post={featuredPost} />}
+                    <div className='post-list'>
+                      {regularPosts?.map((post) => (
+                        <PostCard key={post._id} post={post} />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+            <ReactPaginate
+              breakLabel='...'
+              nextLabel='Next >'
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              previousLabel='< Previous'
+              renderOnZeroPageCount={null}
+              containerClassName='pagination'
+              pageClassName='pagination__item'
+              pageLinkClassName='pagination__link'
+              previousClassName='pagination__item'
+              previousLinkClassName='pagination__link'
+              nextClassName='pagination__item'
+              nextLinkClassName='pagination__link'
+              activeClassName='active'
+              disabledClassName='disabled'
+            />
+          </>
+        )}
+      </div>
+
+      <div className='post-cat-wrapper'>
+        <h1>News By Category</h1>
+        <PostsByCategory category='Technology' />
+        <PostsByCategory category='Business' />
+        <PostsByCategory category='Sport' />
+        <PostsByCategory category='Politics' />
+        <PostsByCategory category='Entertainment' />
+      </div>
     </div>
   );
 }

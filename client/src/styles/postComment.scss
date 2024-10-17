@@ -1,0 +1,107 @@
+@import 'variables';
+
+.post-comment {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: $primary-color;
+  }
+
+  .comment-form,
+  .reply-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: $white;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .comment-list,
+  .reply-list {
+    list-style-type: none;
+    padding: 0;
+
+    .comment-item,
+    .reply-item {
+      padding: 10px;
+      background-color: $white;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      position: relative;
+
+      .comment-author,
+      .reply-author {
+        font-weight: bold;
+      }
+
+      .comment-body,
+      .reply-body {
+        margin: 10px 0;
+      }
+
+      .comment-date,
+      .reply-date {
+        font-size: 12px;
+        color: #666;
+      }
+
+      .reply-button {
+        background-color: $accent-color;
+        margin-left: 0.5rem;
+        color: $white;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        padding: 0.5rem 0.8rem;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: $tomato;
+        color: $white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken($tomato, 10%);
+        }
+      }
+    }
+  }
+}

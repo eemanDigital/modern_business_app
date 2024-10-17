@@ -8,6 +8,9 @@ import {
   updatePostImg,
   upload,
   addCommentToPost,
+  deleteCommentFromPost,
+  addReplyToComment,
+  deleteReplyFromComment,
 } from '../controllers/postControllers.js';
 import { protect, restrictTo } from '../controllers/authController.js';
 import {
@@ -15,26 +18,39 @@ import {
   searchAndFilterPosts,
 } from '../controllers/postQuery.js';
 
-const postRouter = express.Router();
+const router = express.Router();
 
-postRouter
+router
   .route('/')
   .post(protect, restrictTo('admin', 'author'), createPosts)
   // .get(restrictTo('admin'), getPosts);
   .get(getPosts);
 
-postRouter.get('/search', searchAndFilterPosts);
+router.get('/search', searchAndFilterPosts);
 
-postRouter
+router
   .route('/:id/upload')
   .patch(protect, upload.single('photo'), updatePostImg);
 
-postRouter.get('/:id/relatedPosts', getRelatedPost);
-postRouter.post('/:id/comments', protect, addCommentToPost);
-postRouter
+router.get('/:id/relatedPosts', getRelatedPost);
+router.post('/:id/comments', protect, addCommentToPost);
+router.post('/:postId/comments/:commentId/replies', protect, addReplyToComment);
+router.delete(
+  '/:postId/comments/:commentId/replies/:replyId',
+  protect,
+  deleteReplyFromComment
+);
+
+router.delete(
+  '/posts/:postId/comments/:commentId',
+  protect,
+  deleteCommentFromPost
+);
+
+router
   .route('/:id')
   .get(getPost)
   .put(protect, restrictTo('admin', 'author'), updatePost)
   .delete(protect, restrictTo('admin', 'author'), deletePost);
 
-export default postRouter;
+export default router;

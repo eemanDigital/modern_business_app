@@ -1,10 +1,4 @@
-// BlogInterface.scss
-
-$primary-color: #3498db;
-$secondary-color: #2c3e50;
-$text-color: #333;
-$light-gray: #ecf0f1;
-$white: #ffffff;
+@import 'variables';
 
 .blog-container {
   max-width: 1200px;
@@ -104,7 +98,7 @@ $white: #ffffff;
   }
 
   .post-title {
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: $secondary-color;
     margin-bottom: 0.5rem;
   }
@@ -170,5 +164,21 @@ $white: #ffffff;
       opacity: 0.5;
       pointer-events: none;
     }
+  }
+}
+
+.post-container {
+  display: flex;
+  // align-items: center;
+  justify-content: space-between;
+
+  .post-cat-wrapper {
+    h1 {
+      font-size: 1.6rem;
+      color: $primary-color;
+    }
+    background-color: $disabled-color;
+    margin: 1.4rem;
+    padding: 0.8rem;
   }
 }

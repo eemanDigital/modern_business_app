@@ -186,12 +186,14 @@ export const addCommentToPost = catchAsync(async (req, res, next) => {
 
   // Find the post
   const post = await Post.findById(postId);
+
   if (!post) {
     return next(new AppError('Post not found', 404));
   }
 
   // Find the user
   const user = await User.findById(userId);
+
   if (!user) {
     return next(new AppError('User not found', 404));
   }
@@ -207,14 +209,150 @@ export const addCommentToPost = catchAsync(async (req, res, next) => {
   post.comments.push(newComment);
 
   // Save the updated post
-
   await post.save({ validateBeforeSave: false });
 
-  // Send response
+  // Re-fetch the post with populated comment authors
+  const updatedPost = await Post.findById(postId);
+
+  // Send response with the newly added comment (with populated author)
+  const addedComment = updatedPost.comments[updatedPost.comments.length - 1];
+
   res.status(201).json({
     status: 'success',
     data: {
-      comment: newComment,
+      comment: addedComment,
     },
+  });
+});
+
+// delete comment handler
+export const deleteCommentFromPost = catchAsync(async (req, res, next) => {
+  const { postId, commentId } = req.params;
+  const userId = req.user.id;
+
+  // Find the post
+  const post = await Post.findById(postId);
+
+  if (!post) {
+    return next(new AppError('Post not found', 404));
+  }
+
+  // Find the comment
+  const comment = post.comments.id(commentId);
+
+  if (!comment) {
+    return next(new AppError('Comment not found', 404));
+  }
+
+  // Check if the user is the author of the comment or an admin
+  if (comment.author.toString() !== userId && req.user.role !== 'admin') {
+    return next(
+      new AppError('You do not have permission to delete this comment', 403)
+    );
+  }
+
+  // Remove the comment
+  comment.remove();
+
+  // Save the updated post
+  await post.save({ validateBeforeSave: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
+  });
+});
+
+// Add a reply to a comment
+export const addReplyToComment = catchAsync(async (req, res, next) => {
+  const { postId, commentId } = req.params;
+  const { commentBody } = req.body;
+  const userId = req.user.id;
+
+  // Validate input
+  if (!commentBody || commentBody.trim() === '') {
+    return next(new AppError('Reply body is required', 400));
+  }
+
+  // Find the post
+  const post = await Post.findById(postId);
+
+  if (!post) {
+    return next(new AppError('Post not found', 404));
+  }
+
+  // Find the comment
+  const comment = post.comments.id(commentId);
+
+  if (!comment) {
+    return next(new AppError('Comment not found', 404));
+  }
+
+  // Create new reply
+  const newReply = {
+    commentBody: commentBody.trim(),
+    author: userId,
+    date: Date.now(),
+  };
+
+  // Add reply to comment
+  comment.replies.push(newReply);
+
+  // Save the updated post
+  await post.save({ validateBeforeSave: false });
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      reply: newReply,
+    },
+  });
+});
+
+// Delete reply handler
+export const deleteReplyFromComment = catchAsync(async (req, res, next) => {
+  const { postId, commentId, replyId } = req.params;
+  const userId = req.user.id;
+
+  // Find the post
+  const post = await Post.findById(postId);
+
+  if (!post) {
+    return next(new AppError('Post not found', 404));
+  }
+
+  // Find the comment
+  const comment = post.comments.id(commentId);
+
+  if (!comment) {
+    return next(new AppError('Comment not found', 404));
+  }
+
+  // Find the reply
+  const replyIndex = comment.replies.findIndex((reply) => reply.id === replyId);
+
+  if (replyIndex === -1) {
+    return next(new AppError('Reply not found', 404));
+  }
+
+  // Check if the user is the author of the reply or an admin
+  if (
+    comment.replies[replyIndex].author.toString() !== userId &&
+    req.user.role !== 'admin'
+  ) {
+    return next(
+      new AppError('You do not have permission to delete this reply', 403)
+    );
+  }
+
+  // Remove the reply
+  comment.replies.splice(replyIndex, 1);
+
+  // Save the updated post
+  await post.save({ validateBeforeSave: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
   });
 });

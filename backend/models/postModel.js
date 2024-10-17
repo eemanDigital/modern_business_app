@@ -1,6 +1,33 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
 
+// reply schema
+const replySchema = new mongoose.Schema({
+  commentBody: {
+    type: String,
+    required: true,
+  },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// comments schema
+const commentSchema = new mongoose.Schema({
+  commentBody: {
+    type: String,
+    required: true,
+  },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  replies: [replySchema],
+});
+
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -39,18 +66,7 @@ const postSchema = new mongoose.Schema({
     default: false,
   },
 
-  comments: [
-    {
-      commentBody: {
-        type: String,
-        required: true,
-      },
-      date: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  comments: [commentSchema],
 
   relatedPosts: [
     {
@@ -67,6 +83,12 @@ postSchema.index({ title: 'text', body: 'text', tags: 'text' });
 postSchema.pre(/find/, function (next) {
   this.populate('author');
 
+  next();
+});
+
+// populate author comment
+postSchema.pre(/find/, function (next) {
+  this.populate('author').populate('comments.author');
   next();
 });
 

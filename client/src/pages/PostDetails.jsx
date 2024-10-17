@@ -1,13 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from 'react-share';
 import formatDate from '../lib/formattedDate';
 import placeholderImg from '../assets/placeholderImg.jpg';
 import { useDataFetch } from '../hooks/useDataFetch';
 import RelatedPosts from '../components/RelatedPosts';
-
 import '../styles/PostDetails.scss';
 import GoBackButton from '../components/GoBackButton';
+import PostComment from '../components/PostComment';
 
 const PostDetails = () => {
   // Get the post ID from the URL
@@ -30,13 +39,17 @@ const PostDetails = () => {
 
   //  Loading state
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className='loading'>Loading...</div>;
   }
 
   // Error state
   if (error) {
     return <div>{error}</div>;
   }
+
+  const postUrl = window.location.href;
+  const postTitle = data?.data?.post?.title;
+  const postAuthorId = data?.data?.post?.author?._id;
 
   return (
     <div className='blog-detail'>
@@ -67,11 +80,33 @@ const PostDetails = () => {
             </span>
           </div>
           <p dangerouslySetInnerHTML={{ __html: data?.data?.post?.body }}></p>
+
+          <div className='social-share'>
+            <h3>Share this post:</h3>
+            <FacebookShareButton url={postUrl} quote={postTitle}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={postUrl} title={postTitle}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <LinkedinShareButton url={postUrl} title={postTitle}>
+              <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+            <WhatsappShareButton url={postUrl} round title={postTitle}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
           <div className='related-posts'>
             <RelatedPosts postId={data?.data?.post?._id} />
           </div>
         </div>
       </div>
+
+      <PostComment
+        postId={data?.data?.post?._id}
+        comments={data?.data?.post?.comments}
+        postAuthorId={postAuthorId}
+      />
     </div>
   );
 };

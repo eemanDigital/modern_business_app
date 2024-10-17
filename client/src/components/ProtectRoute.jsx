@@ -1,5 +1,6 @@
 import { useAuthContext } from '../hooks/useAuthContext';
-import '../styles/protectRoute.scss'; // Import the SCSS file
+import '../styles/protectRoute.scss';
+import { toast } from 'react-toastify';
 
 const ProtectRoute = ({ children }) => {
   const { user } = useAuthContext();
@@ -19,6 +20,16 @@ const ProtectRoute = ({ children }) => {
         <h2>This route is restricted to administrators only.</h2>
       </div>
     );
+  }
+
+  return <>{children}</>;
+};
+
+export const ProtectLogin = ({ children }) => {
+  const { user } = useAuthContext();
+
+  if (!user) {
+    return toast.error('Login or Sign Up please');
   }
 
   return <>{children}</>;

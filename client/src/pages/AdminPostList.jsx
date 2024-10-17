@@ -74,7 +74,7 @@ const AdminPostList = ({ posts, loading, error }) => {
               {currentPosts.map((post) => (
                 <tr key={post?._id}>
                   <td>
-                    <Link to={`/blog/${post?._id}`}>
+                    <Link to={`/blog/${post?.slug}/${post._id}`}>
                       {truncateText(post?.title, 30)}
                     </Link>
                   </td>

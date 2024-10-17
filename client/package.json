@@ -33,8 +33,10 @@
     "react-quill": "^2.0.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.26.2",
+    "react-share": "^5.1.0",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.4",
+    "react-window": "^1.8.10",
     "slick-carousel": "^1.8.1",
     "swiper": "^8.4.5"
   },
