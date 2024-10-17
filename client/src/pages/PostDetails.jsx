@@ -14,7 +14,7 @@ import formatDate from '../lib/formattedDate';
 import placeholderImg from '../assets/placeholderImg.jpg';
 import { useDataFetch } from '../hooks/useDataFetch';
 import RelatedPosts from '../components/RelatedPosts';
-import '../styles/PostDetails.scss';
+import '../styles/postDetails.scss';
 import GoBackButton from '../components/GoBackButton';
 import PostComment from '../components/PostComment';
 
