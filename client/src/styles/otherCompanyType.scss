@@ -1,131 +1,188 @@
 @import 'variables';
 
 .other-company-type {
-  background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
-  padding: 4rem 0;
+  background-image: url('../assets/hero1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: $spacing-xl 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($primary-color, 0.7);
+  }
 
   .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .title {
-    font-size: 2.5rem;
-    color: $background-color;
-    margin-bottom: 2rem;
+    color: $white;
     text-align: center;
-    position: relative;
-
-    &:after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background-color: $background-color;
-      margin: 1rem auto 0;
-    }
+    font-size: 2.5rem;
+    margin-bottom: $spacing-lg;
   }
 
   .content {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    width: 100%;
-    flex-wrap: wrap;
-
-    @media (max-width: $breakpoint-md) {
-      flex-direction: column;
-      align-items: center;
-    }
+    flex-direction: column;
+    align-items: center;
   }
 
   .info {
-    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: $background-color;
-      margin-bottom: 1.5rem;
-      text-align: center;
+  .subtitle {
+    color: $white;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: $spacing-lg;
+  }
+
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
+
+  .company-card {
+    background-color: rgba($white, 0.1);
+    border-radius: 15px;
+    padding: $spacing-md;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background-color: rgba($white, 0.05);
+      border-radius: 20px;
+      z-index: -1;
+      transform: rotate(-3deg);
+      transition: transform 0.3s ease;
     }
 
-    .company-list {
-      list-style-type: none;
-      padding: 0;
-      text-align: left;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 
-      li {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-        color: $background-color;
-        font-size: 1.1rem;
-        font-weight: 500;
-
-        .icon {
-          margin-right: 0.5rem;
-          color: $background-color;
-        }
-
-        .name {
-          flex: 1;
-        }
+      &::before {
+        transform: rotate(0deg);
       }
     }
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    color: $accent-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  .name {
+    color: $white;
+    font-size: 1rem;
+    font-weight: 600;
   }
 
   .actions {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-top: $spacing-lg;
+  }
+
+  .btn {
+    padding: $spacing-sm $spacing-md;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
     align-items: center;
-    min-width: 250px;
+    gap: $spacing-xs;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    @media (max-width: $breakpoint-md) {
-      flex-direction: row;
-      justify-content: center;
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
-    @media (max-width: $breakpoint-sm) {
+    &-primary {
+      background-color: $accent-color;
+      color: $white;
+    }
+
+    &-secondary {
+      background-color: $white;
+      color: $primary-color;
+    }
+  }
+
+  // Connection lines
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-image: linear-gradient(
+        45deg,
+        transparent 45%,
+        $accent-color 45%,
+        $accent-color 55%,
+        transparent 55%
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 45%,
+        $accent-color 45%,
+        $accent-color 55%,
+        transparent 55%
+      );
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .other-company-type {
+    .company-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .other-company-type {
+    .company-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .actions {
       flex-direction: column;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-
-      svg {
-        margin-right: 0.5rem;
-      }
-
-      &-primary {
-        background-color: $background-color;
-        color: $primary-color;
-
-        &:hover {
-          background-color: darken($background-color, 10%);
-        }
-      }
-
-      &-secondary {
-        background-color: $background-color;
-        color: $accent-color;
-
-        &:hover {
-          background-color: darken($background-color, 10%);
-        }
-      }
     }
   }
 }

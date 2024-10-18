@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BiMenuAltRight, BiChevronDown } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { GrTechnology } from 'react-icons/gr';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 
@@ -61,7 +62,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMenu}>
-          eemanTech
+          <GrTechnology /> eemanTech
         </Link>
         <button
           className='navbar-toggle'

@@ -33,6 +33,7 @@ import Pricing from './pages/Pricing';
 import SearchResults from './pages/SearchResult';
 import AddPostForm from './pages/AddPostForm';
 import UpgradeUser from './pages/UpgradeUser';
+import FullCategoryPage from './pages/FullCategoryPage';
 
 function App() {
   // scroll animation handler
@@ -54,6 +55,7 @@ function App() {
         <Route path='blog/create' element={<AddPostForm />} />
         <Route path='blog/:id/edit' element={<Edit />} />
         <Route path='blog/:id/upload' element={<PostImageUpload />} />
+        <Route path='blog/category/:category' element={<FullCategoryPage />} />
         <Route
           path='admin-board'
           element={

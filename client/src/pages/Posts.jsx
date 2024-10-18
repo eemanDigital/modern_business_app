@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
 import FeaturedPost from '../components/FeaturedPost';
+import { GrTechnology } from 'react-icons/gr';
 import PostCard from '../components/PostCard';
 
 import '../styles/posts.scss';
@@ -70,58 +71,65 @@ function Posts() {
   }
 
   return (
-    <div className='post-container'>
-      <div>
-        <SearchAndFilterPosts hideInput={true} />
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            <div className='post-content'>
-              {posts && posts.length > 0 && (
-                <>
-                  <div className='blog-container'>
-                    {featuredPost && <FeaturedPost post={featuredPost} />}
-                    <div className='post-list'>
-                      {regularPosts?.map((post) => (
-                        <PostCard key={post._id} post={post} />
-                      ))}
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-            <ReactPaginate
-              breakLabel='...'
-              nextLabel='Next >'
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
-              pageCount={pageCount}
-              previousLabel='< Previous'
-              renderOnZeroPageCount={null}
-              containerClassName='pagination'
-              pageClassName='pagination__item'
-              pageLinkClassName='pagination__link'
-              previousClassName='pagination__item'
-              previousLinkClassName='pagination__link'
-              nextClassName='pagination__item'
-              nextLinkClassName='pagination__link'
-              activeClassName='active'
-              disabledClassName='disabled'
-            />
-          </>
-        )}
-      </div>
+    <>
+      <h1 className='blog-main-header'>
+        <GrTechnology />
+        Eeman Blog
+      </h1>
 
-      <div className='post-cat-wrapper'>
-        <h1>News By Category</h1>
-        <PostsByCategory category='Technology' />
-        <PostsByCategory category='Business' />
-        <PostsByCategory category='Sport' />
-        <PostsByCategory category='Politics' />
-        <PostsByCategory category='Entertainment' />
+      <div className='post-container'>
+        <div>
+          <SearchAndFilterPosts hideInput={true} />
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <div className='post-content'>
+                {posts && posts.length > 0 && (
+                  <>
+                    <div className='blog-container'>
+                      {featuredPost && <FeaturedPost post={featuredPost} />}
+                      <div className='post-list'>
+                        {regularPosts?.map((post) => (
+                          <PostCard key={post._id} post={post} />
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+              <ReactPaginate
+                breakLabel='...'
+                nextLabel='Next >'
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                pageCount={pageCount}
+                previousLabel='< Previous'
+                renderOnZeroPageCount={null}
+                containerClassName='pagination'
+                pageClassName='pagination__item'
+                pageLinkClassName='pagination__link'
+                previousClassName='pagination__item'
+                previousLinkClassName='pagination__link'
+                nextClassName='pagination__item'
+                nextLinkClassName='pagination__link'
+                activeClassName='active'
+                disabledClassName='disabled'
+              />
+            </>
+          )}
+        </div>
+
+        <div className='post-cat-wrapper'>
+          {/* <h1>News By Category</h1> */}
+          <PostsByCategory category='Technology' />
+          <PostsByCategory category='Business' />
+          <PostsByCategory category='Sport' />
+          <PostsByCategory category='Politics' />
+          <PostsByCategory category='Entertainment' />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

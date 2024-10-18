@@ -35,14 +35,16 @@ const OtherCompanyType = () => {
               We can also help you with the registration of specialised
               companies such as:
             </p>
-            <ul className='company-list'>
+            <div className='company-grid'>
               {specializedCompanies.map((company, index) => (
-                <li key={index}>
-                  <span className='icon'>{company.icon}</span>
-                  <span className='name'>{company.name}</span>
-                </li>
+                <div key={index} className='company-card'>
+                  <div className='card-content'>
+                    <span className='icon'>{company.icon}</span>
+                    <span className='name'>{company.name}</span>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
           <div className='actions'>
             <Link

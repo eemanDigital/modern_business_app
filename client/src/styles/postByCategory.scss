@@ -1,37 +1,123 @@
 @import 'variables';
 
-.posts-by-category {
-  max-width: 400px;
-  margin: 0.7 2rem;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.posts-aside {
+  background-color: $card-background;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+  max-width: 500px;
 
-  h3 {
-    font-size: 1.2rem;
-    color: $tomato;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
-
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 0.3rem;
-  }
-
-  .loading,
-  .error {
+  &__header {
+    position: relative;
     text-align: center;
-    font-size: 1rem;
-    color: #666;
+    margin-bottom: $spacing-md;
+
+    &-text {
+      display: inline-block;
+      background-color: $tomato;
+      color: $white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius;
+      position: relative;
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $light-gray;
+      z-index: 0;
+    }
   }
 
-  .no-posts {
-    text-align: center;
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    border-bottom: 1px solid $light-gray;
+    padding: $spacing-sm 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $text-color;
+    display: block;
+    @include transition(all, 0.3s);
+
+    &:hover {
+      .posts-aside__title {
+        color: $accent-color;
+      }
+    }
+  }
+
+  &__title {
     font-size: 1rem;
-    color: #666;
-    margin-top: 20px;
+    margin: 0 0 $spacing-xs;
+    @include transition(color, 0.3s);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: $text-color-light;
+    margin-bottom: $spacing-xs;
+
+    svg {
+      margin-right: $spacing-xs;
+    }
+  }
+
+  &__excerpt {
+    font-size: 0.9rem;
+    color: $text-color-light;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  &__loading,
+  &__error,
+  &__no-posts {
+    text-align: center;
+    color: $text-color-light;
+    padding: $spacing-md;
+  }
+
+  &__more-button {
+    display: block;
+    text-align: center;
+    background-color: $primary-color;
+    color: $white;
+    padding: $spacing-sm;
+    border-radius: $border-radius;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: $spacing-md;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($accent-color, 10%);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .posts-aside {
+    margin-top: $spacing-lg;
   }
 }
