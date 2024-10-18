@@ -10,7 +10,7 @@ import {
   FaShip,
   FaMoneyBillWave,
 } from 'react-icons/fa';
-import '../styles/OtherCompanyType.scss';
+import '../styles/otherCompanyType.scss';
 
 const OtherCompanyType = () => {
   const specializedCompanies = [
