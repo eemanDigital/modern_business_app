@@ -10,6 +10,7 @@ const ProductCard = ({ title, description, price, image, icon: Icon }) => {
       onMouseLeave={() => setIsHovered(false)}
       style={{ backgroundImage: `url(${image})` }}>
       {!isHovered && <h3 className='product-title'>{title}</h3>}
+      <div className='card-overlay'></div>
 
       <div className={`product-content ${isHovered ? 'visible' : ''}`}>
         <p className='product-description'>{description}</p>

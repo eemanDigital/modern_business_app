@@ -6,21 +6,22 @@ import { testimonials } from '../data/data';
 
 const Testimonial = () => {
   const settings = {
-    dots: false,
-    infinite: true,
+    dots: true,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    infinite: true,
     autoplay: true,
-    speed: 15000,
-    autoplaySpeed: 0,
-    cssEase: 'linear',
-    pauseOnHover: true,
+    autoplaySpeed: 3000,
+
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          infinite: true,
+          dots: true,
         },
       },
       {
@@ -28,6 +29,7 @@ const Testimonial = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],

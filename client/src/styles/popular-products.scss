@@ -33,18 +33,33 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba($highlight-color, 1) 0%,
+        rgba($highlight-color, 0.9) 40%,
+        rgba($highlight-color, 0) 100%
+      );
+    }
+
     .product-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: $primary-color;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: $light-gray;
       text-align: center;
       padding: 3rem 1.5rem;
       line-height: 1.5;
+      position: absolute;
+      z-index: 999;
     }
 
     &:hover {
       transform: translateY(-5px);
-
       .product-content {
         opacity: 1;
       }

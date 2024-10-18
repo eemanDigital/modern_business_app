@@ -3,6 +3,7 @@ import { PiCertificateThin } from 'react-icons/pi';
 import '../styles/aboutUs.scss';
 import Title from '../components/Title';
 import manImg from '../assets/man_outside.jpg';
+import PopularProducts from '../components/PopularProduct';
 
 function AboutUs() {
   return (
@@ -91,6 +92,8 @@ function AboutUs() {
             </p>
           </div>
         </div>
+
+        <PopularProducts />
 
         <div className='mission-vision'>
           <div className='mission-vision__item' data-aos='fade-up'>

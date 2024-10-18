@@ -82,6 +82,7 @@
     display: flex;
     gap: $spacing-md;
     flex-wrap: wrap;
+    margin-top: 2rem;
   }
 
   &__cta,
@@ -162,7 +163,7 @@
 
 @media (max-width: $breakpoint-sm) {
   .hero-container {
-    // min-height: 70vh;
+    height: 650px;
     .hero {
       &__title {
         font-size: 2rem;
