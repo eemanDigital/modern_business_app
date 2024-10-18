@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://eemantech-app.vercel.app'],
+    origin: ['http://localhost:5173', 'https://eemantech.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
     // allowedHeaders: ['Content-Type', 'Authorization'],
