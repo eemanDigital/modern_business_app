@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/GoBackButton.scss'; // Import the SCSS file
+import '../styles/goBackButton.scss'; // Import the SCSS file
 
 const GoBackButton = () => {
   const navigate = useNavigate();
