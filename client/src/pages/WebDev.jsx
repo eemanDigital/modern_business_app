@@ -21,9 +21,9 @@ import { webDevFAQs } from '../data/data';
 
 import '../styles/webdev.scss';
 import '../styles/webDevHero.scss';
-import '../styles/webDevServices.scss';
 import WebDevHighlight from '../components/WebDevHighlight';
 import Faq from '../components/Faq';
+import WebDevServices from '../components/WebDevServices';
 
 const WebDev = () => {
   const services = [
@@ -97,24 +97,7 @@ const WebDev = () => {
 
       <WebDevHighlight />
 
-      <div className='web-dev-services  '>
-        {services.map((service, index) => (
-          <div key={index} className='service-card'>
-            <img
-              src={service.image}
-              alt={service.title}
-              className='card-background'
-            />
-            <div className='card-overlay'></div>
-            <div className='card-icon'>{service.icon}</div>
-            <h3 className='card-title'>{service.title}</h3>
-            <div className='card-content'>
-              <div className='desc_icon'>{service.icon}</div>
-              <p>{service.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <WebDevServices services={services} />
 
       <Title text='Faqs' />
       <div className='p_faq-container'>

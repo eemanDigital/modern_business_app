@@ -9,11 +9,13 @@ import { useDataFetch } from '../hooks/useDataFetch';
 
 import '../styles/fullCategoryPage.scss';
 import GoBackButton from '../components/GoBackButton';
+import useSetWindowItemSize from '../hooks/useSetWindowItemSize';
 
 const FullCategoryPage = () => {
   const { category } = useParams();
   const { data, loading, error, dataFetcher } = useDataFetch();
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const { itemSize } = useSetWindowItemSize(300, 300);
 
   useEffect(() => {
     dataFetcher(`posts/search?category=${category}`);
@@ -57,7 +59,7 @@ const FullCategoryPage = () => {
           <List
             height={windowHeight - 50}
             itemCount={data.posts.length}
-            itemSize={200}
+            itemSize={itemSize}
             width='100%'>
             {Row}
           </List>

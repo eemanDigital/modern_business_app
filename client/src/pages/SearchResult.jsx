@@ -9,32 +9,12 @@ import { htmlToText } from 'html-to-text';
 import GoBackButton from '../components/GoBackButton';
 import { FixedSizeList as List } from 'react-window';
 import '../styles/searchResults.scss';
+import useSetWindowItemSize from '../hooks/useSetWindowItemSize';
 
 const SearchResults = () => {
   const { data, loading, error, dataFetcher } = useDataFetch();
   const location = useLocation();
-  const [itemSize, setItemSize] = useState(350); // Default item size
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemSize(450); // Increase item size for small screens
-      } else {
-        setItemSize(300); // Default item size for larger screens
-      }
-    };
-
-    // Set initial item size
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { itemSize } = useSetWindowItemSize(590, 300);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);

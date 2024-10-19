@@ -37,15 +37,15 @@ function AboutUs() {
         <div className='story'>
           <div className='story__content'>
             <Title text='Our' span='Story' />
-            <p className='story__text'>
-              <p data-aos='fade-in'>
+            <p className='story__text' data-aos='fade-in'>
+              <p>
                 At Eeman Digital and IT Solutions our journey into the realm of
                 web development and business registration services was inspired
                 by a profound passion for technology and a relentless drive to
                 empower businesses to succeed in the digital era.
               </p>
 
-              <p data-aos='fade-in'>
+              <p>
                 Born out of a vision to revolutionize the way businesses
                 establish their online presence and streamline their operations,
                 Eeman Digital and IT Solutions was founded on the principles of
@@ -54,7 +54,7 @@ function AboutUs() {
                 meaningful impact on businesses of all sizes, across industries.
               </p>
 
-              <p data-aos='fade-in'>
+              <p>
                 From the inception of Eeman Digital and IT Solutions, our focus
                 has been on understanding the unique needs and aspirations of
                 our clients and translating them into tangible, transformative
@@ -62,7 +62,7 @@ function AboutUs() {
                 and continuous learning to drive sustainable growth and success
                 for our clients.
               </p>
-              <p data-aos='fade-in'>
+              <p>
                 At Eeman Digital and IT Solutions, we are committed to staying
                 at the forefront of technological advancements, embracing
                 emerging trends, and adapting to evolving market dynamics. Our
@@ -72,7 +72,7 @@ function AboutUs() {
                 clients.
               </p>
 
-              <p data-aos='fade-in'>
+              <p>
                 As we continue to expand our horizons and embark on new
                 endeavors, our unwavering dedication to client satisfaction,
                 ethical business practices, and social responsibility remains
@@ -80,7 +80,7 @@ function AboutUs() {
                 that our clients place in us, and we remain committed to
                 exceeding their expectations, every step of the way.
               </p>
-              <p data-aos='fade-in'>
+              <p>
                 With a relentless pursuit of excellence and a steadfast
                 commitment to our core values, we are poised to chart new
                 heights of success, forge lasting partnerships, and leave a

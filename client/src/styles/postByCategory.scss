@@ -54,7 +54,7 @@
 
   &__link {
     text-decoration: none;
-    color: $text-color;
+    color: rgba(0, 0, 255, 0.717);
     display: block;
     @include transition(all, 0.3s);
 

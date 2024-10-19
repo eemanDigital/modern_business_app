@@ -77,6 +77,14 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    text-align: center; // Move this declaration outside of the nested rule
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      border-top: ($size * 0.323) solid $tomato;
+    }
 
     li {
       @include hexagon(140px, rgba($tomato, 0.6));
@@ -161,7 +169,6 @@
     &__list {
       li {
         @include hexagon(80, rgba($tomato, 0.6));
-
         font-size: 0.8rem;
 
         svg {

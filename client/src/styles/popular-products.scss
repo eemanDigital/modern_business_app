@@ -131,6 +131,8 @@
 
 @media (max-width: $breakpoint-sm) {
   .popular-products {
+    padding: 0.3rem;
+
     .product-card {
       width: 100%;
     }

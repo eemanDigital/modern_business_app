@@ -233,3 +233,13 @@
     }
   }
 }
+
+@media (max-width: $breakpoint-sm) {
+  .about-us {
+    .story {
+      &__content {
+        padding: 0.8rem;
+      }
+    }
+  }
+}

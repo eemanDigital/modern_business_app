@@ -2,18 +2,15 @@
 
 .hero-container {
   background: url(../assets/cool-white_bg.svg) center/cover no-repeat;
-  // min-height: ;
+  min-height: 600px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  // padding: $spacing-sm;
 }
 
 .hero {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: $spacing-md;
+  padding: 0 $spacing-md;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,12 +79,12 @@
     display: flex;
     gap: $spacing-md;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    // margin-top: 2rem;
   }
 
   &__cta,
   &__avaBtn {
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-sm $spacing-sm;
     border-radius: 5px;
     font-weight: 600;
     text-decoration: none;
@@ -148,33 +145,26 @@
     &__subtitle {
       font-size: 1.1rem;
     }
-
-    &__btns {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    &__cta,
-    &__avaBtn {
-      width: 100%;
-    }
   }
 }
 
 @media (max-width: $breakpoint-sm) {
   .hero-container {
-    height: 650px;
     .hero {
+      width: 100%;
+      padding: 0 $spacing-sm;
+      justify-content: center;
+      // align-items: center;
+
       &__title {
-        font-size: 2rem;
+        font-size: 2.4rem;
         align-items: center;
         justify-content: center;
       }
 
-      // &__content {
-      //   text-align: center;
-      //   margin: 0;
-      // }
+      &__content {
+        width: 100%;
+      }
 
       &__subtitle {
         font-size: 1rem;
@@ -182,6 +172,20 @@
 
       &__welcome h3 {
         font-size: 1rem;
+      }
+
+      &__cta,
+      &__avaBtn {
+        padding: 0.3;
+        border-radius: 5px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
       }
     }
   }
