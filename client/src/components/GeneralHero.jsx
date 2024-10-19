@@ -1,5 +1,7 @@
 // import '../styles/generalHero.scss';
 
+import Button from './Button';
+
 const GeneralHero = ({
   image,
   alt,
@@ -21,7 +23,12 @@ const GeneralHero = ({
           <p className={`${parentClass}__text`}>{description}</p>
           <ul className={`${parentClass}__list`}>{listContent}</ul>
           {!hideCta && (
-            <button className={`${parentClass}__cta`}>{ctaText}</button>
+            // <button className={`${parentClass}__cta`}>{ctaText}</button>
+            <Button
+              path='/contact-us'
+              text={ctaText}
+              className={`${parentClass}__cta`}
+            />
           )}
         </div>
       </div>

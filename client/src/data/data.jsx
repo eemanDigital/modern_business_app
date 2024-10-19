@@ -6,10 +6,6 @@ import { IoIosPeople } from 'react-icons/io';
 import { IoPeople } from 'react-icons/io5';
 import { LiaBusinessTimeSolid } from 'react-icons/lia';
 import { IoBusinessOutline } from 'react-icons/io5';
-import heroImage1 from '../assets/hero1.jpg';
-import heroImage2 from '../assets/hero2.jpg';
-import heroImage3 from '../assets/hero3.jpg';
-import heroImage4 from '../assets/hero4.jpg';
 
 export const homeView = {
   title: 'Start Your Journey to Success',
@@ -20,8 +16,7 @@ export const homeView = {
 export const heroContent = [
   {
     title: 'Incorporate Your Business with Ease',
-    subtitle:
-      'Professional registration services to jump start your entrepreneurial journey',
+    subtitle: 'Jump start your business journey by registering your business',
     // image: heroImage1,
   },
   {
@@ -31,15 +26,21 @@ export const heroContent = [
     // image: heroImage2,
   },
   {
+    title: 'Increase Your Global Outreach',
+    subtitle:
+      'Increase your online presence with a well curated website for your business',
+    // image: heroImage2,
+  },
+  {
     title: 'Streamline Your Operations',
     subtitle:
       'Comprehensive solutions for efficient business management and growth',
     // image: heroImage3,
   },
   {
-    title: 'Make your business have a legal face',
+    title: 'Make your business Legit',
     subtitle: 'Making your business legit and legitimate is what we represent',
-    image: heroImage4,
+    // image: heroImage4,
   },
 ];
 

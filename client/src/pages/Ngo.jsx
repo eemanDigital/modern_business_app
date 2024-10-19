@@ -112,10 +112,12 @@ const Ngo = () => {
             <h2>Register your NGO from any part of the world</h2>
             <p>We provide maximum support to achieving your goals</p>
             <div className='ngo__register-buttons'>
-              <Link to='#' className='ngo__button'>
+              <Link to='/contact-us' className='ngo__button'>
                 Start now
               </Link>
-              <Link to='#' className='ngo__button ngo__button--secondary'>
+              <Link
+                to='/contact-us'
+                className='ngo__button ngo__button--secondary'>
                 Free Consultation
               </Link>
             </div>

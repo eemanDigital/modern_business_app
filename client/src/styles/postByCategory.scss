@@ -15,10 +15,10 @@
 
     &-text {
       display: inline-block;
-      background-color: $tomato;
+      background-color: $primary-color;
       color: $white;
-      font-size: 1.2rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 400;
       padding: $spacing-xs $spacing-sm;
       border-radius: $border-radius;
       position: relative;
@@ -53,20 +53,15 @@
   }
 
   &__link {
+    font-size: 3rem;
     text-decoration: none;
-    color: rgba(0, 0, 255, 0.717);
+    // color: blue;
     display: block;
     @include transition(all, 0.3s);
-
-    &:hover {
-      .posts-aside__title {
-        color: $accent-color;
-      }
-    }
   }
 
   &__title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 0 0 $spacing-xs;
     @include transition(color, 0.3s);
   }
@@ -98,22 +93,22 @@
     padding: $spacing-md;
   }
 
-  &__more-button {
-    display: block;
-    text-align: center;
-    background-color: $primary-color;
-    color: $white;
-    padding: $spacing-sm;
-    border-radius: $border-radius;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: $spacing-md;
-    transition: background-color 0.3s ease;
+  // &__more-button {
+  //   display: block;
+  //   text-align: center;
+  //   background-color: $primary-color;
+  //   color: $white;
+  //   padding: $spacing-sm;
+  //   border-radius: $border-radius;
+  //   text-decoration: none;
+  //   font-weight: 600;
+  //   margin-top: $spacing-md;
+  //   transition: background-color 0.3s ease;
 
-    &:hover {
-      background-color: darken($accent-color, 10%);
-    }
-  }
+  //   &:hover {
+  //     background-color: darken($accent-color, 10%);
+  //   }
+  // }
 }
 
 @media (max-width: $breakpoint-md) {

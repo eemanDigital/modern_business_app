@@ -4,6 +4,7 @@ import '../styles/feature.scss';
 import { GrUserExpert } from 'react-icons/gr';
 import { IoTimeOutline } from 'react-icons/io5';
 import { FaUsersGear, FaHandshakeAngle } from 'react-icons/fa6';
+import Button from './Button';
 
 const Feature = ({ image, alt, title, description, ctaText }) => {
   return (
@@ -35,7 +36,8 @@ const Feature = ({ image, alt, title, description, ctaText }) => {
               Life-time Support
             </li>
           </ul>
-          <button className='feature__cta'>{ctaText}</button>
+
+          <Button path='/contact-us' text={ctaText} className='feature__cta' />
         </div>
       </div>
     </section>

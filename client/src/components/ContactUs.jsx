@@ -68,7 +68,7 @@ const ContactForm = () => {
   return (
     <section className='contact'>
       <div className='contact__content'>
-        <div className='contact__info'>
+        <div className='contact__info' id='contact-form'>
           <h2>Get in Touch</h2>
           <p>
             We'd love to hear from you! Whether you have a question about our

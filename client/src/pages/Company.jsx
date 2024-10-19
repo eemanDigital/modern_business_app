@@ -4,14 +4,11 @@ import { IoTimeOutline } from 'react-icons/io5';
 import manSky from '../assets/man_skyscrapper.jpg';
 import scrapper from '../assets/blue_scrapper.jpg';
 import GeneralHero from '../components/GeneralHero';
-import Packages from '../components/Packages';
 import OtherCompanyType from '../components/OtherCompanyType';
 import PostIncorporation from '../components/PostIncorporation';
-import { packages } from '../data/data';
 import '../styles/company.scss';
 import { FaChartLine, FaHandshakeAngle, FaUsersGear } from 'react-icons/fa6';
 import { FaFileAlt, FaShieldAlt } from 'react-icons/fa';
-import Title from '../components/Title';
 import '../styles/companyHero.scss';
 
 const Company = () => {

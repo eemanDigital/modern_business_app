@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import '../styles/packages.scss';
+import { Link } from 'react-router-dom';
 
 const Packages = ({ title, price, benefits }) => {
   return (
@@ -16,7 +17,9 @@ const Packages = ({ title, price, benefits }) => {
               <li key={index}>{benefit}</li>
             ))}
           </ul>
-          <button className='package-cta'>Get Started</button>
+          <Link to='/contact-us'>
+            <button className='package-cta'>Get Started</button>
+          </Link>
         </div>
       </div>
     </>

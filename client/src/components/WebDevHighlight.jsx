@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/webDevHighlight.scss';
+import Button from './Button';
 
 const WebDevHighlight = () => {
   return (
@@ -24,12 +25,18 @@ const WebDevHighlight = () => {
           <li>E-commerce Solutions</li>
           <li>Performance Optimization</li>
         </ul>
-        <button
+        {/* <button
           className='web-dev-highlight__cta'
           data-aos='fade-up'
           data-aos-delay='300'>
           Get Started
-        </button>
+        </button> */}
+
+        <Button
+          path='/contact-us'
+          text='Get Started'
+          className='web-dev-highlight__cta'
+        />
       </div>
     </section>
   );

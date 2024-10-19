@@ -30,13 +30,7 @@ const Business = () => {
         />
 
         <div className='container'>
-          <div className='image-wrapper'>
-            {/* <img
-              src={business}
-              alt='Business representation'
-              className='responsive-image'
-            /> */}
-          </div>
+          <div className='image-wrapper'></div>
           <div className='content'>
             <h1>Business Name</h1>
 
@@ -109,7 +103,7 @@ const Business = () => {
                 You can start right now. We can form your Corporation of any
                 type.
               </p>
-              <Link to='#' className='cta-btn'>
+              <Link to='/contact-us' className='cta-btn'>
                 Start Now
               </Link>
             </div>
@@ -127,10 +121,10 @@ const Business = () => {
               ))}
             </div>
             <div className='partnership-cta'>
-              <Link to='#' className='cta-btn'>
+              <Link to='/contact-us' className='cta-btn'>
                 Start now
               </Link>
-              <Link to='#' className='cta-btn'>
+              <Link to='/contact-us' className='cta-btn'>
                 Free Consultation
               </Link>
             </div>

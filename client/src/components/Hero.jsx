@@ -46,7 +46,7 @@ const Hero = () => {
         <div className='hero__btns'>
           <Button path='/contact-us' text='Get Started' className='hero__cta' />
           <Button
-            path='/contact-us'
+            path='https://search.cac.gov.ng'
             text='Business Name Availability'
             className='hero__avaBtn'
             icon={<FaArrowRight />}

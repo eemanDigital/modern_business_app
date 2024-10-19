@@ -34,6 +34,7 @@ import SearchResults from './pages/SearchResult';
 import AddPostForm from './pages/AddPostForm';
 import UpgradeUser from './pages/UpgradeUser';
 import FullCategoryPage from './pages/FullCategoryPage';
+import ContactForm from './components/ContactUs';
 
 function App() {
   // scroll animation handler
@@ -49,6 +50,7 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route path='/' element={<Home />}></Route>
         <Route path='about-us' element={<AboutUs />} />
+        <Route path='contact-us' element={<ContactForm />} />
         <Route path='pricing' element={<Pricing />} />
         <Route path='blog' element={<Posts />} />
         <Route path='blog/:slug/:id' element={<PostDetails />} />
