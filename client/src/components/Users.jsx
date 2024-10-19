@@ -3,6 +3,7 @@ import '../styles/users.scss';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 const Users = ({ loading, error, users }) => {
   const [deletingUserId, setDeletingUserId] = useState(null); // Track which user is being deleted
@@ -36,7 +37,7 @@ const Users = ({ loading, error, users }) => {
       <button className='add-user-btn'>
         <Link to='/addUser'>Add User</Link>{' '}
       </button>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {error && <p>{error}</p>}
       {users && (
         <table className='users-table'>

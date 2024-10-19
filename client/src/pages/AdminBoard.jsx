@@ -5,7 +5,6 @@ import { useDataFetch } from '../hooks/useDataFetch';
 import '../styles/admin_board.scss';
 
 import AdminPostList from './AdminPostList';
-import Title from '../components/Title';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const AdminBoard = () => {

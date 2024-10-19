@@ -160,7 +160,7 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
 
   // Return an error if no post found
   if (!updatedPost) {
-    return next(new AppError('No post found with that ID'));
+    return next(new AppError('No post found with that ID', 404));
   }
 
   // Send a successful response with the updated post

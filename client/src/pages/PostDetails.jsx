@@ -17,6 +17,7 @@ import RelatedPosts from '../components/RelatedPosts';
 import '../styles/postDetails.scss';
 import GoBackButton from '../components/GoBackButton';
 import PostComment from '../components/PostComment';
+import Loading from '../components/Loading';
 
 const PostDetails = () => {
   // Get the post ID from the URL
@@ -39,7 +40,7 @@ const PostDetails = () => {
 
   //  Loading state
   if (loading) {
-    return <div className='loading'>Loading...</div>;
+    return <Loading />;
   }
 
   // Error state

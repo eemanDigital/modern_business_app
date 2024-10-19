@@ -81,7 +81,7 @@ const Navbar = () => {
               activeSubmenu === 0 || isActive('/services') ? 'active' : ''
             }`}
             ref={submenuRef}>
-            <button
+            <span
               className='navbar-link'
               onClick={() => toggleSubmenu(0)}
               aria-expanded={activeSubmenu === 0}
@@ -92,7 +92,7 @@ const Navbar = () => {
                   activeSubmenu === 0 ? 'active' : ''
                 }`}
               />
-            </button>
+            </span>
             <ul
               className={`navbar-submenu ${
                 activeSubmenu === 0 ? 'active' : ''
@@ -142,9 +142,9 @@ const Navbar = () => {
           )}
           <li className='navbar-item'>
             {user ? (
-              <button className='navbar-link logout-btn' onClick={logout}>
+              <Link className='navbar-link logout-btn' onClick={logout}>
                 Logout
-              </button>
+              </Link>
             ) : (
               <Link
                 to='/login'

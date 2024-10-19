@@ -6,7 +6,6 @@ import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
 import FeaturedPost from '../components/FeaturedPost';
 import PostCard from '../components/PostCard';
-
 import '../styles/posts.scss';
 import PostsByCategory from './PostByCategory';
 import PostCategoryNavbar from '../components/PostCategoryNavbar';
@@ -78,13 +77,11 @@ function Posts() {
     'Entertainment',
   ];
 
+  // console.log('loading', loading);
+
   return (
     <>
       <PostCategoryNavbar categories={categories} />
-      {/* <h1 className='blog-main-header'>
-        <GrTechnology />
-        Eeman Blog
-      </h1> */}
 
       <div className='post-container'>
         <div>

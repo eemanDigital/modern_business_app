@@ -11,6 +11,7 @@ import placeholderImg from '../assets/placeholderImg.jpg';
 import '../styles/fullCategoryPage.scss';
 import GoBackButton from '../components/GoBackButton';
 import useSetWindowItemSize from '../hooks/useSetWindowItemSize';
+import Loading from '../components/Loading';
 
 const FullCategoryPage = () => {
   const { category } = useParams();
@@ -26,7 +27,7 @@ const FullCategoryPage = () => {
     return () => window.removeEventListener('resize', handleResize); // Remove the event listener when the component is unmounted
   }, [dataFetcher, category]);
 
-  if (loading) return <div className='full-category__loading'>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <div className='full-category__error'>{error}</div>;
 
   // Row component for the react-window List

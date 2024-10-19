@@ -7,6 +7,7 @@ import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
 import { truncateText } from '../lib/truncateText';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
+import Loading from '../components/Loading';
 
 const AdminPostList = ({ posts, loading, error }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -56,7 +57,7 @@ const AdminPostList = ({ posts, loading, error }) => {
       <button className='create-post-btn'>
         <Link to='/blog/create'>Create Post</Link>{' '}
       </button>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {error && <p>{error}</p>}
       {posts && (
         <>

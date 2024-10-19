@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CiCalendarDate } from 'react-icons/ci';
 import { htmlToText } from 'html-to-text';
@@ -7,6 +7,7 @@ import formatDate from '../lib/formattedDate';
 import { useDataFetch } from '../hooks/useDataFetch';
 
 import '../styles/postByCategory.scss';
+import Loading from '../components/Loading';
 
 const PostsByCategory = ({ category }) => {
   const { data, loading, error, dataFetcher } = useDataFetch();
@@ -15,7 +16,7 @@ const PostsByCategory = ({ category }) => {
     dataFetcher(`posts/search?category=${category}&limit=2`);
   }, [dataFetcher, category]);
 
-  if (loading) return <div className='posts-aside__loading'>Loading...</div>;
+  // if (loading) return <Loading />;
   if (error) return <div className='posts-aside__error'>{error}</div>;
 
   return (

@@ -10,6 +10,7 @@ import GoBackButton from '../components/GoBackButton';
 import { FixedSizeList as List } from 'react-window';
 import '../styles/searchResults.scss';
 import useSetWindowItemSize from '../hooks/useSetWindowItemSize';
+import Loading from '../components/Loading';
 
 const SearchResults = () => {
   const { data, loading, error, dataFetcher } = useDataFetch();
@@ -22,7 +23,7 @@ const SearchResults = () => {
     dataFetcher(`posts/search?${queryString}`);
   }, [location, dataFetcher]);
 
-  if (loading) return <div>Loading search results...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>{error}</div>;
 
   const Row = ({ index, style }) => {
