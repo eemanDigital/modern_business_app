@@ -10,7 +10,7 @@ import PostCard from '../components/PostCard';
 
 import '../styles/posts.scss';
 import PostsByCategory from './PostByCategory';
-import CategoryNavbar from '../components/CategoryNavbar';
+import PostCategoryNavbar from '../components/CategoryNavbar';
 
 function Posts() {
   const [limit] = useState(5); // 1 featured + 4 regular posts
@@ -81,7 +81,7 @@ function Posts() {
 
   return (
     <>
-      <CategoryNavbar categories={categories} />
+      <PostCategoryNavbar categories={categories} />
       {/* <h1 className='blog-main-header'>
         <GrTechnology />
         Eeman Blog

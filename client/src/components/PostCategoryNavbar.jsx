@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-import '../styles/categoryNavbar.scss';
+import '../styles/postCategoryNavbar.scss';
 
-const CategoryNavbar = ({ categories }) => {
+const PostCategoryNavbar = ({ categories }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleNavbar = () => {
@@ -29,4 +29,4 @@ const CategoryNavbar = ({ categories }) => {
   );
 };
 
-export default CategoryNavbar;
+export default PostCategoryNavbar;
