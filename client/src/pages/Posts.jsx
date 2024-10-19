@@ -10,6 +10,7 @@ import PostCard from '../components/PostCard';
 
 import '../styles/posts.scss';
 import PostsByCategory from './PostByCategory';
+import CategoryNavbar from '../components/CategoryNavbar';
 
 function Posts() {
   const [limit] = useState(5); // 1 featured + 4 regular posts
@@ -70,12 +71,21 @@ function Posts() {
     return <div className='error-message'>Error: {error}</div>;
   }
 
+  const categories = [
+    'Technology',
+    'Business',
+    'Sport',
+    'Politics',
+    'Entertainment',
+  ];
+
   return (
     <>
-      <h1 className='blog-main-header'>
+      <CategoryNavbar categories={categories} />
+      {/* <h1 className='blog-main-header'>
         <GrTechnology />
         Eeman Blog
-      </h1>
+      </h1> */}
 
       <div className='post-container'>
         <div>

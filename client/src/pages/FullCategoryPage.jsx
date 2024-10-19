@@ -6,6 +6,7 @@ import { htmlToText } from 'html-to-text';
 import { truncateText } from '../lib/truncateText';
 import formatDate from '../lib/formattedDate';
 import { useDataFetch } from '../hooks/useDataFetch';
+import placeholderImg from '../assets/placeholderImg.jpg';
 
 import '../styles/fullCategoryPage.scss';
 import GoBackButton from '../components/GoBackButton';
@@ -15,7 +16,7 @@ const FullCategoryPage = () => {
   const { category } = useParams();
   const { data, loading, error, dataFetcher } = useDataFetch();
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-  const { itemSize } = useSetWindowItemSize(300, 300);
+  const { itemSize } = useSetWindowItemSize(550, 300);
 
   useEffect(() => {
     dataFetcher(`posts/search?category=${category}`);
@@ -34,6 +35,9 @@ const FullCategoryPage = () => {
 
     return (
       <div style={style} className='full-category__item'>
+        <div className='full-category__image'>
+          <img src={post?.photo || placeholderImg} alt={post?.title} />
+        </div>
         <Link
           to={`/blog/${post?.slug}/${post._id}`}
           className='full-category__link'>
@@ -57,7 +61,7 @@ const FullCategoryPage = () => {
         <h1 className='full-category__header'>{category} News</h1>
         {data?.posts?.length > 0 ? (
           <List
-            height={windowHeight - 50}
+            height={windowHeight - 30}
             itemCount={data.posts.length}
             itemSize={itemSize}
             width='100%'>

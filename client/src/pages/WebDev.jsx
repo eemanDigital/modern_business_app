@@ -80,7 +80,7 @@ const WebDev = () => {
         ctaText='Just A Click Away'
         // hideCta={true}
       />
-      <Title text='Web Development Services' />
+      {/* <Title text='Web Development Services' /> */}
       <div className='text-content'>
         <h1>
           Unveiling a World of Opportunities: Our Diverse Web Development
