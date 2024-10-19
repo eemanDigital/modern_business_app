@@ -5,12 +5,11 @@ import Loading from '../components/Loading';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
 import FeaturedPost from '../components/FeaturedPost';
-import { GrTechnology } from 'react-icons/gr';
 import PostCard from '../components/PostCard';
 
 import '../styles/posts.scss';
 import PostsByCategory from './PostByCategory';
-import PostCategoryNavbar from '../components/CategoryNavbar';
+import PostCategoryNavbar from '../components/PostCategoryNavbar';
 
 function Posts() {
   const [limit] = useState(5); // 1 featured + 4 regular posts
