@@ -93,7 +93,7 @@ export const updatePost = catchAsync(async (req, res, next) => {
 
   // return error if no post found
   if (!updatedPost) {
-    return next(new AppError('No post found with that ID'));
+    return next(new AppError('No post found with that ID', 404));
   }
 
   // Send a successful response with the updated post
@@ -123,7 +123,7 @@ export const updatePostImg = catchAsync(async (req, res, next) => {
   const postId = req.params.id;
 
   if (!req.file) {
-    return next(new AppError('No file uploaded'));
+    return next(new AppError('No file uploaded', 404));
   }
 
   // Use Cloudinary's upload_stream method instead of upload
