@@ -69,5 +69,3 @@ export const globalErrorHandler = (err, req, res, next) => {
     sendErrorProd(error, res);
   }
 };
-
-// export default globalErrorHandler;

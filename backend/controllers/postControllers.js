@@ -1,14 +1,7 @@
-import streamifier from 'streamifier';
 import { Post } from '../models/postModel.js';
-import multer from 'multer';
-import cloudinary from '../utils/cloudinaryConfig.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 import User from '../models/userModel.js';
-
-// configure multer
-const storage = multer.memoryStorage(); // store image in memory
-export const upload = multer({ storage: storage });
 
 // create post controller
 export const createPosts = catchAsync(async (req, res, next) => {
@@ -118,60 +111,60 @@ export const deletePost = catchAsync(async (req, res, next) => {
   });
 });
 
-// Update post image API endpoint
-export const updatePostImg = catchAsync(async (req, res, next) => {
-  const postId = req.params.id;
+// // Update post image API endpoint
+// export const updatePostImg = catchAsync(async (req, res, next) => {
+//   const postId = req.params.id;
 
-  if (!req.file) {
-    return next(new AppError('No file uploaded', 404));
-  }
+//   if (!req.file) {
+//     return next(new AppError('No file uploaded', 404));
+//   }
 
-  // Use Cloudinary's upload_stream method instead of upload
-  const streamUpload = (req) => {
-    // Return a promise that resolves with the result of uploading the image
-    return new Promise((resolve, reject) => {
-      let stream = cloudinary.uploader.upload_stream(
-        {
-          folder: 'blog_post_img',
-        },
-        (error, result) => {
-          if (result) {
-            resolve(result);
-          } else {
-            reject(error);
-          }
-        }
-      );
+//   // Use Cloudinary's upload_stream method instead of upload
+//   const streamUpload = (req) => {
+//     // Return a promise that resolves with the result of uploading the image
+//     return new Promise((resolve, reject) => {
+//       let stream = cloudinary.uploader.upload_stream(
+//         {
+//           folder: 'blog_post_img',
+//         },
+//         (error, result) => {
+//           if (result) {
+//             resolve(result);
+//           } else {
+//             reject(error);
+//           }
+//         }
+//       );
 
-      // Pipe the file buffer to the upload stream
-      streamifier.createReadStream(req.file.buffer).pipe(stream);
-    });
-  };
+//       // Pipe the file buffer to the upload stream
+//       streamifier.createReadStream(req.file.buffer).pipe(stream);
+//     });
+//   };
 
-  // Call the streamUpload function and await the result
-  const result = await streamUpload(req);
+//   // Call the streamUpload function and await the result
+//   const result = await streamUpload(req);
 
-  // Update the post with the image URL
-  const updatedPost = await Post.findByIdAndUpdate(
-    postId,
-    { photo: result.secure_url },
-    { new: true, runValidators: true }
-  );
+//   // Update the post with the image URL
+//   const updatedPost = await Post.findByIdAndUpdate(
+//     postId,
+//     { photo: result.secure_url },
+//     { new: true, runValidators: true }
+//   );
 
-  // Return an error if no post found
-  if (!updatedPost) {
-    return next(new AppError('No post found with that ID', 404));
-  }
+//   // Return an error if no post found
+//   if (!updatedPost) {
+//     return next(new AppError('No post found with that ID', 404));
+//   }
 
-  // Send a successful response with the updated post
-  res.status(200).json({
-    status: 'success',
-    message: 'Post image successfully updated',
-    data: {
-      post: updatedPost,
-    },
-  });
-});
+//   // Send a successful response with the updated post
+//   res.status(200).json({
+//     status: 'success',
+//     message: 'Post image successfully updated',
+//     data: {
+//       post: updatedPost,
+//     },
+//   });
+// });
 
 //create comment handler
 export const addCommentToPost = catchAsync(async (req, res, next) => {

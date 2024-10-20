@@ -5,8 +5,6 @@ import {
   getPost,
   updatePost,
   deletePost,
-  updatePostImg,
-  upload,
   addCommentToPost,
   deleteCommentFromPost,
   addReplyToComment,
@@ -17,6 +15,11 @@ import {
   getRelatedPost,
   searchAndFilterPosts,
 } from '../controllers/postQuery.js';
+import {
+  resizeImage,
+  updatePostImg,
+  upload,
+} from '../controllers/postImageController.js';
 
 const router = express.Router();
 
@@ -30,7 +33,7 @@ router.get('/search', searchAndFilterPosts);
 
 router
   .route('/:id/upload')
-  .patch(protect, upload.single('photo'), updatePostImg);
+  .patch(protect, upload.single('photo'), resizeImage, updatePostImg);
 
 router.get('/:id/relatedPosts', getRelatedPost);
 router.post('/:id/comments', protect, addCommentToPost);
