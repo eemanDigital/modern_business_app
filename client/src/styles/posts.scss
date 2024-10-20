@@ -45,10 +45,13 @@
   }
 
   .post-image {
-    min-width: 400px;
-    min-height: 300px;
+    min-width: 300px;
+    min-height: 200px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    margin: 0.6rem;
+    border-radius: 5%;
   }
 
   .post-details {
@@ -108,6 +111,7 @@
   }
 
   .post-image {
+    width: 500px;
     height: 200px;
     background-size: cover;
     background-position: center;
