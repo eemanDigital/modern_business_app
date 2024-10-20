@@ -13,7 +13,6 @@ import './styles/partnership.scss';
 import './styles/business.scss';
 import './styles/ngo.scss';
 import './styles/blogContent.scss';
-import './styles/write.scss';
 import './styles/button.scss';
 import './styles/footer.scss';
 

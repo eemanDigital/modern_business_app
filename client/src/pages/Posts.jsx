@@ -1,68 +1,60 @@
-import { useState, useEffect, useRef } from 'react';
-import ReactPaginate from 'react-paginate';
+import { useState, useEffect, useCallback } from 'react';
 import { useDataFetch } from '../hooks/useDataFetch';
 import Loading from '../components/Loading';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import { useLocation } from 'react-router-dom';
 import FeaturedPost from '../components/FeaturedPost';
 import PostCard from '../components/PostCard';
+import Pagination from '../components/Pagination'; // Use Pagination component here
 import '../styles/posts.scss';
 import PostsByCategory from './PostByCategory';
 import PostCategoryNavbar from '../components/PostCategoryNavbar';
 
 function Posts() {
-  const [limit] = useState(5); // 1 featured + 4 regular posts
-  const [pageCount, setPageCount] = useState(1);
-  const currentPage = useRef(1);
-  const { data, loading, error, dataFetcher } = useDataFetch();
-  const location = useLocation();
+  const [limit, setLimit] = useState(7); // Number of posts per page
+  const [totalPosts, setTotalPosts] = useState(0); // Total number of posts
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [pageCount, setPageCount] = useState(0); // Total page count
+  const { data, loading, error, dataFetcher } = useDataFetch(); // Custom hook to fetch data
+  const location = useLocation(); // React Router hook to get the current location
 
   // Extract posts from the fetched data
-  const posts = data?.data?.results?.result || data?.data?.posts;
+  const posts = data?.posts || [];
 
   // Separate featured and regular posts
   const featuredPost = posts?.find((post) => post.featured);
   const regularPosts = posts?.filter((post) => !post.featured);
 
-  // Fetch posts when the component mounts or when the search parameters change
+  // Fetch posts based on the current page and limit
+  const fetchPosts = useCallback(
+    async (currentPage, limit) => {
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('page', currentPage); // Set current page in query params
+      searchParams.set('limit', limit); // Set limit in query params
+
+      try {
+        const response = await dataFetcher(
+          `posts/search?${searchParams.toString()}`
+        );
+        setTotalPosts(response?.total || 0); // Update total posts
+        setPageCount(Math.ceil((response?.total || 0) / limit)); // Update total page count
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+      }
+    },
+    [location.search, dataFetcher]
+  );
+
+  // Fetch posts when the component mounts or when the search parameters, limit, or current page change
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.toString()) {
-      // If there are search params, use the search endpoint
-      dataFetcher(
-        `posts/search?${searchParams.toString()}&page=${
-          currentPage.current
-        }&limit=${limit}`
-      );
-    } else {
-      // Otherwise, use the regular posts endpoint
-      getPaginatedPosts();
-    }
-  }, [location.search]);
+    fetchPosts(currentPage, limit);
+  }, [location.search, limit, currentPage, fetchPosts]);
 
-  // Handle page click for pagination
-  const handlePageClick = async (event) => {
-    currentPage.current = event.selected + 1;
-    const searchParams = new URLSearchParams(location.search);
-    if (searchParams.toString()) {
-      searchParams.set('page', currentPage.current);
-      dataFetcher(`posts/search?${searchParams.toString()}&limit=${limit}`);
-    } else {
-      getPaginatedPosts();
-    }
+  // Handle page click
+  const handlePageClick = (event) => {
+    const selectedPage = event.selected + 1; // `react-paginate` uses 0-based index, so add 1
+    setCurrentPage(selectedPage);
   };
-
-  // Fetch paginated posts
-  async function getPaginatedPosts() {
-    try {
-      const { data } = await dataFetcher(
-        `posts?page=${currentPage.current}&limit=${limit}`
-      );
-      setPageCount(data?.data?.results?.pageCount);
-    } catch (err) {
-      console.error('Error fetching paginated posts:', err);
-    }
-  }
 
   // Display error message if there is an error
   if (error) {
@@ -75,14 +67,11 @@ function Posts() {
     'Sport',
     'Politics',
     'Entertainment',
-  ];
-
-  // console.log('loading', loading);
+  ]; // Example categories
 
   return (
     <>
       <PostCategoryNavbar categories={categories} />
-
       <div className='post-container'>
         <div>
           <SearchAndFilterPosts hideInput={true} />
@@ -104,35 +93,23 @@ function Posts() {
                   </>
                 )}
               </div>
-              <ReactPaginate
-                breakLabel='...'
-                nextLabel='Next >'
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={3}
-                pageCount={pageCount}
-                previousLabel='< Previous'
-                renderOnZeroPageCount={null}
-                containerClassName='pagination'
-                pageClassName='pagination__item'
-                pageLinkClassName='pagination__link'
-                previousClassName='pagination__item'
-                previousLinkClassName='pagination__link'
-                nextClassName='pagination__item'
-                nextLinkClassName='pagination__link'
-                activeClassName='active'
-                disabledClassName='disabled'
-              />
+
+              {/* Pagination Component */}
+              {pageCount > 1 && (
+                <Pagination
+                  pageCount={pageCount}
+                  handlePageClick={handlePageClick}
+                  currentPage={currentPage}
+                />
+              )}
             </>
           )}
         </div>
 
         <div className='post-cat-wrapper'>
-          {/* <h1>News By Category</h1> */}
-          <PostsByCategory category='Technology' />
-          <PostsByCategory category='Business' />
-          <PostsByCategory category='Sport' />
-          <PostsByCategory category='Politics' />
-          <PostsByCategory category='Entertainment' />
+          {categories.map((category) => (
+            <PostsByCategory key={category} category={category} />
+          ))}
         </div>
       </div>
     </>

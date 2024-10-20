@@ -7,6 +7,8 @@ import 'react-quill/dist/quill.snow.css';
 import { useDataFetch } from '../hooks/useDataFetch';
 import Title from '../components/Title';
 
+import '../styles/addPostForm.scss';
+
 const formats = [
   'header',
   'bold',

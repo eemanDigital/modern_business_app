@@ -1,35 +1,60 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import ReactPaginate from 'react-paginate';
-import '../styles/adminPostList.scss';
 import { Link } from 'react-router-dom';
 import { useDataFetch } from '../hooks/useDataFetch';
 import { toast } from 'react-toastify';
 import { truncateText } from '../lib/truncateText';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import Loading from '../components/Loading';
+import Pagination from '../components/Pagination'; // Import the Pagination component
+import '../styles/adminPostList.scss';
+import Paginate from '../components/Paginate';
 
-const AdminPostList = ({ posts, loading, error }) => {
-  const [currentPage, setCurrentPage] = useState(0);
+const AdminPostList = () => {
+  const [currentPage, setCurrentPage] = useState(1); // Track current page
+  const [totalPosts, setTotalPosts] = useState(0); // Total number of posts
+  const [pageCount, setPageCount] = useState(0); // Total page count
+  const [posts, setPosts] = useState([]); // Posts data
   const [deletingPostId, setDeletingPostId] = useState(null); // Track the deleting post
-  const postsPerPage = 5;
-
-  const indexOfLastPost = (currentPage + 1) * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts?.slice(indexOfFirstPost, indexOfLastPost);
-
+  const postsPerPage = 5; // Number of posts per page
+  const { loading, error, dataFetcher } = useDataFetch();
   const {
     loading: isDeleting,
     error: deleteError,
     dataFetcher: deleteData,
   } = useDataFetch();
+  // Fetch posts based on the current page and limit
+  const fetchPosts = useCallback(
+    async (currentPage, limit) => {
+      const searchParams = new URLSearchParams();
+      searchParams.set('page', currentPage); // Set current page in query params
+      searchParams.set('limit', limit); // Set limit in query params
 
-  const pageCount = Math.ceil(posts?.length / postsPerPage);
+      try {
+        const response = await dataFetcher(
+          `posts/search?${searchParams.toString()}`
+        );
+        setPosts(response?.posts || []); // Update posts
+        setTotalPosts(response?.total || 0); // Update total posts
+        setPageCount(Math.ceil((response?.total || 0) / limit)); // Update total page count
+      } catch (err) {
+        console.error('Error fetching posts:', err);
+      }
+    },
+    [dataFetcher]
+  );
 
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
+  // Fetch posts when the component mounts or when the current page changes
+  useEffect(() => {
+    fetchPosts(currentPage, postsPerPage);
+  }, [currentPage, fetchPosts]);
+
+  // Handle page click
+  const handlePageClick = (selectedPage) => {
+    setCurrentPage(selectedPage);
   };
 
+  // Handle post deletion
   const deletePost = async (id) => {
     const confirmed = window.confirm(
       'Are you sure you want to delete this post?'
@@ -53,7 +78,10 @@ const AdminPostList = ({ posts, loading, error }) => {
 
   return (
     <div className='admin-post-list-container'>
-      <h1 className='blog-post-header'>Blog Posts</h1>
+      <h1 className='blog-post-header'>
+        Blog Posts <span id='post-number'>({totalPosts}) Posts</span>
+      </h1>
+
       <button className='create-post-btn'>
         <Link to='/blog/create'>Create Post</Link>{' '}
       </button>
@@ -62,6 +90,7 @@ const AdminPostList = ({ posts, loading, error }) => {
       {posts && (
         <>
           <SearchAndFilterPosts />
+
           <table className='admin-post-list-table'>
             <thead>
               <tr>
@@ -72,7 +101,7 @@ const AdminPostList = ({ posts, loading, error }) => {
               </tr>
             </thead>
             <tbody>
-              {currentPosts.map((post) => (
+              {posts.map((post) => (
                 <tr key={post?._id}>
                   <td>
                     <Link to={`/blog/${post?.slug}/${post._id}`}>
@@ -105,17 +134,10 @@ const AdminPostList = ({ posts, loading, error }) => {
               ))}
             </tbody>
           </table>
-          <ReactPaginate
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
+          <Paginate
             pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={handlePageClick}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
+            handlePageClick={handlePageClick}
+            currentPage={currentPage}
           />
         </>
       )}
@@ -124,14 +146,6 @@ const AdminPostList = ({ posts, loading, error }) => {
 };
 
 AdminPostList.propTypes = {
-  posts: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
 };

@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import { formats } from '../lib/quillFormat';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Title from '../components/Title';
-import '../styles/write.scss';
+import '../styles/addPostForm.scss';
 
 const AddPostForm = () => {
   const navigate = useNavigate();
