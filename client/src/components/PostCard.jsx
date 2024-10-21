@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { htmlToText } from 'html-to-text';
 import { truncateText } from '../lib/truncateText';
 import { Link } from 'react-router-dom';
@@ -7,14 +6,12 @@ import placeholderImg from '../assets/placeholderImg.jpg';
 import formatDate from '../lib/formattedDate';
 
 const PostCard = ({ posts }) => {
-  console.log(posts[0].photo);
-
   return (
     <div className='post-grid'>
       {posts?.map((post) => (
         <article key={post._id} className='post-card'>
           <div className='post-image'>
-            <img src={post?.photo} alt={post?.title} />
+            <img src={post?.photo || placeholderImg} alt={post?.title} />
           </div>
           <div className='post-content'>
             <span className='post-category'>{post.category}</span>

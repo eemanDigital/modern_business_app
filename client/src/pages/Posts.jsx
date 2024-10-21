@@ -12,7 +12,7 @@ import PostsByCategory from './PostByCategory';
 import PostCategoryNavbar from '../components/PostCategoryNavbar';
 
 function Posts() {
-  const [limit, setLimit] = useState(4); // Number of posts per page
+  const [limit, setLimit] = useState(6); // Number of posts per page
   const [totalPosts, setTotalPosts] = useState(0); // Total number of posts
   const [currentPage, setCurrentPage] = useState(1); // Track current page
   const [pageCount, setPageCount] = useState(0); // Total page count
@@ -85,11 +85,7 @@ function Posts() {
                   <>
                     <div className='blog-container'>
                       {featuredPost && <FeaturedPost post={featuredPost} />}
-                      {/* <div className='post-grid'>
-                        {regularPosts?.map((post) => (
-                          <PostCard key={post._id} post={post} />
-                        ))}
-                      </div> */}
+
                       <PostCard posts={regularPosts} />
                     </div>
                   </>
