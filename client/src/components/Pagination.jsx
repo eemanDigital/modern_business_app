@@ -10,7 +10,7 @@ const Pagination = ({ pageCount, handlePageClick, currentPage }) => {
       onPageChange={handlePageClick}
       pageRangeDisplayed={3}
       pageCount={pageCount}
-      previousLabel='< Previous'
+      previousLabel='< Prev'
       renderOnZeroPageCount={null}
       containerClassName='pagination'
       pageClassName='pagination__item'

@@ -5,29 +5,32 @@ import formatDate from '../lib/formattedDate';
 import { truncateText } from '../lib/truncateText';
 import { htmlToText } from 'html-to-text';
 
+import '../styles/featuredPost.scss';
+
 const FeaturedPost = ({ post }) => (
   <div className='featured-post'>
     <div className='post-content'>
       <div
         className='post-image'
-        style={{ backgroundImage: `url(${post.photo || placeholderImg})` }}
+        style={{ backgroundImage: `url(${post?.photo || placeholderImg})` }}
       />
       <div className='post-details'>
+        <span className='post-category'>{post.category}</span>
         <h2 className='post-title'>
-          <Link to={`/blog/${post.slug}/${post._id}`}>{post.title}</Link>
+          <Link to={`/blog/${post?.slug}/${post._id}`}>{post?.title}</Link>
         </h2>
         <div className='post-meta'>
           <span className='post-author'>
-            {`${post.author.firstName} ${post.author.lastName}`}
+            {`${post?.author?.firstName} ${post?.author?.lastName}`}
           </span>
           <span className='post-date'>
-            <CiCalendarDate /> {formatDate(post.date)}
+            <CiCalendarDate /> {formatDate(post?.date)}
           </span>
         </div>
         <p className='post-excerpt'>
-          {truncateText(htmlToText(post.body, { wordwrap: 100 }), 300)}
+          {truncateText(htmlToText(post?.body, { wordwrap: 100 }), 150)}
         </p>
-        <Link to={`/blog/${post.slug}/${post._id}`} className='read-more'>
+        <Link to={`/blog/${post?.slug}/${post._id}`} className='read-more'>
           Read Full Article
         </Link>
       </div>

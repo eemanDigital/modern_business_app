@@ -16,39 +16,38 @@ const PostsByCategory = ({ category }) => {
     dataFetcher(`posts/search?category=${category}&limit=2`);
   }, [dataFetcher, category]);
 
-  // if (loading) return <Loading />;
-  if (error) return <div className='posts-aside__error'>{error}</div>;
+  if (error) return <div className='posts-category__error'>{error}</div>;
 
   return (
-    <aside className='posts-aside'>
-      <h3 className='posts-aside__header'>
-        <span className='posts-aside__header-text'>{category} News</span>
+    <aside className='posts-category'>
+      <h3 className='posts-category__header'>
+        <span>{category} News</span>
       </h3>
-      <ul className='posts-aside__list'>
+      <ul className='posts-category__list'>
         {data?.posts?.length > 0 ? (
           data.posts.map((post) => (
-            <li key={post._id} className='posts-aside__item'>
+            <li key={post._id} className='posts-category__item'>
               <Link
                 to={`/blog/${post?.slug}/${post._id}`}
-                className='posts-aside__link'>
-                <h4 className='posts-aside__title'>{post?.title}</h4>
-                <div className='posts-aside__meta'>
+                className='posts-category__link'>
+                <h4 className='posts-category__title'>{post?.title}</h4>
+                <div className='posts-category__meta'>
                   <CiCalendarDate />
                   <span>{formatDate(post?.date)}</span>
                 </div>
-                <p className='posts-aside__excerpt'>
+                <p className='posts-category__excerpt'>
                   {truncateText(htmlToText(post?.body, { wordwrap: 100 }), 100)}
                 </p>
               </Link>
             </li>
           ))
         ) : (
-          <li className='posts-aside__no-posts'>
+          <li className='posts-category__no-posts'>
             No posts available for this category.
           </li>
         )}
       </ul>
-      <Link to={`category/${category}`} className='posts-aside__more-button'>
+      <Link to={`category/${category}`} className='posts-category__more-button'>
         More {category} News...
       </Link>
     </aside>

@@ -5,7 +5,6 @@ import { AuthContextProvider } from './context/authContext.jsx';
 import './styles/navbar.scss';
 import './styles/home.scss';
 import './index.scss';
-import './styles/aside.scss';
 import './styles/packages.scss';
 import './styles/company.scss';
 import './styles/post_inc.scss';

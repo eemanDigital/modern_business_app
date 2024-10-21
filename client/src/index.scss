@@ -1,12 +1,13 @@
-@import './styles/variables';
-
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'normalize.css/normalize'; // Import the normalize.css file
+@import './styles/_variables'; // Import the variables file
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); // Import the font
 
 * {
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   margin: 0;
   padding: 0;
   font-family: 'Kanit', sans-serif;
@@ -15,9 +16,9 @@ body {
   scroll-behavior: smooth;
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-repeat: repeat;
+  // display: flex;
+  // flex-direction: column;
+  // background-repeat: repeat;
   overflow-x: hidden;
   overflow-y: auto;
 }
