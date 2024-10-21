@@ -24,7 +24,7 @@ const RelatedPosts = ({ postId }) => {
           {data?.data?.relatedPosts.map((post) => (
             <div className='related-post-item' key={post._id}>
               <li>
-                <Link to={`/posts/${post._id}`}>{post.title}</Link>
+                <Link to={`/blog/${post.slug}/${post._id}`}>{post.title}</Link>
               </li>
               <p>
                 {truncateText(
