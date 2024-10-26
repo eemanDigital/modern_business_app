@@ -13,7 +13,9 @@ const RelatedPosts = ({ postId }) => {
     dataFetcher(`posts/${postId}/relatedPosts`);
   }, [dataFetcher, postId]);
 
+  // Display loading message while fetching data
   if (loading) return <div>Loading related posts...</div>;
+  //  Display error message if there is an error
   if (error) return <div>{error}</div>;
 
   return (

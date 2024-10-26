@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Aside = ({ price, title }) => {
   return (
-    <div className='aside' data-aos='fade-up'>
+    <div className='aside'>
       <div className='aside-container'>
         <h3>{title}</h3>
         <span>
@@ -22,7 +22,7 @@ const Aside = ({ price, title }) => {
             />
           </svg>
         </span>
-        <strong data-aos='fade-left'>
+        <strong>
           From &#8358; <span className='amount'>{price}</span>
         </strong>
 
@@ -35,7 +35,7 @@ const Aside = ({ price, title }) => {
         <div className='accredited'>
           <strong>CAC Accredited</strong>
 
-          <PiCertificateThin data-aos='fade-right' />
+          <PiCertificateThin />
         </div>
       </div>
     </div>

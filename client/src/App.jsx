@@ -35,17 +35,9 @@ import AddPostForm from './pages/AddPostForm';
 import UpgradeUser from './pages/UpgradeUser';
 import FullCategoryPage from './pages/FullCategoryPage';
 import ContactForm from './components/ContactUs';
-import AllPosts from './pages/AllPosts';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  // scroll animation handler
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true,
-    });
-  }, []);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<Layout />}>
@@ -86,8 +78,10 @@ function App() {
   );
   return (
     <div>
-      <RouterProvider router={router} />
-      <ToastContainer />
+      <RouterProvider router={router}>
+        <ScrollToTop />
+        <ToastContainer />
+      </RouterProvider>
     </div>
   );
 }

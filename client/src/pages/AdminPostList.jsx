@@ -70,6 +70,7 @@ const AdminPostList = () => {
     }
   };
 
+  //  Display loading message while fetching data
   useEffect(() => {
     if (deleteError) {
       toast.error(deleteError);

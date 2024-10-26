@@ -32,7 +32,6 @@ function Posts() {
       const searchParams = new URLSearchParams(location.search);
       searchParams.set('page', currentPage); // Set current page in query params
       searchParams.set('limit', limit); // Set limit in query params
-
       try {
         const response = await dataFetcher(
           `posts/search?${searchParams.toString()}`
@@ -62,13 +61,14 @@ function Posts() {
     return <div className='error-message'>Error: {error}</div>;
   }
 
+  // Define categories
   const categories = [
     'Technology',
     'Business',
     'Sport',
     'Politics',
     'Entertainment',
-  ]; // Example categories
+  ];
 
   return (
     <>

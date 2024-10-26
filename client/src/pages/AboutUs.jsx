@@ -10,10 +10,10 @@ function AboutUs() {
     <section className='about-us'>
       <div className='about_hero'>
         <div className='about_hero__content'>
-          <h1 className='about_hero__title' data-aos='zoom-out'>
+          <h1 className='about_hero__title'>
             Digital Solutions for Your Business
           </h1>
-          <p className='about_hero__text' data-aos='zoom-out'>
+          <p className='about_hero__text'>
             Empowering your digital transformation with innovative, tailored
             solutions.
           </p>
@@ -21,7 +21,7 @@ function AboutUs() {
       </div>
 
       <div className='about_container'>
-        <div className='certified' data-aos='zoom-out'>
+        <div className='certified'>
           <PiCertificateThin className='certified__icon' />
           <div className='certified__content'>
             <span className='certified__text'>Certified Excellence</span>
@@ -31,13 +31,13 @@ function AboutUs() {
             </p>
           </div>
         </div>
-        <div className='about-us-image' data-aos='fade-up'>
+        <div className='about-us-image'>
           <img src={manImg} alt='About Eeman Digital and IT Solutions' />
         </div>
         <div className='story'>
           <div className='story__content'>
             <Title text='Our' span='Story' />
-            <p className='story__text' data-aos='fade-in'>
+            <p className='story__text'>
               <p>
                 At Eeman Digital and IT Solutions our journey into the realm of
                 web development and business registration services was inspired
@@ -96,17 +96,14 @@ function AboutUs() {
         <PopularProducts />
 
         <div className='mission-vision'>
-          <div className='mission-vision__item' data-aos='fade-up'>
+          <div className='mission-vision__item'>
             <h3 className='mission-vision__title'>Our Mission</h3>
             <p className='mission-vision__text'>
               To empower businesses worldwide with innovative web solutions that
               catalyze growth and drive digital transformation.
             </p>
           </div>
-          <div
-            className='mission-vision__item'
-            data-aos='fade-up'
-            data-aos-delay='100'>
+          <div className='mission-vision__item'>
             <h3 className='mission-vision__title'>Our Vision</h3>
             <p className='mission-vision__text'>
               To be the trusted ally for businesses seeking to thrive in the
@@ -114,10 +111,7 @@ function AboutUs() {
               client-centric approach.
             </p>
           </div>
-          <div
-            className='mission-vision__item'
-            data-aos='fade-up'
-            data-aos-delay='200'>
+          <div className='mission-vision__item'>
             <h3 className='mission-vision__title'>Our Values</h3>
             <ul className='mission-vision__list'>
               <li>Unwavering Quality</li>

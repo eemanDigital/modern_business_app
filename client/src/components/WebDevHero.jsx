@@ -4,13 +4,11 @@ const WebDevHero = () => {
   return (
     <section className='web-dev-hero'>
       <div className='web-dev-hero__content'>
-        <h1 className='web-dev-hero__title' data-aos='fade-left'>
-          Elevate Your Digital Presence
-        </h1>
-        <p className='web-dev-hero__subtitle' data-aos='fade-left'>
+        <h1 className='web-dev-hero__title'>Elevate Your Digital Presence</h1>
+        <p className='web-dev-hero__subtitle'>
           Cutting-edge web development solutions for your business
         </p>
-        <ul className='web-dev-hero__features' data-aos='fade-right'>
+        <ul className='web-dev-hero__features'>
           <li>Responsive Design</li>
           <li>Custom Web Applications</li>
           <li>E-commerce Solutions</li>
@@ -22,7 +20,7 @@ const WebDevHero = () => {
         {/* Replace with an actual image in your project */}
         {/* <img src='/api/placeholder/500/300' alt='Web Development Services' />
          */}
-        <TbWorldWww size={200} data-aos='fade-up' />
+        <TbWorldWww size={200} />
       </div>
     </section>
   );

@@ -80,7 +80,7 @@ const ContactForm = () => {
             you need.
           </p>
         </div>
-        <div className='contact__form-container' data-aos='fade-up'>
+        <div className='contact__form-container'>
           <h2 className='contact__form-title'>Contact Us</h2>
           <form ref={form} onSubmit={sendEmail}>
             <div className='form__row'>

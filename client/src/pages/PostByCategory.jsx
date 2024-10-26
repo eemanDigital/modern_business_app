@@ -10,12 +10,14 @@ import '../styles/postByCategory.scss';
 import Loading from '../components/Loading';
 
 const PostsByCategory = ({ category }) => {
-  const { data, loading, error, dataFetcher } = useDataFetch();
+  const { data, error, dataFetcher } = useDataFetch();
 
+  // Fetch posts based on the category
   useEffect(() => {
     dataFetcher(`posts/search?category=${category}&limit=2`);
   }, [dataFetcher, category]);
 
+  //  Display loading message while fetching data
   if (error) return <div className='posts-category__error'>{error}</div>;
 
   return (

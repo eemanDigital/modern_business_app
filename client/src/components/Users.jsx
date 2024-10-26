@@ -7,13 +7,14 @@ import Loading from './Loading';
 
 const Users = ({ loading, error, users }) => {
   const [deletingUserId, setDeletingUserId] = useState(null); // Track which user is being deleted
-  const { dataFetcher } = useDataFetch();
+  const { dataFetcher } = useDataFetch(); //  Custom hook to fetch data
   const {
     loading: isDeleting,
     error: deleteError,
     dataFetcher: deleteData,
-  } = useDataFetch();
+  } = useDataFetch(); // Custom hook to delete data
 
+  //  Handle user deletion
   const deleteUser = async (id) => {
     const confirmed = window.confirm(
       'Are you sure you want to delete this user?'
