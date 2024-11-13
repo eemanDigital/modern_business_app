@@ -14,8 +14,7 @@
 
   &__list {
     position: relative;
-    height: 90vh;
-
+    height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -91,10 +90,11 @@
 .post-cat-container {
   display: grid;
   gap: $spacing-md;
-  padding: 2rem;
+  // padding: 2rem;
 
   @media (min-width: $breakpoint-sm) {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0;
   }
 
   @media (min-width: $breakpoint-lg) {
