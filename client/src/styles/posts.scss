@@ -1,11 +1,37 @@
 // Import variables and mixins
 @import 'variables';
 
-.blog-container {
-  max-width: 1200px;
+.post-container {
+  max-width: 1250px;
   height: 100%;
   margin: 0 auto;
   padding: $spacing-md;
+
+  .filter_title_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    // margin-bottom: $spacing-lg;
+    h1 {
+      margin: 0;
+
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: $primary-color;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
 }
 
 .post-grid {
@@ -41,8 +67,11 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    @media (max-width: $breakpoint-md) {
+      padding: 0;
+    }
     @media (max-width: $breakpoint-sm) {
-      padding: $spacing-xs;
+      padding: $spacing-sm;
     }
   }
 
