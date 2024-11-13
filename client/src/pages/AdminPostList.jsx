@@ -6,9 +6,9 @@ import { toast } from 'react-toastify';
 import { truncateText } from '../lib/truncateText';
 import SearchAndFilterPosts from './SearchAndFilterPosts';
 import Loading from '../components/Loading';
-import Pagination from '../components/Pagination'; // Import the Pagination component
 import '../styles/adminPostList.scss';
 import Paginate from '../components/Paginate';
+import useDeleteImgHandler from '../lib/useDeleteImage';
 
 const AdminPostList = () => {
   const [currentPage, setCurrentPage] = useState(1); // Track current page
@@ -18,6 +18,7 @@ const AdminPostList = () => {
   const [deletingPostId, setDeletingPostId] = useState(null); // Track the deleting post
   const postsPerPage = 5; // Number of posts per page
   const { loading, error, dataFetcher } = useDataFetch();
+
   const {
     loading: isDeleting,
     error: deleteError,

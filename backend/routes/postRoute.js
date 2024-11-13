@@ -9,6 +9,7 @@ import {
   deleteCommentFromPost,
   addReplyToComment,
   deleteReplyFromComment,
+  deleteImage,
 } from '../controllers/postControllers.js';
 import { protect, restrictTo } from '../controllers/authController.js';
 import {
@@ -30,6 +31,7 @@ router
   .get(getPosts);
 
 router.get('/search', searchAndFilterPosts);
+router.delete('/delete', deleteImage);
 
 router
   .route('/:id/upload')
