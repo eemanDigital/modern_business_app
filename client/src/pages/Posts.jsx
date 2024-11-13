@@ -65,7 +65,7 @@ function Posts() {
   const categories = [
     'Technology',
     'Business',
-    'Sport',
+    'Sports',
     'Politics',
     'Entertainment',
   ];
@@ -73,9 +73,14 @@ function Posts() {
   return (
     <>
       <PostCategoryNavbar categories={categories} />
+
       <div className='post-container'>
         <div>
-          <SearchAndFilterPosts hideInput={true} />
+          <div className='filter_title_div'>
+            <h1 className='header'>Latest News</h1>
+            <SearchAndFilterPosts hideInput={true} />
+          </div>
+
           {loading ? (
             <Loading />
           ) : (

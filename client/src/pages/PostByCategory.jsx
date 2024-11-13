@@ -48,10 +48,12 @@ const PostsByCategory = ({ category }) => {
             No posts available for this category.
           </li>
         )}
+        <Link
+          to={`category/${category}`}
+          className='posts-category__more-button'>
+          More {category} News...
+        </Link>
       </ul>
-      <Link to={`category/${category}`} className='posts-category__more-button'>
-        More {category} News...
-      </Link>
     </aside>
   );
 };

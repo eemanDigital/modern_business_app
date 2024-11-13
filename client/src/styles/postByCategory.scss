@@ -13,6 +13,9 @@
   }
 
   &__list {
+    position: relative;
+    height: 90vh;
+
     list-style: none;
     padding: 0;
     margin: 0;
@@ -30,7 +33,7 @@
     }
 
     &:hover {
-      background-color: $light-bg;
+      background-color: $card-background;
     }
   }
 
@@ -72,14 +75,16 @@
     color: $text-color-light;
   }
 
-  // &__more-button {
-  //   @include button-styles($accent-color, $white);
-  //   display: block;
-  //   width: 100%;
-  //   text-align: center;
-  //   margin-top: $spacing-sm;
-  //   text-decoration: none;
-  // }
+  &__more-button {
+    @include button-styles($highlight-color, $white);
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: $spacing-sm;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 // Responsive layout

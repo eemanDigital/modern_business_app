@@ -73,6 +73,21 @@ const PostDetails = () => {
 
           <h1>{data?.data.title}</h1>
           <div className='blog-content-author-date'>
+            <div className='social-share'>
+              <h3>Share this post:</h3>
+              <FacebookShareButton url={postUrl} quote={postTitle}>
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <TwitterShareButton url={postUrl} title={postTitle}>
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+              <LinkedinShareButton url={postUrl} title={postTitle}>
+                <LinkedinIcon size={32} round />
+              </LinkedinShareButton>
+              <WhatsappShareButton url={postUrl} round title={postTitle}>
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+            </div>
             <span>{formatDate(data?.data?.post?.date)}</span>
 
             <span className='blog-post__author'>
@@ -82,21 +97,6 @@ const PostDetails = () => {
           </div>
           <p dangerouslySetInnerHTML={{ __html: data?.data?.post?.body }}></p>
 
-          <div className='social-share'>
-            <h3>Share this post:</h3>
-            <FacebookShareButton url={postUrl} quote={postTitle}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton url={postUrl} title={postTitle}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <LinkedinShareButton url={postUrl} title={postTitle}>
-              <LinkedinIcon size={32} round />
-            </LinkedinShareButton>
-            <WhatsappShareButton url={postUrl} round title={postTitle}>
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
-          </div>
           <div className='related-posts'>
             <RelatedPosts postId={data?.data?.post?._id} />
           </div>
